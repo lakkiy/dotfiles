@@ -4,6 +4,7 @@
 apps=(
     emacs                        # soul of the computer
 
+    squirrel # cn type in
     wireshark
     telegram-desktop
     google-chrome
@@ -69,6 +70,8 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    tdlib # use telega in emacs
+    neovim
     jupyterlab
     go
     tmux
