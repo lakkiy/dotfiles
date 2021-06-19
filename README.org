@@ -57,7 +57,7 @@ zinit snippet OMZP::ruby
 zinit light ptavares/zsh-direnv
 #+end_src
 
-See details on [zinit](https://github.com/zdharma/zinit).
+See details [[https://github.com/zdharma/zinit][zinit]]
 
 *** Git local config
 
@@ -77,4 +77,4 @@ Set your git configurations in =~/.gitconfig.local=, e.g. user credentials.
 
 ** Acknowledgements
 
-Related projects: [DevStrap](https://github.com/ray-g/devstrap)
+Related projects: [[https://github.com/ray-g/devstrap][DevStrap]]
