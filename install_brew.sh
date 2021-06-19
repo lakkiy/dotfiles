@@ -70,6 +70,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    mosh # ssh on udp
     tdlib # use telega in emacs
     neovim
     jupyterlab
