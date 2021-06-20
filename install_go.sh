@@ -7,7 +7,6 @@ packages=(
     github.com/cweill/gotests/... # run go test
     github.com/fatih/gomodifytags # autp add/remove tags for struct
     golang.org/x/tools/cmd/guru # ask me !
-    github.com/golangci/golangci-lint/cmd/golangci-lint # best lint tool for go
     golang.org/x/tools/cmd/goimports # go fmt with sort import
     # golang.org/x/tools/cmd/gorename
     # github.com/google/gops
@@ -67,12 +66,12 @@ function check() {
 function install() {
     for p in ${packages_no_update[@]}; do
         printf "${BLUE} ➜  Installing ${p}...${NORMAL}\n"
-        go get ${p}
+        go install ${p}
     done
 
     for p in ${packages[@]}; do
         printf "${BLUE} ➜  Installing ${p}...${NORMAL}\n"
-        go install ${p}
+        go get -u ${p}
     done
 }
 

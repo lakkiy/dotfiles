@@ -72,6 +72,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    golangci-lint # best lint for go
     mosh # ssh on udp
     tdlib # use telega in emacs
     neovim
