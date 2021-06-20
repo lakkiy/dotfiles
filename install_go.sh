@@ -72,7 +72,7 @@ function install() {
 
     for p in ${packages[@]}; do
         printf "${BLUE} ➜  Installing ${p}...${NORMAL}\n"
-        go get -u ${p}
+        go install ${p}
     done
 }
 
