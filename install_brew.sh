@@ -13,7 +13,7 @@ apps=(
     firefox
     dropbox # sync file
     # avibrazil-rdm              # Retina display management
-    cheatsheet
+    # cheatsheet
     # clipy                      # Clipboard
     # maczip                     # Compress & extract
     # fliqlo                     # Screen Saver
