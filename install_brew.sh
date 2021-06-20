@@ -72,6 +72,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    mongocli # mongodb command line tool
     golangci-lint # best lint for go
     mosh # ssh on udp
     tdlib # use telega in emacs
