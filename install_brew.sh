@@ -3,7 +3,9 @@
 # Cask applications
 apps=(
     emacs                        # soul of the computer
-
+    
+    via # your keyboard's best friend
+    hiddenbar # manage menu bar
     balenaetcher # flash iso
     raycast # ala fro spotlight, support open app via shortcut
     squirrel # cn type in
