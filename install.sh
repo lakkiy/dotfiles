@@ -56,7 +56,7 @@ sync_repo() {
     local repo_branch="$3"
 
     if [ -z "$repo_branch" ]; then
-        repo_branch="master"
+        repo_branch="main"
     fi
 
     if [ ! -e "$repo_path" ]; then
