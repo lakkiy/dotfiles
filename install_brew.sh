@@ -4,6 +4,7 @@
 apps=(
     emacs                        # soul of the computer
 
+    balenaetcher # flash iso
     raycast # ala fro spotlight, support open app via shortcut
     squirrel # cn type in
     wireshark
