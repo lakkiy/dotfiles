@@ -3,7 +3,7 @@
 # Variables
 DOTFILES=$HOME/.dotfiles
 EMACSD=$HOME/.config/emacs
-# FZF=$HOME/.fzf
+FZF=$HOME/.fzf
 # TMUX=$HOME/.tmux
 ZSH=$HOME/.zinit
 
@@ -121,8 +121,8 @@ clean_dotfiles() {
 
     [ -d $EMACSD ] && mv $EMACSD $EMACSD.bak
 
-    # $FZF $TMUX
-    rm -rf $ZSH $DOTFILES
+    # $TMUX
+    rm -rf $ZSH $DOTFILES $FZF
 
     # rm -f $HOME/.fzf.*
     rm -f $HOME/.gitignore_global $HOME/.gitconfig_global
@@ -162,6 +162,7 @@ if is_mac; then
         brew tap homebrew/cask-versions
         brew tap homebrew/cask-fonts
         brew tap buo/cask-upgrade
+        brew tap railwaycat/emacsmacport
     fi
 fi
 

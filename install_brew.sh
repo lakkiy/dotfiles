@@ -2,8 +2,7 @@
 
 # Cask applications
 apps=(
-    emacs                        # soul of the computer
-    
+    emacs-mac # only editor can save your soul
     nrlquaker-winbox # manage route os
     discord
     via # your keyboard's best friend
@@ -137,6 +136,7 @@ function check {
         brew tap homebrew/cask-fonts
         brew tap homebrew/cask-versions
         brew tap buo/cask-upgrade
+        brew tap railwaycat/emacsmacport
     fi
 }
 
