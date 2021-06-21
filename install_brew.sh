@@ -4,6 +4,8 @@
 apps=(
     emacs                        # soul of the computer
     
+    nrlquaker-winbox # manage route os
+    discord
     via # your keyboard's best friend
     hiddenbar # manage menu bar
     balenaetcher # flash iso
