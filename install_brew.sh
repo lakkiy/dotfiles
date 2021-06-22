@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    eul # status monitoring, istat alternative
     emacs-mac # only editor can save your soul
     nrlquaker-winbox # manage route os
     discord
