@@ -62,7 +62,7 @@ apps=(
     # macgesture
     qq
     wechat
-    lark
+    # lark
     thunder
     # tencent-lemon
 
