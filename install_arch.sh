@@ -6,11 +6,10 @@ packages=(
     # zsh
     emacs-pgtk-native-comp-git
     neofetch                    # screenfetch
-    bat
-    fd
-    fzf
-    ripgrep
-    # shadowsocks-qt5
+    # bat
+    # fd
+    # fzf
+    # ripgrep
 
     # npm
     # python-pip
@@ -18,12 +17,12 @@ packages=(
     # rubyrdoc
 
     # Fonts
-    adobe-source-code-pro-fonts
-    powerline-fonts
-    wqy-bitmapfont
-    wqy-microhei
-    wqy-microhei-lite
-    wqy-zenhei
+    # adobe-source-code-pro-fonts
+    # powerline-fonts
+    # wqy-bitmapfont
+    # wqy-microhei
+    # wqy-microhei-lite
+    # wqy-zenhei
 )
 
 # Use colors, but only if connected to a terminal, and that terminal
