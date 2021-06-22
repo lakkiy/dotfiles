@@ -78,7 +78,7 @@ function install {
             # font-symbola
 
             font-sarasa-gothic
-            font-wenquanyi-micro-hei
+            # font-wenquanyi-micro-hei
             # font-wenquanyi-micro-hei-lite
             # font-wenquanyi-zen-hei
         )
@@ -86,7 +86,7 @@ function install {
         for f in ${fonts[@]}; do
             brew install ${f} --cask
         done
-        brew cask cleanup
+        brew cleanup
     elif [ "$SYSTEM" = "Linux" ]; then
         # Linux
         font_dir="$HOME/.local/share/fonts"
