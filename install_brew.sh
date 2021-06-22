@@ -3,6 +3,9 @@
 # Cask applications
 apps=(
     nutstore # 2GB/month
+             # To complete the installation of Cask nutstore, you must also
+             # run the installer at:
+             # /usr/local/Caskroom/nutstore/latest/坚果云安装程序.app/Contents/MacOS/NutstoreOnlineInstaller
     eul # status monitoring, istat alternative
     emacs-mac # only editor can save your soul
     nrlquaker-winbox # manage route os
