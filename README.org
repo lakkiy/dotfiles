@@ -30,6 +30,15 @@ sh -c "$(wget https://raw.githubusercontent.com/404cn/dotfiles/main/install.sh -
 
 That's it. Enjoy!
 
+** Tmux
+
+- =`= as prefix, and default =C-b= is unbind.
+- =` r= to reload configuration.
+- =-=, =\= to split window horizontally/vertically.
+- =h=, =j=, =k=, =l= and =w=, =a=, =s=, =d= use to select pane.
+- =H=, =J=, =K=, =L= and =W=, =A=, =S=, =d= use to resize pane.
+- =n=, =p=, and =f=, =b= use to select previous/next window.
+
 ** Customization
 
 *** ZSH ENV
