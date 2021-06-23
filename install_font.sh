@@ -78,6 +78,7 @@ function install {
             # font-symbola
 
             font-sarasa-gothic
+            font-gnu-unifont
             # font-wenquanyi-micro-hei
             # font-wenquanyi-micro-hei-lite
             # font-wenquanyi-zen-hei
