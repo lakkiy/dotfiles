@@ -7,6 +7,9 @@ set hlsearch
 set ruler
 highlight Comment ctermfg=green
 
+" yank to system clipboard by default
+set clipboard=unnamedplus
+
 
 "--------------From changemewtf/not_plugins---------------
 " enter the current millenium
