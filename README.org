@@ -33,7 +33,7 @@ That's it. Enjoy!
 ** Tmux
 
 - =`= as prefix, and default =C-b= is unbind.
-- =` r= to reload configuration.
+- =r= to reload configuration.
 - =-=, =\= to split window horizontally/vertically.
 - =h=, =j=, =k=, =l= and =w=, =a=, =s=, =d= use to select pane.
 - =H=, =J=, =K=, =L= and =W=, =A=, =S=, =d= use to resize pane.
