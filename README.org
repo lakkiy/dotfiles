@@ -36,6 +36,7 @@ That's it. Enjoy!
 - =r= to reload configuration.
 - =-=, =\= to split window horizontally/vertically.
 - =h=, =j=, =k=, =l= and =w=, =a=, =s=, =d= use to select pane.
+- =o= to select next pane.
 - =H=, =J=, =K=, =L= and =W=, =A=, =S=, =d= use to resize pane.
 - =n=, =p=, and =f=, =b= use to select previous/next window.
 
