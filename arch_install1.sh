@@ -1,4 +1,6 @@
 #!/bin/bash
+# This is used to run before arch-chroot
+# After arch-chroot run arch_install2.sh
 
 SWAP=/dev/sda1
 ARCH_FILE_SYSTEM=/dev/sda2
@@ -6,11 +8,6 @@ HOST_NAME=arch
 
 # CONNECT WIFI
 # use iwctl to connect to wifi
-# [iwd]# help
-# [iwd]# device list
-# [iwd]# station device scan
-# [iwd]# station device get-networks
-# [iwd]# station device connect SSID
 
 # INIT FILE SYSTEM
 # use fdisk to init disk
@@ -34,7 +31,7 @@ swapon $SWAP
 mkfs.btrfs $ARCH_FILE_SYSTEM
 
 
-# Now we must mount the partitions that we just created 
+# Now we must mount the partitions that we just created
 # (except swap as it is not used to store static files).
 
 mount $ARCH_FILE_SYSTEM /mnt
@@ -79,19 +76,19 @@ echo "127.0.1.1	$HOST_NAME.localdomain	$HOST_NAME" >> /etc/hosts
 # setting password for root
 passwd
 
-# efibootmgr
-pacman -S grub grub-btrfs grub-bios base-devel linux-headers networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools reflector git bluez bluez-utils xdg-utils xdg-user-dirs
+# efibootmgr grub-btrfs grub-bios
+pacman -S grub linux-headers networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools reflector git bluez bluez-utils xdg-utils xdg-user-dirs
 systemctl enable NetworkManager
 ## If you installed bluez
 systemctl enable bluetooth
 
 
 # Step 18: Adding btrfs module to mkinitcpio
-# 
+#
 # nano /etc/mkinitcpio.conf
 # Add btrfs in MODULES=()
-# 
+#
 # Now to recreate the image:
-# 
+#
 # mkinitcpio -p linux
 # Replace linux with linux-lts if you installed the lts kernel

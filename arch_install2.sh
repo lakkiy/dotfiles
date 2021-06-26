@@ -1,7 +1,8 @@
 #!/bin/bash
+# Run this after arch-chroot
 
 ARCH_FILE_SYSTEM=/dev/sda
-USER=test
+USER=lb
 
 # Installing grub:
 
@@ -11,21 +12,22 @@ USER=test
 # BIOS
 grub-install $ARCH_FILE_SYSTEM
 
-
 # Now to generate the configuration file:
 grub-mkconfig -o /boot/grub/grub.cfg
-
 
 # Adding a user:
 useradd -mG wheel $USER
 # Giving a password to the user:
+echo "Enter password for "
+echo $USER
 passwd $USER
+
 # Now to give usersfrom the wheel group full sudo access:
 visudo
 # Uncomment the line which says %wheel ALL=(ALL) ALL
 
 # Step 22: Restarting into Arch
-# 
+#
 # ## Exiting the installation
 # exit
 # ## Unmounting all drives
@@ -34,4 +36,3 @@ visudo
 # shutdown now
 # ## If you're dual booting/installing on a device
 # reboot
-
