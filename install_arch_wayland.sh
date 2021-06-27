@@ -2,27 +2,24 @@
 
 # Packages
 packages=(
-    # git
-    # zsh
+    # ONLY FOR WAYLAND
+    grim # screenshot in wayland
+    slurp # screenshot in wayland
+
+    # COMMON
     emacs-pgtk-native-comp-git
     neofetch                    # screenfetch
-    # bat
-    # fd
-    # fzf
-    # ripgrep
-
-    # npm
-    # python-pip
-    # rubygems
-    # rubyrdoc
+    thunar # file manager
+    thunar-dropbox # dropbox file manager ind
+    dropbox
 
     # Fonts
-    # adobe-source-code-pro-fonts
-    # powerline-fonts
-    # wqy-bitmapfont
-    # wqy-microhei
-    # wqy-microhei-lite
-    # wqy-zenhei
+    ttf-bookerly
+    wqy-bitmapfont
+    powerline-fonts
+    wqy-microhei
+    wqy-microhei-lite
+    wqy-zenhei
 )
 
 # Use colors, but only if connected to a terminal, and that terminal
@@ -56,9 +53,9 @@ function check() {
 function install() {
     CMD=''
     if command -v yay >/dev/null 2>&1; then
-        CMD='yay -Ssu --noconfirm'
+        CMD='yay -S --noconfirm'
     elif command -v pacman >/dev/null 2>&1; then
-        CMD='sudo pacman -Ssu --noconfirm'
+        CMD='sudo pacman -S --noconfirm'
     else
         echo "${RED}Error: not Archlinux or its devrived edition.${NORMAL}" >&2
         exit 1
