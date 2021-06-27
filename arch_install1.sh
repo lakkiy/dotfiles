@@ -78,6 +78,7 @@ passwd
 
 # efibootmgr grub-btrfs grub-bios
 pacman -S grub linux-headers networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools reflector git bluez bluez-utils xdg-utils xdg-user-dirs
+# for intel
 systemctl enable NetworkManager
 ## If you installed bluez
 systemctl enable bluetooth
