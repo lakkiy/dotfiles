@@ -121,8 +121,7 @@ clean_dotfiles() {
 
     [ -d $EMACSD ] && mv $EMACSD $EMACSD.bak
 
-    # $TMUX
-    rm -rf $ZSH $DOTFILES $FZF
+    rm -rf $ZSH $TMUX $FZF
 
     # rm -f $HOME/.fzf.*
     rm -f $HOME/.gitignore_global $HOME/.gitconfig_global
@@ -198,6 +197,7 @@ printf "${GREEN}▓▒░ InstalliEmacs...${NORMAL}\n"
 sync_repo 404cn/fooemacs $EMACSD
 
 # Entering zsh
+# TODO chsh in linux
 printf "Done. Enjoy!\n"
 if command -v zsh >/dev/null 2>&1; then
     env zsh
