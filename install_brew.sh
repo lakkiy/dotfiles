@@ -80,6 +80,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    miniconda # python virtual env 
     mongocli # mongodb command line tool
     golangci-lint # best lint for go
     mosh # ssh on udp
