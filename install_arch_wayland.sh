@@ -20,6 +20,7 @@ packages=(
     wqy-microhei
     wqy-microhei-lite
     wqy-zenhei
+    bdf-unifont
 )
 
 # Use colors, but only if connected to a terminal, and that terminal
