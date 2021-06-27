@@ -1,8 +1,3 @@
-! -------------------------------------------------------------
-! URxvt
-! install rxvt-unicode, urxvt-clipboard(AUR)
-! -------------------------------------------------------------
-
 *.background: #171717
 *.foreground: #A8A8A8
 
@@ -38,38 +33,16 @@
 *color7: #CCCCCC
 *color15: #FFFFFF
 
-URxvt.termName: xterm-256color
-
-URxvt.font: xft:VGA:size=14, xft:WenQuanYi WenQuanYi Bitmap Song:size=12
-URxvt.boldFont: xft:VGA:size=14, xft:WenQuanYi WenQuanYi Bitmap Song:size=12
-
-URxvt.scrollstyle: xterm
-URxvt.scrollBar: false
-
-URxvt.perl-ext-common: clipboard
-
-!! Quick commands, dont rely on alias or any setup on the remote server.
-URxvt.keysym.M-h:         ls -lhb --color=auto\n
-URxvt.keysym.C-M-g:       grep --color=auto -r --include \\*.
-URxvt.keysym.C-M-p:       ps aux|grep --color=auto ""
-URxvt.keysym.C-M-w:       find . -name ""
-URxvt.keysym.C-M-n:       netstat -tulpn|grep --color=auto ""
-URxvt.keysym.C-minus:     resize-font:smaller
-URxvt.keysym.C-plus:      resize-font:bigger
-URxvt.keysym.Shift-Up: command:\033]720;1\007
-URxvt.keysym.Shift-Down: command:\033]721;1\007
-
 ! -------------------------------------------------------------
 ! XTerm
 ! -------------------------------------------------------------
 
-! xterm*faceName: VGA
-xterm*faceName: VGA
+xterm*faceName: monaco 
 xterm*faceNameDoublesize: WenQuanYi WenQuanYi Bitmap Song
 ! xterm*faceNameDoublesize: unifont
-xterm*faceSize: 15
-xterm*faceDoublesize: 14
-XTerm*allowBoldFonts: false
+xterm*faceSize: 10
+term*faceDoublesize: 10
+!Term*allowBoldFonts: false
 
 xterm*VT100.Translations: #override \
     Alt <Key>H: string("ls -lhb --color=auto \n") \n\
