@@ -184,6 +184,7 @@ ln -sf $DOTFILES/.vimrc $HOME/.vimrc
 ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
 
 cp -n $DOTFILES/.zshrc.local $HOME/.zshrc.local
+cp -n $DOTFILES/.zshenv.local $HOME/.zshenv.local
 
 ln -sf $DOTFILES/.gitignore_global $HOME/.gitignore_global
 ln -sf $DOTFILES/.gitconfig_global $HOME/.gitconfig_global

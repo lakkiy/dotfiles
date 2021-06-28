@@ -21,3 +21,7 @@ export PATH=${GOPATH//://bin:}/bin:$PATH
 
 # Rust
 export PATH=$HOME/.cargo/bin:$PATH
+
+# Local customizations
+[ -f $HOME/.zshenv.local ] && source $HOME/.zshenv.local
+

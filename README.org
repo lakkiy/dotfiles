@@ -44,7 +44,7 @@ That's it. Enjoy!
 
 *** ZSH ENV
 
-Add your zsh environments in =~/.zshenv=. This is recommended by ZSH officially.
+Add your zsh environments in =~/.zshenv= or =/.zshenv.local=. This is recommended by ZSH officially.
 For example:
 
 #+begin_src sh
