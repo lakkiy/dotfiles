@@ -182,6 +182,7 @@ ln -sf $DOTFILES/.zshenv $HOME/.zshenv
 ln -sf $DOTFILES/.zshrc $HOME/.zshrc
 ln -sf $DOTFILES/.vimrc $HOME/.vimrc
 ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
+ln -sf $DOTFILES/.condarc $HOME/.condarc
 
 cp -n $DOTFILES/.zshrc.local $HOME/.zshrc.local
 cp -n $DOTFILES/.zshenv.local $HOME/.zshenv.local
