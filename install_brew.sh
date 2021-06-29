@@ -81,6 +81,8 @@ apps=(
 # command line apps
 formulae_apps=(
     miniconda # python virtual env 
+    pgcli # postgress command line tool
+    litecli # sqllite command line tool
     mongocli # mongodb command line tool
     golangci-lint # best lint for go
     mosh # ssh on udp
