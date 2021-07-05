@@ -163,6 +163,7 @@ if is_mac; then
         brew tap homebrew/cask-fonts
         brew tap buo/cask-upgrade
         brew tap railwaycat/emacsmacport
+        brew tap d12frosted/emacs-plus
     fi
 fi
 

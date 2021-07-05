@@ -145,6 +145,7 @@ function check {
         brew tap homebrew/cask-versions
         brew tap buo/cask-upgrade
         brew tap railwaycat/emacsmacport
+        brew tap d12frosted/emacs-plus
     fi
 }
 
