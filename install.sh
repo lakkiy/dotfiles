@@ -184,6 +184,7 @@ ln -sf $DOTFILES/.zshrc $HOME/.zshrc
 ln -sf $DOTFILES/.vimrc $HOME/.vimrc
 ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
 ln -sf $DOTFILES/.condarc $HOME/.condarc
+ln -sf $DOTFILES/karabiner $Home/.config/karabiner
 
 cp -n $DOTFILES/.zshrc.local $HOME/.zshrc.local
 cp -n $DOTFILES/.zshenv.local $HOME/.zshenv.local
