@@ -80,6 +80,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    clipper # access for local and remote tmux sessions
     miniconda # python virtual env 
     pgcli # postgress command line tool
     litecli # sqllite command line tool
