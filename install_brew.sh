@@ -104,6 +104,7 @@ formulae_apps=(
     isync # sync mail to localhost, aka mbsync
     pandoc # convert to pdf
     tree # view file tree
+    mpv # play netease cloud music in emacs
 )
 
 # Use colors, but only if connected to a terminal, and that terminal
