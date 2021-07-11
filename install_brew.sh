@@ -105,6 +105,7 @@ formulae_apps=(
     pandoc # convert to pdf
     tree # view file tree
     mpv # play netease cloud music in emacs
+    socat # with mpc
 )
 
 # Use colors, but only if connected to a terminal, and that terminal
