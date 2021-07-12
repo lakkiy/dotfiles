@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    neteasemusic
     nutstore # 2GB/month
              # To complete the installation of Cask nutstore, you must also
              # run the installer at:
@@ -106,6 +107,7 @@ formulae_apps=(
     tree # view file tree
     mpv # play netease cloud music in emacs
     socat # with mpc
+    tealdeer # rust version tldr
 )
 
 # Use colors, but only if connected to a terminal, and that terminal
