@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    docker
     neteasemusic
     nutstore # 2GB/month
              # To complete the installation of Cask nutstore, you must also
