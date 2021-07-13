@@ -10,6 +10,15 @@ highlight Comment ctermfg=green
 " yank to system clipboard by default
 set clipboard=unnamedplus
 
+" Center screen on next/previous selection.
+nnoremap n nzz
+nnoremap N Nzz
+" Last and next jump should center too.
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
+nnoremap <C-]> <C-]>zz
+nnoremap <C-t> <C-t>zz
+
 
 "--------------From changemewtf/not_plugins---------------
 " enter the current millenium
