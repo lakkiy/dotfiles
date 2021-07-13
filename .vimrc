@@ -46,6 +46,10 @@ set wildmenu
 
 " TAG JUMPING:
 
+" This will check the current folder for tags file and keep going one directory up all the way to the root folder.
+" So you can be in any sub-folder in your project and it'll be able to find the tags files.
+set tags+=tags;/
+
 " Create the `tags` file (may need to install ctags first)
 command! MakeTags !ctags -R .
 
