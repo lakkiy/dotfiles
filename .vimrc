@@ -7,8 +7,12 @@ set hlsearch
 set ruler
 highlight Comment ctermfg=green
 
-" yank to system clipboard by default
-set clipboard=unnamedplus
+" Copy to system clipboard
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 
 " Center screen on next/previous selection.
 nnoremap n nzz
