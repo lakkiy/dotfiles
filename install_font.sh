@@ -76,7 +76,7 @@ function install {
             # font-hack-nerd-font
 
             # font-symbola
-
+            font-hanamina
             font-sarasa-gothic
             font-gnu-unifont
             # font-wenquanyi-micro-hei
