@@ -82,6 +82,8 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    graphviz
+    pngpaste # for org-download-clipboard
     font-hanamina
     minikube
     kubectl # source <(kubectl completion zsh) to enable shell auto complete
