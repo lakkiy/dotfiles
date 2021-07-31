@@ -76,6 +76,7 @@ function install {
             # font-hack-nerd-font
 
             # font-symbola
+            font-cardo # form nasy-theme variable pitch font
             font-hanamina
             font-sarasa-gothic
             font-gnu-unifont
