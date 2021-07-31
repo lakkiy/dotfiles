@@ -182,7 +182,8 @@ fi
 # Emacs
 alias me="emacs -Q -l ~/.config/emacs/init-mini.el" # mini emacs
 alias mte="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini terminal emacs
-alias el="emacsclient -nw"
+alias elt="emacsclient -nw"
+alias elg="emacsclient -nc"
 alias elk="emacsclient -e '(save-buffers-kill-emacs)'"
 
 # Upgrade
