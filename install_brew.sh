@@ -82,6 +82,8 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    protocbuf
+    protoc-gen-go
     graphviz
     pngpaste # for org-download-clipboard
     minikube
