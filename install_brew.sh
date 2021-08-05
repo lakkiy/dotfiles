@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    popclip
     docker
     neteasemusic
     nutstore # 2GB/month
