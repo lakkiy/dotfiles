@@ -83,6 +83,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    sdcv # stardict console version
     protocbuf
     protoc-gen-go
     graphviz
@@ -90,6 +91,7 @@ formulae_apps=(
     minikube
     kubectl # source <(kubectl completion zsh) to enable shell auto complete
     clipper # access for local and remote tmux sessions maybe should run brew services start clipper
+            # brew service start clipper
     miniconda # python virtual env 
     pgcli # postgress command line tool
     litecli # sqllite command line tool
