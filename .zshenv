@@ -21,6 +21,9 @@ export PATH=${GOPATH//://bin:}/bin:$PATH
 # Rust
 export PATH=$HOME/.cargo/bin:$PATH
 
+# sdcv
+export STARDICT_DATA_DIR=$HOME/.stardict
+
 # Local customizations
 [ -f $HOME/.zshenv.local ] && source $HOME/.zshenv.local
 
