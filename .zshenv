@@ -24,6 +24,9 @@ export PATH=$HOME/.cargo/bin:$PATH
 # sdcv
 export STARDICT_DATA_DIR=$HOME/.sdcv-dict
 
+# for osx tui emacs paste non-ascii mess-up problem
+export LC_ALL=en_US.UTF-8
+
 # Local customizations
 [ -f $HOME/.zshenv.local ] && source $HOME/.zshenv.local
 
