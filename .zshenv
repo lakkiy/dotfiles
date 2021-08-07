@@ -22,7 +22,7 @@ export PATH=${GOPATH//://bin:}/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
 # sdcv
-export STARDICT_DATA_DIR=$HOME/.stardict
+export STARDICT_DATA_DIR=$HOME/.sdcv-dict
 
 # Local customizations
 [ -f $HOME/.zshenv.local ] && source $HOME/.zshenv.local
