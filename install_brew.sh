@@ -83,6 +83,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    hugo # blog that support org mode
     sdcv # stardict console version
     protocbuf
     protoc-gen-go
