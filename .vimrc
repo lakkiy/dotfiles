@@ -18,6 +18,12 @@ else
   set clipboard=unnamedplus "Linux
 endif
 
+" emacs like inline move
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+
 " Center screen on next/previous selection.
 nnoremap n nzz
 nnoremap N Nzz
