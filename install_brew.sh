@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    virtualbox
     popclip
     docker
     neteasemusic
