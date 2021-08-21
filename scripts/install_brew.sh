@@ -2,9 +2,8 @@
 
 # Cask applications
 apps=(
-    virtualbox-extension-pack
-    virtualbox
-    popclip
+    vagrant-vmware-utility 
+    vmware-fusion
     docker
     neteasemusic
     nutstore # 2GB/month
