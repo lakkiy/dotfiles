@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    virtualbox-extension-pack
     virtualbox
     popclip
     docker

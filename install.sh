@@ -175,9 +175,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/i
 printf "${GREEN}▓▒░ Installing Dotfiles...${NORMAL}\n"
 sync_repo 404cn/dotfiles $DOTFILES
 
-chmod +x $DOTFILES/install.sh
-chmod +x $DOTFILES/install_brew.sh
-chmod +x $DOTFILES/install_go.sh
+# chmod +x $DOTFILES/install.sh
+# chmod +x $DOTFILES/install_brew.sh
+# chmod +x $DOTFILES/install_go.sh
 
 ln -sf $DOTFILES/.zshenv $HOME/.zshenv
 ln -sf $DOTFILES/.zshrc $HOME/.zshrc
@@ -198,8 +198,8 @@ else
 fi
 
 # Emacs Configs
-printf "${GREEN}▓▒░ InstalliEmacs...${NORMAL}\n"
-sync_repo 404cn/fooemacs $EMACSD
+printf "${GREEN}▓▒░ Installing Emacs...${NORMAL}\n"
+sync_repo 404cn/eatemacs $EMACSD
 
 # Entering zsh
 # TODO chsh in linux
