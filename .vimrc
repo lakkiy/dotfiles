@@ -5,11 +5,11 @@ set ai
 set number
 set hlsearch
 set ruler
-highlight Comment ctermfg=green
+" highlight Comment ctermfg=green
 
 " https://unix.stackexchange.com/questions/348771/why-do-vim-colors-look-different-inside-and-outside-of-tmux
 " make vim color look same in tmux
-set background=dark
+" set background=dark
 
 " Copy to system clipboard
 if system('uname -s') == "Darwin\n"
