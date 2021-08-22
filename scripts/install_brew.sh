@@ -84,6 +84,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    aspell
     hugo # blog that support org mode
     sdcv # stardict console version
     protocbuf
