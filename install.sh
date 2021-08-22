@@ -127,6 +127,8 @@ clean_dotfiles() {
     # rm -f $HOME/.fzf.*
     rm -f $HOME/.gitignore_global $HOME/.gitconfig_global
     rm -f $HOME/.tmux.conf
+    rm -r $HOME/.tmux.conf.osx
+    # TODO maybe tmux conf linux and cygwin
 }
 
 YES=0
@@ -182,7 +184,9 @@ sync_repo 404cn/dotfiles $DOTFILES
 ln -sf $DOTFILES/.zshenv $HOME/.zshenv
 ln -sf $DOTFILES/.zshrc $HOME/.zshrc
 ln -sf $DOTFILES/.vimrc $HOME/.vimrc
+# TODO maybe tmux.conf.linux and cygwin
 ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
+ln -sf $DOTFILES/.tmux.conf.osx $HOME/.tmux.conf.osx
 ln -sf $DOTFILES/.condarc $HOME/.condarc
 ln -sf $DOTFILES/karabiner $Home/.config/karabiner
 
