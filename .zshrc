@@ -164,9 +164,9 @@ fi
 # Emacs
 alias me="emacs -Q -l ~/.config/emacs/init-mini.el" # mini emacs
 alias mte="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini terminal emacs
-alias elt="emacsclient -nw"
-alias elg="emacsclient -nc"
-alias elk="emacsclient -e '(save-buffers-kill-emacs)'"
+alias e="emacsclient -nw"
+alias eg="emacsclient -nc"
+alias ek="emacsclient -e '(save-buffers-kill-emacs)'"
 
 # Upgrade
 alias upgrade_repo='git pull --rebase --stat origin master'

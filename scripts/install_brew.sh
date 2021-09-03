@@ -84,6 +84,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    basictex # export org to pdf
     aspell
     hugo # blog that support org mode
     sdcv # stardict console version
