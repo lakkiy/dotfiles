@@ -85,6 +85,8 @@ apps=(
 # command line apps
 formulae_apps=(
     basictex # export org to pdf
+    # tlmgr update --self
+    # tlmgr install wrapfig marvosym wasy wasysym
     aspell
     hugo # blog that support org mode
     sdcv # stardict console version
