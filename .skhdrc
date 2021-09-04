@@ -33,7 +33,7 @@ alt + shift - 6 : yabai -m window --space 6
 alt + shift - 7 : yabai -m window --space 7
 alt + shift - 8 : yabai -m window --space 8
 alt + shift - 9 : yabai -m window --space 9
-alt + shift - 0 : yabai -m window --space 10
+#alt + shift - 0 : yabai -m window --space 10
 
 # # mirror tree y-axis
 alt + shift - y : yabai -m space --mirror y-axis
@@ -44,18 +44,75 @@ alt + shift - x : yabai -m space --mirror x-axis
 # balance size of windows
 alt + shift - 0 : yabai -m space --balance
 
+# increase window size
+alt + shift - a : yabai -m window --resize left:-20:0
+alt + shift - s : yabai -m window --resize bottom:0:20
+alt + shift - w : yabai -m window --resize top:0:-20
+alt + shift - d : yabai -m window --resize right:20:0
+
+# decrease window size
+cmd + shift - a : yabai -m window --resize left:20:0
+cmd + shift - s : yabai -m window --resize bottom:0:-20
+cmd + shift - w : yabai -m window --resize top:0:20
+cmd + shift - d : yabai -m window --resize right:-20:0
+
+# float / unfloat window and center on screen
+#alt - t : yabai -m window --toggle float;\
+#          yabai -m window --grid 4:4:1:1:2:2
+# float / unfloat window and leave in its current location
+alt + shift - space : yabai -m window --toggle float
+#alt + ctrl - space : yabai -m window --toggle float
+
+# make floating window fill screen
+alt + cmd - up     : yabai -m window --grid 1:1:0:0:1:1
+
+# make floating window fill left-half of screen
+alt + cmd - left   : yabai -m window --grid 1:2:0:0:1:1
+
+# make floating window fill right-half of screen
+alt + cmd - right  : yabai -m window --grid 1:2:1:0:1:1
+
+
+# create desktop, move window and follow focus
+alt + shift + cmd - n : yabai -m space --create;\
+                 index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')"; \
+                 yabai -m window --space "${index}";\
+                 yabai -m space --focus "${index}"
+
+# create desktop, move window and stay in current workspace
+#alt + shift - n : yabai -m space --create;\
+#                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')"; \
+#                  yabai -m window --space "${index}"
+
+# create desktop and follow focus
+# Note: script fails when workspace is empty due to Yabai not reporting the workspace (bug?)
+#       best to use the create + move window command instead of creating a blank window
+#alt - n : yabai -m space --create;\
+#                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')"; \
+#                  yabai -m space --focus "${index}"
+
+# destroy desktop
+alt + cmd - w : yabai -m space --destroy
+
 # change layout of desktop
 alt - e : yabai -m space --layout bsp
 alt - s : yabai -m space --layout float
 
 # close focused window
-alt - w : yabai -m window --close
+cmd + shift - Q : yabai -m window --close
+
+# toggle sticky
+alt + ctrl - s : yabai -m window --toggle sticky
 
 # enter fullscreen mode for the focused container
 alt - f : yabai -m window --toggle zoom-fullscreen
-
 # toggle window native fullscreen
 alt + shift - f : yabai -m window --toggle native-fullscreen
+
+# focus monitor
+alt + ctrl - x  : yabai -m display --focus recent
+alt + ctrl - z  : yabai -m display --focus prev
+alt + ctrl - c  : yabai -m display --focus next
 
 ########## Personal config done ###################################
 

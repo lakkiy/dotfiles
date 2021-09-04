@@ -80,10 +80,14 @@ apps=(
     # youdaonote
 
     # zy-player
+    
+    whichspace # with yabai, show space number on menu bar
 )
 
 # command line apps
 formulae_apps=(
+    koekeishiya/formulae/skhd
+    koekeishiya/formulae/yabai
     basictex # export org to pdf
     # tlmgr update --self
     # tlmgr install wrapfig marvosym wasy wasysym capt-of
