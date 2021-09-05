@@ -86,6 +86,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    mplayer # play nyan music in emacs! 
     koekeishiya/formulae/skhd
     koekeishiya/formulae/yabai
     basictex # export org to pdf

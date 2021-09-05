@@ -29,4 +29,3 @@ export LC_ALL=en_US.UTF-8
 
 # Local customizations
 [ -f $HOME/.zshenv.local ] && source $HOME/.zshenv.local
-
