@@ -89,6 +89,8 @@ formulae_apps=(
     mplayer # play nyan music in emacs! 
     koekeishiya/formulae/skhd
     koekeishiya/formulae/yabai
+    # defaults write com.apple.finder DisableAllAnimations -bool true
+    # killall Finder # or logout and login
     basictex # export org to pdf
     # tlmgr update --self
     # tlmgr install wrapfig marvosym wasy wasysym capt-of
