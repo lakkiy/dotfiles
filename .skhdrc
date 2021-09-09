@@ -1,6 +1,9 @@
 # run terminal
 hyper - return : kitty
 
+# run emacs
+hyper -e : emacs
+
 # change focus
 hyper - a : yabai -m window --focus west
 hyper - s : yabai -m window --focus south
@@ -36,6 +39,6 @@ hyper - space : yabai -m window --toggle float;\
                 yabai -m window --grid 4:4:1:1:2:2
 
 # change layout of desktop
-hyper - e : yabai -m space --layout bsp
-hyper - r : yabai -m space --layout float
+hyper - = : yabai -m space --layout bsp
+hyper - t : yabai -m space --layout float
 
