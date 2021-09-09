@@ -1,7 +1,9 @@
-# Zsh configuration
-
-# vars
-DOTFILES=$HOME/.dotfiles
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Two regular plugins loaded without investigating.
 ### Added by Zinit's installer
@@ -64,9 +66,10 @@ zinit light sei40kr/fast-alias-tips-bin
 zinit ice wait lucid depth"1"
 zinit light sei40kr/zsh-fast-alias-tips
 
-# Load the pure theme, with zsh-async library that's bundled with it.
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
+# Load powerlevel10k theme
+zinit ice depth"1" # git clone depth
+zinit light romkatv/powerlevel10k
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #
 # Utilities
@@ -123,18 +126,6 @@ export FZF_ALT_C_OPTS="--preview 'tree -NC {} | head -200'"
 zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
 zinit light trapd00r/LS_COLORS
 
-# OS bundles
-if [[ $OSTYPE == darwin* ]]; then
-    zinit snippet PZTM::osx
-    if (( $+commands[brew] )); then
-        alias bu='brew update && brew upgrade'
-        alias bcu='brew cu --all --yes --cleanup'
-        alias bua='bu && bcu'
-    fi
-elif [[ $OSTYPE == linux* ]]; then
-    zinit snippet OMZP::archlinux
-fi
-
 # Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
@@ -146,7 +137,6 @@ fi
 # alias fd >/dev/null && unalias fd
 
 # General
-alias zshconf="$EDITOR $HOME/.zshrc; $EDITOR $HOME/.zshrc.local"
 alias h='history'
 alias c='clear'
 
@@ -160,25 +150,3 @@ if [[ $OSTYPE == darwin* ]]; then
 else
     ((! $+commands[exa] )) && alias ls='ls --color=tty --group-directories-first'
 fi
-
-# Emacs
-alias me="emacs -Q -l ~/.config/emacs/init-mini.el" # mini emacs
-alias mte="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini terminal emacs
-alias e="emacsclient -nw"
-alias eg="emacsclient -nc"
-alias ek="emacsclient -e '(save-buffers-kill-emacs)'"
-
-# Upgrade
-alias upgrade_repo='git pull --rebase --stat origin master'
-alias upgrade_dotfiles='cd $DOTFILES && upgrade_repo; cd - >/dev/null'
-alias upgrade_emacs='emacs -Q --batch -L "$HOME/.emacs.d/lisp/" -l "init-funcs.el" -l "init-package.el" --eval "(update-config-and-packages t t)"'
-alias upgrade_env='upgrade_dotfiles; sh $DOTFILES/install.sh'
-
-alias upgrade_cargo='cargo install-update -a' # cargo install cargo-update
-alias upgrade_gem='gem update && gem cleanup'
-alias upgrade_go='GO111MODULE=on && $DOTFILES/install_go.sh'
-alias upgrade_npm='for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2); do npm -g install "$package"; done'
-alias upgrade_pip="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
-alias upgrade_pip3="pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
-[[ $OSTYPE == darwin* ]] && alias upgrade_brew='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'; alias upgrade_brew_cask='$DOTFILES/install_brew_cask.sh'
-alias upgrade_zinit='sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"; (( $+functions[zinit] )) && zinit update'
