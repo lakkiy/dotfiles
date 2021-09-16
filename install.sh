@@ -1,17 +1,10 @@
-
 #!/bin/sh
 
 # Variables
 DOTFILES=$HOME/.dotfiles
-EMACSD=$HOME/.config/emacs
-FZF=$HOME/.fzf
-# TMUX=$HOME/.tmux
-ZSH=$HOME/.zinit
 
 # Get OS informatio
 OS=`uname -s`
-OSREV=`uname -r`
-OSARCH=`uname -m`
 
 # Only enable exit-on-error after the non-critical colorization stuff,
 # which may fail on systems lacking tput or terminfo
@@ -73,39 +66,6 @@ is_mac()
     [ "$OS" = "Darwin" ]
 }
 
-is_linux()
-{
-    [ "$OS" = "Linux" ]
-}
-
-is_arch() {
-    command -v yay >/dev/null 2>&1 || command -v pacman >/dev/null 2>&1
-}
-
-sync_brew_package() {
-    if ! command -v brew >/dev/null 2>&1; then
-        echo "${RED}Error: brew is not found${NORMAL}" >&2
-        return 1
-    fi
-
-    if ! command -v ${1} >/dev/null 2>&1; then
-        brew install ${1} >/dev/null
-    else
-        brew upgrade ${1} >/dev/null
-    fi
-}
-
-sync_arch_package() {
-    if command -v yay >/dev/null 2>&1; then
-        yay -Ssu --noconfirm ${1} >/dev/null
-    elif command -v pacman >/dev/null 2>&1; then
-        sudo pacman -Ssu --noconfirm ${1} >/dev/null
-    else
-        echo "${RED}Error: pacman and yay are not found${NORMAL}" >&2
-        return 1
-    fi
-}
-
 YES=0
 NO=1
 promote_yn() {
@@ -118,23 +78,6 @@ promote_yn() {
     esac
 }
 
-# Brew
-if is_mac; then
-    printf "${GREEN}▓▒░ Installing Homebrew...${NORMAL}\n"
-    if ! command -v brew >/dev/null 2>&1; then
-        # Install homebrew
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-        # Tap cask and cask-upgrade
-        brew tap homebrew/cask
-        brew tap homebrew/cask-versions
-        brew tap homebrew/cask-fonts
-        brew tap buo/cask-upgrade
-        brew tap railwaycat/emacsmacport
-        brew tap d12frosted/emacs-plus
-    fi
-fi
-
 # Zsh plugin manager
 printf "${GREEN}▓▒░ Installing Zinit...${NORMAL}\n"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
@@ -143,35 +86,41 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/i
 printf "${GREEN}▓▒░ Installing Dotfiles...${NORMAL}\n"
 sync_repo 404cn/dotfiles $DOTFILES
 
-# chmod +x $DOTFILES/install.sh
-# chmod +x $DOTFILES/install_brew.sh
-# chmod +x $DOTFILES/install_go.sh
-
 ln -sf $DOTFILES/.zshenv $HOME/.zshenv
 ln -sf $DOTFILES/.zshrc $HOME/.zshrc
 ln -sf $DOTFILES/.vimrc $HOME/.vimrc
-# TODO maybe tmux.conf.linux and cygwin
 ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
 ln -sf $DOTFILES/.tmux.conf.osx $HOME/.tmux.conf.osx
-ln -sf $DOTFILES/.condarc $HOME/.condarc
-ln -sf $DOTFILES/karabiner $Home/.config/karabiner
+ln -sf $DOTFILES/.config/kitty $HOME/.config/kitty
 
 ln -sf $DOTFILES/.gitignore_global $HOME/.gitignore_global
 ln -sf $DOTFILES/.gitconfig_global $HOME/.gitconfig_global
 if is_mac; then
     cp -n $DOTFILES/.gitconfig_macOS $HOME/.gitconfig
+    ln -sf $DOTFILES/config/karabiner $Home/.config/karabiner
+    ln -sf $DOTFILES/.yabairc $Home/.yabairc
+    ln -sf $DOTFILES/.skhdrc $Home/.skhdrc
 else
     cp -n $DOTFILES/.gitconfig_linux $HOME/.gitconfig
+    ln -sf $DOTFILES/.Xmodmap $Home/.Xmodmap
+    ln -sf $DOTFILES/.xprofile $Home/.xprofile
+    ln -sf $DOTFILES/config/polybar $Home/.config/polybar
+    ln -sf $DOTFILES/config/rofi $Home/.config/rofi
+    ln -sf $DOTFILES/config/i3 $Home/.config/i3
+    ln -sf $DOTFILES/config/sway $Home/.config/sway
 fi
 
 # Emacs Configs
 printf "${GREEN}▓▒░ Installing Emacs...${NORMAL}\n"
-sync_repo 404cn/eatemacs $EMACSD
+sync_repo 404cn/eatemacs $HOME/.config/emacs
 
 # Entering zsh
-# TODO chsh in linux
 printf "Done. Enjoy!\n"
 if command -v zsh >/dev/null 2>&1; then
+    if [ "$OSTYPE" != "cygwin" ] && [ "$SHELL" != "$(which zsh)" ]; then
+        chsh -s $(which zsh)
+        printf "${GREEN} You need to logout and login to enable zsh as the default shell.${NORMAL}\n"
+    fi
     env zsh
 else
     echo "${RED}Error: zsh is not installed${NORMAL}" >&2

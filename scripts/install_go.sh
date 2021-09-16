@@ -2,25 +2,19 @@
 
 # Go packages
 packages=(
-    github.com/go-delve/delve/cmd/dlv # debug go program
-    github.com/josharian/impl # auto implement interface
-    github.com/cweill/gotests/... # run go test
-    github.com/fatih/gomodifytags # autp add/remove tags for struct
-    golang.org/x/tools/cmd/guru # ask me !
-    golang.org/x/tools/cmd/goimports # go fmt with sort import
-    # golang.org/x/tools/cmd/gorename
-    # github.com/google/gops
-    # github.com/aarzilli/gdlv
-    # github.com/davidrjenni/reftools/cmd/fillstruct
-    # github.com/acroca/go-symbols
-    # github.com/haya14busa/goplay/cmd/goplay
-    # golang.org/x/tools/cmd/gotype
-)
+    golang.org/x/tools/gopls
+    golang.org/x/tools/cmd/goimports
+    honnef.co/go/tools/cmd/staticcheck
 
-# Do not use the -u flag for gopls, as it will update the dependencies to incompatible versions
-# https://github.com/golang/tools/blob/master/gopls/doc/user.md#installation
-packages_no_update=(
-    golang.org/x/tools/gopls@latest
+    github.com/zmb3/gogetdoc
+    github.com/go-delve/delve/cmd/dlv
+    github.com/aarzilli/gdlv
+    github.com/josharian/impl
+    github.com/cweill/gotests/...
+    github.com/fatih/gomodifytags
+    github.com/davidrjenni/reftools/cmd/fillstruct
+    github.com/google/gops
+    github.com/haya14busa/goplay/cmd/goplay
 )
 
 # Use colors, but only if connected to a terminal, and that terminal
@@ -64,14 +58,9 @@ function check() {
 }
 
 function install() {
-    for p in ${packages_no_update[@]}; do
-        printf "${BLUE} ➜  Installing ${p}...${NORMAL}\n"
-        go install ${p}
-    done
-
     for p in ${packages[@]}; do
         printf "${BLUE} ➜  Installing ${p}...${NORMAL}\n"
-        go get -u ${p}
+        GO111MODULE=on go install ${p}@latest
     done
 }
 

@@ -2,135 +2,79 @@
 
 # Cask applications
 apps=(
-    vagrant-vmware-utility 
+    clashx-pro         # Proxy: v2rayx
+    nrlquaker-winbox   # manage route os
+    discord
+    via                # your keyboard's best friend
+    vagrant-vmware-utility
     vmware-fusion
     docker
-    neteasemusic
-    nutstore # 2GB/month
-             # To complete the installation of Cask nutstore, you must also
-             # run the installer at:
-             # /usr/local/Caskroom/nutstore/latest/坚果云安装程序.app/Contents/MacOS/NutstoreOnlineInstaller
-    eul # status monitoring, istat alternative
-    emacs-mac # only editor can save your soul
-    nrlquaker-winbox # manage route os
-    discord
-    via # your keyboard's best friend
-    hiddenbar # manage menu bar
-    balenaetcher # flash iso
-    raycast # ala fro spotlight, support open app via shortcut
-    squirrel # cn type in
-    wireshark
-    telegram-desktop
-    google-chrome
-    firefox
-    dropbox # sync file
-    # avibrazil-rdm              # Retina display management
-    # cheatsheet
-    # clipy                      # Clipboard
-    # maczip                     # Compress & extract
-    # fliqlo                     # Screen Saver
-    # paper                      # Wallpaper
-    # hyperswitch                # alt-tab
-    # iterm2                     # Terminal
-    # keepingyouawake
-    # keycastr                   # Show keys on the screen
-    # licecap                    # Recording screen as gif
-    # mounty                     # Mounty for NTFS read/write
-    # mos                        # Smooth and reverse scroll
-    #clashx-pro                 # Proxy: v2rayx, shadowsocksx-ng-r
-	v2rayx
-    # rectangle                  # Window management
-    # vanilla                    # Hide menu bar icons. Alternative: bartender
-
-    iina                       # Media player
-    # microsoft-edge             # Browser: google-chrome
-    karabiner-elements         # karabiner: Keboard remapping
-    # hammersppon                # Ultimate tools
-    # netspot                    # Wifi signal analysis and scanner
-    # osxfuse                    # File system
-    # veracrypt                  # File crypt
-    # vox                        # Music player
-    # squirrel                   # sogouinput
-    # handbrake                  # transcoder
-
-    # Audio
-    # soundflower
-    # soundflowerbed
-
-    # Development
-    # java                       # optional
-    # docker                     # optional
-    # fork                       # Git Client: gitkraken, sourcetree
-    # typora                     # Markdown editor
-    # visual-studio-code
-
-    # Utilities
-    # aliwangwang
+    licecap            # Recording screen as gif
     baidunetdisk
-    # motrix                     # Downloader: ariang
-    # macgesture
-    qq
-    wechat
-    # lark
     thunder
-    # tencent-lemon
+    iina               # Media player
+    hiddenbar          # manage menu bar
+    karabiner-elements # karabiner: Keboard remapping
+    squirrel           # input method
+    raycast            # ala fro spotlight, support open app via shortcut
+    firefox
+    dropbox            # sync file
+    kitty              # terminal
+    keepingyouawake
+    mounty             # Mounty for NTFS read/write
+    neteasemusic
+    maczip             # Compress & extract
+    whichspace         # with yabai, show space number on menu bar
+    balenaetcher       # flash iso
+    mos                # Smooth and reverse scroll
 
-    # neteasemusic
-    # youdaodict
-    # youdaonote
-
-    # zy-player
-    
-    whichspace # with yabai, show space number on menu bar
+    # ----------Fonts----------
+    font-cardo # form nasy-theme variable pitch font
+    font-hanamina
+    font-sarasa-gothic
+    font-gnu-unifont
 )
 
 # command line apps
 formulae_apps=(
-    mplayer # play nyan music in emacs! 
-    koekeishiya/formulae/skhd
-    koekeishiya/formulae/yabai
-    # defaults write com.apple.finder DisableAllAnimations -bool true
-    # killall Finder # or logout and login
-    basictex # export org to pdf
-    # tlmgr update --self
-    # tlmgr install wrapfig marvosym wasy wasysym capt-of
+    koekeishiya/formulae/skhd  # use with yabai
+    koekeishiya/formulae/yabai # window manager
+      # defaults write com.apple.finder DisableAllAnimations -bool true
+      # killall Finder # or logout and login
+    basictex                   # export org to pdf
+      # tlmgr update --self
+      # tlmgr install wrapfig marvosym wasy wasysym capt-of
     aspell
-    hugo # blog that support org mode
-    sdcv # stardict console version
-    protocbuf
-    protoc-gen-go
-    graphviz
-    pngpaste # for org-download-clipboard
-    minikube
-    kubectl # source <(kubectl completion zsh) to enable shell auto complete
-    clipper # access for local and remote tmux sessions maybe should run brew services start clipper
-            # brew service start clipper
-    miniconda # python virtual env 
-    pgcli # postgress command line tool
-    litecli # sqllite command line tool
-    mongocli # mongodb command line tool
-    golangci-lint # best lint for go
-    mosh # ssh on udp
-    tdlib # use telega in emacs
-    neovim
+    hugo                       # blog that support org mode
+    sdcv                       # stardict console version
+    graphviz                   # for org-roam
+    pngpaste                   # for org-download-clipboard
+    kubectl                    # source <(kubectl completion zsh) to enable shell auto complete
+    miniconda                  # python virtual env
+    pgcli                      # postgress command line tool
+    litecli                    # sqllite command line tool
+    mongocli                   # mongodb command line tool
+    golangci-lint              # best lint for go
+    mosh                       # ssh on udp
+    tdlib                      # use telega in emacs
     jupyterlab
     go
     tmux
-    universal-ctags # completion, jump and find def
-    aria2 # download
-    cloc # count program line
-    mycli # better mysql command line tool
-    coreutils # gnu utils
-    htop # better top
-    hunspell # for emacs spell check
+    universal-ctags            # completion, jump and find def
+    aria2                      # download
+    cloc                       # count program line
+    mycli                      # better mysql command line tool
+    coreutils                  # gnu utils
+    htop                       # better top
+    hunspell                   # for emacs spell check
     ipython
-    notmuch # read mail in emacs
-    isync # sync mail to localhost, aka mbsync
-    pandoc # convert to pdf
-    tree # view file tree
-    mpv # play netease cloud music in emacs
-    socat # with mpc
-    tealdeer # rust version tldr
+    notmuch                    # read mail in emacs
+    isync                      # sync mail to localhost, aka mbsync
+    pandoc                     # convert to pdf
+    tree                       # view file tree
+    mpv                        # play netease cloud music in emacs
+    socat                      # with mpv
+    tealdeer                   # rust version tldr
 )
 
 # Use colors, but only if connected to a terminal, and that terminal
@@ -170,10 +114,10 @@ function check {
 
         brew tap homebrew/cask
         brew tap homebrew/cask-fonts
-        brew tap homebrew/cask-versions
         brew tap buo/cask-upgrade
-        brew tap railwaycat/emacsmacport
         brew tap d12frosted/emacs-plus
+
+        brew install emacs-plus@28 --with-no-titlebar
     fi
 }
 
