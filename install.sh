@@ -106,31 +106,6 @@ sync_arch_package() {
     fi
 }
 
-# Clean all configurations
-clean_dotfiles() {
-    confs="
-    .gitconfig
-    .tmux.conf
-    .vimrc
-    .zshenv
-    .zshrc
-    .zshrc.local
-    "
-    for c in ${confs}; do
-        [ -f $HOME/${c} ] && mv $HOME/${c} $HOME/${c}.bak
-    done
-
-    [ -d $EMACSD ] && mv $EMACSD $EMACSD.bak
-
-    rm -rf $ZSH $TMUX $FZF
-
-    # rm -f $HOME/.fzf.*
-    rm -f $HOME/.gitignore_global $HOME/.gitconfig_global
-    rm -f $HOME/.tmux.conf
-    rm -r $HOME/.tmux.conf.osx
-    # TODO maybe tmux conf linux and cygwin
-}
-
 YES=0
 NO=1
 promote_yn() {
@@ -142,15 +117,6 @@ promote_yn() {
         *)         eval ${2}=$NO;;
     esac
 }
-
-# Reset configurations
-# $TMUX $FZF
-if [ -d $ZSH ] || [ -d $EMACSD ]; then
-    promote_yn "Do you want to reset all configurations?" "continue"
-    if [ $continue -eq $YES ]; then
-        clean_dotfiles
-    fi
-fi
 
 # Brew
 if is_mac; then
@@ -189,9 +155,6 @@ ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
 ln -sf $DOTFILES/.tmux.conf.osx $HOME/.tmux.conf.osx
 ln -sf $DOTFILES/.condarc $HOME/.condarc
 ln -sf $DOTFILES/karabiner $Home/.config/karabiner
-
-cp -n $DOTFILES/.zshrc.local $HOME/.zshrc.local
-cp -n $DOTFILES/.zshenv.local $HOME/.zshenv.local
 
 ln -sf $DOTFILES/.gitignore_global $HOME/.gitignore_global
 ln -sf $DOTFILES/.gitconfig_global $HOME/.gitconfig_global
