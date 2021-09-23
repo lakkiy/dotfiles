@@ -3,6 +3,7 @@
 # Cask applications
 apps=(
     clashx-pro         # Proxy: v2rayx
+    netnewswire
     nrlquaker-winbox   # manage route os
     discord
     via                # your keyboard's best friend
