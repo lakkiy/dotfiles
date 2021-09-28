@@ -101,7 +101,7 @@ yays=(
 
 for app in ${pacmans[@]}; do
     printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
-    pacman -S ${app}
+    sudo pacman -S ${app}
 done
 for app in ${yays[@]}; do
     printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
