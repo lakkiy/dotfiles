@@ -15,6 +15,7 @@ if ! command -v yay >/dev/null 2>&1; then
 fi
 
 pacmans=(
+    man-db
     zsh
     kitty
     hugo
@@ -101,9 +102,9 @@ yays=(
 
 for app in ${pacmans[@]}; do
     printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
-    sudo pacman -S ${app}
+    sudo pacman -S --noconfirm ${app}
 done
 for app in ${yays[@]}; do
     printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
-    yay -S ${app}
+    yay -S --noconfirm ${app}
 done
