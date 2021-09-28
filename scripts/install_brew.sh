@@ -38,6 +38,8 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    global # gnu global gtags
+      # pip3 install pygments for more languages support like go/rust
     koekeishiya/formulae/skhd  # use with yabai
     koekeishiya/formulae/yabai # window manager
       # defaults write com.apple.finder DisableAllAnimations -bool true
