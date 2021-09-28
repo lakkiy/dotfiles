@@ -91,6 +91,7 @@ ln -sf $DOTFILES/.zshrc $HOME/.zshrc
 ln -sf $DOTFILES/.vimrc $HOME/.vimrc
 ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
 ln -sf $DOTFILES/.tmux.conf.osx $HOME/.tmux.conf.osx
+ln -sf $DOTFILES/.globalrc $HOME/.globalrc
 ln -sf $DOTFILES/.config/kitty $HOME/.config/kitty
 
 ln -sf $DOTFILES/.gitignore_global $HOME/.gitignore_global
