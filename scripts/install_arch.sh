@@ -14,7 +14,7 @@ if ! command -v yay >/dev/null 2>&1; then
     rm -rf yay-bin
 fi
 
-pacmans = (
+pacmans=(
     zsh
     kitty
     hugo
@@ -82,7 +82,7 @@ pacmans = (
     wqy-zenhei
 )
 
-yays = (
+yays=(
     polybar # i3 status bar replace
     wps-office
     ttf-wps-fonts
