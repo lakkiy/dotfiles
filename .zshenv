@@ -27,5 +27,15 @@ export STARDICT_DATA_DIR=$HOME/.sdcv-dict
 # for osx tui emacs paste non-ascii mess-up problem
 export LC_ALL=en_US.UTF-8
 
+################# gnu global && emacs citre-global
+# Set this to save gtags database to GTAGSOBJDIRPREFIX/<project-root>.  This
+# requires --objdir option in gtags command line, see citre-global-gtags-args.
+export GTAGSOBJDIRPREFIX=~/.cache/gtags/
+# Make sure you use the path to the default config file on your machine.  This
+# file contains the definition for Pygments plugin parser.
+export GTAGSCONF=~/.globalrc
+# Use gtags built in parse for native support language and others use pygments.
+export GTAGSLABEL=native-pygments
+
 # Local customizations
 [ -f $HOME/.zshenv.local ] && source $HOME/.zshenv.local
