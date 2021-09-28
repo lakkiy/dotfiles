@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# insert 199.232.68.133 raw.githubusercontent.com to host if could not reslove raw.githubusercontent.com
+
 # Variables
 DOTFILES=$HOME/.dotfiles
 
@@ -92,7 +94,6 @@ ln -sf $DOTFILES/.vimrc $HOME/.vimrc
 ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
 ln -sf $DOTFILES/.tmux.conf.osx $HOME/.tmux.conf.osx
 ln -sf $DOTFILES/.globalrc $HOME/.globalrc
-ln -sf $DOTFILES/.config/kitty $HOME/.config/kitty
 
 ln -sf $DOTFILES/.gitignore_global $HOME/.gitignore_global
 ln -sf $DOTFILES/.gitconfig_global $HOME/.gitconfig_global
@@ -111,6 +112,7 @@ else
     ln -sf $DOTFILES/config/i3 $Home/.config/i3
     ln -sf $DOTFILES/config/sway $Home/.config/sway
 fi
+ln -sf $DOTFILES/config/kitty $HOME/.config/kitty
 
 # Emacs Configs
 printf "${GREEN}▓▒░ Installing Emacs...${NORMAL}\n"
