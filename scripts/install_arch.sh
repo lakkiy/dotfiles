@@ -86,6 +86,7 @@ yays = (
     polybar # i3 status bar replace
     wps-office
     ttf-wps-fonts
+    ttf-monaco
     betterlockscreen
 
     # FIXME install failed

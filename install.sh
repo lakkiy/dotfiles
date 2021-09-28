@@ -99,20 +99,20 @@ ln -sf $DOTFILES/.gitignore_global $HOME/.gitignore_global
 ln -sf $DOTFILES/.gitconfig_global $HOME/.gitconfig_global
 if is_mac; then
     cp -n $DOTFILES/.gitconfig_macOS $HOME/.gitconfig
-    ln -sf $DOTFILES/config/karabiner $Home/.config/karabiner
+    ln -sf $DOTFILES/config/karabiner $Home/.config/
     ln -sf $DOTFILES/.yabairc $Home/.yabairc
     ln -sf $DOTFILES/.skhdrc $Home/.skhdrc
 else
     cp -n $DOTFILES/.gitconfig_linux $HOME/.gitconfig
     ln -sf $DOTFILES/.Xmodmap $Home/.Xmodmap
     ln -sf $DOTFILES/.xprofile $Home/.xprofile
-    ln -sf $DOTFILES/config/polybar $Home/.config/polybar
-    ln -sf $DOTFILES/config/dunst $Home/.config/dunst
-    ln -sf $DOTFILES/config/rofi $Home/.config/rofi
-    ln -sf $DOTFILES/config/i3 $Home/.config/i3
-    ln -sf $DOTFILES/config/sway $Home/.config/sway
+    ln -sf $DOTFILES/config/polybar $Home/.config/
+    ln -sf $DOTFILES/config/dunst $Home/.config/
+    ln -sf $DOTFILES/config/rofi $Home/.config/
+    ln -sf $DOTFILES/config/i3 $Home/.config/
+    ln -sf $DOTFILES/config/sway $Home/.config/
 fi
-ln -sf $DOTFILES/config/kitty $HOME/.config/kitty
+ln -sf $DOTFILES/config/kitty $HOME/.config/
 
 # Emacs Configs
 printf "${GREEN}▓▒░ Installing Emacs...${NORMAL}\n"
