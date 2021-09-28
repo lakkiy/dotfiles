@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # insert 199.232.68.133 raw.githubusercontent.com to host if could not reslove raw.githubusercontent.com
 
@@ -104,13 +104,15 @@ if is_mac; then
     ln -sf $DOTFILES/.skhdrc $Home/.skhdrc
 else
     cp -n $DOTFILES/.gitconfig_linux $HOME/.gitconfig
-    ln -sf $DOTFILES/.Xmodmap $Home/.Xmodmap
-    ln -sf $DOTFILES/.xprofile $Home/.xprofile
-    ln -sf $DOTFILES/config/polybar $Home/.config/
-    ln -sf $DOTFILES/config/dunst $Home/.config/
-    ln -sf $DOTFILES/config/rofi $Home/.config/
-    ln -sf $DOTFILES/config/i3 $Home/.config/
-    ln -sf $DOTFILES/config/sway $Home/.config/
+    ln -sf $DOTFILES/.Xmodmap ~/.Xmodmap
+    ln -sf $DOTFILES/.xprofile ~/.xprofile
+    ln -sf $DOTFILES/config/polybar ~/.config/
+    ln -sf $DOTFILES/config/dunst ~/.config/
+    ln -sf $DOTFILES/config/rofi ~/.config/
+    ln -sf $DOTFILES/config/sway ~/.config/
+
+    rm -rf ~/.config/i3
+    ln -sf $DOTFILES/config/i3 ~/.config/
 fi
 ln -sf $DOTFILES/config/kitty $HOME/.config/
 
