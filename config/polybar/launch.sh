@@ -1,11 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Terminate already running bar instances
-killall -q polybar
+# killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+# while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-polybar -r bar &
+# Launch bar1 and bar2
+#polybar base &
 
-echo "Polybar launched..."
+sleep .5
+
+if ! pgrep -x polybar ; then
+	echo "poly not running"
+	polybar -r i3bar
+else
+	pkill polybar
+	polybar -r i3bar
+fi
+echo "Bars launched..."

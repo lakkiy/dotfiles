@@ -106,6 +106,7 @@ else
     ln -sf $DOTFILES/.Xmodmap $Home/.Xmodmap
     ln -sf $DOTFILES/.xprofile $Home/.xprofile
     ln -sf $DOTFILES/config/polybar $Home/.config/polybar
+    ln -sf $DOTFILES/config/dunst $Home/.config/dunst
     ln -sf $DOTFILES/config/rofi $Home/.config/rofi
     ln -sf $DOTFILES/config/i3 $Home/.config/i3
     ln -sf $DOTFILES/config/sway $Home/.config/sway

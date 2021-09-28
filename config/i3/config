@@ -47,12 +47,11 @@ bindsym --whole-window $mod+button2 floating toggle
 # Launch Shortcuts
 #
 # Terminal
-#bindsym $mod+Return exec alacritty
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # Web browser
 # bindsym $mod+b exec firefox
-bindsym $mod+b exec google-chrome-stable
+bindsym $mod+b exec firefox
 
 # Emacs !!!
 bindsym $mod+e exec emacsclient -nc
@@ -212,15 +211,14 @@ for_window [class = "rofi"] floating enable sticky enable
 #   |___/ |_/_/ \_\_|_\ |_|  \___/|_|
 #
 
-exec --no-startup-id xset s off
-exec --no-startup-id xset -dpms
-exec --no-startup-id xset s noblank
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id nm-applet
-exec_always --no-startup-id xrdb -merge ~/.Xresources
-exec_always --no-startup-id picom
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/wallpaper.jpg
-exec_always --no-startup-id fcitx
-exec_always --no-startup-id xmodmap /home/liubo/.xmodmap
-exec_always --no-startup-id dropbox
-exec_always --no-startup-id flameshot
+#exec_always --no-startup-id xrdb -merge ~/.Xresources
+#exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/wallpaper.jpg
+#exec_always --no-startup-id xmodmap /home/liubo/.xmodmap
+#exec_always --no-startup-id dropbox
+#exec_always --no-startup-id flameshot
+
+exec --no-startup-id "picom --experimental-backend"
+exec --no-startup-id fcitx5
+exec --no-startup-id dunst
+exec_always --no-startup-id "~/.config/polybar/launch.sh"
+exec --no-startup-id nm-applet
