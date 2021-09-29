@@ -9,7 +9,7 @@
  */
 
 configuration {
-  modi: "ssh,window,drun,run"
+  modi: "ssh,window,drun,run";
   show-icons: true;
   icon-theme: "Papirus";
   location: 0;
