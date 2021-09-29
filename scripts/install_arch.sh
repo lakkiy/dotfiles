@@ -76,6 +76,9 @@ pacmans=(
     mcomix # comic books
     qt5ct # change qt programs theme and icons
 
+    # Themes
+    papirus-icon-theme
+
     # Fonts
     powerline-fonts
     wqy-bitmapfont
