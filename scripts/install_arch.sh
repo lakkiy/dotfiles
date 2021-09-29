@@ -94,8 +94,7 @@ yays=(
     ttf-monaco
     ttf-recursive # default font for emacs && code
     ttf-google-fonts-git # some best fonts from goole, include cardo for emacs variable pitch mode
-    # FIXME install failed
-    otf-apple-sf-pro # main font of system, conflict with file-roller and mcomix
+    apple-fonts # sf-pro sf-mono etc...
 
     # TODO try to use
     libinput-gestures # touchpad, must add user to input group
