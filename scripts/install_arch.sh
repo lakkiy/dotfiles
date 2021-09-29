@@ -15,6 +15,7 @@ if ! command -v yay >/dev/null 2>&1; then
 fi
 
 pacmans=(
+    cpio # unpack tar archive, install procs in zsh
     man-db
     zsh
     kitty
