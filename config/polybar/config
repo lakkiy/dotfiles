@@ -81,7 +81,6 @@ label-urgent-background = #bd2c40
 ;https://github.com/jaagr/polybar/wiki/Configuration#application-settings
 throttle-output = 5
 throttle-output-for = 10
-throttle-input-for = 30
 screenchange-reload = true
 compositing-background = over
 compositing-foreground = over
@@ -226,47 +225,6 @@ label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
 label-urgent-padding = 3
 ; Separator in between workspaces
-
-[module/bspwm]
-type = internal/bspwm
-
-
-ws-icon-0 = 1;1
-#α
-ws-icon-1 = 2;2
-#β
-ws-icon-2 = 3;3
-#γ
-ws-icon-3 = 4;4
-#δ
-ws-icon-4 = 5;5
-#ε
-ws-icon-5 = 6;6
-#ζ
-ws-icon-6 = 7;7
-#η
-ws-icon-7 = 8;8
-#θ
-ws-icon-default = ♟
-
-format = <label-state> <label-mode>
-
-label-focused = %icon%
-label-focused-background = #4b5cc4
-label-focused-foreground = #ffffff
-label-focused-padding = 4
-
-label-occupied = %icon%
-label-occupied-padding = 4
-
-label-urgent = %icon%
-label-urgent-padding = 4
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-
-label-empty = %icon%
-label-empty-foreground = #44ffffff
-label-empty-padding = 4
 
 [module/mpd]
 type = internal/mpd
