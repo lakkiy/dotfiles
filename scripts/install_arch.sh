@@ -86,10 +86,13 @@ pacmans=(
 yays=(
     polybar # i3 status bar replace
     wps-office
-    ttf-wps-fonts
-    ttf-monaco
     betterlockscreen
 
+    # Fonts
+    ttf-wps-fonts
+    ttf-monaco
+    ttf-recursive # default font for emacs && code
+    ttf-google-fonts-git # some best fonts from goole, include cardo for emacs variable pitch mode
     # FIXME install failed
     otf-apple-sf-pro # main font of system, conflict with file-roller and mcomix
 
