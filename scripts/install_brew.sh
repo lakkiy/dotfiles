@@ -38,6 +38,8 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    bitwarden-cli
+    jq # use bitarden in raycast
     global # gnu global gtags
       # pip3 install pygments for more languages support like go/rust
     koekeishiya/formulae/skhd  # use with yabai
