@@ -28,6 +28,7 @@ apps=(
     whichspace         # with yabai, show space number on menu bar
     balenaetcher       # flash iso
     mos                # Smooth and reverse scroll
+    lens               # The kubernetes IDE
 
     # ----------Fonts----------
     font-cardo # form nasy-theme variable pitch font
