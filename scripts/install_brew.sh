@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    bob # translate, ocr
     clashx-pro         # Proxy: v2rayx
     netnewswire
     nrlquaker-winbox   # manage route os
