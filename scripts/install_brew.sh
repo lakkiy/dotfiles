@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    simple-comic
     bob # translate, ocr
     clashx-pro         # Proxy: v2rayx
     netnewswire
