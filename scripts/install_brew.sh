@@ -4,6 +4,7 @@
 apps=(
     simple-comic
     bob # translate, ocr
+    sublime-text       # under the emacs!
     clashx-pro         # Proxy: v2rayx
     netnewswire
     nrlquaker-winbox   # manage route os
