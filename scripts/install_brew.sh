@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    syncthing # sync file!
     simple-comic
     bob # translate, ocr
     sublime-merge
