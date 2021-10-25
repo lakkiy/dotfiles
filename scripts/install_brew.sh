@@ -3,9 +3,7 @@
 # Cask applications
 apps=(
     syncthing # sync file!
-    simple-comic
     bob # translate, ocr
-    sublime-merge
     sublime-text       # under the emacs!
     clashx-pro         # Proxy: v2rayx
     netnewswire
