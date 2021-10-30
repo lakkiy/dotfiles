@@ -89,8 +89,6 @@ printf "${GREEN}▓▒░ Installing Dotfiles...${NORMAL}\n"
 sync_repo 404cn/dotfiles $DOTFILES
 
 # Use fish as default shell since zinit repo has deleted
-#ln -sf $DOTFILES/.zshenv $HOME/.zshenv
-#ln -sf $DOTFILES/.zshrc $HOME/.zshrc
 ln -sf $DOTFILES/.config/fish/config.fish $HOME/.config/fish/config.fish
 ln -sf $DOTFILES/.config/fish/fish_plugins $HOME/.config/fish/fish_plugins
 ln -sf $DOTFILES/.config/fish/fish_plugins/functions/fisher.fish $HOME/.config/fish/fish_plugins/functions/fisher.fish
@@ -128,16 +126,5 @@ printf "${GREEN}▓▒░ Installing Emacs...${NORMAL}\n"
 sync_repo 404cn/eatemacs $HOME/.config/emacs
 
 # Entering zsh
-printf "Done. Enjoy!\n"
+printf "Done but you have to change default shell to shell yourself. Enjoy!\n"
 
-# !!! You have to change default yourself
-#if command -v zsh >/dev/null 2>&1; then
-#    if [ "$OSTYPE" != "cygwin" ] && [ "$SHELL" != "$(which zsh)" ]; then
-#        chsh -s $(which zsh)
-#        printf "${GREEN} You need to logout and login to enable zsh as the default shell.${NORMAL}\n"
-#    fi
-#    env zsh
-#else
-#    echo "${RED}Error: zsh is not installed${NORMAL}" >&2
-#    exit 1
-#fi
