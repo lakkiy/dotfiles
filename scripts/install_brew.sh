@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    railwaycat/emacsmacport/emacs-mac # The one true editor!
     syncthing # sync file!
     bob # translate, ocr
     sublime-text       # under the emacs!
