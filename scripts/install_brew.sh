@@ -13,7 +13,6 @@ apps=(
     vagrant-vmware-utility
     vmware-fusion
     docker
-    licecap            # Recording screen as gif
     baidunetdisk
     thunder
     iina               # Media player
@@ -23,7 +22,8 @@ apps=(
     raycast            # ala fro spotlight, support open app via shortcut
     firefox
     dropbox            # sync file
-    kitty              # terminal
+    #kitty              # terminal
+    iterm2
     keepingyouawake
     mounty             # Mounty for NTFS read/write
     neteasemusic
@@ -31,7 +31,7 @@ apps=(
     whichspace         # with yabai, show space number on menu bar
     balenaetcher       # flash iso
     mos                # Smooth and reverse scroll
-    lens               # The kubernetes IDE
+    telegram-desktop
 
     # ----------Fonts----------
     font-cardo # form nasy-theme variable pitch font
@@ -66,7 +66,7 @@ formulae_apps=(
     golangci-lint              # best lint for go
     mosh                       # ssh on udp
     tdlib                      # use telega in emacs
-    jupyterlab
+    #jupyterlab
     go
     tmux
     universal-ctags            # completion, jump and find def
