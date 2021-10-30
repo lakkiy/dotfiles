@@ -84,6 +84,14 @@ formulae_apps=(
     mpv                        # play netease cloud music in emacs
     socat                      # with mpv
     tealdeer                   # rust version tldr
+
+    fish
+    # Modern Unix commands
+    # See https://github.com/ibraheemdev/modern-unix
+    fzf
+    fd
+    rg
+    bat
 )
 
 # Use colors, but only if connected to a terminal, and that terminal
