@@ -93,6 +93,9 @@ sync_repo 404cn/dotfiles $DOTFILES
 #ln -sf $DOTFILES/.zshrc $HOME/.zshrc
 ln -sf $DOTFILES/.config/fish/config.fish $HOME/.config/fish/config.fish
 ln -sf $DOTFILES/.config/fish/fish_plugins $HOME/.config/fish/fish_plugins
+ln -sf $DOTFILES/.config/fish/fish_plugins/functions/fisher.fish $HOME/.config/fish/fish_plugins/functions/fisher.fish
+ln -sf $DOTFILES/.config/fish/fish_plugins/functions/fish_prompt.fish $HOME/.config/fish/fish_plugins/functions/fish_prompt.fish
+ln -sf $DOTFILES/.config/fish/fish_plugins/completions/fisher.fish $HOME/.config/fish/fish_plugins/completions/fisher.fish
 
 ln -sf $DOTFILES/.vimrc $HOME/.vimrc
 ln -sf $DOTFILES/.tmux.conf $HOME/.tmux.conf
