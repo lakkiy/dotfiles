@@ -80,10 +80,6 @@ promote_yn() {
     esac
 }
 
-# Zsh plugin manager
-printf "${GREEN}▓▒░ Installing Zinit...${NORMAL}\n"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-
 # Dotfiles
 printf "${GREEN}▓▒░ Installing Dotfiles...${NORMAL}\n"
 sync_repo 404cn/dotfiles $DOTFILES
@@ -127,4 +123,3 @@ sync_repo 404cn/eatemacs $HOME/.config/emacs
 
 # Entering zsh
 printf "Done but you have to change default shell to shell yourself. Enjoy!\n"
-
