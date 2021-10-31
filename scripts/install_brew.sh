@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    transmission-remote-gui
     railwaycat/emacsmacport/emacs-mac # The one true editor!
     syncthing # sync file!
     bob # translate, ocr
