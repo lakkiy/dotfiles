@@ -15,7 +15,7 @@ set STARDICT_DATA_DIR $HOME/.sdcv-dict
 set GOPROXY https://goproxy.cn
 set GO111MODULE on
 set GOPATH $HOME/go
-set PATH $PATH $GOPATH/bin
+fish_add_path $GOPATH/bin
 
 # for osx tui emacs paste non-ascii mess-up problem
 set LC_ALL en_US.UTF-8
