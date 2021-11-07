@@ -2,6 +2,7 @@
 
 # Cask applications
 apps=(
+    the-unarchiver # unrar
     transmission-remote-gui
     railwaycat/emacsmacport/emacs-mac # The one true editor!
     syncthing # sync file!
