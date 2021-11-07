@@ -48,7 +48,8 @@ formulae_apps=(
     bitwarden-cli
     jq # use bitarden in raycast
     global # gnu global gtags
-      # pip3 install pygments for more languages support like go/rust
+    # pip3 install pygments for more languages support like go/rust
+    # use --force to keep universal-ctags
     koekeishiya/formulae/skhd  # use with yabai
     koekeishiya/formulae/yabai # window manager
       # defaults write com.apple.finder DisableAllAnimations -bool true
