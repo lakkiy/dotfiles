@@ -45,6 +45,7 @@ apps=(
 
 # command line apps
 formulae_apps=(
+    bash # replace default 3.x bash
     bitwarden-cli
     jq # use bitarden in raycast
     global # gnu global gtags
