@@ -2,14 +2,14 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set ai
-" set number
+set number
 set hlsearch
 set ruler
 " highlight Comment ctermfg=green
 
 " https://unix.stackexchange.com/questions/348771/why-do-vim-colors-look-different-inside-and-outside-of-tmux
 " make vim color look same in tmux
-" set background=dark
+set background=dark
 
 " Copy to system clipboard
 if system('uname -s') == "Darwin\n"
@@ -139,3 +139,43 @@ set makeprg=bundle\ exec\ rspec\ -f\ QuickfixFormatter
 " - :cc# to jump to error by number
 " - :cn and :cp to navigate forward and back
 "--------------From changemewtf/not_plugins---------------
+
+"--------------Syntax highlighting for fish---------------
+if exists('b:current_syntax')
+    finish
+endif
+
+syntax case match
+
+syntax keyword fishKeyword begin function end
+syntax keyword fishConditional if else switch
+syntax keyword fishRepeat while for in
+syntax keyword fishLabel case
+
+syntax match fishComment /#.*/
+syntax match fishSpecial /\\$/
+syntax match fishIdentifier /\$[[:alnum:]_]\+/
+syntax region fishString start=/'/ skip=/\\'/ end=/'/
+syntax region fishString start=/"/ skip=/\\"/ end=/"/ contains=fishIdentifier
+syntax match fishCharacter /\v\\[abefnrtv *?~%#(){}\[\]<>&;"']|\\[xX][0-9a-f]{1,2}|\\o[0-7]{1,2}|\\u[0-9a-f]{1,4}|\\U[0-9a-f]{1,8}|\\c[a-z]/
+syntax match fishStatement /\v;\s*\zs\k+>/
+syntax match fishCommandSub /\v\(\s*\zs\k+>/
+
+syntax region fishLineContinuation matchgroup=fishStatement
+            \ start='\v^\s*\zs\k+>' skip='\\$' end='$'
+            \ contains=fishSpecial,fishIdentifier,fishString,fishCharacter,fishStatement,fishCommandSub,fishComment
+
+highlight default link fishKeyword Keyword
+highlight default link fishConditional Conditional
+highlight default link fishRepeat Repeat
+highlight default link fishLabel Label
+highlight default link fishComment Comment
+highlight default link fishSpecial Special
+highlight default link fishIdentifier Identifier
+highlight default link fishString String
+highlight default link fishCharacter Character
+highlight default link fishStatement Statement
+highlight default link fishCommandSub fishStatement
+
+let b:current_syntax = 'fish'
+"--------------Syntax highlighting for fish---------------
