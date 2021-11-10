@@ -40,14 +40,26 @@ set -g FZF_ALT_C_OPTS "--preview 'tree -NC {} | head -200'"
 #}
 
 # aliases {
-alias h history
-alias c clear
+alias ls "ls --color"
 
+# FIXME https://github.com/jorgebucaran/cookbook.fish#aliases
 switch (uname)
     case Darwin
-        alias bu 'brew update && brew upgrade'
-        alias bcu 'brew cu --all --yes --cleanup'
-        alias bua 'bu && bcu'
+        function bu
+            brew update && brew upgrade
+        end
+        function bcu
+            brew cu --all --yes --cleanup
+        end
+        function bua
+            command bu && bcu
+        end
+        function set-homebrew-mirror
+        # TODO
+        end
+        function reset-homebrew-mirror
+        # TODO
+        end
     case Linux
         # TODO Archlinux aliases, maybe debian or ubuntu
 end

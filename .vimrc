@@ -9,7 +9,7 @@ set ruler
 
 " https://unix.stackexchange.com/questions/348771/why-do-vim-colors-look-different-inside-and-outside-of-tmux
 " make vim color look same in tmux
-set background=dark
+" set background=dark
 
 " Copy to system clipboard
 if system('uname -s') == "Darwin\n"
@@ -33,6 +33,10 @@ nnoremap <C-i> <C-i>zz
 nnoremap <C-]> <C-]>zz
 nnoremap <C-t> <C-t>zz
 
+"--------------------------Plugins-----------------------
+" TODO check if exists
+" !git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
+"--------------------------Plugins-----------------------
 
 "--------------From changemewtf/not_plugins---------------
 " enter the current millenium
