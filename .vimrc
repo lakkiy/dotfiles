@@ -1,23 +1,43 @@
 " vim:fileencoding=utf-8:foldmethod=marker
 " :help zo/zc ==> see fold unfold command
 
+syntax enable
+filetype plugin indent on
+
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set expandtab
+set nobackup
 set ai
+set autoread
 set number
 set hlsearch
 set ruler
 set autochdir
 set paste
 set nocompatible
+set ignorecase
+set smartcase
+set ff=unix
 set backspace=indent,eol,start
+set background=dark
 
+" After set background
 highlight Comment ctermfg=green
-syntax enable
-filetype plugin indent on
 
-let mapleader = " " " map leader to Space
+" map leader to Space
+let mapleader = " " 
+
+" Change cursor to underline in insert mode
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" Remember cursor position
+augroup resCur
+  autocmd!
+  autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
 
 ": changemewtf/not_plugins {{{
 
@@ -29,6 +49,8 @@ set path+=**
 
 " Display all matching files when we tab complete
 set wildmenu
+" Wildmenu will ignore files with these extensions.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " NOW WE CAN:
 " - Hit tab to :find by partial match
@@ -114,10 +136,13 @@ nnoremap <C-t> <C-t>zz
 ": Plugins(maybe) {{{
 
 ": {{{ vim-go
+
 " !git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
 let g:go_addtags_transform = "camelcase"
+let g:go_gopls_enabled = 0
+
 ": }}}
 
 ": Leaderf {{{
@@ -125,8 +150,6 @@ let g:go_addtags_transform = "camelcase"
 " TODO install
 " !git clone https://github.com/Yggdroot/LeaderF.git ~/.vim/pack/plugins/start/LeaderF
 
-" Change the colors used in LeaderF
-set background=dark
 " Open Leaderf in popup window and preview the result
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
@@ -140,7 +163,7 @@ let g:Lf_RootMarkers = ['.git', '.hg', '.svn', 'go.mod']
 noremap <leader>b :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>i :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>s :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-noremap <C-F> :Leaderf rg<CR>
+noremap <leader>r :Leaderf rg<CR>
 noremap <leader>? :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
 noremap <leader>. :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
 noremap <leader>, :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
