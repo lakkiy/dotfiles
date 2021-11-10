@@ -41,6 +41,10 @@ set -g FZF_ALT_C_OPTS "--preview 'tree -NC {} | head -200'"
 
 # aliases {
 alias ls "ls --color"
+# reinstall vim and neovim for python3 support
+function python
+    python3
+end
 
 # FIXME https://github.com/jorgebucaran/cookbook.fish#aliases
 switch (uname)
