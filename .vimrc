@@ -1,3 +1,6 @@
+" vim:fileencoding=utf-8:foldmethod=marker
+" :help zo ==> see fold unfold command
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -5,54 +8,17 @@ set ai
 set number
 set hlsearch
 set ruler
-" highlight Comment ctermfg=green
-
-" https://unix.stackexchange.com/questions/348771/why-do-vim-colors-look-different-inside-and-outside-of-tmux
-" make vim color look same in tmux
-" set background=dark
-
-" Copy to system clipboard
-if system('uname -s') == "Darwin\n"
-  set clipboard=unnamed "OSX
-else
-  set clipboard=unnamedplus "Linux
-endif
-
-" emacs like inline move
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-
-" Center screen on next/previous selection.
-nnoremap n nzz
-nnoremap N Nzz
-" Last and next jump should center too.
-nnoremap <C-o> <C-o>zz
-nnoremap <C-i> <C-i>zz
-nnoremap <C-]> <C-]>zz
-nnoremap <C-t> <C-t>zz
-
-"--------------------------Plugins-----------------------
-" TODO check if exists
-" !git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
-"--------------------------Plugins-----------------------
-
-"--------------From changemewtf/not_plugins---------------
-" enter the current millenium
-" FEATURES TO COVER:
-" - Fuzzy File Search
-" - Tag jumping
-" - Autocomplete
-" - File Browsing
-" - Snippets
-" - Build Integration (if we have time)
+set autochdir
 set nocompatible
+set backspace=indent,eol,start
 
-" enable syntax and plugins (for netrw)
-" you can use highlight to override syntax color (diff with syntax on)
+highlight Comment ctermfg=green
 syntax enable
-filetype plugin on
+filetype plugin indent on
+
+let mapleader = " " " map leader to Space
+
+": changemewtf/not_plugins {{{
 
 " FINDING FILES:
 
@@ -118,33 +84,60 @@ let g:netrw_liststyle=3     " tree view
 " - <CR>/v/t to open in an h-split/v-split/tab
 " - check |netrw-browse-maps| for more mappings
 
+": }}}
 
-" SNIPPETS:
+": Copy to system clipboard {{{ 
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
+": }}}
 
-" Read an empty HTML template and move cursor to title
-nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
+": Emacs like inline move {{{
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+": }}}
 
-" NOW WE CAN:
-" - Take over the world!
-"   (with much fewer keystrokes)
+": Center screen on next/previous selection {{{
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
+nnoremap <C-]> <C-]>zz
+nnoremap <C-t> <C-t>zz
+": }}}
 
+": Plugins(maybe) {{{
 
-" BUILD INTEGRATION:
+": {{{ vim-go
+" !git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
+let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
+let g:go_addtags_transform = "camelcase"
+": }}}
 
-" Steal Mr. Bradley's formatter & add it to our spec_helper
-" http://philipbradley.net/rspec-into-vim-with-quickfix
+": Leaderf {{{
+" !git clone https://github.com/Yggdroot/LeaderF.git ~/.vim/pack/plugins/start/LeaderF
+map <leader>f :Leaderf file<CR>
+map <leader>s :Leaderf line<CR>
+map <leader>b :Leaderf buffer<CR>
+map <leader>i :Leaderf function<CR>
+map <leader>r :Leaderf rg<CR>
+map <leader>x :Leaderf command<CR>
 
-" Configure the `make` command to run RSpec
-set makeprg=bundle\ exec\ rspec\ -f\ QuickfixFormatter
+" Open Leaderf in popup window and preview the result
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+" Disable icons
+let g:Lf_ShowDevIcons = 0
+": }}}
 
-" NOW WE CAN:
-" - Run :make to run RSpec
-" - :cl to list errors
-" - :cc# to jump to error by number
-" - :cn and :cp to navigate forward and back
-"--------------From changemewtf/not_plugins---------------
+": }}}
 
-"--------------Syntax highlighting for fish---------------
+": Syntax highlighting for fish {{{
 if exists('b:current_syntax')
     finish
 endif
@@ -182,4 +175,4 @@ highlight default link fishStatement Statement
 highlight default link fishCommandSub fishStatement
 
 let b:current_syntax = 'fish'
-"--------------Syntax highlighting for fish---------------
+": }}}
