@@ -1,5 +1,5 @@
 " vim:fileencoding=utf-8:foldmethod=marker
-" :help zo ==> see fold unfold command
+" :help zo/zc ==> see fold unfold command
 
 set tabstop=4
 set shiftwidth=4
@@ -9,6 +9,7 @@ set number
 set hlsearch
 set ruler
 set autochdir
+set paste
 set nocompatible
 set backspace=indent,eol,start
 
@@ -120,19 +121,30 @@ let g:go_addtags_transform = "camelcase"
 ": }}}
 
 ": Leaderf {{{
-" !git clone https://github.com/Yggdroot/LeaderF.git ~/.vim/pack/plugins/start/LeaderF
-map <leader>f :Leaderf file<CR>
-map <leader>s :Leaderf line<CR>
-map <leader>b :Leaderf buffer<CR>
-map <leader>i :Leaderf function<CR>
-map <leader>r :Leaderf rg<CR>
-map <leader>x :Leaderf command<CR>
 
+" TODO install
+" !git clone https://github.com/Yggdroot/LeaderF.git ~/.vim/pack/plugins/start/LeaderF
+
+" Change the colors used in LeaderF
+set background=dark
 " Open Leaderf in popup window and preview the result
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 " Disable icons
 let g:Lf_ShowDevIcons = 0
+" Gtags, auto generate
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_Gtagslabel = 'native-pygments'
+let g:Lf_RootMarkers = ['.git', '.hg', '.svn', 'go.mod']
+
+noremap <leader>b :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>i :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>s :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+noremap <C-F> :Leaderf rg<CR>
+noremap <leader>? :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>. :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>, :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
 ": }}}
 
 ": }}}
