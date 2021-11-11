@@ -87,6 +87,8 @@ noremap q <C-w>q
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>a
 
+nnoremap <Leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+
 ": changemewtf/not_plugins {{{
 
 " FINDING FILES:
