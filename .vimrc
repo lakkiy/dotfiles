@@ -175,8 +175,8 @@ inoremap <C-f> <Right>
 ": }}}
 
 ": Center screen on next/previous selection {{{
-nnoremap n nzz
-nnoremap N Nzz
+nnoremap n nzzzv
+nnoremap N Nzzzv
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
 nnoremap <C-]> <C-]>zz
