@@ -12,6 +12,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set nobackup
+set noswapfile
 set ai
 set autoread
 set number
