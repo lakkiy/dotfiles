@@ -1,8 +1,6 @@
 " vim:fileencoding=utf-8:foldmethod=marker
 " :help zo/zc ==> see fold unfold command
 
-"" TODO: LeaderF gtags not work, goalng lint
-
 syntax enable
 filetype plugin indent on
 
