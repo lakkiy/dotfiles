@@ -11,10 +11,16 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set smartindent
+set exrc
+set guicursor=
 set nobackup
 set noswapfile
+set nowrap
 set ai
 set autoread
+set hidden
+set noerrorbells
 set number
 set hlsearch
 set ruler
@@ -41,7 +47,7 @@ let &t_EI = "\e[2 q"
 
 " remove trailing whitespaces
 command! FixWhitespace :%s/\s\+$//e
-
+	
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap
@@ -60,12 +66,6 @@ augroup END
 augroup vimrc-sync-fromstart
   autocmd!
   autocmd BufEnter * :syntax sync maxlines=200
-augroup END
-
-"" Remember cursor position
-augroup vimrc-remember-cursor-position
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
 "" Set working directory
@@ -185,9 +185,20 @@ nnoremap <C-t> <C-t>zz
 
 ": Plugins(maybe) {{{
 
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
+call plug#end()
+
 ": {{{ vim-go
 
-" !git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
 let g:go_addtags_transform = "camelcase"
@@ -217,9 +228,6 @@ augroup END
 
 ": Leaderf {{{
 
-" TODO install
-" !git clone https://github.com/Yggdroot/LeaderF.git ~/.vim/pack/plugins/start/LeaderF
-
 " Open Leaderf in popup window and preview the result
 "let g:Lf_WindowPosition = 'popup'
 "let g:Lf_PreviewInPopup = 1
@@ -240,6 +248,10 @@ noremap <leader>? :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand(
 noremap <leader>. :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
 noremap <leader>, :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
+": }}}
+
+": Tagbar {{{
+nnoremap <leader>I :TagbarToggle<CR>
 ": }}}
 
 ": }}}
