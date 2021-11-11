@@ -84,7 +84,7 @@ noremap q <C-w>q
 
 "" Split
 noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>
+noremap <Leader>v :<C-u>vsplit<CR>a
 
 ": changemewtf/not_plugins {{{
 
@@ -226,9 +226,10 @@ let g:Lf_ShowDevIcons = 0
 let g:Lf_GtagsAutoGenerate = 1
 let g:Lf_Gtagslabel = 'native-pygments'
 let g:Lf_RootMarkers = ['.git', '.hg', '.svn', 'go.mod']
+" Don't use separator in statueline
+let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 
 noremap <leader>x :Leaderf command<CR>
-noremap <leader>b :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>i :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 noremap <leader>s :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 noremap <leader>r :Leaderf rg<CR>
