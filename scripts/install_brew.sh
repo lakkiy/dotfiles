@@ -4,7 +4,6 @@
 apps=(
     the-unarchiver # unrar
     transmission-remote-gui
-    railwaycat/emacsmacport/emacs-mac # The one true editor!
     syncthing # sync file!
     bob # translate, ocr
     sublime-text       # under the emacs!
@@ -140,9 +139,7 @@ function check {
         brew tap homebrew/cask
         brew tap homebrew/cask-fonts
         brew tap buo/cask-upgrade
-        brew tap d12frosted/emacs-plus
-
-        brew install emacs-plus@28 --with-no-titlebar
+		brew tap daviderestivo/emacs-head
     fi
 }
 
@@ -155,6 +152,9 @@ function install () {
         printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
         brew install ${app}
     done
+
+	# install emacs!
+	brew install emacs-head@29 --with-cocoa --with-pdumper --with-xwidgets --with-native-comp --with-native-full-aot --with-modern-icon-doom3
 }
 
 function cleanup {
