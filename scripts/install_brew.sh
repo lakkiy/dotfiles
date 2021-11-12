@@ -37,6 +37,8 @@ apps=(
     telegram-desktop
 
     # ----------Fonts----------
+	font-recursive
+	font-recursive-code
     font-cardo # form nasy-theme variable pitch font
     font-hanamina
     font-sarasa-gothic
@@ -45,7 +47,8 @@ apps=(
 
 # command line apps
 formulae_apps=(
-    bash # replace default 3.x bash
+	yadm # yat another dotfiles manager
+    bash # replace default 2.x bash
     bitwarden-cli
     jq # use bitarden in raycast
     global # gnu global gtags
