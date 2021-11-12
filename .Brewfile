@@ -14,7 +14,7 @@ brew "koekeishiya/formulae/yabai"
 
 # THE ONE TRUE EDITOR
 tap "daviderestivo/emacs-head"
-brew "daviderestivo/emacs-head/emacs-head@29", args: ["with-cocoa", "with-modern-icon-doom3", "with-native-comp", "with-native-full-aot", "with-pdumper", "with-xwidgets"]
+brew "daviderestivo/emacs-head/emacs-head@29", args: ["with-cocoa", "with-modern-icon-doom3", "with-native-comp", "with-native-full-aot", "with-pdumper", "with-xwidgets"], link: true, restart_service:true
 
 brew "tree" # see file tree in command line
 brew "pandoc" # convert to pdf
