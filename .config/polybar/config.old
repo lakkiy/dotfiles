@@ -1,0 +1,196 @@
+[colors]
+
+foreground = ${xrdb:foreground:#ffff}
+;foreground = ${xrdb:foreground:#000}
+background = #0000
+
+[bar/bar]
+monitor=HDMI2
+monitor-fallback=eDP1
+
+enable-ipc=true
+height = 30
+width = 100%
+offset-y = 10
+padding = 5
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+
+font-0=OperatorMonoSSmLig Nerd Font:style=Regular:size=12;4
+font-1=OperatorMonoSSmLig Nerd Font:style=Bold Italic:size=12;4
+font-2=Material Icons:size=13;7
+font-3=font\-logos:size=10;4
+font-4=FontAwesome5Brands:size=11;2
+font-5=IPAGothic:size=11;2
+
+modules-right = pulseaudio battery time powermenu
+
+; i3
+modules-left = i3 xwindow
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+wm-restack = i3
+
+[module/battery]
+type = internal/battery
+
+full-at = 99
+
+battery = BAT0
+adapter = ADP1
+
+poll-interval = 5
+
+format-charging = <ramp-capacity> ING
+
+format-discharging = <ramp-capacity>
+
+label-full = 
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[module/updates]
+type=custom/script
+exec = yay -Qu | wc -l
+exec-if = [[ $(yay -Qu | wc -l) != 0 ]]
+format =   <label> update(s) available.
+format-margin = 8
+tail = true
+interval = 30
+click-left = xterm -e yay -Syu
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:75:...%
+label-empty = Empty
+label-empty-font = 2
+label-font = 2
+format-margin = 4
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+format-margin = 0
+index-sort = true
+
+enable-click = true
+reverse-scroll = false
+
+label-focused = %index%
+label-focused-underline = ${colors.foreground}
+label-focused-padding = 2
+label-focused-font = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+label-urgent = !
+label-urgent-padding = 5
+label-urgent-underline = ${colors.background}
+label-urgent-font = 2
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected =  <label-connected>
+label-connected = %essid%
+label-connected-color1 = ${colors.color1}
+
+format-disconnected = <label-disconnected>
+label-disconnected = %ifname% disconnected
+label-disconnected-color1 = ${colors.color1}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-color1 = ${colors.color1}
+
+[module/time]
+type = internal/date
+interval = 10
+format-margin = 4
+
+time = "%H:%M"
+date = "%d %b"
+
+label = %time% | %date%
+label-background = ${colors.background}
+label-padding = 2
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-margin = 2
+format-volume = <ramp-volume><label-volume>
+label-volume = %percentage:4:4%%
+format-volume-background = ${colors.background}
+format-volume-padding = 2
+use-ui-max = false
+interval = 5
+
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+
+
+label-muted = ""
+label-muted-background = ${colors.background}
+label-muted-padding = 2
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = false
+
+format-margin = 2
+format-spacing = 2
+
+label-open = 
+label-close = 
+label-separator = |
+
+; reboot
+menu-0-1 = 
+menu-0-1-exec = menu-open-2
+; poweroff
+menu-0-2 = 
+menu-0-2-exec = menu-open-3
+; logout
+menu-0-0 = 
+menu-0-0-exec = menu-open-1
+
+menu-2-0 = 
+menu-2-0-exec = reboot
+
+menu-3-0 = 
+menu-3-0-exec = poweroff
+
+menu-1-0 = 
+menu-1-0-exec = i3-msg exit || openbox --exit
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+pseudo-transparency = false
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini
