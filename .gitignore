@@ -1,0 +1,8 @@
+.DS_Store
+*.bak
+*.log
+*.swp
+tags
+GPATH
+GRTAGS
+GTAGS
