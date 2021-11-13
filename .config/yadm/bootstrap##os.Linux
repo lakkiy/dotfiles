@@ -17,6 +17,7 @@ fi
 pacmans=(
     archlinux-keyring # fix invalid pgp signtaur
     i3status-rust
+    # retroarch
     fish
     cpio # unpack tar archive, install procs in zsh
     man-db
