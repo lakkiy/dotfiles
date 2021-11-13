@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# TODO move to yadm
-
 # Install arch via archinstall and choose i3-gaps.
 # Add additional packages like git vim zsh.
 # Use networkmanager and set timezone to Asia/Shanghai
@@ -17,6 +15,8 @@ if ! command -v yay >/dev/null 2>&1; then
 fi
 
 pacmans=(
+    archlinux-keyring # fix invalid pgp signtaur
+    fish
     cpio # unpack tar archive, install procs in zsh
     man-db
     zsh
@@ -36,6 +36,7 @@ pacmans=(
     htop
     hunspell                   # for emacs spell check
     ipython
+    python3
     notmuch                    # read mail in emacs
     isync                      # sync mail to localhost, aka mbsync
     pandoc                     # convert to pdf
