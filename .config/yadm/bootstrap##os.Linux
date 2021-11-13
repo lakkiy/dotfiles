@@ -65,6 +65,12 @@ pacmans=(
     gimp
     file-roller # zip and unzip file
 
+    # command line tools
+    fzf
+    bat
+    fd
+    ripgrep
+
     # TODO try to use
     gucharmap # display symbols in font
     gpick # color picker
@@ -91,6 +97,10 @@ pacmans=(
 )
 
 yays=(
+    ly # display manager
+    # delete lightdm
+    # systemctl disable lightdm
+    # sudo systemctl enable ly.servicev
     polybar # i3 status bar replace
     wps-office
     betterlockscreen
@@ -100,13 +110,19 @@ yays=(
     ttf-monaco
     ttf-recursive # default font for emacs && code
     ttf-google-fonts-git # some best fonts from goole, include cardo for emacs variable pitch mode
-    apple-fonts # sf-pro sf-mono etc...
+    apple-fonts # sf-pro sf-mono etc... FIXME abort
 
     # TODO try to use
     libinput-gestures # touchpad, must add user to input group
       # sudo gpasswd -a $USER input
 
     emacs-git
+)
+
+pacmans-removes=(
+    # replace with ly
+    lightdm-gtk-greeter
+    lightdm
 )
 
 for app in ${pacmans[@]}; do
@@ -117,3 +133,12 @@ for app in ${yays[@]}; do
     printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
     yay -S --noconfirm ${app}
 done
+
+# change default shell to fish and install plugins via fisher
+chsh -s /usr/bin/fish
+fisher update
+
+# TODO
+# replace default login management to ly and delete default
+# Xmodmap not work in tty (capslock not map to ctrl)
+# make capslock to esc or ctrl press with other key
