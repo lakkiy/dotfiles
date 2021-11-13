@@ -56,7 +56,8 @@ pacmans=(
     zathura # pdf reader
     flameshot # screenshot
     feh # set wallpaper
-    rofi # application launcher
+    dmenu # application launcher
+    # rofi # application launcher # not use since it update broken
     ranger # file manager
     thunar
     network-manager-apple # networkmanager tray
