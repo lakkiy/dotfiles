@@ -16,6 +16,7 @@ fi
 
 pacmans=(
     archlinux-keyring # fix invalid pgp signtaur
+    i3status-rust
     fish
     cpio # unpack tar archive, install procs in zsh
     man-db
@@ -24,10 +25,10 @@ pacmans=(
     hugo
     aspell
     sdcv
-    graphviz
+    # graphviz
     mosh
-    tdlib
-    jupyterlab
+    # tdlib
+    # jupyterlab
     go
     tmux
     universal-ctags
@@ -39,12 +40,12 @@ pacmans=(
     python3
     notmuch                    # read mail in emacs
     isync                      # sync mail to localhost, aka mbsync
-    pandoc                     # convert to pdf
+    # pandoc                     # convert to pdf
     tree                       # view file tree
-    mpv                        # play netease cloud music in emacs
+    # mpv                        # play netease cloud music in emacs
     socat                      # with mpv
     tealdeer                   # rust version tldr
-    docker
+    # docker
     firefox
     fcitx5
     librime
@@ -60,9 +61,9 @@ pacmans=(
     network-manager-apple # networkmanager tray
     lxappearance # theme switcher, also change icons, fonts
     picom
-    bitwarden
+    # bitwarden
     dunst # notification-daemons
-    gimp
+    # gimp
     file-roller # zip and unzip file
 
     # command line tools
@@ -80,8 +81,8 @@ pacmans=(
     light # brightness command line control
     redshift # adjusts the color temperature of your screen according to your surroundings
     viewnior # picture viewer
-    mpd # play music
-    ncmpcpp
+    # mpd # play music
+    # ncmpcpp
     mcomix # comic books
     qt5ct # change qt programs theme and icons
 
@@ -101,16 +102,17 @@ yays=(
     # delete lightdm
     # systemctl disable lightdm
     # sudo systemctl enable ly.servicev
-    polybar # i3 status bar replace
-    wps-office
+    # polybar # i3 status bar replace
+    # wps-office
     betterlockscreen
 
     # Fonts
+    ttf-iosevka-nerd
     ttf-wps-fonts
     ttf-monaco
     ttf-recursive # default font for emacs && code
     ttf-google-fonts-git # some best fonts from goole, include cardo for emacs variable pitch mode
-    apple-fonts # sf-pro sf-mono etc... FIXME abort
+    # apple-fonts # sf-pro sf-mono etc... FIXME abort
 
     # TODO try to use
     libinput-gestures # touchpad, must add user to input group
@@ -136,7 +138,7 @@ done
 
 # change default shell to fish and install plugins via fisher
 chsh -s /usr/bin/fish
-fisher update
+# fisher update
 
 # TODO
 # replace default login management to ly and delete default
