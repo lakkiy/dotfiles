@@ -9,14 +9,14 @@ dim_level=40
 blur_level=1
 pixel_scale=10,1000
 solid_color=333333
-wallpaper_cmd="feh --bg-fill"
+wallpaper_cmd="feh --bg-fill ~/.config/wallpaper.jpg"
 # i3lockcolor_bin="i3lock-color" # Manually set command for i3lock-color
 
 # default theme
 loginbox=00000066
 loginshadow=00000000
 locktext="Type password to unlock..."
-font="sans-serif"
+font="sarasa gothic sc"
 ringcolor=ffffffff
 insidecolor=00000000
 separatorcolor=00000000

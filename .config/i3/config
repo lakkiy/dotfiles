@@ -214,14 +214,13 @@ for_window [class = "rofi"] floating enable sticky enable
 #
 
 #exec_always --no-startup-id xrdb -merge ~/.Xresources
-#exec_always --no-startup-id feh --bg-scale $HOME/Pictures/Wallpapers/wallpaper.jpg
 #exec_always --no-startup-id xmodmap /home/liubo/.xmodmap
 #exec_always --no-startup-id dropbox
-#exec_always --no-startup-id flameshot
 
+exec_always --no-startup-id flameshot
 exec --no-startup-id "picom --experimental-backend"
-exec --no-startup-id fcitx5 -d
+exec --no-startup-id betterlockscreen -w dim
 exec --no-startup-id dunst
-exec --no-startup-id feh --bg-scale ~/.config/wallpaper.jpg
+exec --no-startup-id fcitx5 -d
+# exec --no-startup-id nm-applet
 # exec_always --no-startup-id "~/.config/polybar/launch.sh"
-exec --no-startup-id nm-applet

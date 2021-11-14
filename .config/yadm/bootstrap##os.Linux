@@ -26,7 +26,6 @@ pacmans=(
     fcitx5-im
     librime
     fcitx5-rime
-    feh # set wallpaper
     dmenu # application launcher
     ranger # file manager
     thunar # file manager
@@ -106,6 +105,7 @@ pacmans=(
 
 yays=(
     betterlockscreen
+	# betterlockscreen -u ~/.config/wallpaper.jpg
     emacs
 	keyd-git # key remapping, better than Xmodmap
 	ly # better display manager than lightdm
