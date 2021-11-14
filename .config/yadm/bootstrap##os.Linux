@@ -108,6 +108,10 @@ yays=(
     # wps-office
     betterlockscreen
 
+    # key remapping, replace .Xmodemap
+    keyd-git
+    # systemctl restart keyd
+
     # Fonts
     ttf-iosevka-nerd
     ttf-wps-fonts
@@ -146,3 +150,11 @@ chsh -s /usr/bin/fish
 # replace default login management to ly and delete default
 # Xmodmap not work in tty (capslock not map to ctrl)
 # make capslock to esc or ctrl press with other key
+# fcitx5 config with rime
+# dmnu config, replace rofi
+# dmnu with bitwarden
+# terminal not work, seems with opengl version? or reinstall with another graph card driver (nvida)
+# wallpapeer not set
+# no sound
+# not test: bluetooth, connect other monitor
+# not test: control voice or backlight with i3status-rust
