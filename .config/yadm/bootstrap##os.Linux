@@ -85,6 +85,7 @@ pacmans=(
     wqy-microhei
     wqy-microhei-lite
     wqy-zenhei
+	ttf-sarasa-gothic # 更纱黑体
 
 
 	# Optional
@@ -154,10 +155,16 @@ setup-ly () {
 # key remap daemond, better than Xmodmap
 setup-keyd () {
 	echo "capslock = overload(C, esc) | sudo tee -a /etc/keyd/default.cfg"
-    systemctl restart keyd
+	sudo systemctl enable keyd
+    sudo systemctl restart keyd
 }
 
 setup() {
+	# TODO maybe use git submodule in yadm
+	git clone https://github.com/404cn/eatemacs.git ~/.config/emacs
+	# TODO maybe some dict and emoji can insall on linux, don't need to put it into git repo
+	git clone https://github.com/404cn/Rime.git ~/.local/share/fcitx5/rime # use fcitx5-remote -r to redeploy rime
+
 	for app in ${pacmans[@]}; do
 	    printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
 	    sudo pacman -S --noconfirm ${app}
