@@ -33,3 +33,8 @@ block = "sound"
 block = "time"
 interval = 5
 format = "%a %d/%m %R"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}"
