@@ -14,65 +14,54 @@ if ! command -v yay >/dev/null 2>&1; then
     rm -rf yay-bin
 fi
 
+# packages installed via pacman
 pacmans=(
     archlinux-keyring # fix invalid pgp signtaur
-    i3status-rust
-    # retroarch
-    fish
-    cpio # unpack tar archive, install procs in zsh
-    man-db
-    zsh
-    kitty
-    hugo
-    aspell
-    sdcv
-    # graphviz
-    mosh
-    # tdlib
-    # jupyterlab
-    go
+    i3status-rust # replace polybar
+    fish # shell
+    kitty # terminal
     tmux
-    universal-ctags
-    aria2
-    cloc
-    htop
-    hunspell                   # for emacs spell check
-    ipython
     python3
-    notmuch                    # read mail in emacs
-    isync                      # sync mail to localhost, aka mbsync
-    # pandoc                     # convert to pdf
-    tree                       # view file tree
-    # mpv                        # play netease cloud music in emacs
-    socat                      # with mpv
-    tealdeer                   # rust version tldr
-    # docker
-    firefox
-    fcitx5
+    firefox # browser
+    fcitx5 # input method
     librime
     fcitx5-rime
     fcitx5-gtk
-    neofetch
-    zathura # pdf reader
-    flameshot # screenshot
     feh # set wallpaper
     dmenu # application launcher
-    # rofi # application launcher # not use since it update broken
     ranger # file manager
-    thunar
+    thunar # file manager
     network-manager-apple # networkmanager tray
     lxappearance # theme switcher, also change icons, fonts
     picom
-    # bitwarden
     dunst # notification-daemons
-    # gimp
+    cpio # unpack tar archive, install procs in zsh
+    # tdlib # FIXME may git version, use telega in emacs
+    go
+    ipython
+    zathura # pdf reader
+    flameshot # screenshot
     file-roller # zip and unzip file
+    notmuch                    # read mail in emacs
+    isync                      # sync mail to localhost, aka mbsync
+    universal-ctags  # ctags
+    global # gtags
+	syncthing
 
     # command line tools
-    fzf
-    bat
-    fd
-    ripgrep
+    fzf # fuzzy finder
+    bat # better cat
+    fd # better find
+    ripgrep # better grep
+    man-db # for command man
+    aspell # for emacs flyspell
+    sdcv # star dict command line version
+    cloc # count program lines
+    htop # better top
+    hunspell # for emacs spell check
+    tree                       # view file tree
+    tealdeer                   # rust version tldr
+    neofetch # pron!!!!!!
 
     # TODO try to use
     gucharmap # display symbols in font
@@ -97,23 +86,32 @@ pacmans=(
     wqy-microhei
     wqy-microhei-lite
     wqy-zenhei
+
+
+	# Optional
+    # retroarch # game
+    # graphviz # show picture of emacs org-roam
+	# zsh # z shell if you don't want to use fish
+    # hugo # static blog
+    # mosh # udp version ssh
+    # jupyterlab
+    # aria2 # downloader
+    # pandoc                     # convert to pdf
+    # mpv                        # play netease cloud music in emacs
+    # socat                      # with mpv
+    # docker
+    # gimp # ps
+    # rofi # application launcher # not use since it update broken
 )
 
 yays=(
-    ly # display manager
-    # delete lightdm
-    # systemctl disable lightdm
-    # sudo systemctl enable ly.servicev
-    # polybar # i3 status bar replace
-    # wps-office
-    betterlockscreen
-
-    # key remapping, replace .Xmodemap
-    keyd-git
-    # systemctl restart keyd
+    betterlockscreen 
+    emacs
+	keyd-git # key remapping, better than Xmodmap
+	ly # better display manager than lightdm
 
     # Fonts
-    ttf-iosevka-nerd
+    ttf-iosevka-nerd # used in status bar
     ttf-wps-fonts
     ttf-monaco
     ttf-recursive # default font for emacs && code
@@ -124,37 +122,62 @@ yays=(
     libinput-gestures # touchpad, must add user to input group
       # sudo gpasswd -a $USER input
 
-    emacs-git
+	# Optional
+    # polybar # i3 status bar replace
+    # wps-office
+	# dropbox
+	# thunar-dropbox # depends on file manager
 )
 
-pacmans-removes=(
-    # replace with ly
-    lightdm-gtk-greeter
-    lightdm
-)
+# change default shell to fish and install plugins
+setup-fish () {
+	sudo chsh -s /usr/bin/fish
+	fisher update # FIXME maybe fisher_plugins file will be delete before update
+}
 
-for app in ${pacmans[@]}; do
-    printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
-    sudo pacman -S --noconfirm ${app}
-done
-for app in ${yays[@]}; do
-    printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
-    yay -S --noconfirm ${app}
-done
+# sync file between hosts
+setup-syncthing () {
+	# TODO find tray application for syncthing, now gtk for gnome and tray use qt need install kde depends
+	# maybe I should write it myself
+	systemctl enable syncthing@liubo # depends on your use name TODO
+	systemctl start syncthing@liubo
+}
 
-# change default shell to fish and install plugins via fisher
-chsh -s /usr/bin/fish
-# fisher update
+# use ly as display manager and remove lightdm
+setup-ly () {
+	sudo systemctl stop lightdm
+	sudo systemctl disable lightdm
+	sudo pacman -R lightdm-gtk-greeter
+	sudo pacman -R lightdm
+	sudo systemctl enable ly.servicev
+}
+
+# key remap daemond, better than Xmodmap
+setup-keyd () {
+	echo "capslock = overload(C, esc) | sudo tee -a /etc/keyd/default.cfg"
+    systemctl restart keyd
+}
+
+setup() {
+	for app in ${pacmans[@]}; do
+	    printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
+	    sudo pacman -S --noconfirm ${app}
+	done
+	for app in ${yays[@]}; do
+	    printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
+	    yay -S --noconfirm ${app}
+	done
+	setup-fish
+	setup-syncthing
+	setup-ly
+	setup-keyd
+}
+
 
 # TODO
-# replace default login management to ly and delete default
-# Xmodmap not work in tty (capslock not map to ctrl)
-# make capslock to esc or ctrl press with other key
 # fcitx5 config with rime
-# dmnu config, replace rofi
-# dmnu with bitwarden
 # terminal not work, seems with opengl version? or reinstall with another graph card driver (nvida)
-# wallpapeer not set
 # no sound
 # not test: bluetooth, connect other monitor
 # not test: control voice or backlight with i3status-rust
+# touchpad config
