@@ -23,10 +23,9 @@ pacmans=(
     tmux
     python3
     firefox # browser
-    fcitx5 # input method
+    fcitx5-im
     librime
     fcitx5-rime
-    fcitx5-gtk
     feh # set wallpaper
     dmenu # application launcher
     ranger # file manager
@@ -105,7 +104,7 @@ pacmans=(
 )
 
 yays=(
-    betterlockscreen 
+    betterlockscreen
     emacs
 	keyd-git # key remapping, better than Xmodmap
 	ly # better display manager than lightdm

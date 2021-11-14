@@ -61,9 +61,9 @@ bindsym $mod+shift+e exec emacs --with-profile default
 # betterlockscreen
 bindsym $mod+Control+l exec betterlockscreen -l dimblur
 
-# Application launcher 
+# Application launcher
 # bindsym $mod+r exec "rofi -show drun"
-bindsym $mod+r exec "dmenu_run -b -fn 'Iosevka Nerd-14'" 
+bindsym $mod+r exec "dmenu_run -b -fn 'Iosevka Nerd-14'"
 # The font, font-size and position should depond on your status bar.
 
 # Take a screenshot
@@ -220,7 +220,7 @@ for_window [class = "rofi"] floating enable sticky enable
 #exec_always --no-startup-id flameshot
 
 exec --no-startup-id "picom --experimental-backend"
-exec --no-startup-id fcitx5
+exec --no-startup-id fcitx5 -d
 exec --no-startup-id dunst
 exec --no-startup-id feh --bg-scale ~/.config/wallpaper.jpg
 # exec_always --no-startup-id "~/.config/polybar/launch.sh"
