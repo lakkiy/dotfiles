@@ -27,7 +27,9 @@ for_window [title   = "^.*"] border pixel 0
 #   |_|\_\___| |_| |___/
 #
 
-set $mod Mod4
+# Mod1 for Alt, Mod4 for windows-key
+# also set $sup $Mod4
+set $mod Mod1
 floating_modifier Mod4
 focus_follows_mouse no
 
