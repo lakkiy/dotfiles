@@ -76,7 +76,9 @@ pacmans=(
     qt5ct # change qt programs theme and icons
 
     # Themes
-    papirus-icon-theme
+	breeze-grub
+	breeze-gtk
+	breeze-icons
 
     # Fonts
     powerline-fonts
@@ -117,7 +119,9 @@ yays=(
     ttf-monaco
     ttf-recursive # default font for emacs && code
     ttf-google-fonts-git # some best fonts from goole, include cardo for emacs variable pitch mode
-    # apple-fonts # sf-pro sf-mono etc... FIXME abort
+	otf-apple-sf-pro
+
+	breeze-snow-cursor-theme
 
     # TODO try to use
     libinput-gestures # touchpad, must add user to input group
