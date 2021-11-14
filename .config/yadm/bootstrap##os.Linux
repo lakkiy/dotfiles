@@ -111,7 +111,8 @@ yays=(
 	ly # better display manager than lightdm
 
     # Fonts
-    ttf-iosevka-nerd # used in status bar
+    ttf-cardo # emacs variable pitch font
+    ttf-iosevka-nerd
     ttf-wps-fonts
     ttf-monaco
     ttf-recursive # default font for emacs && code
