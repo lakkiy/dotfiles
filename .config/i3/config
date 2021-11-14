@@ -63,7 +63,8 @@ bindsym $mod+Control+l exec betterlockscreen -l dimblur
 
 # Application launcher 
 # bindsym $mod+r exec "rofi -show drun"
-bindsym $mod+r exec "dmenu_run -b -fn 'Iosevka Nerd-14'" # The font, font-size and position should depond on your status bar.
+bindsym $mod+r exec "dmenu_run -b -fn 'Iosevka Nerd-14'" 
+# The font, font-size and position should depond on your status bar.
 
 # Take a screenshot
 # bindsym $mod+shift+p exec "scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures/Screenshots/'"
