@@ -122,10 +122,7 @@ yays=(
     #ttf-cardo # emacs variable pitch font
     ttf-iosevka-nerd
     ttf-wps-fonts
-    ttf-monaco
-    #ttf-recursive # default font for emacs && code
-    ttf-google-fonts-git # include cardo and recursive
-	#otf-apple-sf-pro
+    #otf-recursive # default font for emacs && code
 
 	# See breeze-grub
 	# breeze-snow-cursor-theme
@@ -142,7 +139,8 @@ yays=(
 )
 
 setup-zsh() {
-    chsh -s /usr/bin/zsh
+    chsh -s $(which zsh)
+	env zsh
 }
 
 # sync file between hosts
