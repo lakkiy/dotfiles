@@ -12,6 +12,10 @@ tap "homebrew/services"
 #brew "koekeishiya/formulae/skhd"
 #brew "koekeishiya/formulae/yabai"
 
+# THE ONE TRUE EDITOR
+tap jimeh/emacs-builds
+cask emacs-app-good
+
 brew "tree" # see file tree in command line
 brew "pandoc" # convert to pdf
 brew "notmuch" # read mail in emacs
@@ -101,11 +105,6 @@ cask "font-recursive-code" # Code editor default font
 cask "font-cardo" # variable pitch font
 cask "font-gnu-unifont"
 cask "font-sarasa-gothic" # 更纱黑体
-
-
-# THE ONE TRUE EDITOR
-tap "daviderestivo/emacs-head"
-brew "daviderestivo/emacs-head/emacs-head@29", args: ["with-cocoa", "with-modern-icon-doom3", "with-native-comp", "with-native-full-aot", "with-pdumper", "with-xwidgets"], link: true, restart_service:true
 
 # mos
 # bitwarden

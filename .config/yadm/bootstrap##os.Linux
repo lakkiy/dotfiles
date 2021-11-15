@@ -7,12 +7,13 @@
 sudo pacman -Syyu
 
 # install yay
+# FIXME failed to install on i3 default terminal after Y/n
 if ! command -v yay >/dev/null 2>&1; then
-    cd
+    cd ~
     git clone https://aur.archlinux.org/yay-bin.git
     cd yay-bin
     makepkg -si
-    cd
+    cd ~ 
     rm -rf yay-bin
 fi
 
@@ -25,7 +26,7 @@ pacmans=(
 	zsh
     kitty # terminal
     tmux
-    firefox # browser
+    #firefox # browser, manually install
     fcitx5-im
     librime
     fcitx5-rime
@@ -198,7 +199,6 @@ setup
 echo "Done, now reboot to make it effect"
 
 # TODO
-# fcitx5 config with rime
 # terminal not work, seems with opengl version? or reinstall with another graph card driver (nvida)
 # no sound
 # not test: bluetooth, connect other monitor
