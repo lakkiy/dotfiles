@@ -19,6 +19,7 @@ fi
 # packages installed via pacman
 pacmans=(
     archlinux-keyring # fix invalid pgp signtaur
+	yadm
     i3status-rust # replace polybar
     dmenu # application launcher
 	zsh
