@@ -3,7 +3,7 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # TODO check status
-xcode-select --install
+# xcode-select --install
 
 # install homebrew if it's missing
 if ! command -v brew >/dev/null 2>&1; then
