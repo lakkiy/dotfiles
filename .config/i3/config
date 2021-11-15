@@ -212,8 +212,9 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 #exec_always --no-startup-id xmodmap /home/liubo/.xmodmap
 #exec_always --no-startup-id dropbox
 
-exec_always --no-startup-id flameshot
+exec --no-startup-id xset r rate 150 60
 exec --no-startup-id "picom --experimental-backend"
+exec_always --no-startup-id flameshot
 exec --no-startup-id betterlockscreen -w dim
 exec --no-startup-id dunst
 exec --no-startup-id fcitx5 -d

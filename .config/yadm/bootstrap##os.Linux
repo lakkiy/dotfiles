@@ -204,3 +204,7 @@ echo "Done, now reboot to make it effect"
 # touchpad config
 # reopen laptop should on betterlockscreen status
 # rm default i3 config file?
+
+# FIXME
+# yay programs seems not install
+# setup program seems not run
