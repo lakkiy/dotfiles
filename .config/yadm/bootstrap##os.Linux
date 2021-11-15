@@ -4,6 +4,8 @@
 # Add additional packages like git vim zsh.
 # Use networkmanager and set timezone to Asia/Shanghai
 
+sudo pacman -Syyu
+
 # install yay
 if ! command -v yay >/dev/null 2>&1; then
     cd
