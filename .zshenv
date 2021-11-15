@@ -2,7 +2,8 @@
 
 export LANG="en_US.UTF-8"
 export TERM=xterm-256color
-export EDITOR='vim'
+# TODO emacs tiny config
+export EDITOR='emacs'
 
 # Golang
 export GO111MODULE=auto

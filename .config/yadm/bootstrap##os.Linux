@@ -21,25 +21,22 @@ pacmans=(
     archlinux-keyring # fix invalid pgp signtaur
 	yadm
     i3status-rust # replace polybar
-    dmenu # application launcher
+    # dmenu # application launcher i3 already installed
 	zsh
     kitty # terminal
     tmux
-    python3
     firefox # browser
     fcitx5-im
     librime
     fcitx5-rime
     ranger # file manager
     thunar # file manager
-    network-manager-apple # networkmanager tray
+    # network-manager-apple # networkmanager tray # FIXME tray not work
     lxappearance # theme switcher, also change icons, fonts
     picom
     dunst # notification-daemons
     cpio # unpack tar archive, install procs in zsh
     # tdlib # FIXME may git version, use telega in emacs
-    go
-    ipython
     zathura # pdf reader
     flameshot # screenshot
     file-roller # zip and unzip file
@@ -48,6 +45,11 @@ pacmans=(
     universal-ctags  # ctags
     global # gtags
 	syncthing
+
+	# programming
+    #go
+    #ipython
+    #python3 # system already installed
 
     # command line tools
     fzf # fuzzy finder
@@ -78,10 +80,10 @@ pacmans=(
     # mcomix # comic books
     # qt5ct # change qt programs theme and icons
 
-    # Themes
-	breeze-grub
-	breeze-gtk
-	breeze-icons
+    # Themes TODO backup lxapperance config file to auto set theme
+	#breeze-grub
+	#breeze-gtk
+	#breeze-icons
 
     # Fonts
     powerline-fonts
@@ -89,7 +91,7 @@ pacmans=(
     wqy-microhei
     wqy-microhei-lite
     wqy-zenhei
-	ttf-sarasa-gothic # 更纱黑体
+	#ttf-sarasa-gothic # 更纱黑体
 
 
 	# Optional
@@ -111,20 +113,21 @@ pacmans=(
 yays=(
     betterlockscreen
 	# betterlockscreen -u ~/.config/wallpaper.jpg
-    emacs
+    # emacs # TODO maybe use github actions to build binary
 	keyd-git # key remapping, better than Xmodmap
 	ly # better display manager than lightdm
 
     # Fonts
-    ttf-cardo # emacs variable pitch font
+    #ttf-cardo # emacs variable pitch font
     ttf-iosevka-nerd
     ttf-wps-fonts
     ttf-monaco
-    ttf-recursive # default font for emacs && code
-    ttf-google-fonts-git # some best fonts from goole, include cardo for emacs variable pitch mode
+    #ttf-recursive # default font for emacs && code
+    ttf-google-fonts-git # include cardo and recursive
 	otf-apple-sf-pro
 
-	breeze-snow-cursor-theme
+	# See breeze-grub
+	# breeze-snow-cursor-theme
 
     # TODO try to use
     # libinput-gestures # touchpad, must add user to input group
@@ -139,12 +142,6 @@ yays=(
 
 setup-zsh() {
     chsh -s /usr/bin/zsh
-}
-
-# change default shell to fish and install plugins
-setup-fish () {
-	sudo chsh -s /usr/bin/fish
-	fisher update # FIXME maybe fisher_plugins file will be delete before update
 }
 
 # sync file between hosts
@@ -172,6 +169,10 @@ setup-keyd () {
     sudo systemctl restart keyd
 }
 
+setup-betterlockscreen() {
+	betterlockscreen ~/.config/wallpaper.jpg
+}
+
 setup() {
 	# TODO maybe use git submodule in yadm
 	git clone https://github.com/404cn/eatemacs.git ~/.config/emacs
@@ -186,12 +187,15 @@ setup() {
 	    printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
 	    yay -S --noconfirm ${app}
 	done
+	setup-betterlockscreen
 	setup-syncthing
 	setup-ly
 	setup-keyd
     setup-zsh
 }
 setup
+
+echo "Done, now reboot to make it effect"
 
 # TODO
 # fcitx5 config with rime
@@ -201,3 +205,4 @@ setup
 # not test: control voice or backlight with i3status-rust
 # touchpad config
 # reopen laptop should on betterlockscreen status
+# rm default i3 config file?
