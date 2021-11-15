@@ -13,9 +13,12 @@ plugins=(
   mafredri/zsh-async
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-history-substring-search
+  zsh-users/zsh-completions 
 
   # user plugins
   rupa/z
+  hlissner/zsh-autopair
+  Aloxaf/fzf-tab
 
   # load this one last
   zsh-users/zsh-syntax-highlighting
@@ -27,11 +30,10 @@ for repo in $plugins; do
 done
 unset repo
 
-# DONTKNOW
-#autoload -Uz compinit
-#compinit
-
 PS1='%F{green}%n@%m%f %F{blue}%~%f %# '
 
 alias ls "ls --color"
 alias python "python3"
+
+# Local customizations, e.g. theme, plugins, aliases, etc.
+[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
