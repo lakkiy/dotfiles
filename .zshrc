@@ -7,8 +7,16 @@ if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
 fi
 source $ZPLUGINDIR/zsh_unplugged/unplugged.zsh
 
+autoload -U compinit
+compinit
+
 # add your plugins to this list
 plugins=(
+  # NOTE: fzf-tab needs to be loaded after compinit, 
+  # but before plugins which will wrap widgets, 
+  # such as zsh-autosuggestions or fast-syntax-highlighting!!
+  Aloxaf/fzf-tab
+
   # core plugins
   mafredri/zsh-async
   zsh-users/zsh-autosuggestions
@@ -18,7 +26,6 @@ plugins=(
   # user plugins
   rupa/z
   hlissner/zsh-autopair
-  Aloxaf/fzf-tab
 
   # load this one last
   zsh-users/zsh-syntax-highlighting
