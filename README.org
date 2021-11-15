@@ -1,2 +1,2 @@
 
-=curl -fsSL https://git.io/JL3ZE | bash -s clone https://github.com/404cn/dotfiles.git=
+=curl -fsSL https://github.com/TheLocehiliosan/yadm/raw/master/yadm | bash -s clone https://github.com/404cn/dotfiles.git=
