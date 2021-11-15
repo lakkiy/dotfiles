@@ -203,7 +203,7 @@ setup() {
 	done
 
 	if [ ${#packages[@]} -gt 0 ]; then
-		yay -S --noconfirm 
+		yay -S --noconfirm ${packages[@]}
 	else
 		echo "All packages are already installed"
 	fi		
