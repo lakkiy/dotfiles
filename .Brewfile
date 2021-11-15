@@ -13,8 +13,8 @@ tap "homebrew/services"
 #brew "koekeishiya/formulae/yabai"
 
 # THE ONE TRUE EDITOR
-tap jimeh/emacs-builds
-cask emacs-app-good
+tap "jimeh/emacs-builds"
+cask "emacs-app-good"
 
 brew "tree" # see file tree in command line
 brew "pandoc" # convert to pdf
