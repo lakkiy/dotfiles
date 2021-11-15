@@ -196,3 +196,4 @@ setup() {
 # not test: bluetooth, connect other monitor
 # not test: control voice or backlight with i3status-rust
 # touchpad config
+# reopen laptop should on betterlockscreen status

@@ -8,13 +8,9 @@ tap "homebrew/services"
 # skhd, yabai
 # defaults write com.apple.finder DisableAllAnimations -bool true
 # killall Finder # or logout and login
-tap "koekeishiya/formulae"
-brew "koekeishiya/formulae/skhd"
-brew "koekeishiya/formulae/yabai"
-
-# THE ONE TRUE EDITOR
-tap "daviderestivo/emacs-head"
-brew "daviderestivo/emacs-head/emacs-head@29", args: ["with-cocoa", "with-modern-icon-doom3", "with-native-comp", "with-native-full-aot", "with-pdumper", "with-xwidgets"], link: true, restart_service:true
+#tap "koekeishiya/formulae"
+#brew "koekeishiya/formulae/skhd"
+#brew "koekeishiya/formulae/yabai"
 
 brew "tree" # see file tree in command line
 brew "pandoc" # convert to pdf
@@ -22,18 +18,18 @@ brew "notmuch" # read mail in emacs
 brew "isync" # mbsync, sync mail to localhost
 brew "hugo" # Blogs
 brew "sdcv" # Stardict console version
-brew "graphviz" # for org-roam
+#brew "graphviz" # for org-roam
 brew "aspell" # for emacs spell check
-brew "hunspell" # for emacs spell check
-brew "bash" # Replace default 2.x bash
+#brew "hunspell" # for emacs spell check
+#brew "bash" # Replace default 2.x bash
 brew "bat"
 brew "bitwarden-cli" # use bitwarden in raycask
 brew "jq" # use bitwarden in raycask
 brew "clipper", restart_service: true
 brew "coreutils" # gnu utils
-brew "exa"
+#brew "exa"
 brew "fd"
-brew "fish"
+#brew "fish"
 brew "fzf"
 brew "git"
 brew "universal-ctags"
@@ -43,16 +39,16 @@ brew "go"
 brew "ipython"
 brew "kubernetes-cli"
 brew "libgccjit" # for emacs native-comp support
-brew "mpv" # play music in emacs
-brew "socat" # with mpv
-brew "neovim"
+#brew "mpv" # play music in emacs
+#brew "socat" # with mpv
+#brew "neovim"
 brew "tealdeer" # rust version tldr
 brew "pngpaste" # for org-download-clipboard
 brew "ripgrep"
 brew "tdlib", args: ["HEAD"]
 brew "tmux"
 brew "yadm" # Yet another dotfiles manager
-brew "golangci-lint" # lint for go codeAA
+#brew "golangci-lint" # lint for go codeAA
 brew "mosh" # UDP ssh
 brew "cloc" # count program line
 brew "htop" # better top
@@ -72,7 +68,7 @@ cask "basictex" # Export org to pdf
       # tlmgr update --self
       # tlmgr install wrapfig marvosym wasy wasysym capt-of
 cask "bob" # translate, ocr
-cask "discord"
+#cask "discord"
 cask "docker"
 cask "dropbox" # best file sync via cloud
 cask "firefox" # default browser
@@ -80,9 +76,9 @@ cask "hiddenbar" # Hide icon in menu bar
 cask "iina" # Media player
 cask "iterm2" # terminal
 cask "karabiner-elements" # Key remapping
-cask "keepingyouawake" # keep monitor on
+#cask "keepingyouawake" # keep monitor on
 cask "maczip" # Compress & extract
-cask "mounty" # Mounty for NTFS read/write
+#cask "mounty" # Mounty for NTFS read/write
 cask "miniconda" # python virtual env
 cask "mos" # Smooth and reverse scroll
 cask "neteasemusic" 
@@ -94,7 +90,7 @@ cask "the-unarchiver" # unrar
 cask "thunder" # evil downloader!
 cask "v2rayx"
 cask "via" # modify keyboard
-cask "whichspace" # with yabai, show space number on menu bar
+#cask "whichspace" # with yabai, show space number on menu bar
 cask "wireshark"
 
 # wps? logi options?
@@ -106,6 +102,10 @@ cask "font-cardo" # variable pitch font
 cask "font-gnu-unifont"
 cask "font-sarasa-gothic" # 更纱黑体
 
+
+# THE ONE TRUE EDITOR
+tap "daviderestivo/emacs-head"
+brew "daviderestivo/emacs-head/emacs-head@29", args: ["with-cocoa", "with-modern-icon-doom3", "with-native-comp", "with-native-full-aot", "with-pdumper", "with-xwidgets"], link: true, restart_service:true
 
 # mos
 # bitwarden
