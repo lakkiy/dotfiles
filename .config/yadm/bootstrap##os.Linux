@@ -125,7 +125,7 @@ yays=(
     ttf-monaco
     #ttf-recursive # default font for emacs && code
     ttf-google-fonts-git # include cardo and recursive
-	otf-apple-sf-pro
+	#otf-apple-sf-pro
 
 	# See breeze-grub
 	# breeze-snow-cursor-theme
@@ -190,9 +190,9 @@ setup() {
 	done
 	setup-betterlockscreen
 	setup-syncthing
-	setup-ly
 	setup-keyd
     setup-zsh
+	#setup-ly #FIXME black screen
 }
 setup
 
