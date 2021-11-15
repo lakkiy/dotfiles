@@ -190,7 +190,7 @@ setup() {
 	setup-keyd
     setup-zsh
 }
-
+setup
 
 # TODO
 # fcitx5 config with rime
