@@ -18,7 +18,8 @@ fi
 pacmans=(
     archlinux-keyring # fix invalid pgp signtaur
     i3status-rust # replace polybar
-    fish # shell
+    dmenu # application launcher
+	zsh
     kitty # terminal
     tmux
     python3
@@ -26,7 +27,6 @@ pacmans=(
     fcitx5-im
     librime
     fcitx5-rime
-    dmenu # application launcher
     ranger # file manager
     thunar # file manager
     network-manager-apple # networkmanager tray
@@ -62,18 +62,18 @@ pacmans=(
     neofetch # pron!!!!!!
 
     # TODO try to use
-    gucharmap # display symbols in font
-    gpick # color picker
-    pulseaudio # voice control
-    pamixer # command line voice control
-    xorg-xbacklight # brightness control, also dep of polybar
-    light # brightness command line control
-    redshift # adjusts the color temperature of your screen according to your surroundings
-    viewnior # picture viewer
+    # gucharmap # display symbols in font
+    # gpick # color picker
+    # pulseaudio # voice control
+    # pamixer # command line voice control
+    # xorg-xbacklight # brightness control, also dep of polybar
+    # light # brightness command line control
+    # redshift # adjusts the color temperature of your screen according to your surroundings
+    # viewnior # picture viewer
     # mpd # play music
     # ncmpcpp
-    mcomix # comic books
-    qt5ct # change qt programs theme and icons
+    # mcomix # comic books
+    # qt5ct # change qt programs theme and icons
 
     # Themes
 	breeze-grub
@@ -90,9 +90,9 @@ pacmans=(
 
 
 	# Optional
+    # fish # shell
     # retroarch # game
     # graphviz # show picture of emacs org-roam
-	# zsh # z shell if you don't want to use fish
     # hugo # static blog
     # mosh # udp version ssh
     # jupyterlab
@@ -124,7 +124,7 @@ yays=(
 	breeze-snow-cursor-theme
 
     # TODO try to use
-    libinput-gestures # touchpad, must add user to input group
+    # libinput-gestures # touchpad, must add user to input group
       # sudo gpasswd -a $USER input
 
 	# Optional
@@ -133,6 +133,10 @@ yays=(
 	# dropbox
 	# thunar-dropbox # depends on file manager
 )
+
+setup-zsh() {
+    chsh -s /usr/bin/zsh
+}
 
 # change default shell to fish and install plugins
 setup-fish () {
@@ -178,10 +182,10 @@ setup() {
 	    printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
 	    yay -S --noconfirm ${app}
 	done
-	setup-fish
 	setup-syncthing
 	setup-ly
 	setup-keyd
+    setup-zsh
 }
 
 

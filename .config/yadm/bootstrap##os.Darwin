@@ -15,10 +15,13 @@ if [ -f "$HOME/.Brewfile" ]; then
 	brew bundle --global
 fi
 
-# TODO check if fish is default shell
-echo $(which fish) | sudo tee -a /etc/shells > /dev/null
-chsh -s $(which fish)
-fisher update
+# use zsh for now
+# setup-fish() {
+#     # TODO check if fish is default shell
+#     echo $(which fish) | sudo tee -a /etc/shells > /dev/null
+#     chsh -s $(which fish)
+#     fisher update
+# }
 
 #: MacOS default write {{{
 # ~/.macos — https://mths.be/macos
