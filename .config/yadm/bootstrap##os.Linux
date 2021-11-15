@@ -172,27 +172,50 @@ setup-betterlockscreen() {
 	betterlockscreen ~/.config/wallpaper.jpg
 }
 
-setup() {
-	# TODO maybe use git submodule in yadm
-	git clone https://github.com/404cn/eatemacs.git ~/.config/emacs
-	# TODO maybe some dict and emoji can insall on linux, don't need to put it into git repo
-	git clone https://github.com/404cn/Rime.git ~/.local/share/fcitx5/rime # use fcitx5-remote -r to redeploy rime
 
+setup() {
+	if [ -d "~/.config/emacs" ]; then
+		git clone https://github.com/404cn/eatemacs.git ~/.config/emacs
+	fi
+	if [ -d "~/.local/share/fcitx5/rime" ]; then
+		# use fcitx5-remote -r to redeploy rime
+		git clone https://github.com/404cn/Rime.git ~/.local/share/fcitx5/rime 
+	fi
+
+	# pacman pacmages
+	packages=()
 	for app in ${pacmans[@]}; do
-	    printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
-	    sudo pacman -S --noconfirm ${app}
+		if pacman -Qs ${app} > /dev/null; then
+			printf "${app} is already installed, skip\n"
+		else
+			packages+=(${app})
+		fi
 	done
+
+	# yay packages
 	for app in ${yays[@]}; do
-	    printf "${BLUE} ➜  Installing ${app}...${NORMAL}\n"
-	    yay -S --noconfirm ${app}
+		if pacman -Qs ${app} > /dev/null; then
+			printf "${app} is already installed, skip\n"
+		else
+			yay -S --noconfirm ${app}
+			packages+=(${app})
+		fi
 	done
-	setup-betterlockscreen
-	setup-syncthing
-	setup-keyd
-    setup-zsh
-	#setup-ly #FIXME black screen
+
+	if [ ${#packages[@]} -gt 0 ]; then
+		yay -S --noconfirm 
+	else
+		echo "All packages are already installed"
+	fi		
 }
 setup
+
+# FIXME seems not install and run
+#setup-betterlockscreen
+#setup-syncthing
+#setup-keyd
+#setup-zsh
+#setup-ly # FIXME black screen
 
 echo "Done, now reboot to make it effect"
 
