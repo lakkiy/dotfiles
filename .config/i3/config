@@ -51,19 +51,15 @@ bindsym --whole-window $mod+button2 floating toggle
 # Terminal
 bindsym $mod+Return exec kitty
 
-# Web browser
-# bindsym $mod+b exec firefox
-bindsym $mod+b exec firefox
-
 # Emacs !!!
 bindsym $mod+e exec emacsclient -nc
-bindsym $mod+shift+e exec emacs --with-profile default
+bindsym $mod+shift+e exec emacs
+
 # betterlockscreen
 bindsym $mod+Control+l exec betterlockscreen -l dimblur
 
 # Application launcher
-# bindsym $mod+r exec "rofi -show drun"
-bindsym $mod+r exec "dmenu_run -b -fn 'Iosevka Nerd-14'"
+bindsym $mod+d exec "dmenu_run -b -fn 'Iosevka Nerd-14'"
 # The font, font-size and position should depond on your status bar.
 
 # Take a screenshot
@@ -99,7 +95,6 @@ bindsym $mod+q kill
 # Binding mode to resize windows
 bindsym $mod+Control+r mode "resize"
 mode "resize" {
-
         bindsym h resize shrink width 5 px or 5 ppt
         bindsym j resize grow height 5 px or 5 ppt
         bindsym k resize shrink height 5 px or 5 ppt
@@ -190,7 +185,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 
 # Open specific applications in floating (+ sticky) mode
-for_window [class = "rofi"] floating enable sticky enable
+#for_window [class = "rofi"] floating enable sticky enable
 
 # Use 'xprop | grep -i "class"' to find your window class name
 # Move certain apps to specific workspaces
