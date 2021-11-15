@@ -37,7 +37,7 @@ for repo in $plugins; do
 done
 unset repo
 
-PS1='%~ %F{cyan}» '
+PS1='%~ %(?.%F{cyan}.%F{magenta})» '
 
 alias ls "ls --color"
 alias python "python3"
