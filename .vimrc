@@ -190,8 +190,8 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'fatih/vim-go', { 'for': 'go' } " GoUpdateBinaries
+Plug 'Yggdroot/LeaderF' " LeaderfInstallCExtension
 Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
 call plug#end()
 
