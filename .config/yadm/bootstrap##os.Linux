@@ -157,11 +157,12 @@ setup-syncthing () {
 
 # use ly as display manager and remove lightdm
 setup-ly () {
-	sudo systemctl stop lightdm
 	sudo systemctl disable lightdm
+	sudo systemctl enable ly.servicev
+	sudo systemctl stop lightdm
+	sudo systemctl start ly
 	sudo pacman -R lightdm-gtk-greeter
 	sudo pacman -R lightdm
-	sudo systemctl enable ly.servicev
 }
 
 # key remap daemond, better than Xmodmap
