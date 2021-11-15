@@ -39,6 +39,11 @@ unset repo
 
 PS1='%~ %(?.%F{cyan}.%F{magenta})» '
 
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b' 
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
 alias ls "ls --color"
 alias python "python3"
 
