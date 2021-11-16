@@ -26,6 +26,7 @@ plugins=(
   # user plugins
   rupa/z
   hlissner/zsh-autopair
+  djui/alias-tips
 
   # load this one last
   zsh-users/zsh-syntax-highlighting
@@ -44,8 +45,8 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
-alias ls "ls --color"
-alias python "python3"
+alias ls="ls --color"
+alias python="python3"
 
 # Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
