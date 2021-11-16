@@ -53,6 +53,7 @@ pacmans=(
     #python3 # system already installed
 
     # command line tools
+	git-delta
     fzf # fuzzy finder
     bat # better cat
     fd # better find

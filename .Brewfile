@@ -16,6 +16,7 @@ tap "homebrew/services"
 tap "jimeh/emacs-builds"
 cask "emacs-app-good"
 
+brew "git-delta"
 brew "tree" # see file tree in command line
 brew "pandoc" # convert to pdf
 brew "notmuch" # read mail in emacs
