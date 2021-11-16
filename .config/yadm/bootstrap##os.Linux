@@ -197,7 +197,6 @@ setup() {
 		if pacman -Qs ${app} > /dev/null; then
 			printf "${app} is already installed, skip\n"
 		else
-			yay -S --noconfirm ${app}
 			packages+=(${app})
 		fi
 	done
