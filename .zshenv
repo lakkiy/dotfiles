@@ -21,3 +21,5 @@ export GTAGSLABEL=native-pygments
 
 # sdcv
 export STARDICT_DATA_DIR=$HOME/.sdcv-dict
+
+[ -f ~/.zshenv.local ] && source ~/.zshenv.local

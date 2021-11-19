@@ -10,6 +10,11 @@ source $ZPLUGINDIR/zsh_unplugged/unplugged.zsh
 autoload -U compinit
 compinit
 
+setopt HIST_IGNORE_DUPS
+HISTSIZE='128000'
+SAVEHIST='128000'
+HISTFILE="${ZDOTDIR}/.zsh_history"
+
 # add your plugins to this list
 plugins=(
   # NOTE: fzf-tab needs to be loaded after compinit, 
