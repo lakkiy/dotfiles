@@ -13,7 +13,6 @@ compinit
 setopt HIST_IGNORE_DUPS
 HISTSIZE='128000'
 SAVEHIST='128000'
-HISTFILE="${ZDOTDIR}/.zsh_history"
 
 # add your plugins to this list
 plugins=(
