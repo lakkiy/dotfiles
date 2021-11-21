@@ -67,6 +67,7 @@ brew "vim" # reinstall vim to add python3 support after alias python=python3
 # brew mongocli
 # brew mycli
 
+cask "popclip"
 cask "clashx-pro" # Say it!
 cask "balenaetcher"
 cask "basictex" # Export org to pdf
