@@ -7,12 +7,40 @@ if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
 fi
 source $ZPLUGINDIR/zsh_unplugged/unplugged.zsh
 
+# use curl download single file and source it
+function load-file () {
+    local url="$1"
+    local file_name=${${url##*/}%}
+    local dir_name="${ZPLUGINDIR:-$HOME/.zsh/plugins}/$file_name"
+
+    if [[ ! -d $dir_name ]]; then
+        mkdir -p $dir_name
+    fi
+    if [[ ! -f $dir_name/$file_name ]]; then
+		echo "Downloading $url..."
+        curl -sSL $url -o $dir_name/$file_name
+    fi  
+
+    source $dir_name/$file_name
+    fpath+=$dir_name
+}
+
 autoload -U compinit
 compinit
 
 setopt HIST_IGNORE_DUPS
 HISTSIZE='128000'
 SAVEHIST='128000'
+
+# for theme support see
+# https://github.com/zthxxx/jovial/issues/16
+setopt prompt_subst
+autoload -U colors && colors
+typeset -AHg FG BG
+for color in {000..255}; do
+  FG[$color]="%{\e[38;5;${color}m%}"
+  BG[$color]="%{\e[48;5;${color}m%}"
+done
 
 # add your plugins to this list
 plugins=(
@@ -36,11 +64,21 @@ plugins=(
   zsh-users/zsh-syntax-highlighting
 )
 
+files=(
+#  https://github.com/zthxxx/jovial/raw/master/jovial.zsh-theme # TODO bad floating point
+  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/colored-man-pages/colored-man-pages.plugin.zsh
+  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
+)
+
 # clone, source, and add to fpath
 for repo in $plugins; do
     plugin-load https://github.com/${repo}.git
 done
+for file in $files; do
+    load-file ${file}
+done
 unset repo
+unset file
 
 PS1='%~ %(?.%F{cyan}.%F{magenta})» '
 
