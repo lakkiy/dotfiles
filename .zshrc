@@ -65,7 +65,7 @@ plugins=(
 )
 
 files=(
-#  https://github.com/zthxxx/jovial/raw/master/jovial.zsh-theme # TODO bad floating point
+  https://github.com/zthxxx/jovial/raw/master/jovial.zsh-theme 
   https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/colored-man-pages/colored-man-pages.plugin.zsh
   https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
 )
@@ -80,7 +80,8 @@ done
 unset repo
 unset file
 
-PS1='%~ %(?.%F{cyan}.%F{magenta})» '
+# Use jovial theme instead
+#PS1='%~ %(?.%F{cyan}.%F{magenta})» '
 
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b' 
