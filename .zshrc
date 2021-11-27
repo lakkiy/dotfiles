@@ -178,6 +178,7 @@ unset -f bind-git-helper
 
 alias ls="ls --color"
 alias python="python3"
+alias vim="nvim"
 
 # Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local

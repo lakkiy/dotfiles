@@ -83,9 +83,30 @@ noremap q <C-w>q
 
 "" Split
 noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>a
+noremap <Leader>v :<C-u>vsplit<CR>
 
 nnoremap <Leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+
+"" Copy to system clipboard 
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
+
+"" Emacs like inline move
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+
+"" Center screen on next/previous selection
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap <C-o> <C-o>zz
+nnoremap <C-i> <C-i>zz
+nnoremap <C-]> <C-]>zz
+nnoremap <C-t> <C-t>zz
 
 ": changemewtf/not_plugins {{{
 
@@ -154,103 +175,6 @@ let g:netrw_liststyle=3     " tree view
 " - :edit a folder to open a file browser
 " - <CR>/v/t to open in an h-split/v-split/tab
 " - check |netrw-browse-maps| for more mappings
-
-": }}}
-
-": Copy to system clipboard {{{ 
-if system('uname -s') == "Darwin\n"
-  set clipboard=unnamed "OSX
-else
-  set clipboard=unnamedplus "Linux
-endif
-": }}}
-
-": Emacs like inline move {{{
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-": }}}
-
-": Center screen on next/previous selection {{{
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap <C-o> <C-o>zz
-nnoremap <C-i> <C-i>zz
-nnoremap <C-]> <C-]>zz
-nnoremap <C-t> <C-t>zz
-": }}}
-
-": Plugins(maybe) {{{
-
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin()
-Plug 'fatih/vim-go', { 'for': 'go' } " GoUpdateBinaries
-Plug 'Yggdroot/LeaderF' " LeaderfInstallCExtension
-Plug 'preservim/tagbar', { 'on': 'TagbarToggle' }
-call plug#end()
-
-": {{{ vim-go
-
-let g:go_fmt_command = "goimports"
-let g:go_fmt_fail_silently = 1
-let g:go_addtags_transform = "camelcase"
-let g:go_gopls_enabled = 0
-let g:go_list_type = "quickfix"
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_extra_types = 1
-
-augroup go
-
-  au!
-  au FileType go nmap <leader>t  <Plug>(go-test)
-
-augroup END
-
-": }}}
-
-": Leaderf {{{
-
-" Open Leaderf in popup window and preview the result
-"let g:Lf_WindowPosition = 'popup'
-"let g:Lf_PreviewInPopup = 1
-" Disable icons
-let g:Lf_ShowDevIcons = 0
-" Gtags, auto generate
-let g:Lf_GtagsAutoGenerate = 1
-let g:Lf_Gtagslabel = 'native-pygments'
-let g:Lf_RootMarkers = ['.git', '.hg', '.svn', 'go.mod']
-" Don't use separator in statueline
-let g:Lf_StlSeparator = { 'left': '', 'right': '' }
-
-noremap <leader>x :Leaderf command<CR>
-noremap <leader>i :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>s :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-noremap <leader>r :Leaderf rg<CR>
-noremap <leader>? :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>. :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>, :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-
-": }}}
-
-": Tagbar {{{
-nnoremap <leader>I :TagbarToggle<CR>
-": }}}
 
 ": }}}
 
