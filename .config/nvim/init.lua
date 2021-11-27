@@ -39,7 +39,7 @@ o.number = true -- show line number
 g.mapleader = ' '
 
 -- clear search highlighting
-map {'c', '<Leader>c', ':nohl<CR>'}
+map {'n', '<Leader>c', ':nohl<CR>'}
 
 -- q to quit window
 map {'n', 'q', '<C-w>q'}
