@@ -16,6 +16,7 @@ tap "homebrew/services"
 tap "jimeh/emacs-builds"
 cask "emacs-app-good"
 
+brew "ffmpeg" # play things in telega
 brew "neovim"
 brew "git-delta"
 brew "tree" # see file tree in command line
