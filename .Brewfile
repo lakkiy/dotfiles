@@ -69,13 +69,11 @@ brew "vim" # reinstall vim to add python3 support after alias python=python3
 # brew mongocli
 # brew mycli
 
-cask "popclip"
 cask "clashx-pro" # Say it!
 cask "balenaetcher"
 cask "basictex" # Export org to pdf
       # tlmgr update --self
       # tlmgr install wrapfig marvosym wasy wasysym capt-of
-cask "bob" # translate, ocr
 #cask "discord"
 cask "docker"
 cask "dropbox" # best file sync via cloud
@@ -88,7 +86,6 @@ cask "karabiner-elements" # Key remapping
 cask "maczip" # Compress & extract
 #cask "mounty" # Mounty for NTFS read/write
 cask "miniconda" # python virtual env
-cask "mos" # Smooth and reverse scroll
 cask "neteasemusic" 
 cask "netnewswire" # rss readeer
 cask "raycast" # better spotlight
