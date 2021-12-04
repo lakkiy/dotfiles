@@ -106,7 +106,7 @@ cask "font-recursive"
 cask "font-recursive-code" # Code editor default font
 cask "font-cardo" # variable pitch font
 cask "font-gnu-unifont"
-cask "font-sarasa-gothic" # 更纱黑体
+#cask "font-sarasa-gothic" # 更纱黑体 太大了
 
 # mos
 # bitwarden
