@@ -28,6 +28,26 @@ o.clipboard = 'unnamedplus' -- copy/paste to system clipboard
 o.swapfile = false -- don't use swap file
 
 -----------------------------------------------------------
+-- Indent
+-----------------------------------------------------------
+File = {
+	["rust"] = true,
+	["cs"] = true,
+}
+File.Settab = function()
+	if File[o.filetype] ~= nil then
+		o.tabstop = 4
+		o.shiftwidth = 4
+		o.softtabstop = 4
+	else
+		o.tabstop = 2
+		o.shiftwidth = 2
+		o.softtabstop = 2
+	end
+end
+cmd([[autocmd BufNewFile,BufWritePre,BufRead *.* exec ":lua File.Settab()" ]])
+
+-----------------------------------------------------------
 -- Neovim UI
 -----------------------------------------------------------
 o.number = true -- show line number
@@ -82,29 +102,29 @@ map {'n', '<C-h>', '<C-w>h'}
 -----------------------------------------------------------
 -- disable builtins plugins
 local disabled_built_ins = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
-    "getscript",
-    "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugin",
-    "logipat",
-    "rrhelper",
-    "spellfile_plugin",
-    "matchit",
-    "matchparen"
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+	"gzip",
+	"zip",
+	"zipPlugin",
+	"tar",
+	"tarPlugin",
+	"getscript",
+	"getscriptPlugin",
+	"vimball",
+	"vimballPlugin",
+	"2html_plugin",
+	"logipat",
+	"rrhelper",
+	"spellfile_plugin",
+	"matchit",
+	"matchparen"
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-    g["loaded_" .. plugin] = 1
+	g["loaded_" .. plugin] = 1
 end
 
 -----------------------------------------------------------
