@@ -16,6 +16,7 @@ tap "homebrew/services"
 tap "jimeh/emacs-builds"
 cask "emacs-app-good"
 
+brew "opensll" # used to build tdlib
 brew "ffmpeg" # play things in telega
 brew "neovim"
 brew "git-delta"
