@@ -98,6 +98,7 @@ cask "v2rayx"
 cask "via" # modify keyboard
 #cask "whichspace" # with yabai, show space number on menu bar
 cask "wireshark"
+#cask "next" # lisp browser
 
 # wps? logi options?
 
