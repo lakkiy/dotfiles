@@ -16,6 +16,11 @@ tap "homebrew/services"
 tap "jimeh/emacs-builds"
 cask "emacs-app-good"
 
+# install afew manually
+# pip3 install afew
+brew "notmuch" # read mail in emacs
+brew "isync" # mbsync, sync mail to localhost
+
 brew "terminal-notifier" # for notification 
 brew "opensll" # used to build tdlib
 brew "ffmpeg" # play things in telega
@@ -23,8 +28,6 @@ brew "neovim"
 brew "git-delta"
 brew "tree" # see file tree in command line
 brew "pandoc" # convert to pdf
-brew "notmuch" # read mail in emacs
-brew "isync" # mbsync, sync mail to localhost
 brew "hugo" # Blogs
 brew "sdcv" # Stardict console version
 #brew "graphviz" # for org-roam
