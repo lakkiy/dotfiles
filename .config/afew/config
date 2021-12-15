@@ -39,7 +39,7 @@ spam_tag = 'junk'
 
 [MailMover]
 # 要列出所有涉案的本地 maildir
-folders = 'alice/INBOX' 'alice/Junk' 'alice/Archive' 'alice/Sent'
+folders = 'gmail/INBOX' 'gmail/Junk' 'gmail/Archive' 'gmail/Sent'
 rename = True
 
 # xx 天之前的邮件不移动
@@ -51,7 +51,7 @@ rename = True
 # https://github.com/afewmail/afew/issues/242
 # 这就是为什么这里写得这么死板
 # 当然你可以把它当作一个 feature 加以利用
-alice/INBOX = 'tag:junk':alice/Junk 'NOT tag:inbox AND NOT tag:junk':alice/Archive
-alice/Junk = 'NOT tag:junk AND tag:inbox':alice/INBOX 'NOT tag:junk':alice/Archive
-alice/Archive = 'tag:inbox AND NOT tag:junk':alice/INBOX 'tag:junk':alice/Junk
-alice/Sent = 'NOT tag:sent':alice/INBOX
+gmail/INBOX = 'tag:junk':gmail/Junk 'NOT tag:inbox AND NOT tag:junk':gmail/Archive
+gmail/Junk = 'NOT tag:junk AND tag:inbox':gmail/INBOX 'NOT tag:junk':gmail/Archive
+gmail/Archive = 'tag:inbox AND NOT tag:junk':gmail/INBOX 'tag:junk':gmail/Junk
+gmail/Sent = 'NOT tag:sent':gmail/INBOX
