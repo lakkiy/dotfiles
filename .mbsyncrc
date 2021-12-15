@@ -3,7 +3,7 @@ AuthMechs PLAIN
 # Address to connect to
 Host imap.gmail.com
 User liubolovelife@gmail.com
-PassCmd "cat .mbsync-gmail"
+PassCmd "cat ~/.mbsync-gmail"
 # To store the password in an encrypted file use PassCmd instead of Pass
 # PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.mailpass.gpg"
 #
