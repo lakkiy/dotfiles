@@ -28,7 +28,7 @@
 # recipient list of replies, and will set the From address based on the
 # address to which the original email was addressed.
 #
-path=/Users/liubo//.mail
+path=/Users/artorias//.mail
 
 [user]
 primary_email=liubolovelife@gmail.com
@@ -49,6 +49,9 @@ primary_email=liubolovelife@gmail.com
 #
 
 [new]
+# afew need this
+# https://afew.readthedocs.io/en/latest/configuration.html#notmuch-config
+tags=new
 
 # Search configuration
 #
