@@ -121,3 +121,4 @@ case "font-latin-modern" # Emacs default english font
 # tampermonkey
 # step two
 # microsoft remote desktop
+# plash
