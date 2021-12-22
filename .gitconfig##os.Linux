@@ -1,0 +1,11 @@
+# -*- mode: gitconfig -*-
+[include]
+	path = ~/.gitconfig_global
+[user]
+	name =
+	email =
+[credential]
+	helper = cache --timeout=3600
+[github]
+	user =
+	oauth-token =

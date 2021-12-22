@@ -1,0 +1,11 @@
+# -*- mode: gitconfig -*-
+[include]
+	path = ~/.gitconfig_global
+[user]
+	name =
+	email =
+[credential]
+	helper = osxkeychain
+[github]
+	user =
+	oauth-token =

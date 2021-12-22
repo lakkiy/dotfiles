@@ -1,0 +1,9 @@
+# -*- mode: gitconfig -*-
+[core]
+	excludesFile = ~/.gitignore
+[pull]
+	rebase = false
+[push]
+	default = current
+[merge]
+	conflictStyle = diff3
