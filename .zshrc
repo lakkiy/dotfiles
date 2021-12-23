@@ -69,6 +69,7 @@ files=(
   https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh
   https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh
   https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fzf/fzf.plugin.zsh
+	https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/0869a57cb585ad6279abf108c742e3c6650ed9d5/plugins/kubectl/kubectl.plugin.zsh
 )
 
 # clone, source, and add to fpath
@@ -98,7 +99,9 @@ alias yl="yadm pull --rebase"
 alias yp="yadm push"
 alias ls="ls --color"
 alias python="python3"
-alias vim="nvim"
+alias me="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini Emacs
+alias mge="emacs -Q -l ~/.config/emacs/init-mini.el" # mini GUI Emacs
+alias vim="nvim" # after Emacs, please
 
 # Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
