@@ -108,6 +108,7 @@ alias vim="e" # after Emacs, please
 alias diff="delta"
 alias find="fd"
 alias grep="rg"
+alias cat="bat"
 ################## Aliases ##################
 
 # Local customizations, e.g. theme, plugins, aliases, etc.

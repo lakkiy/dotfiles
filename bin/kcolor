@@ -1,0 +1,6 @@
+#!/bin/bash
+# Add color for kubernetes pods status
+# Usage:
+#   kubectl get pods | kcolor
+
+GREP_COLOR='01;32' egrep --color=always 'Running|$' | GREP_COLOR='01;33' egrep --color=always 'ContainerCreating|$' | GREP_COLOR='01;33' egrep --color=always 'Terminating|$' | GREP_COLOR='01;31' egrep --color=always 'Error|$' | GREP_COLOR='01;31' egrep --color=always 'CrashLoopBackOff|$' | GREP_COLOR='01;31' egrep --color=always 'ImagePullBackOff|$' | GREP_COLOR='01;33' egrep --color=always 'Pending|$'

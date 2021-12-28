@@ -21,28 +21,33 @@ cask "emacs-app-good"
 brew "notmuch" # read mail in emacs
 brew "isync" # mbsync, sync mail to localhost
 
+# Modern Unix Tools
+# See https://github.com/ibraheemdev/modern-unix
+brew "jq"
+brew "git-delta"
+brew "bat"
+#brew "exa"
+brew "fd"
+brew "fzf"
+brew "cloc"
+brew "ripgrep"
+brew "tealdeer" # rust version tldr
+
 brew "terminal-notifier" # for notification
 brew "opensll" # used to build tdlib
 brew "ffmpeg" # play things in telega
 brew "neovim"
-brew "git-delta"
 brew "tree" # see file tree in command line
 brew "pandoc" # convert to pdf
 brew "hugo" # Blogs
 brew "sdcv" # Stardict console version
-#brew "graphviz" # for org-roam
+brew "graphviz" # for org-roam
 brew "aspell" # for emacs spell check
 #brew "hunspell" # for emacs spell check
 #brew "bash" # Replace default 2.x bash
-brew "bat"
 brew "bitwarden-cli" # use bitwarden in raycask
-brew "jq" # use bitwarden in raycask
 brew "clipper", restart_service: true
 brew "coreutils" # gnu utils
-#brew "exa"
-brew "fd"
-#brew "fish"
-brew "fzf"
 brew "git"
 brew "universal-ctags"
 brew "global", args: ["force"] # pip3 install pygments for more languages support like go/rust
@@ -54,15 +59,12 @@ brew "libgccjit" # for emacs native-comp support
 #brew "mpv" # play music in emacs
 #brew "socat" # with mpv
 #brew "neovim"
-brew "tealdeer" # rust version tldr
 brew "pngpaste" # for org-download-clipboard
-brew "ripgrep"
 brew "tdlib", args: ["HEAD"]
 brew "tmux"
 brew "yadm" # Yet another dotfiles manager
 #brew "golangci-lint" # lint for go codeAA
 brew "mosh" # UDP ssh
-brew "cloc" # count program line
 brew "htop" # better top
 brew "vim" # reinstall vim to add python3 support after alias python=python3
 
