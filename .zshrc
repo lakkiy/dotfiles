@@ -91,13 +91,24 @@ export FZF_CTRL_T_OPTS="--preview '(bat --style=plain --color=always {} || cat {
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact"
 export FZF_ALT_C_OPTS="--preview 'tree -NC {} | head -200'"
 
+################## Aliases ##################
+# Basic
 alias ls="ls --color"
 alias python="python3"
+alias k="kubectl"
+
+# Emacs
 alias e="emacsclient -nw"
 alias me="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini Emacs
 alias mge="emacs -Q -l ~/.config/emacs/init-mini.el" # mini GUI Emacs
 alias vim="e" # after Emacs, please
-alias k="kubectl"
+
+# Modern Unix Tools
+# See https://github.com/ibraheemdev/modern-unix
+alias diff="delta"
+alias find="fd"
+alias grep="rg"
+################## Aliases ##################
 
 # Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local

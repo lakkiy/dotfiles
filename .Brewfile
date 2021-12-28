@@ -21,7 +21,7 @@ cask "emacs-app-good"
 brew "notmuch" # read mail in emacs
 brew "isync" # mbsync, sync mail to localhost
 
-brew "terminal-notifier" # for notification 
+brew "terminal-notifier" # for notification
 brew "opensll" # used to build tdlib
 brew "ffmpeg" # play things in telega
 brew "neovim"
@@ -69,7 +69,7 @@ brew "vim" # reinstall vim to add python3 support after alias python=python3
 # brew "jupyterlab"
 
 # Database command line tool
-# brew pgcli 
+# brew pgcli
 # brew litecli
 # brew mongocli
 # brew mycli
@@ -92,7 +92,7 @@ cask "karabiner-elements" # Key remapping
 cask "maczip" # Compress & extract
 #cask "mounty" # Mounty for NTFS read/write
 cask "miniconda" # python virtual env
-cask "neteasemusic" 
+cask "neteasemusic"
 cask "netnewswire" # rss readeer
 cask "raycast" # better spotlight
 cask "squirrel" # input method
