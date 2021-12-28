@@ -19,7 +19,7 @@ function load-file () {
     if [[ ! -f $dir_name/$file_name ]]; then
 		echo "Downloading $url..."
         curl -sSL $url -o $dir_name/$file_name
-    fi  
+    fi
 
     source $dir_name/$file_name
     fpath+=$dir_name
@@ -48,7 +48,7 @@ plugins=(
   mafredri/zsh-async
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-history-substring-search
-  zsh-users/zsh-completions 
+  zsh-users/zsh-completions
 
   # user plugins
   rupa/z
@@ -61,8 +61,8 @@ plugins=(
 
 files=(
   # theme
-  https://github.com/zthxxx/jovial/raw/master/jovial.zsh-theme 
-  # ohmyzsh 
+  https://github.com/zthxxx/jovial/raw/master/jovial.zsh-theme
+  # ohmyzsh
   https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/colored-man-pages/colored-man-pages.plugin.zsh
   https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
   https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/common-aliases/common-aliases.plugin.zsh
@@ -91,16 +91,12 @@ export FZF_CTRL_T_OPTS="--preview '(bat --style=plain --color=always {} || cat {
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact"
 export FZF_ALT_C_OPTS="--preview 'tree -NC {} | head -200'"
 
-alias ya="yadm add"
-alias ys="yadm status"
-alias yc="yadm commit -m"
-alias yl="yadm pull --rebase"
-alias yp="yadm push"
 alias ls="ls --color"
 alias python="python3"
+alias e="emacsclient -nw"
 alias me="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini Emacs
 alias mge="emacs -Q -l ~/.config/emacs/init-mini.el" # mini GUI Emacs
-alias vim="nvim" # after Emacs, please
+alias vim="e" # after Emacs, please
 alias k="kubectl"
 
 # Local customizations, e.g. theme, plugins, aliases, etc.
