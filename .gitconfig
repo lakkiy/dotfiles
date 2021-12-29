@@ -1,11 +1,21 @@
 # -*- mode: gitconfig -*-
 [core]
 	excludesFile = ~/.gitignore
-[pull]
-	rebase = false
-[push]
-	default = current
+	pager = delta
+
 [merge]
 	conflictStyle = diff3
+
+# Detect moved blocks of code, also see:
+# https://github.com/dandavison/delta#--color-moved-support
+[diff]
+	colorMoved = default
+
+[push]
+	default = current
+
+[pull]
+	rebase = false
+
 [include]
 	path = ~/.gitconfig.local
