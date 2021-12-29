@@ -16,13 +16,6 @@ if [ -f "$HOME/.Brewfile" ]; then
 	brew bundle --global
 fi
 
-# use zsh for now
-# setup-fish() {
-#     echo $(which fish) | sudo tee -a /etc/shells > /dev/null
-#     chsh -s $(which fish)
-#     fisher update
-# }
-
 #: MacOS default write {{{
 # ~/.macos — https://mths.be/macos
 ###############################################################################
@@ -115,12 +108,6 @@ defaults write com.apple.finder QuitMenuItem -bool true
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
 
-# Show icons for hard drives, servers, and removable media on the desktop
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
@@ -184,7 +171,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 ###############################################################################
 
 # Change minimize/maximize window effect
-defaults write com.apple.dock mineffect -string "scale"
+#defaults write com.apple.dock mineffect -string "scale"
 
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
@@ -212,9 +199,9 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 defaults write com.apple.dock mru-spaces -bool false
 
 # Remove the auto-hiding Dock delay
-defaults write com.apple.dock autohide-delay -float 0
+#defaults write com.apple.dock autohide-delay -float 0
 # Remove the animation when hiding/showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0
+#defaults write com.apple.dock autohide-time-modifier -float 0
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true

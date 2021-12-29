@@ -6,7 +6,7 @@ export PATH=$HOME/bin:$PATH
 
 # Golang
 export GO111MODULE=auto
-export GOPROXY=https://goproxy.cn 
+export GOPROXY=https://goproxy.cn
 export GOPATH=$HOME/go
 export PATH=${GOPATH//://bin:}/bin:$PATH
 
@@ -20,5 +20,8 @@ export GTAGSLABEL=native-pygments
 
 # sdcv
 export STARDICT_DATA_DIR=$HOME/.sdcv-dict
+
+# krew -- kubectl plugin manager
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 [ -f ~/.zshenv.local ] && source ~/.zshenv.local
