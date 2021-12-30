@@ -3,26 +3,32 @@ ZPLUGINDIR=$HOME/.zsh/plugins
 
 # if you want to use unplugged, you can copy/paste plugin-clone here, or just pull the repo
 if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
-  git clone https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged
+    git clone https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged
 fi
 source $ZPLUGINDIR/zsh_unplugged/unplugged.zsh
 
 # use curl download single file and source it
-function load-file () {
-    local url="$1"
-    local file_name=${${url##*/}%}
-    local dir_name="${ZPLUGINDIR:-$HOME/.zsh/plugins}/$file_name"
+function load-files () {
+    local file_name dir_name
+    for url in $@; do
+        file_name=${${url##*/}%}
+        dir_name="${ZPLUGINDIR:-$HOME/.zsh/plugins}/$file_name"
 
-    if [[ ! -d $dir_name ]]; then
-        mkdir -p $dir_name
-    fi
-    if [[ ! -f $dir_name/$file_name ]]; then
-		echo "Downloading $url..."
-        curl -sSL $url -o $dir_name/$file_name
-    fi
+        if [[ ! -d $dir_name ]]; then
+            mkdir -p $dir_name
+        fi
+        if [[ ! -f $dir_name/$file_name ]]; then
+		    echo "Downloading $url..."
+            curl -sSL $url -o $dir_name/$file_name
+        fi
 
-    source $dir_name/$file_name
-    fpath+=$dir_name
+        fpath+=$dir_name
+        if (( $+functions[zsh-defer] )); then
+            zsh-defer source $dir_name/$file_name
+        else
+            source $dir_name/$file_name
+        fi
+    done
 }
 
 autoload -U compinit
@@ -38,49 +44,46 @@ setopt prompt_subst
 autoload -U colors && colors
 typeset -AHg FG BG
 for color in {000..255}; do
-  FG[$color]="%{\e[38;5;${color}m%}"
-  BG[$color]="%{\e[48;5;${color}m%}"
+    FG[$color]="%{\e[38;5;${color}m%}"
+    BG[$color]="%{\e[48;5;${color}m%}"
 done
 
 # add your plugins to this list
 plugins=(
-  # use zsh-defer magic to load the remaining plugins at hypersonic speed!
-  romkatv/zsh-defer
+    # use zsh-defer magic to load the remaining plugins at hypersonic speed!
+    romkatv/zsh-defer
 
-  # core plugins
-  mafredri/zsh-async
-  zsh-users/zsh-autosuggestions
-  zsh-users/zsh-history-substring-search
-  zsh-users/zsh-completions
+    # core plugins
+    zsh-users/zsh-autosuggestions
+    zsh-users/zsh-history-substring-search
+    zsh-users/zsh-completions
 
-  # user plugins
-  rupa/z
-  hlissner/zsh-autopair
-  djui/alias-tips
+    # user plugins
+    rupa/z
+    hlissner/zsh-autopair
+    djui/alias-tips
+    peterhurford/up.zsh
 
-  # load this one last
-  zsh-users/zsh-syntax-highlighting
+    # load this one last
+    zsh-users/zsh-syntax-highlighting
 )
 
 files=(
-  # theme
-  https://github.com/zthxxx/jovial/raw/master/jovial.zsh-theme
-  # ohmyzsh
-  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/colored-man-pages/colored-man-pages.plugin.zsh
-  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
-  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/common-aliases/common-aliases.plugin.zsh
-  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh
-  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh
-  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fzf/fzf.plugin.zsh
+    # ohmyzsh
+    https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/colored-man-pages/colored-man-pages.plugin.zsh
+    https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
+    https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/common-aliases/common-aliases.plugin.zsh
+    https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh
+    https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh
+    https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fzf/fzf.plugin.zsh
+    # TODO history, theme-and-appearance etc...
 )
 
+# do not defer prompt TODO not work in plugin-load
+load-files https://github.com/zthxxx/jovial/raw/master/jovial.zsh-theme
 # clone, source, and add to fpath
 plugin-load $plugins
-for file in $files; do
-    load-file ${file}
-done
-unset repo
-unset file
+load-files $files
 
 # Use jovial theme instead
 #PS1='%~ %(?.%F{cyan}.%F{magenta})» '
