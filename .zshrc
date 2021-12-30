@@ -5,7 +5,7 @@ ZPLUGINDIR=$HOME/.zsh/plugins
 if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
     git clone https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged
 fi
-source $ZPLUGINDIR/zsh_unplugged/unplugged.zsh
+source $ZPLUGINDIR/zsh_unplugged/zunplugged.zsh
 
 # use curl download single file and source it
 function load-files () {
