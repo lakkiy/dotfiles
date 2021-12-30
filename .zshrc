@@ -44,6 +44,9 @@ done
 
 # add your plugins to this list
 plugins=(
+  # use zsh-defer magic to load the remaining plugins at hypersonic speed!
+  romkatv/zsh-defer
+
   # core plugins
   mafredri/zsh-async
   zsh-users/zsh-autosuggestions
@@ -72,9 +75,7 @@ files=(
 )
 
 # clone, source, and add to fpath
-for repo in $plugins; do
-    plugin-load https://github.com/${repo}.git
-done
+plugin-load $plugins
 for file in $files; do
     load-file ${file}
 done
@@ -99,8 +100,8 @@ alias k="kubectl"
 
 # Emacs
 alias e="emacsclient -nw"
-alias me="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini Emacs
-alias mge="emacs -Q -l ~/.config/emacs/init-mini.el" # mini GUI Emacs
+alias em="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini Emacs
+alias mge="emacs -Q -l ~/.config/emacs/init-mini.el" # mini GUI Emacs
 alias vim="e" # after Emacs, please
 
 # Modern Unix Tools
