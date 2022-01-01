@@ -6,7 +6,7 @@ if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
     echo "Cloning mattmc3/zsh_unplugged"
     git clone https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged --quiet
 fi
-source $ZPLUGINDIR/zsh_unplugged/zunplugged.zsh
+source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.plugin.zsh
 
 # use curl download single file and source it
 function load-files () {
