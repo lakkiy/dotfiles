@@ -8,7 +8,8 @@ export PATH=$HOME/bin:$PATH
 export GO111MODULE=auto
 export GOPROXY=https://goproxy.cn
 export GOPATH=$HOME/go
-export PATH=${GOPATH//://bin:}/bin:$PATH
+export GOROOT=/usr/local/opt/go/libexec # use guru in emacs TODO for now just for macOS
+export PATH=${GOPATH//://bin:}/bin:${GOROOT//://bin:}/bin:$PATH
 
 # Rust
 export PATH=$HOME/.cargo/bin:$PATH
