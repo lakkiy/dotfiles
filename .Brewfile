@@ -33,6 +33,7 @@ brew "cloc"
 brew "ripgrep"
 brew "tealdeer" # rust version tldr
 
+brew "shellcheck" # check bash script
 brew "typespeed"
 brew "krew" # kubectl package manager, used to install kubectl-neat for now
 brew "terminal-notifier" # for notification
