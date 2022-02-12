@@ -196,7 +196,7 @@ setup() {
 	# pacman pacmages
 	packages=()
 	for app in ${pacmans[@]}; do
-		if pacman -Qs ${app} > /dev/null; then
+		if pacman -Q ${app} > /dev/null; then
 			printf "${app} is already installed, skip\n"
 		else
 			packages+=(${app})
@@ -205,7 +205,7 @@ setup() {
 
 	# yay packages
 	for app in ${yays[@]}; do
-		if pacman -Qs ${app} > /dev/null; then
+		if pacman -Q ${app} > /dev/null; then
 			printf "${app} is already installed, skip\n"
 		else
 			packages+=(${app})
