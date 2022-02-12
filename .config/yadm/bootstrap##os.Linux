@@ -53,12 +53,12 @@ pacmans=(
 	file-roller # zip and unzip file
 
 	########## Fonts ##########
-	powerline-fonts
+	ttf-sarasa-gothic # 更纱黑体
 	wqy-bitmapfont
 	wqy-microhei
 	wqy-microhei-lite
 	wqy-zenhei
-	#ttf-sarasa-gothic # 更纱黑体
+	# powerline-fonts
 
 	# Themes TODO backup lxapperance config file to auto set theme
 	# breeze-grub
@@ -124,11 +124,12 @@ yays=(
 	keyd # key remapping, better than Xmodmap
 	# emacs-git # NOTE you should install from source
 	########## Fonts #########
-	# ttf-cardo # emacs variable pitch font
-	ttf-iosevka-nerd
+    ttf-meslo
+    tty-bookerly
 	ttf-wps-fonts
-	ttf-lxgw-wenkai
-	#otf-recursive # default font for emacs && code
+    # ttf-menlo-powerline-git
+	# ttf-cardo # emacs variable pitch font
+	# ttf-lxgw-wenkai
 
 	# See breeze-grub
 	# breeze-snow-cursor-theme
