@@ -121,7 +121,7 @@ pacmans=(
 
 yays=(
     ########## required ##########
-	keyd-git # key remapping, better than Xmodmap # FIXME seems can not install
+	keyd # key remapping, better than Xmodmap
 	# emacs-git # NOTE you should install from source
 	########## Fonts #########
 	# ttf-cardo # emacs variable pitch font
