@@ -210,7 +210,6 @@ setup() {
 	for app in ${rpkgs[@]}; do
 		if dnf list -Q ${app} > /dev/null; then
 			rmpackages+=(${app})
-		else
 		fi
 	done
 	if [ ${#rmpackages[@]} -gt 0 ]; then
