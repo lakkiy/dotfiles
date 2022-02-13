@@ -18,11 +18,13 @@ pkgs=(
 	keyd # key remapping, better than Xmodmap
 	librime
 	fcitx5-rime
+    tdlib
 	ctags  # this is universal-ctags
 	notmuch                    # read mail in emacs
 	isync                      # sync mail to localhost, aka mbsync
 	global # gtags
 	syncthing
+    golang
 
 	##### command line tools #####
 	fzf # fuzzy finder
