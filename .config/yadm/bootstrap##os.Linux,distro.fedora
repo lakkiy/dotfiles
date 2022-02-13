@@ -158,7 +158,8 @@ pkgs=(
 )
 
 setup-zsh() {
-sudo lchsh $USER # /usr/bin/zsh
+    echo "Change shell, for zsh type /usr/bin/zsh"
+    sudo lchsh $USER # /usr/bin/zsh
 }
 
 # sync file between hosts
@@ -193,11 +194,13 @@ betterlockscreen ~/.config/wallpaper.jpg
 
 setup() {
 	if [ ! -d "~/.config/emacs" ]; then
-		git clone https://github.com/404cn/eatemacs.git ~/.config/emacs
+        echo "Clone emacs config..."
+		git clone -q https://github.com/404cn/eatemacs.git ~/.config/emacs
 	fi
 	if [ ! -d "~/.local/share/fcitx5/rime" ]; then
+        echo "Clone fcitx config..."
 		# use fcitx5-remote -r to redeploy rime
-		git clone https://github.com/404cn/Rime.git ~/.local/share/fcitx5/rime
+		git clone -q https://github.com/404cn/Rime.git ~/.local/share/fcitx5/rime
 	fi
 
 	for copr in ${corps[@]}; do
