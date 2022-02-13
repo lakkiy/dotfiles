@@ -158,8 +158,7 @@ pkgs=(
 )
 
 setup-zsh() {
-chsh -s $(which zsh)
-env zsh
+sudo lchsh -i
 }
 
 # sync file between hosts
@@ -193,10 +192,10 @@ betterlockscreen ~/.config/wallpaper.jpg
 
 
 setup() {
-	if [ -d "~/.config/emacs" ]; then
+	if [ ! -d "~/.config/emacs" ]; then
 		git clone https://github.com/404cn/eatemacs.git ~/.config/emacs
 	fi
-	if [ -d "~/.local/share/fcitx5/rime" ]; then
+	if [ ! -d "~/.local/share/fcitx5/rime" ]; then
 		# use fcitx5-remote -r to redeploy rime
 		git clone https://github.com/404cn/Rime.git ~/.local/share/fcitx5/rime
 	fi
@@ -208,7 +207,7 @@ setup() {
 	# pacman pacmages
 	rmpackages=()
 	for app in ${rpkgs[@]}; do
-		if dnf list -Q ${app} > /dev/null; then
+		if dnf list ${app} > /dev/null; then
 			rmpackages+=(${app})
 		fi
 	done
@@ -221,7 +220,7 @@ setup() {
 	# pacman pacmages
 	packages=()
 	for app in ${pkgs[@]}; do
-		if dnf list -Q ${app} > /dev/null; then
+		if dnf list ${app} > /dev/null; then
 			printf "${app} is already installed, skip\n"
 		else
 			packages+=(${app})

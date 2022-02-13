@@ -186,10 +186,10 @@ betterlockscreen ~/.config/wallpaper.jpg
 
 
 setup() {
-	if [ -d "~/.config/emacs" ]; then
+	if [ ! -d "~/.config/emacs" ]; then
 		git clone https://github.com/404cn/eatemacs.git ~/.config/emacs
 	fi
-	if [ -d "~/.local/share/fcitx5/rime" ]; then
+	if [ ! -d "~/.local/share/fcitx5/rime" ]; then
 		# use fcitx5-remote -r to redeploy rime
 		git clone https://github.com/404cn/Rime.git ~/.local/share/fcitx5/rime
 	fi
