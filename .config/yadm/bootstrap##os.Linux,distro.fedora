@@ -158,7 +158,7 @@ pkgs=(
 )
 
 setup-zsh() {
-sudo lchsh -i
+sudo lchsh $USER # /usr/bin/zsh
 }
 
 # sync file between hosts
