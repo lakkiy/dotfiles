@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo dnf update && sudo dnf upgrade
+
 coprs=(
     cdayjr/yadm
     dspom/keyd
