@@ -1,6 +1,5 @@
 #!/bin/bash
 
-sudo dnf update && sudo dnf upgrade
 
 coprs=(
     cdayjr/yadm
@@ -223,6 +222,8 @@ setup() {
 	else
 		echo "No packages need to be remove."
 	fi
+
+    sudo dnf update && sudo dnf upgrade
 
 	# pacman pacmages
 	packages=()
