@@ -77,17 +77,19 @@ files=(
     https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh
     https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh
     https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fzf/fzf.plugin.zsh
-    # TODO history, theme-and-appearance etc...
 )
 
-# do not defer prompt TODO not work in plugin-load
-load-files https://github.com/zthxxx/jovial/raw/master/jovial.zsh-theme
 # clone, source, and add to fpath
 plugin-load $plugins
 load-files $files
 
-# Use jovial theme instead
-#PS1='%~ %(?.%F{cyan}.%F{magenta})» '
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git*' formats '(%b)'
+
+# maybe find a simple way to add git status
+# TODO add color
+PS1='%~ %(?.%F{cyan}.%F{magenta})%B${vcs_info_msg_0_}%b» '
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
