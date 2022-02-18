@@ -89,7 +89,7 @@ zstyle ':vcs_info:git*' formats '(%b)'
 
 # maybe find a simple way to add git status
 # TODO add color
-PS1='%~ %(?.%F{cyan}.%F{magenta})%B${vcs_info_msg_0_}%b» '
+PS1='%~ %B${vcs_info_msg_0_}%b%(?.%F{cyan}.%F{magenta})» '
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
