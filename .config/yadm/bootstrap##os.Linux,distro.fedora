@@ -43,7 +43,7 @@ pkgs=(
 
     # for build emacs
     # ? dnf builddep emacs
-    # --with-pgtk --with-xwidgets --with-nawive-compilation --with-json --with-mailutils
+    # --with-pgtk --with-xwidgets --with-native-compilation --with-json --with-mailutils
     autoconf # for generate makefile
     texinfo
     libXpm-devel # this will install libX11-devel
