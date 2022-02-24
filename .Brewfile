@@ -33,6 +33,7 @@ brew "cloc"
 brew "ripgrep"
 brew "tealdeer" # rust version tldr
 
+brew "texinfo" # for build emacs
 brew "deno"
 brew "lrzsz" # send/recive single file from/to remote server
 brew "shellcheck" # check bash script
