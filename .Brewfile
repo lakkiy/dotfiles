@@ -82,6 +82,7 @@ brew "vim" # reinstall vim to add python3 support after alias python=python3
 # brew mongocli
 # brew mycli
 
+cask "shottr" # screen shot
 cask "anki"
 cask "clashx-pro" # Say it!
 cask "balenaetcher"
