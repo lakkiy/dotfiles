@@ -23,3 +23,6 @@
 ;; git clone https://github.com/AmaiKinono/Tokimacs.git ~/repo/emacsconf/toki
 ;; git clone https://github.com/manateelazycat/lazycat-emacs.git ~/repo/emacsconf/lazycat
 ;; git clone https://github.com/cjohansen/.emacs.d.git ~/repo/emacsconf/cjohansen
+
+;; git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
+;; emacs --with-profile default
