@@ -11,6 +11,7 @@
  ("purcell" . ((user-emacs-directory . "~/repo/emacsconf/purcell")))
  ("prelude" . ((user-emacs-directory . "~/repo/emacsconf/prelude"))))
 
+;; git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
 ;; git clone https://github.com/purcell/emacs.d.git ~/repo/emacsconf/purcell
 ;; git clone https://github.com/redguardtoo/emacs.d.git ~/repo/emacsconf/redguardtoo
 ;; git clone https://github.com/seagle0128/.emacs.d.git  ~/repo/emacsconf/centaur
