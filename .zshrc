@@ -106,9 +106,9 @@ alias k="kubectl"
 
 # Emacs
 alias e="emacsclient -nw"
-alias em="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini Emacs
-alias mge="emacs -Q -l ~/.config/emacs/init-mini.el" # mini GUI Emacs
-alias vim="e" # after Emacs, please
+alias eg="emacsclient -nc"
+alias me="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini Emacs
+alias meg="emacs -Q -l ~/.config/emacs/init-mini.el" # mini GUI Emacs
 
 # Modern Unix Tools
 # See https://github.com/ibraheemdev/modern-unix
