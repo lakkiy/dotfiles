@@ -1,4 +1,5 @@
 (("default" . ((user-emacs-directory . "~/.config/emacs")))
+ ("aeghn" . ((user-emacs-directory . "~/repo/emacsconf/aeghn")))
  ("cjohansen" . ((user-emacs-directory . "~/repo/emacsconf/cjohansen")))
  ("lazycat" . ((user-emacs-directory . "~/repo/emacsconf/lazycat")))
  ("tecosaur" . ((user-emacs-directory . "~/repo/emacsconf/tecosaur")))
@@ -23,6 +24,7 @@
 ;; git clone https://github.com/AmaiKinono/Tokimacs.git ~/repo/emacsconf/toki
 ;; git clone https://github.com/manateelazycat/lazycat-emacs.git ~/repo/emacsconf/lazycat
 ;; git clone https://github.com/cjohansen/.emacs.d.git ~/repo/emacsconf/cjohansen
+;; git clone https://github.com/aeght/emacs.d ~/repo/emacsconf/aeghn
 
 ;; git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
 ;; emacs --with-profile default
