@@ -104,6 +104,11 @@ alias ls="ls --color"
 alias python="python3"
 alias k="kubectl"
 
+# Prettify ls
+if (( $+commands[gls] )); then
+    alias ls='gls --color=tty --group-directories-first'
+fi
+
 # Emacs
 alias e="emacsclient -nw"
 alias eg="emacsclient -nc"
