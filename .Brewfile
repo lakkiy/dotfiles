@@ -130,6 +130,7 @@ cask "font-lxgw-wenkai"
 
 # variable font
 cask "font-cardo"
+cask "font-dejavu" # serif
 
 #### FONT ####
 
