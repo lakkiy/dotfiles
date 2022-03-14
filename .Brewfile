@@ -123,6 +123,7 @@ cask "font-gnu-unifont"
 #cask "font-recursive"
 cask "font-latin-modern"
 cask "font-meslo-lg-nerd-font"
+cask "mononoki"
 
 # Chinese font
 cask "font-lxgw-wenkai"
