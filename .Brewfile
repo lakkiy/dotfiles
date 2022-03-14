@@ -117,13 +117,21 @@ cask "wireshark"
 # wps? logi options?
 
 #### FONT ####
-#cask "font-recursive"
-#cask "font-recursive-code" # Code editor default font
-cask "font-cardo" # variable pitch font
 cask "font-gnu-unifont"
-#cask "font-sarasa-gothic" # 更纱黑体 太大了
-case "font-latin-modern" # Emacs default english font
-case "font-meslo-lg-nerd-font" # iterm default font
+
+# English font
+#cask "font-recursive"
+cask "font-latin-modern"
+cask "font-meslo-lg-nerd-font"
+
+# Chinese font
+cask "font-lxgw-wenkai"
+#cask "font-sarasa-gothic"
+
+# variable font
+cask "font-cardo"
+
+#### FONT ####
 
 # mos
 # bitwarden
