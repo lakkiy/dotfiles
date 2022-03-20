@@ -16,6 +16,10 @@ if [ -f "$HOME/.Brewfile" ]; then
 	brew bundle --global
 fi
 
+if [ ! -d "$$HOME/Developer" ]; then
+    mkdir $HOME/Developer
+fi
+
 #: MacOS default write {{{
 # ~/.macos — https://mths.be/macos
 ###############################################################################

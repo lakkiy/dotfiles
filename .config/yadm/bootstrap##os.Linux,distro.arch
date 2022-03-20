@@ -186,6 +186,10 @@ betterlockscreen ~/.config/wallpaper.jpg
 
 
 setup() {
+    if [ ! -d "$$HOME/Developer" "" ]; then
+            mkdir $HOME/Developer
+    fi
+
 	if [ ! -d "~/.config/emacs" ]; then
 	        echo "Clone emacs config..."
 	        git clone -q https://github.com/404cn/eatemacs.git ~/.config/emacs
