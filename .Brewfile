@@ -15,6 +15,7 @@ tap "homebrew/services"
 # THE ONE TRUE EDITOR
 tap "jimeh/emacs-builds"
 cask "emacs-app-good"
+brew "xapian" # for xeft
 
 # install afew manually
 # pip3 install afew
