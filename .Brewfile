@@ -120,6 +120,9 @@ cask "wireshark"
 #### FONT ####
 cask "font-gnu-unifont"
 
+brew "svn"
+cask "font-ibm-plex-mono"
+
 # English font
 #cask "font-recursive"
 cask "font-latin-modern"
