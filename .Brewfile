@@ -120,6 +120,9 @@ cask "wireshark"
 #### FONT ####
 cask "font-gnu-unifont"
 
+brew "font-util"
+cask "font-iosevka"
+
 brew "svn"
 cask "font-ibm-plex-mono"
 
