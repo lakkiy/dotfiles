@@ -1,5 +1,6 @@
 (("default" . ((user-emacs-directory . "~/.config/emacs")))
  ("aeghn" . ((user-emacs-directory . "~/Developer/emacsconf/aeghn")))
+ ("motform" . ((user-emacs-directory . "~/Developer/emacsconf/motform")))
  ("mengmeng" . ((user-emacs-directory . "~/Developer/emacsconf/mengmeng")))
  ("cjohansen" . ((user-emacs-directory . "~/Developer/emacsconf/cjohansen")))
  ("lazycat" . ((user-emacs-directory . "~/Developer/emacsconf/lazycat")))
@@ -26,6 +27,6 @@
 ;; git clone https://github.com/manateelazycat/lazycat-emacs.git ~/Developer/emacsconf/lazycat
 ;; git clone https://github.com/cjohansen/.emacs.d.git ~/Developer/emacsconf/cjohansen
 ;; git clone https://github.com/aeght/emacs.d.git ~/Developer/emacsconf/aeghn
-;; git clone https://github.com/condy0919/.emacs.d.git ~/Developer/emacsconf/mengmeng
+;; git clone https://github.com/motform/emacs.d.git motform
 
 ;; emacs --with-profile default
