@@ -1,5 +1,6 @@
 (("default" . ((user-emacs-directory . "~/.config/emacs")))
  ("aeghn" . ((user-emacs-directory . "~/Developer/emacsconf/aeghn")))
+ ("shenglao" . ((user-emacs-directory . "~/Developer/emacsconf/shenglao")))
  ("motform" . ((user-emacs-directory . "~/Developer/emacsconf/motform")))
  ("mengmeng" . ((user-emacs-directory . "~/Developer/emacsconf/mengmeng")))
  ("cjohansen" . ((user-emacs-directory . "~/Developer/emacsconf/cjohansen")))
@@ -14,19 +15,20 @@
  ("purcell" . ((user-emacs-directory . "~/Developer/emacsconf/purcell")))
  ("prelude" . ((user-emacs-directory . "~/Developer/emacsconf/prelude"))))
 
-;; git clone https://github.com/plexus/chemacs2.git ~/.emacs.d
-;; git clone https://github.com/purcell/emacs.d.git ~/Developer/emacsconf/purcell
-;; git clone https://github.com/redguardtoo/emacs.d.git ~/Developer/emacsconf/redguardtoo
-;; git clone https://github.com/seagle0128/.emacs.d.git  ~/Developer/emacsconf/centaur
-;; git clone https://github.com/bbatsov/prelude  ~/Developer/emacsconf/prelude
-;; git clone https://github.com/tecosaur/emacs-config.git  ~/Developer/emacsconf/tecosaur
-;; git clone https://github.com/DogLooksGood/meomacs.git ~/Developer/emacsconf/dog
-;; git clone https://github.com/ogdenwebb/snug-emacs.git  ~/Developer/emacsconf/snug
-;; git clone https://github.com/casouri/lunarymacs.git ~/Developer/emacsconf/lunary
-;; git clone https://github.com/AmaiKinono/Tokimacs.git ~/Developer/emacsconf/toki
-;; git clone https://github.com/manateelazycat/lazycat-emacs.git ~/Developer/emacsconf/lazycat
-;; git clone https://github.com/cjohansen/.emacs.d.git ~/Developer/emacsconf/cjohansen
-;; git clone https://github.com/aeght/emacs.d.git ~/Developer/emacsconf/aeghn
-;; git clone https://github.com/motform/emacs.d.git motform
+;; git clone https://github.com/plexus/chemacs2.git ~/.emacs.d --depth 1
+;; git clone https://github.com/purcell/emacs.d.git ~/Developer/emacsconf/purcell --depth 1
+;; git clone https://github.com/redguardtoo/emacs.d.git ~/Developer/emacsconf/redguardtoo --depth 1
+;; git clone https://github.com/seagle0128/.emacs.d.git  ~/Developer/emacsconf/centaur --depth 1
+;; git clone https://github.com/bbatsov/prelude  ~/Developer/emacsconf/prelude --depth 1
+;; git clone https://github.com/tecosaur/emacs-config.git  ~/Developer/emacsconf/tecosaur --depth 1
+;; git clone https://github.com/DogLooksGood/meomacs.git ~/Developer/emacsconf/dog --depth 1
+;; git clone https://github.com/ogdenwebb/snug-emacs.git  ~/Developer/emacsconf/snug --depth 1
+;; git clone https://github.com/casouri/lunarymacs.git ~/Developer/emacsconf/lunary --depth 1
+;; git clone https://github.com/AmaiKinono/Tokimacs.git ~/Developer/emacsconf/toki --depth 1
+;; git clone https://github.com/manateelazycat/lazycat-emacs.git ~/Developer/emacsconf/lazycat --depth 1
+;; git clone https://github.com/cjohansen/.emacs.d.git ~/Developer/emacsconf/cjohansen --depth 1
+;; git clone https://github.com/aeght/emacs.d.git ~/Developer/emacsconf/aeghn --depth 1
+;; git clone https://github.com/motform/emacs.d.git motform --depth 1
+;; git clone https://github.com/yangsheng6810/dotfiles.git ~/Developer/emacsconf/shenglao --depth 1
 
 ;; emacs --with-profile default
