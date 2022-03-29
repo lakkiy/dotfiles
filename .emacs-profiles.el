@@ -1,5 +1,6 @@
 (("default" . ((user-emacs-directory . "~/.config/emacs")))
  ("aeghn" . ((user-emacs-directory . "~/Developer/emacsconf/aeghn")))
+ ("nasy" . ((user-emacs-directory . "~/Developer/emacsconf/nasy")))
  ("shenglao" . ((user-emacs-directory . "~/Developer/emacsconf/shenglao")))
  ("motform" . ((user-emacs-directory . "~/Developer/emacsconf/motform")))
  ("mengmeng" . ((user-emacs-directory . "~/Developer/emacsconf/mengmeng")))
@@ -30,5 +31,6 @@
 ;; git clone https://github.com/aeght/emacs.d.git ~/Developer/emacsconf/aeghn --depth 1
 ;; git clone https://github.com/motform/emacs.d.git motform --depth 1
 ;; git clone https://github.com/yangsheng6810/dotfiles.git ~/Developer/emacsconf/shenglao --depth 1
+;; git clone https://github.com/nasyxx/emacs.d.git ~/Developer/emacsconf/nasy --depth 1
 
 ;; emacs --with-profile default
