@@ -1,5 +1,6 @@
 (("default" . ((user-emacs-directory . "~/.config/emacs")))
  ("ilyaw39" . ((user-emacs-directory . "~/Developer/emacsconf/ilyaw39"))) ;; latex, focus writing on org mode
+ ("gk" . ((user-emacs-directory . "~/Developer/emacsconf/gk"))) ;; gkroam creater
  ("aeghn" . ((user-emacs-directory . "~/Developer/emacsconf/aeghn")))
  ("nasy" . ((user-emacs-directory . "~/Developer/emacsconf/nasy")))
  ("shenglao" . ((user-emacs-directory . "~/Developer/emacsconf/shenglao")))
@@ -34,5 +35,6 @@
 ;; git clone https://github.com/yangsheng6810/dotfiles.git ~/Developer/emacsconf/shenglao --depth 1
 ;; git clone https://github.com/nasyxx/emacs.d.git ~/Developer/emacsconf/nasy --depth 1
 ;; git clone https://github.com/ilyaw39/.emacs.d.git ~/Developer/emacsconf/ilyaw39 --depth 1
+;; git clone https://github.com/Kinneyzhang/.emacs.d.git ~/Developer/emacsconf/gk --depth 1
 
 ;; emacs --with-profile default
