@@ -84,8 +84,10 @@ load-files $files
 
 ### PS1
 
+setopt prompt_subst
 autoload -Uz vcs_info
 precmd() { vcs_info }
+
 zstyle ':vcs_info:git*' formats '(%b)'
 
 PS1='%~ %B${vcs_info_msg_0_}%b%(?.%F{cyan}.%F{magenta})» '
