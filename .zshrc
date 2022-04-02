@@ -1,4 +1,5 @@
-# where should we store your Zsh plugins?
+### Plugin manager
+
 ZPLUGINDIR=$HOME/.zsh/plugins
 
 # if you want to use unplugged, you can copy/paste plugin-clone here, or just pull the repo
@@ -32,24 +33,21 @@ function load-files () {
     done
 }
 
+
+### Basic config
+
 autoload -U compinit
 compinit
 
+
+### History
 setopt HIST_IGNORE_DUPS
 HISTSIZE='128000'
 SAVEHIST='128000'
 
-# for theme support see
-# https://github.com/zthxxx/jovial/issues/16
-setopt prompt_subst
-autoload -U colors && colors
-typeset -AHg FG BG
-for color in {000..255}; do
-    FG[$color]="%{\e[38;5;${color}m%}"
-    BG[$color]="%{\e[48;5;${color}m%}"
-done
 
-# add your plugins to this list
+### Plugins
+
 plugins=(
     # use zsh-defer magic to load the remaining plugins at hypersonic speed!
     romkatv/zsh-defer
@@ -83,13 +81,17 @@ files=(
 plugin-load $plugins
 load-files $files
 
+
+### PS1
+
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git*' formats '(%b)'
 
-# maybe find a simple way to add git status
-# TODO add color
 PS1='%~ %B${vcs_info_msg_0_}%b%(?.%F{cyan}.%F{magenta})» '
+
+
+### Fzf
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
@@ -98,7 +100,9 @@ export FZF_CTRL_T_OPTS="--preview '(bat --style=plain --color=always {} || cat {
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact"
 export FZF_ALT_C_OPTS="--preview 'tree -NC {} | head -200'"
 
-################## Aliases ##################
+
+### Alias
+
 # Basic
 alias ls="ls --color"
 alias python="python3"
@@ -121,7 +125,9 @@ alias diff="delta"
 alias find="fd"
 alias grep="rg"
 alias cat="bat"
-################## Aliases ##################
+
+
+### Vterm
 
 # https://github.com/akermu/emacs-libvterm#shell-side-configuration
 vterm_printf(){
@@ -136,5 +142,26 @@ vterm_printf(){
     fi
 }
 
-# Local customizations, e.g. theme, plugins, aliases, etc.
+# https://github.com/akermu/emacs-libvterm#message-passing
+vterm_cmd() {
+    local vterm_elisp
+    vterm_elisp=""
+    while [ $# -gt 0 ]; do
+        vterm_elisp="$vterm_elisp""$(printf '"%s" ' "$(printf "%s" "$1" | sed -e 's|\\|\\\\|g' -e 's|"|\\"|g')")"
+        shift
+    done
+    vterm_printf "51;E$vterm_elisp"
+}
+
+find_file() {
+    vterm_cmd find-file "$(realpath "${@:-.}")"
+}
+
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+    alias e='find_file'
+fi
+
+
+### Local customizations, e.g. theme, plugins, aliases, etc.
+
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
