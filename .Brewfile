@@ -98,6 +98,7 @@ cask "firefox" # default browser
 cask "hiddenbar" # Hide icon in menu bar
 cask "iina" # Media player
 cask "iterm2" # terminal
+cask "warp" # rust based terminal
 cask "karabiner-elements" # Key remapping
 #cask "keepingyouawake" # keep monitor on
 cask "maczip" # Compress & extract
