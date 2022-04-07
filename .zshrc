@@ -90,7 +90,7 @@ precmd() { vcs_info }
 
 zstyle ':vcs_info:git*' formats '(%b)'
 
-PS1='%m %F{red}:: %F{green}%~ %B${vcs_info_msg_0_}%b%(?.%F{cyan}.%F{magenta})» '
+PS1='%m  %F{red}:: %F{green}%~ %B${vcs_info_msg_0_}%b%(?.%F{cyan}.%F{magenta})» '
 
 
 ### Fzf
