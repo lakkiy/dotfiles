@@ -91,7 +91,7 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git*' formats '(%b)'
 
 # for i in {1..256}; do print -P "%F{$i}Color : $i"; done;
-PS1='%m  %F{red}:: %F{green}%~ %B${vcs_info_msg_0_}%b%(?.%F{18}.%F{magenta})» '
+PS1='%m  %F{red}:: %F{green}%~ %B${vcs_info_msg_0_}%b%(?.%F{57}.%F{magenta})» '
 
 
 ### Fzf
@@ -120,7 +120,7 @@ fi
 alias e="emacsclient -nw"
 alias eg="emacsclient -nc"
 alias me="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini Emacs
-alias meg="emacs -Q -l ~/.config/emacs/init-mini.el" # mini GUI Emacs
+alias meg="emacs -Q -l ~/.config/emacs/init-mini.el" # mini GUI Emacs
 
 # Modern Unix Tools
 # See https://github.com/ibraheemdev/modern-unix
