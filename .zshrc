@@ -162,6 +162,8 @@ find_file() {
 
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
     alias e='find_file'
+
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
 fi
 
 
