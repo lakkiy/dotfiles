@@ -31,7 +31,7 @@
 ;; git clone https://github.com/AmaiKinono/Tokimacs.git ~/Developer/emacsconf/toki --depth 1
 ;; git clone https://github.com/manateelazycat/lazycat-emacs.git ~/Developer/emacsconf/lazycat --depth 1
 ;; git clone https://github.com/cjohansen/.emacs.d.git ~/Developer/emacsconf/cjohansen --depth 1
-;; git clone https://github.com/aeght/emacs.d.git ~/Developer/emacsconf/aeghn --depth 1
+;; git clone https://github.com/aeghn/emacs.d.git ~/Developer/emacsconf/aeghn --depth 1
 ;; git clone https://github.com/motform/emacs.d.git motform --depth 1
 ;; git clone https://github.com/yangsheng6810/dotfiles.git ~/Developer/emacsconf/shenglao --depth 1
 ;; git clone https://github.com/nasyxx/emacs.d.git ~/Developer/emacsconf/nasy --depth 1
