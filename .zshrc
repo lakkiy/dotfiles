@@ -91,7 +91,8 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git*' formats '(%b)'
 
 # for i in {1..256}; do print -P "%F{$i}Color : $i"; done;
-PS1='%m  %F{red}:: %F{green}%~ %B${vcs_info_msg_0_}%b%(?.%F{57}.%F{magenta})» '
+PS1='%F{green}%~ %B${vcs_info_msg_0_}%b%(?.%F{57}.%F{magenta})» '
+RPROMPT='%S%F{black}%n@%m%s'
 
 
 ### Fzf
