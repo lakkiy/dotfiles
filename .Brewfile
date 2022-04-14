@@ -75,6 +75,7 @@ brew "yadm" # Yet another dotfiles manager
 brew "mosh" # UDP ssh
 brew "htop" # better top
 brew "vim" # reinstall vim to add python3 support after alias python=python3
+brew "pyqt" # popweb for emacs, also install epc via pip
 
 # brew "jupyterlab"
 
