@@ -41,6 +41,7 @@ compinit
 
 
 ### History
+HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS
 HISTSIZE='128000'
 SAVEHIST='128000'
