@@ -18,7 +18,6 @@ pkgs=(
     keyd        # key remapping, better than Xmodmap
     librime     # chinese input
     fcitx5-rime # chinese input
-    tdlib       # use telega in emacs
     ctags       # universal-ctags for programming
     global      # gtags for programming
     notmuch     # tag email, read mail in emacs
@@ -43,8 +42,12 @@ pkgs=(
 	fd-find     # better find
 	file-roller # zip and uoenuthaosnteunzip file
 
-    cmake       # built vterm
+    cmake       # build vterm
     libtool
+
+    tdlib       # use telega in emacs, maybe need set prefix in emacs
+    gcc-c++     # build tdlib
+    gperf
 
 ### For Compile Emacs
     # ? dnf builddep emacs
