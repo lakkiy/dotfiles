@@ -169,13 +169,15 @@ setup-betterlockscreen() {
 
 setup() {
     if [ ! -d "$HOME/Developer" "" ]; then
-            mkdir $HOME/Developer
+        mkdir $HOME/Developer
     fi
+
 	if [ ! -d "~/.config/emacs" ]; then
         echo "Clone emacs config..."
 		git clone -q https://github.com/404cn/eatemacs.git ~/.config/emacs
         echo "DONE"
 	fi
+
 	if [ ! -d "~/.local/share/fcitx5/rime" ]; then
         echo "Clone fcitx config..."
 		# use fcitx5-remote -r to redeploy rime
@@ -189,7 +191,6 @@ setup() {
 	done
     echo "DONE"
 
-	# pacman pacmages
     echo "Check rmpackages..."
 	rmpackages=()
 	for app in ${rpkgs[@]}; do
@@ -197,6 +198,7 @@ setup() {
 			rmpackages+=(${app})
 		fi
 	done
+
 	if [ ${#rmpackages[@]} -gt 0 ]; then
         echo "Removing rmpackages..."
 		sudo dnf remove ${packages[@]}
