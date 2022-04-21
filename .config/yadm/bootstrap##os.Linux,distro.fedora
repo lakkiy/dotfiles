@@ -27,7 +27,6 @@ pkgs=(
     golang      # programming language
     ipython     # python
     mosh        # udp version ssh
-    cmake       # built vterm
 
 
 ### Modern Unix Tools
@@ -44,6 +43,8 @@ pkgs=(
 	fd-find     # better find
 	file-roller # zip and uoenuthaosnteunzip file
 
+    cmake       # built vterm
+    libtool
 
 ### For Compile Emacs
     # ? dnf builddep emacs
