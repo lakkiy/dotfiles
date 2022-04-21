@@ -139,31 +139,31 @@ setup-zsh() {
 
 # sync file between hosts
 setup-syncthing () {
-# TODO find tray application for syncthing, now gtk for gnome and tray use qt need install kde depends
-# maybe I should write it myself
-systemctl enable syncthing@liubo # depends on your use name TODO
-systemctl start syncthing@liubo
+    # TODO find tray application for syncthing, now gtk for gnome and tray use qt need install kde depends
+    # maybe I should write it myself
+    systemctl enable syncthing@liubo # depends on your use name TODO
+    systemctl start syncthing@liubo
 }
 
 # use ly as display manager and remove lightdm
 setup-ly () {
-sudo systemctl disable lightdm
-sudo systemctl enable ly.servicev
-sudo systemctl stop lightdm
-sudo systemctl start ly
-sudo pacman -R lightdm-gtk-greeter
-sudo pacman -R lightdm
+    sudo systemctl disable lightdm
+    sudo systemctl enable ly.servicev
+    sudo systemctl stop lightdm
+    sudo systemctl start ly
+    sudo pacman -R lightdm-gtk-greeter
+    sudo pacman -R lightdm
 }
 
 # key remap daemond, better than Xmodmap
 setup-keyd () {
-echo "capslock = overload(C, esc) | sudo tee -a /etc/keyd/default.cfg"
-sudo systemctl enable keyd
-sudo systemctl restart keyd
+    echo "capslock = overload(C, esc) | sudo tee -a /etc/keyd/default.cfg"
+    sudo systemctl enable keyd
+    sudo systemctl restart keyd
 }
 
 setup-betterlockscreen() {
-betterlockscreen ~/.config/wallpaper.jpg
+    betterlockscreen ~/.config/wallpaper.jpg
 }
 
 
@@ -198,6 +198,7 @@ setup() {
 		echo "No packages need to be remove."
 	fi
 
+    # TODO fedora server use check-update?
     sudo dnf update && sudo dnf upgrade
 
 	# pacman pacmages
@@ -207,6 +208,7 @@ setup() {
 		if dnf list ${app} > /dev/null; then
 			printf "${app} is already installed, skip\n"
 		else
+            printf "ADD--------${APP} to install list...."
 			packages+=(${app})
 		fi
 	done
@@ -217,6 +219,7 @@ setup() {
 		echo "All packages are already installed"
 	fi
 }
+
 setup
 setup-syncthing
 setup-zsh
