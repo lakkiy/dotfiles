@@ -50,6 +50,8 @@ pkgs=(
     # gperf
     docker      # docker pull zevlg/telega-server:latest
 
+    python3-piy # pip install afew
+
 ### For Compile Emacs
     # ? dnf builddep emacs
     # --with-pgtk --with-xwidgets --with-native-compilation --with-json --with-mailutils
@@ -176,6 +178,10 @@ setup-betterlockscreen() {
 setup() {
     if [ ! -d "$HOME/Developer" "" ]; then
         mkdir $HOME/Developer
+    fi
+
+    if [ ! -d "$HOME/.mail/gmail" "" ]; then
+        mkdir -p $HOME/Developer
     fi
 
 	if [ ! -d "~/.config/emacs" ]; then
