@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 coprs=(
     cdayjr/yadm
     dspom/keyd
@@ -13,44 +12,45 @@ rpkgs=(
 )
 
 pkgs=(
-    ########## required ##########
-    yadm
-	zsh
-	keyd # key remapping, better than Xmodmap
-	librime
-	fcitx5-rime
-    tdlib
-	ctags  # this is universal-ctags
-	notmuch                    # read mail in emacs
-	isync                      # sync mail to localhost, aka mbsync
-	global # gtags
-	syncthing
-    golang
+### Required
+    yadm        # dotfile manager
+	zsh         # shell, replace bash
+	keyd        # key remapping, better than Xmodmap
+	librime     # chinese input
+	fcitx5-rime # chinese input
+    tdlib       # use telega in emacs
+	ctags       # universal-ctags for programming
+	global      # gtags for programming
+	notmuch     # tag email, read mail in emacs
+	isync       # sync mail to localhost, aka mbsync
+	syncthing   # sync file between computes
+    golang      # programming language
+	ipython     # python
 
-	##### command line tools #####
-	fzf # fuzzy finder
-	bat # better cat
-	ripgrep # better grep
-	aspell # for emacs flyspell
-	sdcv # star dict command line version
-	cloc # count program lines
-	htop # better top
-	tealdeer                   # rust version tldr
-	neofetch # pron!!!!!!
-	git-delta
-	fd-find # better find
+### Modern Unix Tools
+	fzf         # fuzzy finder
+	bat         # better cat
+	ripgrep     # better grep
+	aspell      # for emacs flyspell
+	sdcv        # star dict command line version
+	cloc        # count program lines
+	htop        # better top
+	tealdeer    # rust version tldr
+	neofetch    # pron!!!!!!
+	git-delta   # pager for git, also can use as diff
+	fd-find     # better find
 	file-roller # zip and uoenuthaosnteunzip file
 
-    # for build emacs
+### For Compile Emacs
     # ? dnf builddep emacs
     # --with-pgtk --with-xwidgets --with-native-compilation --with-json --with-mailutils
+
     autoconf # for generate makefile
     texinfo
     libXpm-devel # this will install libX11-devel
     libtiff-devel
     libjpeg-turbo-devel
     giflib-devel
-    # png don't package name
     gtk3-devel # for pgtk ?
     gnutls-devel
     ncurses-devel
@@ -58,14 +58,12 @@ pkgs=(
     libgccjit-devel # for native-comp
     jansson-devel # for with json
     mailx # for --with-mailutils
+    # png don't package name
 
-    ########## For Gnome ##########
+### For Gnome
     gnome-tweaks
 
-    # TODO
-	# fcitx5-im fcitx5 already installed by fcitx5-rime
-
-	########## Fonts ##########
+### Fonts
 	# ttf-sarasa-gothic # 更纱黑体
 	# wqy-bitmapfont
 	# wqy-microhei
@@ -73,7 +71,7 @@ pkgs=(
 	# wqy-zenhei
 	# powerline-fonts
 
-	# Themes TODO backup lxapperance config file to auto set theme
+### Themes TODO backup lxapperance config file to auto set theme
     # Orchis-theme
     # Tela-icon-theme
 	# breeze-grub
@@ -81,83 +79,52 @@ pkgs=(
 	# breeze-icons
 
 
-    ########## Optional (for twm) ##########
-	# yadm
-	# i3status-rust # replace polybar
-	# dmenu # application launcher i3 already installed
-	# kitty # terminal
+### Optional, WM
+	# i3status-rust         # replace polybar
+	# dmenu                 # application launcher i3 already installed
+	# kitty                 # terminal
 	# tmux
-	# ranger # file manager
-	# thunar # file manager
+	# ranger                # file manager
+	# thunar                # file manager
 	# network-manager-apple # networkmanager tray # FIXME tray not work
-	# lxappearance # theme switcher, also change icons, fonts
+	# lxappearance          # theme switcher, also change icons, fonts
 	# picom
-	# dunst # notification-daemons
-	# tdlib # FIXME may git version, use telega in emacs
-	# zathura # pdf reader
-	# flameshot # screenshot
-
-	# programming
-	# go
-	# ipython
-	# python3 # system already installed
-
-	# TODO try to use
-	# gucharmap # display symbols in font
-	# gpick # color picker
-	# pipeware # voice control
-	# pamixer # command line voice control
-	# xorg-xbacklight # brightness control, also dep of polybar
-	# light # brightness command line control
-	# redshift # adjusts the color temperature of your screen according to your surroundings
-	# viewnior # picture viewer
-	# mpd # play music
-	# ncmpcpp
-	# mcomix # comic books
-	# qt5ct # change qt programs theme and icons
-
-	# Optional
-	# fish # shell
-	# retroarch # game
-	# graphviz # show picture of emacs org-roam
-	# hugo # static blog
-	# mosh # udp version ssh
+	# dunst                 # notification-daemons
+	# zathura               # pdf reader
+	# flameshot             # screenshot
+	# retroarch             # game
+	# graphviz              # show picture of emacs org-roam
+	# hugo                  # static blog
+	# mosh                  # udp version ssh
 	# jupyterlab
-	# aria2 # downloader
-	# pandoc                     # convert to pdf
-	# mpv                        # play netease cloud music in emacs
-	# socat                      # with mpv
+	# aria2                 # downloader
+	# pandoc                # convert to pdf
+	# mpv                   # play netease cloud music in emacs
+	# socat                 # with mpv
 	# docker
-	# gimp # ps
-	# rofi # application launcher # not use since it update broken
-
-    ########## required ##########
-	# emacs-git # NOTE you should install from source
-	########## Fonts #########
-    # ttf-meslo
-    # tty-bookerly
-	# ttf-wps-fonts
-    # ttf-menlo-powerline-git
-	# ttf-cardo # emacs variable pitch font
-	# ttf-lxgw-wenkai
-
-	# See breeze-grub
-	# breeze-snow-cursor-theme
-
-    ######## optional
-	# betterlockscreen
-	# betterlockscreen -u ~/.config/wallpaper.jpg
-	# ly # better display manager than lightdm
-
-	# TODO try to use
-	# libinput-gestures # touchpad, must add user to input group
-	# sudo gpasswd -a $USER input
-
+	# gimp                  # ps
+	# rofi                  # application launcher # not use since it update broken
+	# libinput-gestures     # touchpad, must add user to input group
 	# Optional
-	# polybar # i3 status bar replace
+	# polybar               # i3 status bar replace
 	# wps-office
 	# dropbox
-	# thunar-dropbox # depends on file manager
+	# thunar-dropbox        # depends on file manager
+	# betterlockscreen      # betterlockscreen -u ~/.config/wallpaper.jpg
+	# ly                    # better display manager than lightdm
+    #
+    # gucharmap             # display symbols in font
+	# gpick                 # color picker
+	# pipeware              # voice control
+	# pamixer               # command line voice control
+	# xorg-xbacklight       # brightness control, also dep of polybar
+	# light                 # brightness command line control
+	# redshift              # adjusts the color temperature of your screen according to your surroundings
+	# viewnior              # picture viewer
+	# mpd                   # play music
+	# ncmpcpp
+	# mcomix                # comic books
+	# qt5ct                 # change qt programs theme and icons
 )
 
 setup-zsh() {
@@ -229,6 +196,7 @@ setup() {
     sudo dnf update && sudo dnf upgrade
 
 	# pacman pacmages
+    # FIXME 没安装的都显示安装了，这里判断有问题？
 	packages=()
 	for app in ${pkgs[@]}; do
 		if dnf list ${app} > /dev/null; then
