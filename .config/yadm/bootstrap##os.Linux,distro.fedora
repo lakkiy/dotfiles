@@ -45,9 +45,10 @@ pkgs=(
     cmake       # build vterm
     libtool
 
-    tdlib       # use telega in emacs, maybe need set prefix in emacs
-    gcc-c++     # build tdlib
-    gperf
+    # tdlib       # use telega in emacs, maybe need set prefix in emacs
+    # gcc-c++     # build tdlib
+    # gperf
+    docker      # docker pull zevlg/telega-server:latest
 
 ### For Compile Emacs
     # ? dnf builddep emacs
