@@ -27,6 +27,7 @@ pkgs=(
     golang      # programming language
     ipython     # python
     mosh        # udp version ssh
+    cmake       # built vterm
 
 
 ### Modern Unix Tools
