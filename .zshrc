@@ -118,6 +118,7 @@ if (( $+commands[gls] )); then
 fi
 
 # Emacs
+alias te="emacs -nw"
 alias e="emacsclient -nw"
 alias eg="emacsclient -nc"
 alias me="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini Emacs
