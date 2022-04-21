@@ -26,6 +26,7 @@ pkgs=(
     syncthing   # sync file between computes
     golang      # programming language
     ipython     # python
+    mosh        # udp version ssh
 
 
 ### Modern Unix Tools
@@ -100,7 +101,6 @@ pkgs=(
     # retroarch             # game
     # graphviz              # show picture of emacs org-roam
     # hugo                  # static blog
-    # mosh                  # udp version ssh
     # jupyterlab
     # aria2                 # downloader
     # pandoc                # convert to pdf
