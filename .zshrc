@@ -84,18 +84,6 @@ plugin-load $plugins
 load-files $files
 
 
-### PS1
-
-setopt prompt_subst
-autoload -Uz vcs_info
-precmd() { vcs_info }
-
-zstyle ':vcs_info:git*' formats '(%b)'
-
-# for i in {1..256}; do print -P "%F{$i}Color : $i"; done;
-PS1='%m  %F{red}:: %F{green}%~ %B${vcs_info_msg_0_}%b%(?.%F{57}.%F{magenta})» '
-
-
 ### Fzf
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
