@@ -85,6 +85,7 @@ brew "pyqt" # popweb for emacs, also install epc via pip
 # brew mongocli
 # brew mycli
 
+cask "easy-move-plus-resize"
 cask "shottr" # screen shot
 cask "anki"
 cask "clashx-pro" # Say it!
