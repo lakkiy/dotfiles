@@ -1,6 +1,7 @@
 ### Plugin manager
 
 ZPLUGINDIR=$HOME/.zsh/plugins
+bindkey -e # emacs, not vim
 
 # if you want to use unplugged, you can copy/paste plugin-clone here, or just pull the repo
 if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
