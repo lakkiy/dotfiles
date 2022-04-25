@@ -99,24 +99,18 @@ cask "dropbox" # best file sync via cloud
 cask "firefox" # default browser
 cask "hiddenbar" # Hide icon in menu bar
 cask "iina" # Media player
-cask "iterm2" # terminal
-cask "warp" # rust based terminal
 cask "karabiner-elements" # Key remapping
 #cask "keepingyouawake" # keep monitor on
 cask "maczip" # Compress & extract
 #cask "mounty" # Mounty for NTFS read/write
 cask "miniconda" # python virtual env
-cask "neteasemusic"
 cask "netnewswire" # rss readeer
 cask "raycast" # better spotlight
 cask "squirrel" # input method
 cask "syncthing" # sync file!
 cask "the-unarchiver" # unrar
-cask "thunder" # evil downloader!
-cask "v2rayx"
 cask "via" # modify keyboard
 #cask "whichspace" # with yabai, show space number on menu bar
-cask "wireshark"
 #cask "next" # lisp browser
 
 # wps? logi options?
