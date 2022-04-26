@@ -176,24 +176,24 @@ setup-betterlockscreen() {
 
 
 setup() {
-    if [ ! -d "$HOME/Developer" "" ]; then
+    if [ ! -d "$HOME/Developer" ]; then
         mkdir $HOME/Developer
     fi
 
-    if [ ! -d "$HOME/.mail/gmail" "" ]; then
+    if [ ! -d "$HOME/.mail/gmail" ]; then
         mkdir -p $HOME/Developer
     fi
 
 	if [ ! -d "~/.config/emacs" ]; then
         echo "Clone emacs config..."
-		git clone -q https://github.com/404cn/eatemacs.git ~/.config/emacs
+		git clone -q https://github.com/404cn/eatemacs.git ~/.config/emacs --depth 1
         echo "DONE"
 	fi
 
 	if [ ! -d "~/.local/share/fcitx5/rime" ]; then
         echo "Clone fcitx config..."
 		# use fcitx5-remote -r to redeploy rime
-		git clone -q https://github.com/404cn/Rime.git ~/.local/share/fcitx5/rime
+		git clone -q https://github.com/404cn/Rime.git ~/.local/share/fcitx5/rime --depth 1
         echo "DONE"
 	fi
 
@@ -206,11 +206,12 @@ setup() {
     echo "Check rmpackages..."
 	rmpackages=()
 	for app in ${rpkgs[@]}; do
-		if dnf list ${app} > /dev/null; then
+		if dnf list installed ${app} > /dev/null; then
 			rmpackages+=(${app})
 		fi
 	done
 
+    echo "Check package removed..."
 	if [ ${#rmpackages[@]} -gt 0 ]; then
         echo "Removing rmpackages..."
 		sudo dnf remove ${packages[@]}
@@ -221,10 +222,10 @@ setup() {
 
     sudo dnf update && sudo dnf upgrade
 
-    # FIXME 没安装的都显示安装了，这里判断有问题？
+    ecoh "Check installed package..."
 	packages=()
 	for app in ${pkgs[@]}; do
-		if dnf list ${app} > /dev/null; then
+		if dnf list installed ${app} > /dev/null; then
 			printf "${app} is already installed, skip\n"
 		else
             printf "ADD--------${APP} to install list...."
@@ -237,6 +238,7 @@ setup() {
 	else
 		echo "All packages are already installed"
 	fi
+    echo "DONE"
 }
 
 setup
