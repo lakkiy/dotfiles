@@ -50,7 +50,7 @@ pkgs=(
     # gperf
     docker      # docker pull zevlg/telega-server:latest
 
-    python3-piy # pip install afew
+    python3-pip # pip install afew
 
 ### For Compile Emacs
     # ? dnf builddep emacs
@@ -199,7 +199,7 @@ setup() {
 
     echo "Enable corps..."
 	for copr in ${corps[@]}; do
-		sudo dnf copr enable ${copr}
+		sudo dnf copr enable -y ${copr}
 	done
     echo "DONE"
 
