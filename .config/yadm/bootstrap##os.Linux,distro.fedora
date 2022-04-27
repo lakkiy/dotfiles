@@ -214,7 +214,7 @@ setup() {
     echo "Check package removed..."
 	if [ ${#rmpackages[@]} -gt 0 ]; then
         echo "Removing rmpackages..."
-		sudo dnf remove ${packages[@]}
+		sudo dnf remove -y ${packages[@]}
 	else
 		echo "No packages need to be remove."
 	fi
@@ -230,7 +230,7 @@ setup() {
 	done
 
 	if [ ${#packages[@]} -gt 0 ]; then
-		sudo dnf install ${packages[@]}
+		sudo dnf install -y ${packages[@]}
 	else
 		echo "All packages are already installed"
 	fi
