@@ -222,15 +222,11 @@ setup() {
 
     sudo dnf update && sudo dnf upgrade
 
-    ecoh "Check installed package..."
+    echo "Check installed package..."
+    # TODO check package is installed
 	packages=()
 	for app in ${pkgs[@]}; do
-		if dnf list installed ${app} > /dev/null; then
-			printf "${app} is already installed, skip\n"
-		else
-            printf "ADD--------${APP} to install list...."
-			packages+=(${app})
-		fi
+		packages+=(${app})
 	done
 
 	if [ ${#packages[@]} -gt 0 ]; then
