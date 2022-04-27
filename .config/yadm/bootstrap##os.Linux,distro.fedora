@@ -198,7 +198,7 @@ setup() {
 	fi
 
     echo "Enable corps..."
-	for copr in ${corps[@]}; do
+	for copr in ${coprs[@]}; do
 		sudo dnf copr enable -y ${copr}
 	done
     echo "DONE"
