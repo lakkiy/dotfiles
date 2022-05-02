@@ -167,6 +167,7 @@ setup-ly () {
 # key remap daemond, better than Xmodmap
 # TODO not work, update config format
 setup-keyd () {
+    sudo groupadd keyd
     echo "capslock = overload(C, esc) | sudo tee -a /etc/keyd/default.cfg"
     sudo systemctl enable keyd
     sudo systemctl restart keyd
@@ -237,6 +238,11 @@ setup() {
 		echo "All packages are already installed"
 	fi
     echo "DONE"
+
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    # reboot to make it work
+    docker pull zevlg/telega-server:latest
 }
 
 setup
