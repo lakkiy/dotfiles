@@ -32,6 +32,7 @@ brew "tealdeer" # rust version tldr
 ### Programming
 brew clojure/tools/clojure
 brew openjdk # sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+brew leiningen
 brew "go"
 #brew "golangci-lint" # lint for go codeAA
 brew "ipython"
