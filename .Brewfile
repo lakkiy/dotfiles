@@ -31,6 +31,7 @@ brew "tealdeer" # rust version tldr
 
 ### Programming
 brew clojure/tools/clojure
+brew openjdk
 brew "go"
 #brew "golangci-lint" # lint for go codeAA
 brew "ipython"
