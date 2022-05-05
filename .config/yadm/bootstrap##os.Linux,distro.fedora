@@ -17,6 +17,7 @@ pkgs=(
     zsh         # shell, replace bash
     keyd        # key remapping, better than Xmodmap
     librime     # chinese input
+    librime-devel
     fcitx5-rime # chinese input
     ctags       # universal-ctags for programming
     global      # gtags for programming
@@ -26,6 +27,13 @@ pkgs=(
     golang      # programming language
     ipython     # python
     mosh        # udp version ssh
+    mycli       # connect mysql
+    geary       # for email
+    clash       # network proxy
+    alien       # convert dep to rpm
+    # install wps and lark, dropbox,tencent metting manually
+    # https://wiki.gnome.org/Apps/Notes
+    gcc-c++     # build xeft for emacs
 
 
 ### Modern Unix Tools
@@ -74,6 +82,8 @@ pkgs=(
 
 ### For Gnome
     gnome-tweaks
+    nautilus-gsconnect
+
 
 
  ### Fonts
@@ -143,7 +153,7 @@ pkgs=(
 
 setup-zsh() {
     echo "Change shell, for zsh type /usr/bin/zsh"
-    sudo lchsh $USER # /bin/zsh
+    sudo lchsh $USER # /bin/zsh for fedora server or /usr/bin/zsh for fedora workstation
 }
 
 # sync file between hosts
@@ -165,8 +175,24 @@ setup-ly () {
 }
 
 # key remap daemond, better than Xmodmap
-# TODO not work, update config format
 setup-keyd () {
+# TODO add this to /etc/keyd/default.conf
+# [ids]
+#
+# *
+#
+# [main]
+#
+# shift = oneshot(shift)
+# meta = oneshot(meta) # disable or windows key won't work on gnome
+# control = oneshot(control)
+#
+# leftalt = oneshot(alt)
+# rightalt = oneshot(altgr)
+#
+# capslock = overload(control, esc)
+# insert = S-insert
+
     sudo groupadd keyd
     echo "capslock = overload(C, esc) | sudo tee -a /etc/keyd/default.cfg"
     sudo systemctl enable keyd
@@ -206,6 +232,7 @@ setup() {
 	done
     echo "DONE"
 
+    # FIXME not work
     echo "Check rmpackages..."
 	rmpackages=()
 	for app in ${rpkgs[@]}; do
