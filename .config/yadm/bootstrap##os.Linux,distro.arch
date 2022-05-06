@@ -13,60 +13,87 @@ sudo pacman -Syyu
 
 if ! command -v yay >/dev/null 2>&1; then
 	cd ~
-	git clone https://aur.archlinux.org/yay-bin.git
-	cd yay-bin
+	git clone https://aur.archlinux.org/yay-bin.git ~/Developer/yay-bin
+	cd ~/Developer/yay-bin
 	yes | makepkg -si
 	cd ~
-	rm -rf yay-bin
+	rm -rf ~/Developer/yay-bin
 fi
 
-# packages installed via pacman
-pacmans=(
-    ########## required ##########
+pkgs=(
 	archlinux-keyring # fix invalid pgp signtaur
+    firefox
 	zsh
-	#firefox # browser, manually install
-	fcitx5-im
-	librime
-	fcitx5-rime
-	cpio # unpack tar archive, install procs in zsh
-	notmuch                    # read mail in emacs
-	isync                      # sync mail to localhost, aka mbsync
-	universal-ctags  # ctags
-	global # gtags
+    yadm
 	syncthing
-	##### command line tools #####
-	git-delta
-	fzf # fuzzy finder
-	bat # better cat
-	fd # better find
-	ripgrep # better grep
-	man-db # for command man
-	aspell # for emacs flyspell
-	sdcv # star dict command line version
-	cloc # count program lines
-	htop # better top
+	cpio # unpack tar archive, install procs in zsh
 	hunspell # for emacs spell check
 	tree                       # view file tree
 	tealdeer                   # rust version tldr
 	neofetch # pron!!!!!!
 	file-roller # zip and unzip file
+	fzf # fuzzy finder
+	man-db # for command man
+	aspell # for emacs flyspell
+	sdcv # star dict command line version
+	cloc # count program lines
+    kubectl
+    mosh
 
-	########## Fonts ##########
-	ttf-sarasa-gothic # 更纱黑体
-	wqy-bitmapfont
-	wqy-microhei
-	wqy-microhei-lite
-	wqy-zenhei
-	# powerline-fonts
+    ### programming
+    go
+    ipython
+    clojure
+    leiningen
+
+    ### tags for programming
+	universal-ctags
+	global
+
+    ### input method
+	fcitx5-im
+	librime
+	fcitx5-rime
+
+    ### modern unix tools
+	git-delta
+	bat # better cat
+	fd # better find
+	ripgrep # better grep
+	htop # better top
+
+    ### for emacs
+    libgccjit # native compilation need this
+    xapian-core # use xeft in emacs for note taking
+	notmuch # tag email
+	isync # sync eamil
+
+    ### aur app
+    feishu # offical
+    wemeet-bin
+    wps-office-cn
+	keyd # key remapping TODO add conf file auto
+	dropbox
+    nautilus-dropbox
+
+    ### font
+    ttf-roboto-mono # emacs default font
+	wqy-microhei # display chinese
+    #### aur fonts
+    ttf-cardo # emacs variable pitch
+	ttf-lxgw-wenkai # emacs chinese font
+)
+
+# packages installed via pacman
+# =(
+    ########## required ##########
+	#firefox # browser, manually install
+	##### command line tools #####
 
 	# Themes TODO backup lxapperance config file to auto set theme
 	# breeze-grub
 	# breeze-gtk
 	# breeze-icons
-
-    ########## For Gnome ##########
-    gnome-tweaks
 
     ########## Optional (for twm) ##########
 	# yadm
@@ -75,8 +102,7 @@ pacmans=(
 	# kitty # terminal
 	# tmux
 	# ranger # file manager
-	# thunar # file manager
-	# network-manager-apple # networkmanager tray # FIXME tray not work
+# network-manager-apple # networkmanager tray # FIXME tray not work
 	# lxappearance # theme switcher, also change icons, fonts
 	# picom
 	# dunst # notification-daemons
@@ -117,23 +143,9 @@ pacmans=(
 	# docker
 	# gimp # ps
 	# rofi # application launcher # not use since it update broken
-)
+# )
 
-yays=(
-    ########## required ##########
-	keyd # key remapping, better than Xmodmap
-	# emacs-git # NOTE you should install from source
-	########## Fonts #########
-    ttf-meslo
-    tty-bookerly
-	ttf-wps-fonts
-    # ttf-menlo-powerline-git
-	# ttf-cardo # emacs variable pitch font
-	# ttf-lxgw-wenkai
-
-	# See breeze-grub
-	# breeze-snow-cursor-theme
-
+# yays=(
     ######## optional
 	# betterlockscreen
 	# betterlockscreen -u ~/.config/wallpaper.jpg
@@ -145,10 +157,8 @@ yays=(
 
 	# Optional
 	# polybar # i3 status bar replace
-	# wps-office
-	# dropbox
 	# thunar-dropbox # depends on file manager
-)
+# )
 
 setup-zsh() {
 chsh -s $(which zsh)
@@ -175,7 +185,7 @@ sudo pacman -R lightdm
 
 # key remap daemond, better than Xmodmap
 setup-keyd () {
-echo "capslock = overload(C, esc) | sudo tee -a /etc/keyd/default.cfg"
+# echo "capslock = overload(C, esc) | sudo tee -a /etc/keyd/default.cfg"
 sudo systemctl enable keyd
 sudo systemctl restart keyd
 }
@@ -202,16 +212,7 @@ setup() {
 
 	# pacman pacmages
 	packages=()
-	for app in ${pacmans[@]}; do
-		if pacman -Q ${app} > /dev/null; then
-			printf "${app} is already installed, skip\n"
-		else
-			packages+=(${app})
-		fi
-	done
-
-	# yay packages
-	for app in ${yays[@]}; do
+	for app in ${pkgs[@]}; do
 		if pacman -Q ${app} > /dev/null; then
 			printf "${app} is already installed, skip\n"
 		else
