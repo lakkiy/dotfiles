@@ -10,7 +10,7 @@ PassCmd "cat ~/.mbsync-gmail"
 # Use SSL
 SSLType IMAPS
 # The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
-CertificateFile /usr/local/etc/openssl@1.1/cert.pem
+# CertificateFile /usr/local/etc/openssl@1.1/cert.pem # NOTE uncomment this on macOS
 #CertificateFile ~/.cert/imap.gmail.com.pem
 #CertificateFile ~/.cert/Equifax_Secure_CA.pem
 

@@ -74,6 +74,7 @@ pkgs=(
     libgccjit # native compilation need this
     xapian-core # use xeft in emacs for note taking
 	notmuch # tag email
+    afew # auto tag email
 	isync # sync eamil
 
     ### aur app
@@ -86,6 +87,8 @@ pkgs=(
     mycli
     logiops # for logi mouse
     drawio-desktop
+	mcomix # comic books
+    timeshift # create snapshot
 
     ### font
     ttf-roboto-mono # emacs default font
@@ -120,9 +123,9 @@ pkgs=(
 	# viewnior # picture viewer
 	# mpd # play music
 	# ncmpcpp
-	# mcomix # comic books
 	# qt5ct # change qt programs theme and icons
 	# libinput-gestures # touchpad, must add user to input group
+    # gestures
 	# polybar # i3 status bar replace
 	# thunar-dropbox # depends on file manager
 )
@@ -171,7 +174,12 @@ setup-betterlockscreen() {
 
 
 setup() {
-    if [ ! -d "$$HOME/Developer" "" ]; then
+    # TODO for notmuch
+    # mkdir $HOME/.mail
+    # mkdir $HOME/.mail/gmail
+    # touch $HOME/.mbsync-gmail
+
+    if [ ! -d "$HOME/Developer" "" ]; then
             mkdir $HOME/Developer
     fi
 

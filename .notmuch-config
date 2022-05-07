@@ -28,7 +28,7 @@
 # recipient list of replies, and will set the From address based on the
 # address to which the original email was addressed.
 #
-path=/Users/artorias//.mail
+path=/home/liubo//.mail
 
 [user]
 primary_email=liubolovelife@gmail.com
