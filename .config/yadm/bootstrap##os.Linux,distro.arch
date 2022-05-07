@@ -2,7 +2,6 @@
 
 pkgs=(
 	archlinux-keyring # fix invalid pgp signtaur
-    fwupd # see archwiki, update firmware
     firefox
     discord
 	zsh
@@ -36,6 +35,10 @@ pkgs=(
 	# mpv                        # play netease cloud music in emacs
 	# socat                      # with mpv
 	# gimp # ps
+
+    # system wide, now for thinkpad x1 carbon gen8
+    fwupd # see archwiki, update firmware
+    sof-firmware # https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
 
     ### gnome
     chrome-gnome-shell # install gnome extensions on we
