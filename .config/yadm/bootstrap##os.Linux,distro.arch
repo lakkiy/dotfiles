@@ -45,6 +45,11 @@ pkgs=(
     chrome-gnome-shell # install gnome extensions on we
     gnome-notes
     framgents # bt downloader
+    gnome-shell-extension-pop-shell-bin
+    popsicle-bin # flash usb
+    #theme
+    pop-gtk-theme
+    pop-icon-theme
 
     ### programming
     go
@@ -91,6 +96,7 @@ pkgs=(
     timeshift # create snapshot
 
     ### font
+    tty-wps-fonts
     ttf-roboto-mono # emacs default font
 	wqy-microhei # display chinese
     #### aur fonts
