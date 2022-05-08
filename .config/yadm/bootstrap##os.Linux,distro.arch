@@ -3,7 +3,6 @@
 pkgs=(
 	archlinux-keyring # fix invalid pgp signtaur
     firefox
-    nyxt # firefox hidpi not work well on 4k screen
     discord
     bitwarden
 	zsh
@@ -45,6 +44,7 @@ pkgs=(
     ### gnome
     chrome-gnome-shell # install gnome extensions on we
     gnome-notes
+    framgents # bt downloader
 
     ### programming
     go
@@ -98,6 +98,9 @@ pkgs=(
 	ttf-lxgw-wenkai # emacs chinese font
 
 	# Optional for wm
+    # nyxt # firefox hidpi not work well on 4k screen
+    # min # minimal browser
+    ## for wm
 	# rofi # application launcher # not use since it update broken
 	# i3status-rust # replace polybar
 	# dmenu # application launcher i3 already installed
