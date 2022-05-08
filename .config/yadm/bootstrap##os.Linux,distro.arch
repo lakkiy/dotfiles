@@ -3,6 +3,7 @@
 pkgs=(
 	archlinux-keyring # fix invalid pgp signtaur
     firefox
+    clash-premium-bin # network proxy
     discord
     bitwarden
 	zsh
@@ -28,6 +29,7 @@ pkgs=(
     # docker pull zevlg/telega-server:latest
 	retroarch # game
     airshipper # game veloren luncher
+    # see archwiki for steam install NOTE
 	# graphviz # show picture of emacs org-roam
 	# hugo # static blog
 	# jupyterlab
@@ -50,6 +52,7 @@ pkgs=(
     #theme
     pop-gtk-theme
     pop-icon-theme
+    xcursor-comix
 
     ### programming
     go
@@ -96,6 +99,7 @@ pkgs=(
     timeshift # create snapshot
 
     ### font
+    wqy-zenhei # steam need this for chinese font
     tty-wps-fonts
     ttf-roboto-mono # emacs default font
 	wqy-microhei # display chinese
@@ -137,6 +141,11 @@ pkgs=(
     # gestures
 	# polybar # i3 status bar replace
 	# thunar-dropbox # depends on file manager
+)
+
+dockerimages=(
+    zevlg/telega-server
+    haishanh/yacd # docker run -p 1234:80 -d --rm haishanh/yacd
 )
 
 setup-zsh() {
