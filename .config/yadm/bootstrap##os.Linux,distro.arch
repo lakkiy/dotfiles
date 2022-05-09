@@ -143,6 +143,12 @@ pkgs=(
 	# thunar-dropbox # depends on file manager
 )
 
+rmpkgs=(
+    # due to r/gnome, not wark well with arch, cause issue, need too much resource
+    gnome-software-packagegit-plugin
+    gnome-software
+)
+
 dockerimages=(
     zevlg/telega-server
     haishanh/yacd # docker run -p 1234:80 -d --rm haishanh/yacd
