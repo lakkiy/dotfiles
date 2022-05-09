@@ -49,6 +49,7 @@ pkgs=(
     framgents # bt downloader
     gnome-shell-extension-pop-shell-bin
     popsicle-bin # flash usb
+    extension-manager
     #theme
     pop-gtk-theme
     pop-icon-theme
