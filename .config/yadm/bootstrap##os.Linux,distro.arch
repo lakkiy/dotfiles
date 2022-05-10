@@ -59,6 +59,7 @@ pkgs=(
     go
     ipython
     python-pip
+    pyright
     clojure
     leiningen
     mit-scheme # aur
