@@ -58,6 +58,7 @@ pkgs=(
     ### programming
     go
     ipython
+    python-pip
     clojure
     leiningen
     mit-scheme # aur
