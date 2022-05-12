@@ -50,6 +50,7 @@ pkgs=(
     gnome-shell-extension-pop-shell-bin
     popsicle-bin # flash usb
     extension-manager
+    gnome-text-editor
     #theme
     pop-gtk-theme
     pop-icon-theme
