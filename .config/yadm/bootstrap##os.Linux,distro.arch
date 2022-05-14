@@ -189,8 +189,9 @@ setup-keyd () {
 
 [main]
 
-# Maps capslock to escape when pressed and control when held.
+# Maps escape when pressed and control when held.
 capslock = overload(control, esc)
+control = overload(control, esc)
  | sudo tee -a /etc/keyd/default.cfg"
     sudo systemctl enable keyd
     sudo systemctl restart keyd
