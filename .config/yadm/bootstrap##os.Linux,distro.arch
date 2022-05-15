@@ -100,7 +100,7 @@ pkgs=(
     logiops # for logi mouse
     drawio-desktop
 	mcomix # comic books
-    timeshift # create snapshot
+    timeshift-bin # create snapshot
 
     ### font
     wqy-zenhei # steam need this for chinese font
