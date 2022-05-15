@@ -101,6 +101,7 @@ pkgs=(
     drawio-desktop
 	mcomix # comic books
     timeshift-bin # create snapshot
+    sshfs # timeshift need this to back up to smb
 
     ### font
     wqy-zenhei # steam need this for chinese font
