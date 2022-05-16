@@ -90,6 +90,8 @@ pkgs=(
 	isync # sync eamil
 
     ### aur app
+    spotify
+    spot-client #for gnome
     feishu # offical
     wemeet-bin
     wps-office-cn
