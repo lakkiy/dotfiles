@@ -56,6 +56,16 @@ pkgs=(
     pop-icon-theme
     xcursor-comix
 
+    ### vpn
+    openvpn
+    networkmanager-openvpn
+    networkmanager-l2tp # setup L2TP over IPsec type vpn
+    strongwan # use with l2tp
+    nm-connection-editor # networkmanager-l2tp doesn't have gtk4 support now, use nm-connection-editor instead
+    # https://wiki.archlinux.org/title/Openswan_L2TP/IPsec_VPN_client_setup
+    # https://gist.github.com/pastleo/aa3a9524664864c505d637b771d079c9
+    # https://www.reddit.com/r/Fedora/comments/twngam/error_configuring_ipsecikev2_vpn_strongswan/
+
     ### programming
     go
     ipython
