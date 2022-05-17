@@ -48,7 +48,7 @@ pkgs=(
     gnome-notes
     framgents # bt downloader
     gnome-shell-extension-pop-shell
-    popsicle-bin # flash usb
+    # popsicle-bin # flash usb # NOTE use gnome disk
     extension-manager
     gnome-text-editor
     #theme
@@ -264,7 +264,7 @@ setup() {
 	done
 
 	if [ ${#packages[@]} -gt 0 ]; then
-		yay -S --noconfirm ${packages[@]}
+		yay -S --noconfirm --sudoloop ${packages[@]}
 	else
 		echo "All packages are already installed"
 	fi
