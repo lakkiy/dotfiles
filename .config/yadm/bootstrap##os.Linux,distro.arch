@@ -44,6 +44,7 @@ pkgs=(
     sof-firmware # https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
 
     ### gnome
+    bluez-utils # for bluetoothctl, bluetooth-quick-connect
     chrome-gnome-shell # install gnome extensions on we
     gnome-notes
     framgents # bt downloader
