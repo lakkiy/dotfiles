@@ -1,2 +1,5 @@
 
 =curl -fsSL https://github.com/TheLocehiliosan/yadm/raw/master/yadm | bash -s clone https://github.com/404cn/dotfiles.git=
+
+A simple zsh prompt, add to ~/.zshrc.local
+  PS1='%m  %F{red}:: %F{green}%~ %(?.%F{57}.%F{magenta})» '

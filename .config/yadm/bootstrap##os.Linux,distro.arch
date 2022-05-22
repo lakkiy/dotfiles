@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# TODO gnome-extensions install
+gnome-extensions=(
+    gsconnect@andyholmes.github.io
+    sound-output-device-chooser@kgshank.net
+    caffeine@patapon.info
+    clipboard-indicator@tudmotu.com
+    kimpanel@kde.org
+    gnome-shell-screenshot@ttll.de
+    syncthing@gnome.2nv2u.com
+    blur-my-shell@aunetx
+    pop-shell@system76.com
+    bluetooth-quick-connect@bjarosze.gmail.com
+)
+
 pkgs=(
 	archlinux-keyring # fix invalid pgp signtaur
     firefox
