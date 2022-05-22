@@ -4,6 +4,7 @@ pkgs=(
 	archlinux-keyring # fix invalid pgp signtaur
     firefox
     clash-premium-bin # network proxy
+    v2ray
     discord
     bitwarden
 	zsh
@@ -34,7 +35,7 @@ pkgs=(
 	# hugo # static blog
 	# jupyterlab
 	# aria2 # downloader
-	# pandoc                     # convert to pdf
+	# pandoc-bin                     # convert to pdf
 	# mpv                        # play netease cloud music in emacs
 	# socat                      # with mpv
 	# gimp # ps
@@ -101,7 +102,7 @@ pkgs=(
 	isync # sync eamil
 
     ### aur app
-    ventoy-bin
+    ventoy-bin # flash usb
     wechat-uos
     telegram-tdlib
     youtube-muisc-bin
