@@ -1,6 +1,6 @@
 ### ZSH envioronment
 
-export EDITOR='emacs -nw --no-desktop'
+export EDITOR='emacs -a "" -n -w --no-desktop "$@"'
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export TERM=xterm-256color
