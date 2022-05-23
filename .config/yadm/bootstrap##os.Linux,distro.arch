@@ -106,6 +106,7 @@ pkgs=(
 	fd # better find
 	ripgrep # better grep
 	htop # better top
+    jq
 
     ### for emacs
     cmake # compile vterm
