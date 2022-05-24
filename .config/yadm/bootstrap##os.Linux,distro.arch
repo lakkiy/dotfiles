@@ -94,6 +94,7 @@ pkgs=(
     ### tags for programming
 	universal-ctags
 	global
+    cscope
 
     ### input method
 	fcitx5-im
