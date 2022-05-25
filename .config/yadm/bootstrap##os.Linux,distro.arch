@@ -133,7 +133,7 @@ pkgs=(
     mycli
     litecli # for sqlite
     logiops # for logi mouse
-    drawio-desktop
+    drawio-desktop-bin
 	mcomix # comic books
     timeshift-bin # create snapshot
     sshfs # timeshift need this to back up to smb
