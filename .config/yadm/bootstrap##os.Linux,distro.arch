@@ -84,6 +84,7 @@ pkgs=(
 
     ### programming
     go
+    staticcheck
     ipython
     python-pip
     pyright
