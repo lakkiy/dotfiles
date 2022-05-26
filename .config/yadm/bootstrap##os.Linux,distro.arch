@@ -111,6 +111,7 @@ pkgs=(
     jq
 
     ### for emacs
+    tree-sitter
     cmake # compile vterm
     libgccjit # native compilation need this
     xapian-core # use xeft in emacs for note taking
