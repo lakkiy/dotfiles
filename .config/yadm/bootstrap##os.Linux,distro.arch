@@ -7,7 +7,7 @@ gnome-extensions=(
     caffeine@patapon.info
     clipboard-indicator@tudmotu.com
     kimpanel@kde.org
-    gnome-shell-screenshot@ttll.de
+    # gnome-shell-screenshot@ttll.de # use buildin tool
     syncthing@gnome.2nv2u.com
     blur-my-shell@aunetx
     pop-shell@system76.com
@@ -26,6 +26,7 @@ pkgs=(
 	syncthing
 	cpio # unpack tar archive, install procs in zsh
 	hunspell # for emacs spell check
+    qbittorrent
 	tree                       # view file tree
 	tealdeer                   # rust version tldr
 	neofetch # pron!!!!!!
