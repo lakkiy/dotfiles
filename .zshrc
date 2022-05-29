@@ -106,11 +106,9 @@ if (( $+commands[gls] )); then
 fi
 
 # Emacs
-alias te="emacs -nw"
-alias e="emacsclient -nw"
-alias eg="emacsclient -nc"
-alias me="emacs -Q -nw -l ~/.config/emacs/init-mini.el" # mini Emacs
-alias meg="emacs -Q -l ~/.config/emacs/init-mini.el" # mini GUI Emacs
+alias te='emacs -nw --no-desktop'
+
+alias e='emacsclient -a "" -c -n'
 
 # Modern Unix Tools
 # See https://github.com/ibraheemdev/modern-unix
