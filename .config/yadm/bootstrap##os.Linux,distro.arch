@@ -18,7 +18,9 @@ pkgs=(
 	archlinux-keyring # fix invalid pgp signtaur
     firefox
     clash-premium-bin # network proxy
-    v2ray
+    xray
+    # v2ray
+    # trojan-go-bin
     discord
     bitwarden
 	zsh
