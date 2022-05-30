@@ -81,6 +81,7 @@ brew "htop" # better top
 # brew mongocli
 # brew mycli
 
+cask "spotify"
 cask "easy-move-plus-resize"
 cask "shottr" # screen shot
 cask "anki"
