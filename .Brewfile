@@ -34,10 +34,7 @@ brew clojure/tools/clojure
 brew openjdk # sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 brew leiningen
 brew "go"
-#brew "golangci-lint" # lint for go codeAA
 brew "ipython"
-brew "pyqt" # popweb for emacs, also install epc via pip
-# brew "jupyterlab"
 brew "mit-scheme"
 brew "deno"
 brew "shellcheck" # check bash script
@@ -133,6 +130,7 @@ cask "font-dejavu" # serif
 
 # Emoji font
 cask "font-noto-emoji"
+cast "font-noto-color-emoji"
 
 # bitwarden
 # octotree
