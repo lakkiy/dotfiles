@@ -20,6 +20,7 @@
  ("prelude" . ((user-emacs-directory . "~/Developer/emacsconf/prelude"))))
 
 ;; git clone https://github.com/plexus/chemacs2.git ~/.emacs.d --depth 1
+;; git clone https://github.com/condy0919/.emacs.d ~/Developer/emcasconf/mengmeng --depth 1
 ;; git clone https://github.com/purcell/emacs.d.git ~/Developer/emacsconf/purcell --depth 1
 ;; git clone https://github.com/redguardtoo/emacs.d.git ~/Developer/emacsconf/redguardtoo --depth 1
 ;; git clone https://github.com/seagle0128/.emacs.d.git  ~/Developer/emacsconf/centaur --depth 1
