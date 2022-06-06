@@ -18,6 +18,8 @@ pkgs=(
 	archlinux-keyring # fix invalid pgp signtaur
     firefox
     nodejs-lts-gallium # copilot do not support 18+ version node
+    youtube-dl
+    bilili #aur
     clash-premium-bin # network proxy
     vlc
     xray
