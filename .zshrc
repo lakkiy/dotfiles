@@ -107,7 +107,8 @@ fi
 
 # Emacs
 alias te='emacs -nw --no-desktop'
-
+alias me='emacs -q -l ~/.config/emacs/lisp/init-eat.el'
+alias mte='emacs -nw -q -l ~/.config/emacs/lisp/init-eat.el'
 alias e='emacsclient -a "" -c -n'
 
 # Modern Unix Tools

@@ -1,6 +1,6 @@
 ### ZSH envioronment
 
-export EDITOR='emacs --no-desktop'
+export EDITOR='emacs -nw -q -l ~/.config/emacs/lisp/init-eat.el'
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export TERM=xterm-256color
