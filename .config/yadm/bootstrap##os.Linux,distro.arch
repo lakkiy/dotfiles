@@ -1,13 +1,12 @@
 #!/bin/bash
 
 # TODO gnome-extensions install
-gnome-extensions=(
+gnomeextensions=(
     gsconnect@andyholmes.github.io
     sound-output-device-chooser@kgshank.net
     caffeine@patapon.info
     clipboard-indicator@tudmotu.com
     kimpanel@kde.org
-    # gnome-shell-screenshot@ttll.de # use buildin tool
     syncthing@gnome.2nv2u.com
     blur-my-shell@aunetx
     pop-shell@system76.com
@@ -208,13 +207,6 @@ setup-zsh() {
     env zsh
 }
 
-# sync file between hosts
-setup-syncthing () {
-    # systemctl enable syncthing@liubo # depends on your use name TODO
-    # systemctl start syncthing@liubo
-    # NOTE use gnome extension instead
-}
-
 # use ly as display manager and remove lightdm
 setup-ly () {
     sudo systemctl disable lightdm
@@ -253,7 +245,7 @@ setup() {
     # mkdir $HOME/.mail/gmail
     # touch $HOME/.mbsync-gmail
 
-    if [ ! -d "$HOME/Developer" "" ]; then
+    if [ ! -d "$HOME/Developer" ]; then
             mkdir $HOME/Developer
     fi
 
