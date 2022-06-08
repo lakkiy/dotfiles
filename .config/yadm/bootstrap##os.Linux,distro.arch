@@ -1,13 +1,19 @@
 #!/bin/bash
 
+# TODO install chorme-gnome-shell for install gnome extensions from browser
+# config keyd
+# emacs all the icons install fonts
+# remove gnome-terminal after gnome-console installed
+# didn't remove gnome software
+# change rime sync_dir and installation_id
+
 # TODO gnome-extensions install
-gnome-extensions=(
+gnomeextensions=(
     gsconnect@andyholmes.github.io
     sound-output-device-chooser@kgshank.net
     caffeine@patapon.info
     clipboard-indicator@tudmotu.com
     kimpanel@kde.org
-    # gnome-shell-screenshot@ttll.de # use buildin tool
     syncthing@gnome.2nv2u.com
     blur-my-shell@aunetx
     pop-shell@system76.com
@@ -16,41 +22,11 @@ gnome-extensions=(
 
 pkgs=(
 	archlinux-keyring # fix invalid pgp signtaur
-    firefox
-    nodejs-lts-gallium # copilot do not support 18+ version node
-    youtube-dl
-    bilili #aur
-    clash-premium-bin # network proxy
-    vlc
-    xray
-    # v2ray
-    # trojan-go-bin
-    discord
-    bitwarden
-	zsh
-    yadm
-	syncthing
-	cpio # unpack tar archive, install procs in zsh
-	hunspell # for emacs spell check
-    qbittorrent
-	tree                       # view file tree
-	tealdeer                   # rust version tldr
-	neofetch # pron!!!!!!
-	file-roller # zip and unzip file
-	fzf # fuzzy finder
-	man-db # for command man
-	aspell # for emacs flyspell
-	sdcv # star dict command line version
-	cloc # count program lines
-    kubectl
-    mosh
-    docker
+    clash-premium-bin # network proxy # NOTE aur
     # sudo usermod -aG docker $USER
     # systemctl enable docker
     # systemctl start docker
     # docker pull zevlg/telega-server:latest
-	retroarch # game
-    airshipper # game veloren luncher
     # see archwiki for steam install NOTE
 	# graphviz # show picture of emacs org-roam
 	# hugo # static blog
@@ -61,23 +37,56 @@ pkgs=(
 	# socat                      # with mpv
 	# gimp # ps
 
+    # gui app
+    discord
+    bitwarden
+    qbittorrent
+    vlc
+    firefox
+	retroarch # game
+    airshipper # game veloren luncher NOTE aur
+
+    # utils && command line tools
+	zsh
+	file-roller # zip and unzip file
+    docker
+    kubectl
+    nodejs-lts-gallium # copilot do not support 18+ version node
+    yadm
+	neofetch # pron!!!!!!
+	hunspell # for emacs spell check
+	tree                       # view file tree
+	tealdeer                   # rust version tldr
+	syncthing
+    youtube-dl
+	cpio # unpack tar archive, install procs in zsh
+	fzf # fuzzy finder
+	man-db # for command man
+	aspell # for emacs flyspell
+	sdcv # star dict command line version
+	cloc # count program lines
+    mosh
+    bilili # NOTE aur
+    xray # NOTE aur
+
     # system wide, now for thinkpad x1 carbon gen8
     fwupd # see archwiki, update firmware
     sof-firmware # https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
 
     ### gnome
+    gnome-console # NOTE aur
     bluez-utils # for bluetoothctl, bluetooth-quick-connect
-    chrome-gnome-shell # install gnome extensions on we
+    chrome-gnome-shell # install gnome extensions on we # NOTE aur
     gnome-notes
-    framgents # bt downloader
-    gnome-shell-extension-pop-shell
-    # popsicle-bin # flash usb # NOTE use gnome disk
-    extension-manager
-    gnome-text-editor
+    gnome-shell-extension-pop-shell # NOTE aur
+    extension-manager # NOTE aur
+    gnome-text-editor # NOTE aur
     #theme
     pop-gtk-theme
     pop-icon-theme
     xcursor-comix
+
+    #------------------------------------------ test here
 
     ### vpn
     openvpn
@@ -133,10 +142,10 @@ pkgs=(
     youtube-muisc-bin
     spotify
     spot-client #for gnome
-    feishu # offical
+    feishu-bin # offical
     wemeet-bin
     wps-office-cn
-	keyd # key remapping TODO add conf file auto
+	keyd # key remapping TODO add conf file auto # TODO script didn't install this, and other aur app
 	dropbox
     nautilus-dropbox
     mycli
@@ -153,8 +162,8 @@ pkgs=(
     ttf-roboto-mono # emacs default font
 	wqy-microhei # display chinese
     #### aur fonts
-    ttf-cardo # emacs variable pitch
-	ttf-lxgw-wenkai # emacs chinese font
+    ttf-cardo # emacs variable pitch # NOTE aur
+	ttf-lxgw-wenkai # emacs chinese font # NOTE aur
 
 	# Optional for wm
     # nyxt # firefox hidpi not work well on 4k screen
@@ -208,13 +217,6 @@ setup-zsh() {
     env zsh
 }
 
-# sync file between hosts
-setup-syncthing () {
-    # systemctl enable syncthing@liubo # depends on your use name TODO
-    # systemctl start syncthing@liubo
-    # NOTE use gnome extension instead
-}
-
 # use ly as display manager and remove lightdm
 setup-ly () {
     sudo systemctl disable lightdm
@@ -253,7 +255,7 @@ setup() {
     # mkdir $HOME/.mail/gmail
     # touch $HOME/.mbsync-gmail
 
-    if [ ! -d "$HOME/Developer" "" ]; then
+    if [ ! -d "$HOME/Developer" ]; then
             mkdir $HOME/Developer
     fi
 
@@ -299,7 +301,6 @@ setup() {
 	fi
 }
 setup
-setup-syncthing
 setup-zsh
 setup-keyd
 
