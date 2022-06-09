@@ -1,83 +1,107 @@
 #!/bin/bash
 
-# TODO gnome-extensions install
-gnomeextensions=(
-    gsconnect@andyholmes.github.io
-    sound-output-device-chooser@kgshank.net
-    caffeine@patapon.info
-    clipboard-indicator@tudmotu.com
-    kimpanel@kde.org
-    syncthing@gnome.2nv2u.com
-    blur-my-shell@aunetx
-    pop-shell@system76.com
-    bluetooth-quick-connect@bjarosze.gmail.com
-)
+# TODO install chorme-gnome-shell for install gnome extensions from browser
+# config keyd
+# emacs all the icons install fonts
+# remove gnome-terminal after gnome-console installed
+# didn't remove gnome software
+# change rime sync_dir and installation_id
+
+# sudo usermod -aG docker $USER
+# systemctl enable docker
+# systemctl start docker
+# docker pull zevlg/telega-server:latest
+# see archwiki for steam install NOTE
 
 pkgs=(
+    ############## COMMAND LINE TOOLS ##############
 	archlinux-keyring # fix invalid pgp signtaur
-    firefox
-    nodejs-lts-gallium # copilot do not support 18+ version node
-    youtube-dl
-    bilili #aur
-    clash-premium-bin # network proxy
-    vlc
-    xray
-    # v2ray
-    # trojan-go-bin
-    discord
-    bitwarden
+	mpv                        # play netease cloud music in emacs
+	socat                      # with mpv
+    gperf # build tdlib
+    tree-sitter
+    cmake # compile vterm
+    libgccjit # native compilation need this
+    xapian-core # use xeft in emacs for note taking
+	notmuch # tag email
+    afew # auto tag email
+	isync # sync eamil
+	git-delta
+	bat
+	fd
+	ripgrep
+	htop
+    jq
 	zsh
-    yadm
-	syncthing
-	cpio # unpack tar archive, install procs in zsh
-	hunspell # for emacs spell check
-    qbittorrent
-	tree                       # view file tree
-	tealdeer                   # rust version tldr
-	neofetch # pron!!!!!!
-	file-roller # zip and unzip file
-	fzf # fuzzy finder
-	man-db # for command man
-	aspell # for emacs flyspell
-	sdcv # star dict command line version
-	cloc # count program lines
-    kubectl
-    mosh
+	file-roller        # zip and unzip file
     docker
-    # sudo usermod -aG docker $USER
-    # systemctl enable docker
-    # systemctl start docker
-    # docker pull zevlg/telega-server:latest
-	retroarch # game
-    airshipper # game veloren luncher
-    # see archwiki for steam install NOTE
+    kubectl
+    nodejs-lts-gallium # copilot do not support 18+ version node
+    yadm
+	neofetch           # pron!!!!!!
+	hunspell           # for emacs spell check
+	tree               # view file tree
+	tealdeer           # rust version tldr
+	syncthing
+    youtube-dl
+	cpio               # unpack tar archive, install procs in zsh
+	fzf                # fuzzy finder
+	man-db             # for command man
+	aspell             # for emacs flyspell
+	sdcv               # star dict command line version
+	cloc               # count program lines
+    mosh
+    go
+    staticcheck
+    ipython
+    python-pip
+    pyright
+    clojure
+    leiningen
+	universal-ctags
+	global
+    cscope
 	# graphviz # show picture of emacs org-roam
 	# hugo # static blog
 	# jupyterlab
-	# aria2 # downloader
-	# pandoc-bin                     # convert to pdf
-	# mpv                        # play netease cloud music in emacs
-	# socat                      # with mpv
 	# gimp # ps
+    ############## COMMAND LINE TOOLS ##############
 
-    # system wide, now for thinkpad x1 carbon gen8
-    fwupd # see archwiki, update firmware
-    sof-firmware # https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
 
-    ### gnome
+    ############## GUI APP ##############
+    discord
+    bitwarden
+    qbittorrent
+    vlc
+    firefox
+	retroarch # game
+	fcitx5-im
+	librime
+	fcitx5-rime
+    ############## GUI APP ##############
+
+
+    ############## GNOME ##############
     bluez-utils # for bluetoothctl, bluetooth-quick-connect
-    chrome-gnome-shell # install gnome extensions on we
     gnome-notes
-    framgents # bt downloader
-    gnome-shell-extension-pop-shell
-    # popsicle-bin # flash usb # NOTE use gnome disk
-    extension-manager
-    gnome-text-editor
     #theme
     pop-gtk-theme
     pop-icon-theme
     xcursor-comix
+    #aur
+    gnome-console
+    extension-manager
+    gnome-text-editor
+    gnome-shell-extension-pop-shell
+    chrome-gnome-shell # install gnome extensions on browser
+    ############## GNOME ##############
 
+    ############## NOTE system wide, now for thinkpad x1 carbon gen8 ##############
+    fwupd # see archwiki, update firmware
+    sof-firmware # https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
+    ############## NOTE system wide, now for thinkpad x1 carbon gen8 ##############
+
+    #------------------------------------------ test here
     ### vpn
     openvpn
     networkmanager-openvpn
@@ -88,72 +112,47 @@ pkgs=(
     # https://gist.github.com/pastleo/aa3a9524664864c505d637b771d079c9
     # https://www.reddit.com/r/Fedora/comments/twngam/error_configuring_ipsecikev2_vpn_strongswan/
 
-    ### programming
-    go
-    staticcheck
-    ipython
-    python-pip
-    pyright
-    clojure
-    leiningen
-    mit-scheme # aur
 
-    ### tags for programming
-	universal-ctags
-	global
-    cscope
-
-    ### input method
-	fcitx5-im
-	librime
-	fcitx5-rime
-
-    ### modern unix tools
-	git-delta
-	bat # better cat
-	fd # better find
-	ripgrep # better grep
-	htop # better top
-    jq
-
-    ### for emacs
-    tree-sitter
-    cmake # compile vterm
-    libgccjit # native compilation need this
-    xapian-core # use xeft in emacs for note taking
-	notmuch # tag email
-    afew # auto tag email
-	isync # sync eamil
-
-    ### aur app
-    ventoy-bin # flash usb
+    #################### AUR ####################
+    ####----gui app
+    linuxqq
     wechat-uos
-    telegram-tdlib
     youtube-muisc-bin
     spotify
-    spot-client #for gnome
-    feishu # offical
+    feishu-bin
     wemeet-bin
     wps-office-cn
-	keyd # key remapping TODO add conf file auto
-	dropbox
-    nautilus-dropbox
+    drawio-desktop-bin
+    ####----tui
+	keyd # key remapping TODO add conf file auto # TODO script didn't install this, and other aur app
     mycli
     litecli # for sqlite
-    logiops # for logi mouse
-    drawio-desktop-bin
-	mcomix # comic books
-    timeshift-bin # create snapshot
     sshfs # timeshift need this to back up to smb
+    bilili
+    xray
+    clash-premium-bin
+    mit-scheme
+	pandoc-bin                     # convert to pdf
+    ####----optional
+    # airshipper # game veloren luncher
+	# dropbox
+    # nautilus-dropbox
+	# mcomix # comic books
+    # timeshift-bin # create snapshot
+    # ventoy-bin # flash usb
+    ####----misc
+    # telegram-tdlib # NOTE manually build
+    #################### AUR ####################
 
-    ### font
+    ################ FONT ################
     wqy-zenhei # steam need this for chinese font
-    tty-wps-fonts
     ttf-roboto-mono # emacs default font
 	wqy-microhei # display chinese
-    #### aur fonts
+    #aur fonts
+    tty-wps-fonts
     ttf-cardo # emacs variable pitch
 	ttf-lxgw-wenkai # emacs chinese font
+    ################ FONT ################
 
 	# Optional for wm
     # nyxt # firefox hidpi not work well on 4k screen
@@ -195,11 +194,6 @@ rmpkgs=(
     # due to r/gnome, not wark well with arch, cause issue, need too much resource
     gnome-software-packagegit-plugin
     gnome-software
-)
-
-dockerimages=(
-    zevlg/telega-server
-    haishanh/yacd # docker run -p 1234:80 -d --rm haishanh/yacd
 )
 
 setup-zsh() {
@@ -246,7 +240,7 @@ setup() {
     # touch $HOME/.mbsync-gmail
 
     if [ ! -d "$HOME/Developer" ]; then
-            mkdir $HOME/Developer
+        mkdir $HOME/Developer
     fi
 
     sudo pacman -Syyu
@@ -274,24 +268,10 @@ setup() {
             rm -rf ~/.config/emacs/rime/.git
 	fi
 
-    echo "Check packages..."
-	packages=()
-	for app in ${pkgs[@]}; do
-		if pacman -Q ${app} > /dev/null; then
-			printf "${app} is already installed, skip\n"
-		else
-			packages+=(${app})
-		fi
-	done
-
-	if [ ${#packages[@]} -gt 0 ]; then
-		yay -S --noconfirm --sudoloop ${packages[@]}
-	else
-		echo "All packages are already installed"
-	fi
+    # TODO check package is installed
+    yay -S --noconfirm --sudoloop ${pkgs[@]}
 }
 setup
-setup-syncthing
 setup-zsh
 setup-keyd
 
