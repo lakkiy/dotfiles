@@ -115,7 +115,7 @@ pkgs=(
 
     #################### AUR ####################
     ####----gui app
-    wechat-uos
+    linuxqq # see archwiki for wechat, use deepin-wine-wechat
     youtube-muisc-bin
     spotify
     feishu-bin
