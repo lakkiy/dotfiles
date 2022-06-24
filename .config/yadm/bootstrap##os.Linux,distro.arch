@@ -61,6 +61,7 @@ pkgs=(
 	universal-ctags
 	global
     cscope
+    # python-redis redis client
 	# graphviz # show picture of emacs org-roam
 	# hugo # static blog
 	# jupyterlab
@@ -214,15 +215,16 @@ setup-ly () {
 setup-keyd () {
     echo "
 [ids]
-
 *
-
 [main]
-
-# Maps escape when pressed and control when held.
+leftalt = oneshot(alt)
+rightalt = oneshot(altgr)
+shift = oneshot(shift)
 capslock = overload(control, esc)
 control = overload(control, esc)
- | sudo tee -a /etc/keyd/default.cfg"
+[control]
+m = enter
+ | sudo tee -a /etc/keyd/default.conf"
     sudo systemctl enable keyd
     sudo systemctl restart keyd
 }
