@@ -124,6 +124,7 @@ pkgs=(
     wps-office-cn
     drawio-desktop-bin
     ####----tui
+    vscode-langservers-extracted
 	keyd # key remapping TODO add conf file auto # TODO script didn't install this, and other aur app
     mycli
     litecli # for sqlite
