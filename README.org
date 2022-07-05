@@ -3,3 +3,6 @@
 
 A simple zsh prompt, add to ~/.zshrc.local
   PS1='%m  %F{red}:: %F{green}%~ %(?.%F{57}.%F{magenta})» '
+
+
+All config about key binding is for dvorak, you may change it to qwerty yourself.

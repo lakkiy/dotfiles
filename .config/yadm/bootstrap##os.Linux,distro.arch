@@ -21,6 +21,7 @@ pkgs=(
     ############## COMMAND LINE TOOLS ##############
 	archlinux-keyring # fix invalid pgp signtaur
 	mpv                        # play netease cloud music in emacs
+    bind # network tools like dig
 	socat                      # with mpv
     gperf # build tdlib
     tree-sitter
@@ -138,11 +139,22 @@ pkgs=(
     ttf-roboto-mono # emacs default font
 	wqy-microhei # display chinese
     noto-fonts-emoji
+    otf-latin-modern
+    otf-cascadia-code
     #aur fonts
     tty-wps-fonts
     ttf-cardo # emacs variable pitch
 	ttf-lxgw-wenkai # emacs chinese font
     ################ FONT ################
+)
+
+# TODO
+i3apps=(
+    i3
+    i3status-rs
+
+    ### aur
+    betterlockscreen
 )
 
 setup-zsh() {
