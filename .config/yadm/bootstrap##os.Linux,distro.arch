@@ -27,6 +27,7 @@ pkgs=(
     tree-sitter
     cmake # compile vterm
     libgccjit # native compilation need this
+    v2ray # network proxy
     xapian-core # use xeft in emacs for note taking
 	notmuch # tag email
     afew # auto tag email

@@ -8,7 +8,7 @@ export PATH=$HOME/bin:$PATH
 
 ### Golang
 export GO111MODULE=auto
-export GOPROXY=https://goproxy.cn
+export GOPROXY=https://goproxy.io,direct
 export GOPATH=$HOME/go
 export PATH=${GOPATH//://bin:}/bin:${GOROOT//://bin:}/bin:$PATH
 

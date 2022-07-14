@@ -3,6 +3,9 @@
 	excludesFile = ~/.gitignore
 	pager = delta
 
+[interactive]
+	diffFilter = delta --color-only
+
 [merge]
 	conflictStyle = diff3
 
@@ -15,7 +18,7 @@
 	default = current
 
 [pull]
-	rebase = false
+	rebase = true
 
 [include]
 	path = ~/.gitconfig.local
