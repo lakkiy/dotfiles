@@ -64,6 +64,7 @@ pkgs=(
     pyright
     clojure
     leiningen
+    typescript
 	universal-ctags
 	global
     cscope
@@ -119,6 +120,7 @@ pkgs=(
     wps-office-cn
     drawio-desktop-bin
     ####----tui
+    pnpm # better npm
     vscode-langservers-extracted
 	keyd # key remapping TODO add conf file auto # TODO script didn't install this, and other aur app
     mycli
@@ -149,6 +151,7 @@ pkgs=(
     noto-fonts-extra
     ttf-sarasa-gothic # same width for Chinese and English
     #aur fonts
+    otf-monego-git
     tty-wps-fonts
     ttf-cardo # emacs variable pitch
 	ttf-lxgw-wenkai # emacs chinese font
