@@ -1,0 +1,8 @@
+# ~/.config/systemd/user/wallchanger.service
+[Unit]
+Description=Change Wallpaper
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=%h/bin/wallchanger.sh
