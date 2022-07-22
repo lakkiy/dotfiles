@@ -112,6 +112,7 @@ pkgs=(
 
     #################### AUR ####################
     ####----gui app
+    crow-translate
     tiny-media-manager-v3
     linuxqq # see archwiki for wechat, use deepin-wine-wechat
     spotify
