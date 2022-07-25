@@ -1,0 +1,7 @@
+[code]
+lang = 'go'
+editor = 'cat'
+
+[cookies]
+csrf = "${lc_csrftoken}"
+session = "${lc_session}"

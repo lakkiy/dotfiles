@@ -121,6 +121,7 @@ pkgs=(
     wps-office-cn
     drawio-desktop-bin
     ####----tui
+    leetcode-cli
     pnpm # better npm
     vscode-langservers-extracted
 	keyd # key remapping TODO add conf file auto # TODO script didn't install this, and other aur app
