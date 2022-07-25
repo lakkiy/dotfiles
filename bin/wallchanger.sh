@@ -5,7 +5,7 @@
 # goto https://unsplash.com/developers to get your ak, and add to env
 ACCESS_KEY="${UNSPLASHACCESSKEY}"
 TOPIC="bo8jQKTaE0Y" # "Wallpapers"
-WALLPAPER_DIR="${HOME}/.local/share/backgrounds"
+WALLPAPER_DIR="${HOME}/.local/share/backgrounds" # TODO mkdir if not exist
 
 if ! photo_path="$(mktemp -p "${WALLPAPER_DIR}" "unsplash.com.XXXXXXXXXX.jpg")"
 then
@@ -38,4 +38,22 @@ fi
 # done
 
 # mate
-dconf write /org/mate/desktop/background/picture-filename "'${photo_path}'"
+# dconf write /org/mate/desktop/background/picture-filename "'${photo_path}'"
+
+
+# kde
+case $XDG_CURRENT_DESKTOP in
+    "KDE")
+        qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript '
+    var allDesktops = desktops();
+    print (allDesktops);
+    for (i=0;i<allDesktops.length;i++) {{
+        d = allDesktops[i];
+        d.wallpaperPlugin = "org.kde.image";
+        d.currentConfigGroup = Array("Wallpaper",
+                                     "org.kde.image",
+                                     "General");
+        d.writeConfig("Image", "file:///${photo_path}")
+    }}
+'
+esac
