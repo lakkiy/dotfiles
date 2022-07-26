@@ -1,4 +1,8 @@
 # ~/.config/systemd/user/wallchanger.service
+
+# NOTE improt env before start this service
+# systemctl --user import-environment UNSPLASHACCESSKEY
+
 [Unit]
 Description=Change Wallpaper
 Wants=network-online.target

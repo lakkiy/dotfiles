@@ -28,21 +28,19 @@ then
   exit 1
 fi
 
-# gnome
-# for setting_name in "background" "screensaver"; do
-#   if ! gsettings set "org.gnome.desktop.${setting_name}" "picture-uri" "file:///${photo_path}"
-#   then
-#     >&2 echo "Error: failed to set photo as ${setting_name}."
-#     exit 1
-#   fi
-# done
-
-# mate
-# dconf write /org/mate/desktop/background/picture-filename "'${photo_path}'"
-
-
-# kde
 case $XDG_CURRENT_DESKTOP in
+    "MATE")
+        dconf write /org/mate/desktop/background/picture-filename "'${photo_path}'"
+        ;;
+    "GNOME")
+        for setting_name in "background" "screensaver"; do
+            if ! gsettings set "org.gnome.desktop.${setting_name}" "picture-uri" "file:///${photo_path}"
+            then
+                >&2 echo "Error: failed to set photo as ${setting_name}."
+                exit 1
+            fi
+        done
+        ;;
     "KDE")
         qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript '
     var allDesktops = desktops();
@@ -56,4 +54,5 @@ case $XDG_CURRENT_DESKTOP in
         d.writeConfig("Image", "file:///${photo_path}")
     }}
 '
+        ;;
 esac
