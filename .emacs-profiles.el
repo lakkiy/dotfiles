@@ -1,25 +1,3 @@
-(("default" . ((user-emacs-directory . "~/.config/emacs")))
- ("ilyaw39" . ((user-emacs-directory . "~/Developer/emacsconf/ilyaw39"))) ;; latex, focus writing on org mode
- ("gk" . ((user-emacs-directory . "~/Developer/emacsconf/gk"))) ;; gkroam creater
- ("aeghn" . ((user-emacs-directory . "~/Developer/emacsconf/aeghn")))
- ("ward" . ((user-emacs-directory . "~/Developer/emacsconf/ward")))
- ("nasy" . ((user-emacs-directory . "~/Developer/emacsconf/nasy")))
- ("shenglao" . ((user-emacs-directory . "~/Developer/emacsconf/shenglao")))
- ("motform" . ((user-emacs-directory . "~/Developer/emacsconf/motform")))
- ("mengmeng" . ((user-emacs-directory . "~/Developer/emacsconf/mengmeng")))
- ("cjohansen" . ((user-emacs-directory . "~/Developer/emacsconf/cjohansen")))
- ("lazycat" . ((user-emacs-directory . "~/Developer/emacsconf/lazycat")))
- ("tecosaur" . ((user-emacs-directory . "~/Developer/emacsconf/tecosaur")))
- ("toki" . ((user-emacs-directory . "~/Developer/emacsconf/toki")))
- ("redguardtoo" . ((user-emacs-directory . "~/Developer/emacsconf/redguardtoo")))
- ("dog" . ((user-emacs-directory . "~/Developer/emacsconf/dog")))
- ("snug" . ((user-emacs-directory . "~/Developer/emacsconf/snug")))
- ("centaur" . ((user-emacs-directory . "~/Developer/emacsconf/centaur")))
- ("lunary" . ((user-emacs-directory . "~/Developer/emacsconf/lunary")))
- ("purcell" . ((user-emacs-directory . "~/Developer/emacsconf/purcell")))
- ("prelude" . ((user-emacs-directory . "~/Developer/emacsconf/prelude"))))
-
-;; git clone https://github.com/plexus/chemacs2.git ~/.emacs.d --depth 1
 ;; git clone https://github.com/condy0919/.emacs.d ~/Developer/emacsconf/mengmeng --depth 1
 ;; git clone https://github.com/purcell/emacs.d.git ~/Developer/emacsconf/purcell --depth 1
 ;; git clone https://github.com/redguardtoo/emacs.d.git ~/Developer/emacsconf/redguardtoo --depth 1
@@ -41,4 +19,5 @@
 ;; git clone https://github.com/willbchang/ward-emacs ~/Developer/emacsconf/ward --depth 1
 
 
-;; emacs --with-profile default
+;; NOTE this requrie emacs 29
+;; emacs --init-directory ~/.config/emacs
