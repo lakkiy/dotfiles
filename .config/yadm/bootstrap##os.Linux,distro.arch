@@ -77,6 +77,7 @@ pkgs=(
 
 
     ############## GUI APP ##############
+    element-desktop # matrix client
     discord
     bitwarden
     qbittorrent
