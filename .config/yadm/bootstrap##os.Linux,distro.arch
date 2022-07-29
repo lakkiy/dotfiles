@@ -181,9 +181,6 @@ setup-keyd () {
 [ids]
 *
 [main]
-leftalt = oneshot(alt)
-rightalt = oneshot(altgr)
-shift = oneshot(shift)
 capslock = overload(control, esc)
 control = overload(control, esc)
 [control]

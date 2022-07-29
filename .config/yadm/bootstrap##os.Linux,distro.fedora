@@ -18,6 +18,7 @@ pkgs=(
     kodi # TODO hdr work, but ka le, like jellyfin deskotp client
 
     # tui
+    fcitx5-rime # chinese input
     flatpak
     zsh         # shell, replace bash
     notmuch     # tag email, read mail in emacs
@@ -72,7 +73,6 @@ pkgs=(
 
 
 ### Required
-    fcitx5-rime # chinese input
     # install wps and lark, dropbox,tencent metting manually
     # tdlib       # use telega in emacs, maybe need set prefix in emacs
     # gperf #build tdlib
@@ -129,9 +129,6 @@ setup-keyd () {
 [ids]
 *
 [main]
-leftalt = oneshot(alt)
-rightalt = oneshot(altgr)
-shift = oneshot(shift)
 capslock = overload(control, esc)
 control = overload(control, esc)
 [control]
