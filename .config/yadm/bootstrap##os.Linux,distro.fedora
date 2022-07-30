@@ -2,6 +2,7 @@
 
 coprs=(
     dspom/keyd
+    carlis/crow-translate
 )
 
 # packages should remove
@@ -16,10 +17,22 @@ pkgs=(
     # new gui
     vlc # TODO chang ffmpeg thread to 4, but hdr color not work
     kodi # TODO hdr work, but ka le, like jellyfin deskotp client
+    dropbox
+    retroarch             # game
+    transmission
+    timeshift
+    discord
+    # mcomix3 # comic viewer # NOTE can't open .zip, find better one
 
     # tui
+    unrar
+    p7zip
+    youtube-dl
+    kubernetes-client
+    litecli
     fcitx5-rime # chinese input
     flatpak
+    pandoc                # convert to pdf
     zsh         # shell, replace bash
     notmuch     # tag email, read mail in emacs
     isync       # sync mail to localhost, aka mbsync
@@ -31,6 +44,7 @@ pkgs=(
     docker      # docker pull zevlg/telega-server:latest
     python3-pip # NOTE pip install afew
     # Modern Unix Tools
+    jq
 	fzf         # fuzzy finder
 	bat         # better cat
 	ripgrep     # better grep
@@ -49,16 +63,28 @@ pkgs=(
     # Emacs
     # dnf builddep emacs
     # --with-pgtk --with-xwidgets --with-native-compilation --with-json --with-mailutils
+    xapian-core-devel # build xeft module
     gcc-c++     # build xeft for emacs, and tdlib
     cmake  # bulid vterm
     libtool
     librime-devel # for emacs-rime
+    mpv                   # play netease cloud music in emacs
+    socat                 # with mpv
+    gperf #build tdlib
     # programming
     ctags       # universal-ctags for programming
     global      # gtags for programming
+    nodejs
+    nodejs-typescript
+    cscope
+    clojure
     golang      # programming language
+    # NOTE staticcheck pyright lein
 
     # For Gnome
+    nautilus-dropbox
+    gnome-console
+    gnome-console-nautilus
     gnome-tweaks
     nautilus-gsconnect
     gnome-shell-extension-gsconnect
@@ -73,28 +99,14 @@ pkgs=(
 
 
 ### Required
-    # install wps and lark, dropbox,tencent metting manually
+    # install wps and
     # tdlib       # use telega in emacs, maybe need set prefix in emacs
-    # gperf #build tdlib
- ### Fonts
-    # ttf-sarasa-gothic # 更纱黑体
-    # wqy-bitmapfont
-    # wqy-microhei
-    # wqy-microhei-lite
-    # wqy-zenhei
-    # powerline-fonts
 ### Optional, WM
     # tmux
-    # retroarch             # game
     # graphviz              # show picture of emacs org-roam
     # jupyterlab
-    # pandoc                # convert to pdf
-    # mpv                   # play netease cloud music in emacs
-    # socat                 # with mpv
-    # docker
     # gimp                  # ps
     # wps-office
-    # dropbox
     # gucharmap             # display symbols in font
     # mpd                   # play music
     # mcomix                # comic books
@@ -104,6 +116,10 @@ flatpkgs=(
     com.spotify.Client
     com.github.iwalton3.jellyfin-media-player
     com.mattjakeman.ExtensionManager
+    com.wps.Office
+    com.tencent.wemeet
+    com.jgraph.drawio.desktop
+    io.github.Fndroid.clash_for_windows
 )
 
 setup-flathub () {
@@ -148,6 +164,12 @@ setup-docker () {
 
 setup() {
     sudo dnf update && sudo dnf upgrade
+
+    # if ! command -v pnpm /dev/null
+    # then
+    #     echo "install pnpm..."
+    #     curl -fsSL https://get.pnpm.io/install.sh | sh -
+    # fi
 
     if [ ! -d "${HOME}/Developer" ]; then
         mkdir ${HOME}/Developer

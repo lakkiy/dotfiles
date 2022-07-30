@@ -43,7 +43,6 @@ pkgs=(
     docker
     kubectl
     nodejs-lts-gallium # copilot do not support 18+ version node
-    yadm
 	neofetch           # pron!!!!!!
 	hunspell           # for emacs spell check
 	tree               # view file tree
@@ -207,25 +206,25 @@ setup() {
 
     echo "Check yay..."
     if ! command -v yay >/dev/null 2>&1; then
-	    cd ~
-	    git clone https://aur.archlinux.org/yay-bin.git ~/Developer/yay-bin
-	    cd ~/Developer/yay-bin
+	    cd $HOME
+	    git clone https://aur.archlinux.org/yay-bin.git $HOME/Developer/yay-bin
+	    cd $HOME/Developer/yay-bin
 	    yes | makepkg -si
-	    cd ~
-	    rm -rf ~/Developer/yay-bin
+	    cd $HOME
+	    rm -rf $HOME/Developer/yay-bin
     fi
 
 	if [ ! -d "~/.config/emacs" ]; then
 	        echo "Clone emacs config..."
-	        git clone -q https://github.com/404cn/eatemacs.git ~/.config/emacs
+	        git clone -q https://github.com/404cn/eatemacs.git $HOME/.config/emacs
 	fi
 	if [ ! -d "~/.local/share/fcitx5/rime" ]; then
 		    echo "Clone fcitx config..."
             # use fcitx5-remote -r to redeploy rime
-		    git clone -q https://github.com/404cn/Rime.git ~/.local/share/fcitx5/rime
+		    git clone -q https://github.com/404cn/Rime.git $HOME/.local/share/fcitx5/rime
             echo "Config rime for emacs..."
-            cp -r ~/.local/share/fcitx5/rime ~/.config/emacs/rime
-            rm -rf ~/.config/emacs/rime/.git
+            cp -r $HOME/.local/share/fcitx5/rime ~/.config/emacs/rime
+            rm -rf $HOME/.config/emacs/rime/.git
 	fi
 
     # TODO check package is installed
