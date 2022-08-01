@@ -1,147 +1,85 @@
 #!/bin/bash
 
 # TODO install chorme-gnome-shell for install gnome extensions from browser
-# config keyd
-# emacs all the icons install fonts
 # remove gnome-terminal after gnome-console installed
-# didn't remove gnome software
+# remove gnome software
 # change rime sync_dir and installation_id
 
-# sudo usermod -aG docker $USER
-# systemctl enable docker
-# systemctl start docker
-# docker pull zevlg/telega-server:latest
-# see archwiki for steam install NOTE
-
-# reload && enable bluetooth
-# systemctl start bluetooth
-# systemctl enable bluetooth
-
 pkgs=(
-    ############## COMMAND LINE TOOLS ##############
-	archlinux-keyring # fix invalid pgp signtaur
-	mpv                        # play netease cloud music in emacs
+	archlinux-keyring
+
+    # GUI
+    discord
+    transmission # qbittorrent is used for remote
+    vlc
+    firefox
+	retroarch # game
+
+    # Chinese input method
+	fcitx5-im
+	fcitx5-rime
+
+    # VPN
+    # networkmanager-l2tp # setup L2TP over IPsec type vpn
+    # strongwan # use with l2tp
+    # nm-connection-editor # networkmanager-l2tp doesn't have gtk4 support now, use nm-connection-editor instead
+
+    # TUI
     bind # network tools like dig
-	socat                      # with mpv
-    gperf # build tdlib
-    tree-sitter
-    cmake # compile vterm
-    libgccjit # native compilation need this
     v2ray # network proxy
-    xapian-core # use xeft in emacs for note taking
-	notmuch # tag email
-    afew # auto tag email
-	isync # sync eamil
+	zsh
+    docker
+    kubectl
+	neofetch           # pron!!!!!!
+	tree               # view file tree
+	tealdeer           # rust version tldr
+	syncthing
+    youtube-dl
+	cloc               # count program lines
+	man-db             # for command man
+    mosh
+    python-pip
+    # Extract && Compress
+    p7zip
+    unrar
+	cpio
+	file-roller
+    # Modern Unix Tools
 	git-delta
+	fzf
 	bat
 	fd
 	ripgrep
 	htop
     jq
-	zsh
-	file-roller        # zip and unzip file
-    docker
-    kubectl
-    nodejs-lts-gallium # copilot do not support 18+ version node
-	neofetch           # pron!!!!!!
+
+    # Emacs
+	librime # for bulid emacs-rime
+    gperf # build tdlib
+    cmake # compile vterm
+    libgccjit # native compilation need this
+    xapian-core # use xeft in emacs for note taking
+	notmuch # tag email
+    afew # auto tag email
+	isync # sync eamil
+	mpv                        # play netease cloud music in emacs
+	socat                      # with mpv
 	hunspell           # for emacs spell check
-	tree               # view file tree
-	tealdeer           # rust version tldr
-	syncthing
-    youtube-dl
-	cpio               # unpack tar archive, install procs in zsh
-	fzf                # fuzzy finder
-	man-db             # for command man
 	aspell             # for emacs flyspell
 	sdcv               # star dict command line version
-	cloc               # count program lines
-    mosh
+    # Programming
+	universal-ctags
+	global
+    cscope
     go
     staticcheck
-    ipython
-    python-pip
     pyright
     clojure
     leiningen
     typescript
-	universal-ctags
-	global
-    cscope
-    proxychains-ng # TODO change config file
-    p7zip
-    unrar
-    ccze # color nginx log
-	# gimp # ps
-    ############## COMMAND LINE TOOLS ##############
+    nodejs-lts-gallium
 
-
-    ############## GUI APP ##############
-    element-desktop # matrix client
-    discord
-    bitwarden
-    qbittorrent
-    vlc
-    firefox
-	retroarch # game
-	fcitx5-im
-	librime
-	fcitx5-rime
-    ############## GUI APP ##############
-
-
-    ############## GNOME ##############
-    bluez-utils # for bluetoothctl, bluetooth-quick-connect
-    ############## GNOME ##############
-
-    ############## NOTE system wide, now for thinkpad x1 carbon gen8 ##############
-    fwupd # see archwiki, update firmware
-    sof-firmware # https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
-    ############## NOTE system wide, now for thinkpad x1 carbon gen8 ##############
-
-    #------------------------------------------ test here
-    ### vpn
-    # networkmanager-l2tp # setup L2TP over IPsec type vpn
-    # strongwan # use with l2tp
-###    nm-connection-editor # networkmanager-l2tp doesn't have gtk4 support now, use nm-connection-editor instead
-    # https://wiki.archlinux.org/title/Openswan_L2TP/IPsec_VPN_client_setup
-    # https://gist.github.com/pastleo/aa3a9524664864c505d637b771d079c9
-    # https://www.reddit.com/r/Fedora/comments/twngam/error_configuring_ipsecikev2_vpn_strongswan/
-
-    ## TODO syncching
-
-
-    #################### AUR ####################
-    ####----gui app
-    crow-translate
-    tiny-media-manager-v3
-    linuxqq # see archwiki for wechat, use deepin-wine-wechat
-    spotify
-    feishu-bin
-    wemeet-bin
-    wps-office-cn
-    drawio-desktop-bin
-    ####----tui
-    leetcode-cli
-    pnpm # better npm
-    vscode-langservers-extracted
-	keyd # key remapping TODO add conf file auto # TODO script didn't install this, and other aur app
-    mycli
-    litecli # for sqlite
-    sshfs # timeshift need this to back up to smb
-    bilili
-       # clash-premium-bin
-    mit-scheme
-	pandoc-bin                     # convert to pdf
-    telegram-tdlib-git
-    ####----optional
-    # airshipper # game veloren luncher
-	 dropbox
-	 mcomix # comic books
-     timeshift-bin # create snapshot
-     ventoy-bin # flash usb
-    #################### AUR ####################
-
-    ################ FONT ################
+    # FONT
     wqy-zenhei # steam need this for chinese font
     ttf-roboto-mono # emacs default font
 	wqy-microhei # display chinese
@@ -152,21 +90,52 @@ pkgs=(
     noto-fonts-cjk
     noto-fonts-extra
     ttf-sarasa-gothic # same width for Chinese and English
-    #aur fonts
+
+    # For Gnome
+    bluez-utils
+    gnome-tweaks
+    gnome-console-bin
+    extension-manager
+    nautilus-dropbox
+    gnome-shell-extension-gsconnect
+    gnome-shell-extension-user-theme-x-git
+    gnome-shell-extension-appindicator
+    gnome-shell-extension-caffeine-git
+    gnome-shell-extension-workspaces-bar-git # NOTE test
+
+    ### AUR
+    # GUI
+    crow-translate
+    linuxqq # see archwiki for wechat, use deepin-wine-wechat
+    spotify
+    wps-office-cn
+    drawio-desktop-bin
+	dropbox
+    timeshift-bin # create snapshot
+    ventoy-bin # flash usb
+    # Optional
+    # feishu-bin
+    # wemeet-bin
+
+    # TUI
+    pnpm
+    vscode-langservers-extracted
+	keyd
+    mycli
+    litecli # for sqlite
+    clash-premium-bin
+    mit-scheme
+	pandoc-bin                     # convert to pdf
+    # FONT
     otf-monego-git
     tty-wps-fonts
     ttf-cardo # emacs variable pitch
 	ttf-lxgw-wenkai # emacs chinese font
-    ################ FONT ################
-)
 
-# TODO
-i3apps=(
-    i3
-    i3status-rs
-
-    ### aur
-    betterlockscreen
+    ### Product Specific
+    # thinkpad x1 carbon gen8 https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
+    fwupd
+    sof-firmware
 )
 
 setup-zsh() {
@@ -190,14 +159,14 @@ m = enter
 }
 
 setup() {
-    # TODO for notmuch
-    # mkdir $HOME/.mail
-    # mkdir $HOME/.mail/gmail
-    # touch $HOME/.mbsync-gmail
+    if [ ! -d "${HOME}/.mail/gmail" ]; then
+        mkdir -p ${HOME}/.mail/gmail
+    fi
 
     if [ ! -d "$HOME/Developer" ]; then
         mkdir $HOME/Developer
     fi
+
     if [ ! -d "$HOME/p" ]; then
         mkdir $HOME/p
     fi
@@ -207,18 +176,19 @@ setup() {
     echo "Check yay..."
     if ! command -v yay >/dev/null 2>&1; then
 	    cd $HOME
-	    git clone https://aur.archlinux.org/yay-bin.git $HOME/Developer/yay-bin
+	    git clone -q --depth 1 https://aur.archlinux.org/yay-bin.git $HOME/Developer/yay-bin
 	    cd $HOME/Developer/yay-bin
 	    yes | makepkg -si
 	    cd $HOME
 	    rm -rf $HOME/Developer/yay-bin
     fi
 
-	if [ ! -d "~/.config/emacs" ]; then
+	if [ ! -d "${HOME}/.config/emacs" ]; then
 	        echo "Clone emacs config..."
 	        git clone -q https://github.com/404cn/eatemacs.git $HOME/.config/emacs
 	fi
-	if [ ! -d "~/.local/share/fcitx5/rime" ]; then
+
+	if [ ! -d "${HOME}/.local/share/fcitx5/rime" ]; then
 		    echo "Clone fcitx config..."
             # use fcitx5-remote -r to redeploy rime
 		    git clone -q https://github.com/404cn/Rime.git $HOME/.local/share/fcitx5/rime
@@ -227,14 +197,18 @@ setup() {
             rm -rf $HOME/.config/emacs/rime/.git
 	fi
 
-    # TODO check package is installed
     yay -S --noconfirm --sudoloop ${pkgs[@]}
-}
-setup
-setup-zsh
-setup-keyd
 
-#setup-betterlockscreen
-#setup-ly
+    sudo usermod -aG docker $USER
+    systemctl enable docker
+    systemctl start docker
+    # docker pull zevlg/telega-server:latest
+
+    systemctl start bluetooth
+    systemctl enable bluetooth
+}
+
+setup
+setup-keyd
 
 echo "Done, now reboot to make it effect"

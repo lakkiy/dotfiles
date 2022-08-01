@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Enable this before install
 coprs=(
     dspom/keyd
     carlis/crow-translate
@@ -22,11 +23,9 @@ pkgs=(
     transmission
     timeshift
     discord
-    # mcomix3 # comic viewer # NOTE can't open .zip, find better one
 
     # tui
-    unrar
-    p7zip
+    tmux
     youtube-dl
     kubernetes-client
     litecli
@@ -34,8 +33,6 @@ pkgs=(
     flatpak
     pandoc                # convert to pdf
     zsh         # shell, replace bash
-    notmuch     # tag email, read mail in emacs
-    isync       # sync mail to localhost, aka mbsync
     mosh        # udp version ssh
     mycli       # connect mysql
     clash       # network proxy
@@ -43,20 +40,21 @@ pkgs=(
     syncthing   # sync file between computes
     docker      # docker pull zevlg/telega-server:latest
     python3-pip # NOTE pip install afew
+	cloc        # count program lines
+	tealdeer    # rust version tldr
+    # Extract && Compress
+    unrar
+    p7zip
+	file-roller # zip and uoenuthaosnteunzip file
     # Modern Unix Tools
     jq
 	fzf         # fuzzy finder
 	bat         # better cat
 	ripgrep     # better grep
-	aspell      # for emacs flyspell
-	sdcv        # star dict command line version
-	cloc        # count program lines
 	htop        # better top
-	tealdeer    # rust version tldr
 	neofetch    # pron!!!!!!
 	git-delta   # pager for git, also can use as diff
 	fd-find     # better find
-	file-roller # zip and uoenuthaosnteunzip file
     # NOTE install via copr, enable first
     keyd        # key remapping, better than Xmodmap
 
@@ -71,6 +69,10 @@ pkgs=(
     mpv                   # play netease cloud music in emacs
     socat                 # with mpv
     gperf #build tdlib
+    notmuch     # tag email, read mail in emacs
+    isync       # sync mail to localhost, aka mbsync
+	aspell      # for emacs flyspell
+	sdcv        # star dict command line version
     # programming
     ctags       # universal-ctags for programming
     global      # gtags for programming
@@ -95,21 +97,6 @@ pkgs=(
 
     # Fonts
     google-roboto-mono-fonts
-##################### Must Have ###################################
-
-
-### Required
-    # install wps and
-    # tdlib       # use telega in emacs, maybe need set prefix in emacs
-### Optional, WM
-    # tmux
-    # graphviz              # show picture of emacs org-roam
-    # jupyterlab
-    # gimp                  # ps
-    # wps-office
-    # gucharmap             # display symbols in font
-    # mpd                   # play music
-    # mcomix                # comic books
 )
 
 flatpkgs=(
@@ -117,16 +104,11 @@ flatpkgs=(
     com.github.iwalton3.jellyfin-media-player
     com.mattjakeman.ExtensionManager
     com.wps.Office
-    com.tencent.wemeet
     com.jgraph.drawio.desktop
-    io.github.Fndroid.clash_for_windows
+    # Optional
+    # io.github.Fndroid.clash_for_windows
+    # com.tencent.wemeet
 )
-
-setup-flathub () {
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    # for loop TODO
-    # sudo flatpak install flathub
-}
 
 setup-zsh() {
     echo "Change shell to zsh, /usr/bin/zsh or /bin/zsh for fedora server."
@@ -175,6 +157,10 @@ setup() {
         mkdir ${HOME}/Developer
     fi
 
+    if [ ! -d "${HOME}/p" ]; then
+        mkdir ${HOME}/p
+    fi
+
     if [ ! -d "${HOME}/.mail/gmail" ]; then
         mkdir -p ${HOME}/.mail/gmail
     fi
@@ -202,10 +188,11 @@ setup() {
 	sudo dnf remove -y ${rpkgs[@]}
 	sudo dnf install -y ${pkgs[@]}
 
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    sudo flatpak install flathub ${flatpkgs[@]}
 }
 
 setup
-setup-flathub
 setup-syncthing
 setup-keyd
 setup-docker
