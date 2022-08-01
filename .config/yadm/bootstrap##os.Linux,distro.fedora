@@ -74,6 +74,7 @@ pkgs=(
 	aspell      # for emacs flyspell
 	sdcv        # star dict command line version
     # programming
+    python3-epc # for lsp-bridge
     ctags       # universal-ctags for programming
     global      # gtags for programming
     nodejs
@@ -94,6 +95,7 @@ pkgs=(
     gnome-shell-extension-workspace-indicator
     gnome-shell-extension-caffeine
     gnome-shell-extension-appindicator
+    gnome-shell-extension-sound-output-device-chooser
 
     # Fonts
     google-roboto-mono-fonts
@@ -105,6 +107,7 @@ flatpkgs=(
     com.mattjakeman.ExtensionManager
     com.wps.Office
     com.jgraph.drawio.desktop
+    com.valvesoftware.Steam
     # Optional
     # io.github.Fndroid.clash_for_windows
     # com.tencent.wemeet

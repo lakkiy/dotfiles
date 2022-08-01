@@ -17,6 +17,7 @@
 ;; git clone https://github.com/ilyaw39/.emacs.d.git ~/Developer/emacsconf/ilyaw39 --depth 1
 ;; git clone https://github.com/Kinneyzhang/.emacs.d.git ~/Developer/emacsconf/gk --depth 1
 ;; git clone https://github.com/willbchang/ward-emacs ~/Developer/emacsconf/ward --depth 1
+;; git clone https://github.com/Lambda-Emacs/lambda-emacs ~/Developer/emacsconf/lambda-emacs --depth 1
 
 
 ;; NOTE this requrie emacs 29

@@ -74,6 +74,8 @@ pkgs=(
     go
     staticcheck
     pyright
+    python-epc # for lsp-bridge
+    python-orjson
     clojure
     leiningen
     typescript
@@ -113,6 +115,7 @@ pkgs=(
 	dropbox
     timeshift-bin # create snapshot
     ventoy-bin # flash usb
+    lorien-bin
     # Optional
     # feishu-bin
     # wemeet-bin
