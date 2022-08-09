@@ -4,6 +4,7 @@
 coprs=(
     dspom/keyd
     carlis/crow-translate
+    endle/sioyek
 )
 
 # packages should remove
@@ -23,6 +24,7 @@ pkgs=(
     transmission
     timeshift
     discord
+    sioyek # pdf viewer
 
     # tui
     tmux
@@ -59,7 +61,6 @@ pkgs=(
     keyd        # key remapping, better than Xmodmap
 
     # Emacs
-    # dnf builddep emacs
     # --with-pgtk --with-xwidgets --with-native-compilation --with-json --with-mailutils
     xapian-core-devel # build xeft module
     gcc-c++     # build xeft for emacs, and tdlib
@@ -149,6 +150,7 @@ setup-docker () {
 
 setup() {
     sudo dnf update && sudo dnf upgrade
+    dnf builddep emacs
 
     # if ! command -v pnpm /dev/null
     # then

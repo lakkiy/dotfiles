@@ -107,6 +107,7 @@ pkgs=(
 
     ### AUR
     # GUI
+    sioyek # pdf viewer
     crow-translate
     linuxqq # see archwiki for wechat, use deepin-wine-wechat
     spotify
