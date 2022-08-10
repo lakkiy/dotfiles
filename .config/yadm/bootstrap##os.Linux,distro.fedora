@@ -161,6 +161,9 @@ setup() {
     if [ ! -d "${HOME}/Developer" ]; then
         mkdir ${HOME}/Developer
     fi
+    if [ ! -d "${HOME}/.cache/gtags" ]; then
+        mkdir -p ${HOME}/.cache/gtags
+    fi
 
     if [ ! -d "${HOME}/p" ]; then
         mkdir ${HOME}/p

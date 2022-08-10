@@ -166,6 +166,9 @@ setup() {
     if [ ! -d "${HOME}/.mail/gmail" ]; then
         mkdir -p ${HOME}/.mail/gmail
     fi
+    if [ ! -d "${HOME}/.cache/gtags" ]; then
+        mkdir -p ${HOME}/.cache/gtags
+    fi
 
     if [ ! -d "$HOME/Developer" ]; then
         mkdir $HOME/Developer
