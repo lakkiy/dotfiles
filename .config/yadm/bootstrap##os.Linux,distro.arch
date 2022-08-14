@@ -18,6 +18,7 @@ pkgs=(
     # Chinese input method
 	fcitx5-im
 	fcitx5-rime
+    rime-double-pinyin
 
     # VPN
     # networkmanager-l2tp # setup L2TP over IPsec type vpn
