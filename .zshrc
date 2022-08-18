@@ -106,7 +106,7 @@ if (( $+commands[gls] )); then
 fi
 
 # Emacs
-alias te='emacs -nw --no-desktop'
+alias te='emacs -nw'
 alias me='emacs -q -l ~/.config/emacs/lisp/init-eat.el'
 alias mte='emacs -nw -q -l ~/.config/emacs/lisp/init-eat.el'
 alias e='emacsclient -a "" -c -n'
