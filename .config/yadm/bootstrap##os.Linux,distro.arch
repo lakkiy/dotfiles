@@ -5,7 +5,7 @@ pkgs=(
 
     # GUI
     discord
-    transmission # qbittorrent is used for remote
+    transmission-gtk # qbittorrent is used for remote
     vlc
     firefox
     retroarch # game
@@ -21,6 +21,7 @@ pkgs=(
     # nm-connection-editor # networkmanager-l2tp doesn't have gtk4 support now, use nm-connection-editor instead
 
     # TUI
+    bash-completion
     bind # network tools like dig
     v2ray # network proxy
     zsh
@@ -48,19 +49,19 @@ pkgs=(
     jq
 
     # Emacs
-    librime # for bulid emacs-rime
-    gperf # build tdlib
-    cmake # compile vterm
-    libgccjit # native compilation need this
+    librime     # for bulid emacs-rime
+    gperf       # build tdlib
+    cmake       # compile vterm
+    libgccjit   # native compilation need this
     xapian-core # use xeft in emacs for note taking
-    notmuch # tag email
-    afew # auto tag email
-    isync # sync eamil
-    mpv                        # play netease cloud music in emacs
-    socat                      # with mpv
-    hunspell           # for emacs spell check
-    aspell             # for emacs flyspell
-    sdcv               # star dict command line version
+    notmuch     # tag email
+    afew        # auto tag email
+    isync       # sync eamil
+    mpv         # play netease cloud music in emacs
+    socat       # with mpv
+    hunspell    # for emacs spell check
+    aspell      # for emacs flyspell
+    sdcv        # star dict command line version
     # Programming
     universal-ctags
     global
@@ -83,7 +84,6 @@ pkgs=(
     noto-fonts
     noto-fonts-cjk
     noto-fonts-extra
-    ttf-sarasa-gothic # same width for Chinese and English
 
     # For Gnome
     bluez-utils
@@ -97,7 +97,7 @@ pkgs=(
 
 aurpkgs=(
     # emacs && programming
-    python-epc # for lsp-bridge    
+    python-epc # for lsp-bridge
 
     # for gnome
     gnome-shell-extension-gsconnect
@@ -105,9 +105,8 @@ aurpkgs=(
     gnome-console-bin
     extension-manager
     nautilus-dropbox
-    
+
     # GUI
-    sioyek # pdf viewer
     crow-translate
     linuxqq # see archwiki for wechat, use deepin-wine-wechat
     spotify
@@ -116,7 +115,6 @@ aurpkgs=(
     dropbox
     timeshift-bin # create snapshot
     ventoy-bin # flash usb
-    lorien-bin
     # Optional
     # feishu-bin
     # wemeet-bin
@@ -154,6 +152,11 @@ control = overload(control, esc)
 m = enter" | sudo tee -a /etc/keyd/default.conf
     sudo systemctl enable keyd
     sudo systemctl restart keyd
+}
+
+setup-syncthing () {
+    systemctl enable syncthing@"$USER"
+    systemctl start syncthing@"$USER"
 }
 
 setup() {
@@ -212,5 +215,6 @@ setup() {
 
 setup
 setup-keyd
+setup-syncthing
 
 echo "Done, now reboot to make it effect"
