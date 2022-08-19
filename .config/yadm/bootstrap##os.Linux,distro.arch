@@ -1,23 +1,18 @@
 #!/bin/bash
 
-# TODO install chorme-gnome-shell for install gnome extensions from browser
-# remove gnome-terminal after gnome-console installed
-# remove gnome software
-# change rime sync_dir and installation_id
-
 pkgs=(
-	archlinux-keyring
+    archlinux-keyring
 
     # GUI
     discord
     transmission # qbittorrent is used for remote
     vlc
     firefox
-	retroarch # game
+    retroarch # game
 
     # Chinese input method
-	fcitx5-im
-	fcitx5-rime
+    fcitx5-im
+    fcitx5-rime
     rime-double-pinyin
 
     # VPN
@@ -28,54 +23,51 @@ pkgs=(
     # TUI
     bind # network tools like dig
     v2ray # network proxy
-	zsh
+    zsh
     docker
     kubectl
-	neofetch           # pron!!!!!!
-	tree               # view file tree
-	tealdeer           # rust version tldr
-	syncthing
+    neofetch           # pron!!!!!!
+    tree               # view file tree
+    tealdeer           # rust version tldr
+    syncthing
     youtube-dl
-	cloc               # count program lines
-	man-db             # for command man
+    cloc               # count program lines
+    man-db             # for command man
     mosh
     python-pip
     # Extract && Compress
     p7zip
     unrar
-	cpio
-	file-roller
+    cpio
     # Modern Unix Tools
-	git-delta
-	fzf
-	bat
-	fd
-	ripgrep
-	htop
+    git-delta
+    fzf
+    bat
+    fd
+    ripgrep
     jq
 
     # Emacs
-	librime # for bulid emacs-rime
+    librime # for bulid emacs-rime
     gperf # build tdlib
     cmake # compile vterm
     libgccjit # native compilation need this
     xapian-core # use xeft in emacs for note taking
-	notmuch # tag email
+    notmuch # tag email
     afew # auto tag email
-	isync # sync eamil
-	mpv                        # play netease cloud music in emacs
-	socat                      # with mpv
-	hunspell           # for emacs spell check
-	aspell             # for emacs flyspell
-	sdcv               # star dict command line version
+    isync # sync eamil
+    mpv                        # play netease cloud music in emacs
+    socat                      # with mpv
+    hunspell           # for emacs spell check
+    aspell             # for emacs flyspell
+    sdcv               # star dict command line version
     # Programming
-	universal-ctags
-	global
+    universal-ctags
+    global
     cscope
     go
     staticcheck
     pyright
-    python-epc # for lsp-bridge
     python-orjson
     clojure
     leiningen
@@ -85,8 +77,7 @@ pkgs=(
     # FONT
     wqy-zenhei # steam need this for chinese font
     ttf-roboto-mono # emacs default font
-	wqy-microhei # display chinese
-    noto-fonts-emoji
+    wqy-microhei # display chinese
     otf-latin-modern
     otf-cascadia-code
     noto-fonts
@@ -96,17 +87,25 @@ pkgs=(
 
     # For Gnome
     bluez-utils
-    gnome-tweaks
+    gnome-shell-extension-appindicator
+
+    ### Product Specific
+    # thinkpad x1 carbon gen8 https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
+    fwupd
+    sof-firmware
+)
+
+aurpkgs=(
+    # emacs && programming
+    python-epc # for lsp-bridge    
+
+    # for gnome
+    gnome-shell-extension-gsconnect
+    gnome-shell-extension-caffeine-git
     gnome-console-bin
     extension-manager
     nautilus-dropbox
-    gnome-shell-extension-gsconnect
-    gnome-shell-extension-user-theme-x-git
-    gnome-shell-extension-appindicator
-    gnome-shell-extension-caffeine-git
-    gnome-shell-extension-workspaces-bar-git # NOTE test
-
-    ### AUR
+    
     # GUI
     sioyek # pdf viewer
     crow-translate
@@ -114,7 +113,7 @@ pkgs=(
     spotify
     wps-office-cn
     drawio-desktop-bin
-	dropbox
+    dropbox
     timeshift-bin # create snapshot
     ventoy-bin # flash usb
     lorien-bin
@@ -125,22 +124,17 @@ pkgs=(
     # TUI
     pnpm
     vscode-langservers-extracted
-	keyd
+    keyd
     mycli
     litecli # for sqlite
     clash-premium-bin
     mit-scheme
-	pandoc-bin                     # convert to pdf
+    pandoc-bin                     # convert to pdf
     # FONT
     otf-monego-git
-    tty-wps-fonts
+    ttf-wps-fonts
     ttf-cardo # emacs variable pitch
-	ttf-lxgw-wenkai # emacs chinese font
-
-    ### Product Specific
-    # thinkpad x1 carbon gen8 https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
-    fwupd
-    sof-firmware
+    ttf-lxgw-wenkai # emacs chinese font
 )
 
 setup-zsh() {
@@ -157,8 +151,7 @@ setup-keyd () {
 capslock = overload(control, esc)
 control = overload(control, esc)
 [control]
-m = enter
- | sudo tee -a /etc/keyd/default.conf"
+m = enter" | sudo tee -a /etc/keyd/default.conf
     sudo systemctl enable keyd
     sudo systemctl restart keyd
 }
@@ -206,6 +199,7 @@ setup() {
 	fi
 
     yay -S --noconfirm --sudoloop ${pkgs[@]}
+    yay -S --noconfirm --sudoloop ${aurpkgs[@]}
 
     sudo usermod -aG docker $USER
     systemctl enable docker
