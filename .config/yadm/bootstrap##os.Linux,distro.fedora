@@ -51,7 +51,6 @@ pkgs=(
     # Modern Unix Tools
     jq
 	fzf         # fuzzy finder
-	bat         # better cat
 	ripgrep     # better grep
 	htop        # better top
 	neofetch    # pron!!!!!!
@@ -72,8 +71,8 @@ pkgs=(
     gperf #build tdlib
     notmuch     # tag email, read mail in emacs
     isync       # sync mail to localhost, aka mbsync
-	aspell      # for emacs flyspell
 	sdcv        # star dict command line version
+    hunspell
     # programming
     python3-epc # for lsp-bridge
     ctags       # universal-ctags for programming

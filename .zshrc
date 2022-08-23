@@ -99,7 +99,6 @@ alias e='emacsclient -a "" -c -n'
 alias diff="delta"
 alias find="fd"
 alias grep="rg"
-alias cat="bat"
 
 
 ### Vterm

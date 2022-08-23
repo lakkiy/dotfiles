@@ -21,7 +21,6 @@ brew "isync" # mbsync, sync mail to localhost
 # See https://github.com/ibraheemdev/modern-unix
 brew "jq"
 brew "git-delta"
-brew "bat"
 #brew "exa"
 brew "fd"
 brew "fzf"
@@ -51,8 +50,7 @@ brew "pandoc" # convert to pdf
 brew "hugo" # Blogs
 brew "sdcv" # Stardict console version
 brew "graphviz" # for org-roam
-brew "aspell" # for emacs spell check
-#brew "hunspell" # for emacs spell check
+brew "hunspell" # for emacs spell check
 #brew "bash" # Replace default 2.x bash
 brew "bitwarden-cli" # use bitwarden in raycask
 brew "clipper", restart_service: true

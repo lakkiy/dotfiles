@@ -43,7 +43,6 @@ pkgs=(
     # Modern Unix Tools
     git-delta
     fzf
-    bat
     fd
     ripgrep
     jq
@@ -60,7 +59,6 @@ pkgs=(
     mpv         # play netease cloud music in emacs
     socat       # with mpv
     hunspell    # for emacs spell check
-    aspell      # for emacs flyspell
     sdcv        # star dict command line version
     # Programming
     universal-ctags
