@@ -9,6 +9,7 @@ pkgs=(
     vlc
     firefox
     retroarch # game
+    spotify-launcher
 
     # Chinese input method
     fcitx5-im
@@ -83,6 +84,8 @@ pkgs=(
     noto-fonts
     noto-fonts-cjk
     noto-fonts-extra
+    # from lunary emacs
+    ttf-ibm-plex
 
     # For Gnome
     bluez-utils
@@ -108,7 +111,6 @@ aurpkgs=(
     # GUI
     crow-translate
     linuxqq # see archwiki for wechat, use deepin-wine-wechat
-    spotify
     wps-office-cn
     drawio-desktop-bin
     dropbox
@@ -133,6 +135,9 @@ aurpkgs=(
     ttf-cardo # emacs variable pitch
     ttf-lxgw-wenkai # emacs chinese font
     nerd-fonts-jetbrains-mono # default for rofi
+    tty-bookerly
+    # form lunary emacs
+    apple-fonts
 )
 
 ## TODO
@@ -143,6 +148,8 @@ i3pkgs=(
     lxappearance # change settings
     wezterm
     rofi
+    network-manager-applet
+    nm-connection-editor
 )
 
 ## TODO

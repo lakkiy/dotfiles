@@ -4,100 +4,24 @@
 set $mod Mod4
 floating_modifier Mod4
 
-### UI
-
-#### Gaps
-# Set inner/outer gaps
-gaps inner 10
-gaps outer 0
-gaps top 0
-gaps bottom 0
-
-#### Window border
-for_window [class   = "^.*"] border pixel 0
-for_window [title   = "^.*"] border pixel 0
-
-#### Window radius
-# border_radius 10
-
-### Key binding
-
-#### Scratchpad
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
-
-#### Mouse
-# The right button toggles floating
-bindsym --whole-window $mod+button2 floating toggle
-focus_follows_mouse no
-
-#### Shortcuts to launch applications
-bindsym $mod+Return exec wezterm
-bindsym $mod+e exec emacs
-bindsym $mod+shift+e exec emacsclient -nc
-
-#### Lock screen
-bindsym $mod+l exec betterlockscreen -l dimblur
-
-#### Application launcher
-# The font, font-size and position should depond on your status bar.
-bindsym $mod+d exec "rofi -show drun"
-
-#### Take a screenshot
-bindsym $mod+Shift+p exec "flameshot gui"
-
-#### Workspace
-bindsym $mod+< workspace prev
-bindsym $mod+> workspace next
-
-#### For i3
-bindsym $mod+Shift+r restart
-# bindsym $mod+Shift+c reload
-
-# Toggle focus mode (floating or tiled)
-# bindsym $mod+space focus mode_toggle
-
 # Toggle between floating and tiling state
 bindsym $mod+Shift+space floating toggle
 
 # Kill the focused app
 bindsym $mod+q kill
 
-#### Resize windows
-bindsym $mod+Control+r mode "resize"
-mode "resize" {
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym t resize grow height 5 px or 5 ppt
-        bindsym n resize shrink height 5 px or 5 ppt
-        bindsym s resize grow width 5 px or 5 ppt
+# restart config
+bindsym $mod+Shift+r restart
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-#### To shift focus
-bindsym $mod+h focus left
-bindsym $mod+t focus down
-bindsym $mod+n focus up
-bindsym $mod+s focus right
-
-#### To move windows around
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+t move down
-bindsym $mod+Shift+n move up
-bindsym $mod+Shift+s move right
-
-#### Split toggle
+# Split toggle
 bindsym $mod+plus split toggle
 
-#### Enter fullscreen mode for the focused container
+# Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-### Bar
+# Bar
 bar {
-   font pango:Iosevka Nerd Font 10
+   font pango:JetBrainsMono Nerd Font
    position bottom
    status_command i3status-rs ~/.config/i3/status.toml
    colors {
@@ -112,10 +36,48 @@ bar {
 }
 
 
+### UI
 
-### Workspace
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# Gaps
+# Set inner/outer gaps
+gaps inner 10
+gaps outer 0
+gaps top 0
+gaps bottom 0
+
+# Window border
+for_window [class   = "^.*"] border pixel 0
+for_window [title   = "^.*"] border pixel 0
+
+### Window, use h t n s, mod Shift to move window around
+
+# Just uso mod + key to change focus
+bindsym $mod+h focus left
+bindsym $mod+t focus down
+bindsym $mod+n focus up
+bindsym $mod+s focus right
+
+# Use mod + Shift + key to movo window around
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+t move down
+bindsym $mod+Shift+n move up
+bindsym $mod+Shift+s move right
+
+# Use mod and control r to enter resize mode, press again to exit
+bindsym $mod+Control+r mode "resize"
+mode "resize" {
+        bindsym h resize grow width 5 px or 5 ppt
+        bindsym t resize grow  height 5 px or 5 ppt
+        bindsym n resize shrink height 5 px or 5 ppt
+        bindsym s resize shrink width 5 px or 5 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+Control+r mode "default"
+}
+
+### Workspace, mod Shift number to move window to a workspace
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -127,7 +89,11 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# Switch to workspace
+# select prev next workspace
+# bindsym $mod+Control+p workspace prev
+# bindsym $mod+Control+n workspace next
+
+# use mod + number to switch workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -139,7 +105,7 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-# Move focused container to workspace
+# use mod + Shift + number to move window to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -169,6 +135,35 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # for_window [class       = "Org.gnome.Nautilus"] move window to workspace $ws3
 
 
+### Applications
+
+# app launcher
+bindsym $mod+d exec "rofi -show drun"
+
+# terminal
+bindsym $mod+Return exec wezterm
+
+# editor
+bindsym $mod+e exec emacs
+
+# screen lock
+bindsym $mod+l exec betterlockscreen -l dimblur
+
+# screenshot
+bindsym $mod+Shift+p exec "flameshot gui"
+
+### Mouse
+# The right button toggles floating
+bindsym --whole-window $mod+button2 floating toggle
+focus_follows_mouse no
+
+### Functions
+
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+
 ### Startup
 # exec_always will also run after i3 restarting
 # --no-startup-id for application that don't need notify and cursor to watch
@@ -185,7 +180,12 @@ exec_always --no-startup-id feh --bg-fill --randomize ~/.local/share/backgrounds
 # update betterlockscreen cache
 exec_always --no-startup-id betterlockscreen -u ~/.local/share/backgrounds/
 # screenshot
-exec --no-startup-id flameshot
+exec_always --no-startup-id flameshot
+# netwhorkmanager
+exec_always --no-startup-id nm-applet
+# translate
+exec_always --no-startup-id crow
+
 
 # exec --no-startup-id "picom --experimental-backend"
 # exec --no-startup-id dunst

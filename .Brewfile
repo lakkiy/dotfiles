@@ -104,6 +104,7 @@ cask "via" # modify keyboard
 # wps? logi options?
 
 ### Font
+cask "font-sf-pro"
 cask "font-gnu-unifont"
 
 brew "font-util"

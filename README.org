@@ -4,7 +4,4 @@ All keybinding of this config is set for Dvorak keyboard layout.
 ~curl -fsSL https://github.com/TheLocehiliosan/yadm/raw/master/yadm | bash -s clone https://github.com/404cn/dotfiles.git~
 
 
-A simple zsh prompt config, add this to =~/.zshrc.local=
-#+begin_src bash
-PS1='%m  %F{red}:: %F{green}%~ %(?.%F{57}.%F{magenta})» '
-#+end_src
+NOTE: All keybindings is config for Dvorak keyboard layout.
