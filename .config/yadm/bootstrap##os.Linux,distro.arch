@@ -46,6 +46,7 @@ pkgs=(
     fd
     ripgrep
     jq
+    zoxide # z command
 
     # Emacs
     librime     # for bulid emacs-rime
@@ -131,6 +132,23 @@ aurpkgs=(
     ttf-wps-fonts
     ttf-cardo # emacs variable pitch
     ttf-lxgw-wenkai # emacs chinese font
+    nerd-fonts-jetbrains-mono # default for rofi
+)
+
+## TODO
+i3pkgs=(
+    i3-wm # default is i3-gaps
+    polybar # NOTE eww didn't have system tray
+    feh # set wallpaper
+    lxappearance # change settings
+    wezterm
+    rofi
+)
+
+## TODO
+i3aurpkgs=(
+    eww-git
+    betterlockscreen
 )
 
 setup-zsh() {

@@ -32,16 +32,16 @@ bindsym --whole-window $mod+button2 floating toggle
 focus_follows_mouse no
 
 #### Shortcuts to launch applications
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec wezterm
 bindsym $mod+e exec emacs
 bindsym $mod+shift+e exec emacsclient -nc
 
 #### Lock screen
-bindsym $mod+Control+l exec betterlockscreen -l dimblur
+bindsym $mod+l exec betterlockscreen -l dimblur
 
 #### Application launcher
 # The font, font-size and position should depond on your status bar.
-bindsym $mod+d exec "dmenu_run -b -fn 'Iosevka Nerd-14'"
+bindsym $mod+d exec "rofi -show drun"
 
 #### Take a screenshot
 bindsym $mod+Shift+p exec "flameshot gui"
@@ -170,16 +170,29 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 
 ### Startup
+# exec_always will also run after i3 restarting
+# --no-startup-id for application that don't need notify and cursor to watch
+
+exec_always --no-startup-id xrdb -merge ~/.Xresources
 # set dvorak keyboard layout
-exec --no-startup-id setxkbmap us -v dvorak
-#exec_always --no-startup-id xrdb -merge ~/.Xresources
-#exec_always --no-startup-id xmodmap /home/liubo/.xmodmap
-#exec_always --no-startup-id dropbox
-exec --no-startup-id xset r rate 150 60
-exec --no-startup-id "picom --experimental-backend"
-exec_always --no-startup-id flameshot
-exec --no-startup-id betterlockscreen -w dim
-exec --no-startup-id dunst
+exec_always --no-startup-id setxkbmap us -v dvorak
+# set key speed
+exec_always --no-startup-id xset r rate 150 60
+# for Chinese input method
 exec --no-startup-id fcitx5 -d
+# set wallpaper
+exec_always --no-startup-id feh --bg-fill --randomize ~/.local/share/backgrounds/*
+# update betterlockscreen cache
+exec_always --no-startup-id betterlockscreen -u ~/.local/share/backgrounds/
+# screenshot
+exec --no-startup-id flameshot
+
+# exec --no-startup-id "picom --experimental-backend"
+# exec --no-startup-id dunst
 # exec --no-startup-id nm-applet
 # exec_always --no-startup-id "~/.config/polybar/launch.sh"
+
+### Editing in emacs
+# Local Variables:
+# eval: (color-outline-mode)
+# End:

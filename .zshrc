@@ -103,7 +103,9 @@ alias grep="rg"
 
 ### Vterm
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
-    source $HOME/.zshrc.vterm
+    # use C-c C-l to clean vterm buffer
+    alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+    source $HOME/.vterm
 fi
 
 ### Local customizations, e.g. theme, plugins, aliases, etc.
