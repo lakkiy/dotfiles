@@ -4,7 +4,7 @@ export EDITOR='emacs -nw -q -l ~/.config/emacs/lisp/init-eat.el'
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export TERM=xterm-256color
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:$PATH # local/bin for pipx
 
 ### FZF
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."

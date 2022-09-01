@@ -142,7 +142,9 @@ aurpkgs=(
 
 ## TODO
 i3pkgs=(
-    i3-wm # default is i3-gaps
+    i3-gaps
+    i3status-rust
+    dmenu
     polybar # NOTE eww didn't have system tray
     feh # set wallpaper
     lxappearance # change settings
@@ -150,12 +152,15 @@ i3pkgs=(
     rofi
     network-manager-applet
     nm-connection-editor
+    picom
+    flameshot
 )
 
 ## TODO
 i3aurpkgs=(
     eww-git
     betterlockscreen
+    sioyek # pdf reader
 )
 
 setup-zsh() {

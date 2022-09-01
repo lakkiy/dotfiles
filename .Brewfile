@@ -38,6 +38,7 @@ brew "mit-scheme"
 brew "deno"
 brew "shellcheck" # check bash script
 
+brew "pipx"
 brew "texinfo" # for build emacs
 brew "lrzsz" # send/recive single file from/to remote server
 brew "typespeed"

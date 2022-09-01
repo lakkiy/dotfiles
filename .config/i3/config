@@ -3,6 +3,7 @@
 ### i3 basic
 set $mod Mod4
 floating_modifier Mod4
+font pango:JetBrainsMono Nerd Font
 
 # Toggle between floating and tiling state
 bindsym $mod+Shift+space floating toggle
@@ -10,14 +11,29 @@ bindsym $mod+Shift+space floating toggle
 # Kill the focused app
 bindsym $mod+q kill
 
-# restart config
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
 
 # Split toggle
-bindsym $mod+plus split toggle
+bindsym $mod+v split toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+g layout stacking
+bindsym $mod+c layout tabbed
+bindsym $mod+r layout toggle split
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
 
 # Bar
 bar {
@@ -138,13 +154,11 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 ### Applications
 
 # app launcher
-bindsym $mod+d exec "rofi -show drun"
+# bindsym $mod+d exec --no-startup-id "rofi -show drun"
+bindsym $mod+d exec --no-startup-id dmenu_run -b -fn "JetBrainsMono Nerd Font:pixelsize=18"
 
 # terminal
 bindsym $mod+Return exec wezterm
-
-# editor
-bindsym $mod+e exec emacs
 
 # screen lock
 bindsym $mod+l exec betterlockscreen -l dimblur
@@ -168,11 +182,9 @@ bindsym $mod+minus scratchpad show
 # exec_always will also run after i3 restarting
 # --no-startup-id for application that don't need notify and cursor to watch
 
-exec_always --no-startup-id xrdb -merge ~/.Xresources
-# set dvorak keyboard layout
-exec_always --no-startup-id setxkbmap us -v dvorak
+exec --no-startup-id xrdb -merge ~/.Xresources
 # set key speed
-exec_always --no-startup-id xset r rate 150 60
+exec --no-startup-id xset r rate 150 60
 # for Chinese input method
 exec --no-startup-id fcitx5 -d
 # set wallpaper
@@ -185,7 +197,11 @@ exec --no-startup-id flameshot
 exec --no-startup-id nm-applet
 # translate
 exec --no-startup-id crow
+# Compositor
+exec --no-startup-id picom
 
+# set dvorak keyboard layout
+exec_always --no-startup-id setxkbmap us -v dvorak # FIXME not work
 
 # exec --no-startup-id "picom --experimental-backend"
 # exec --no-startup-id dunst
