@@ -180,11 +180,11 @@ exec_always --no-startup-id feh --bg-fill --randomize ~/.local/share/backgrounds
 # update betterlockscreen cache
 exec_always --no-startup-id betterlockscreen -u ~/.local/share/backgrounds/
 # screenshot
-exec_always --no-startup-id flameshot
+exec --no-startup-id flameshot
 # netwhorkmanager
-exec_always --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 # translate
-exec_always --no-startup-id crow
+exec --no-startup-id crow
 
 
 # exec --no-startup-id "picom --experimental-backend"
@@ -195,4 +195,5 @@ exec_always --no-startup-id crow
 ### Editing in emacs
 # Local Variables:
 # eval: (color-outline-mode)
+# eval: (outline-cycle-buffer)
 # End:
