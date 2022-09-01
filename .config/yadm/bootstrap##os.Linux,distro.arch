@@ -7,6 +7,7 @@ pkgs=(
     discord
     transmission-gtk # qbittorrent is used for remote
     vlc
+    smplayer
     firefox
     retroarch # game
     spotify-launcher
@@ -70,6 +71,7 @@ pkgs=(
     tar
     unzip
     # Programming
+    aspell-en
     universal-ctags
     global
     cscope
@@ -93,6 +95,7 @@ pkgs=(
     noto-fonts-extra
     # from lunary emacs
     ttf-ibm-plex
+    adobe-source-han-serif-otc-fonts
 
     # For Gnome
     bluez-utils
@@ -155,12 +158,13 @@ i3pkgs=(
     polybar # NOTE eww didn't have system tray
     feh # set wallpaper
     lxappearance # change settings
-    wezterm
+    kitty
     rofi
     network-manager-applet
     nm-connection-editor
     picom
     flameshot
+    wmctrl
 )
 
 ## TODO
@@ -168,6 +172,7 @@ i3aurpkgs=(
     eww-git
     betterlockscreen
     sioyek # pdf reader
+    ly # display manager
 )
 
 setup-zsh() {
@@ -238,6 +243,8 @@ setup() {
 
     yay -S --noconfirm --sudoloop ${pkgs[@]}
     yay -S --noconfirm --sudoloop ${aurpkgs[@]}
+    yay -S --noconfirm --sudoloop ${i3pkgs[@]}
+    yay -S --noconfirm --sudoloop ${i3aurpkgs[@]}
 
     sudo usermod -aG docker $USER
     systemctl enable docker
@@ -251,5 +258,6 @@ setup() {
 setup
 setup-keyd
 setup-syncthing
+setup-zsh
 
 echo "Done, now reboot to make it effect"

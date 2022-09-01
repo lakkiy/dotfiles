@@ -2,6 +2,7 @@
 
 # NOTE improt env before start this service
 # systemctl --user import-environment UNSPLASHACCESSKEY
+# systemctl --user import-environment XDG_CURRENT_DESKTOP
 
 [Unit]
 Description=Change Wallpaper

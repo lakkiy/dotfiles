@@ -31,6 +31,7 @@ fi
 case $XDG_CURRENT_DESKTOP in
     "i3")
         feh --bg-fill "${photo_path}"
+        betterlockscreen --quiet -u "${photo_path}"
         ;;
     "MATE")
         dconf write /org/mate/desktop/background/picture-filename "'${photo_path}'"

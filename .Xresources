@@ -1,3 +1,7 @@
+! NOTE use gnome when connect to 4k monitor
+! use i3 in laptop, so don't need to change dpi
+! Xft.dpi: 192
+
 ! Color from https://github.com/catppuccin/xresources/blob/main/latte.Xresources
 *background: #EFF1F5
 *foreground: #4C4F69

@@ -45,6 +45,7 @@ brew "mit-scheme"
 brew "deno"
 brew "shellcheck" # check bash script
 
+brew "grep" # ggrep for wallchanger.sh
 brew "pipx"
 brew "texinfo" # for build emacs
 brew "lrzsz" # send/recive single file from/to remote server

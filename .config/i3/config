@@ -157,8 +157,11 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # bindsym $mod+d exec --no-startup-id "rofi -show drun"
 bindsym $mod+d exec --no-startup-id dmenu_run -b -fn "JetBrainsMono Nerd Font:pixelsize=18"
 
+# emacs
+bindsym $mod+e exec wmctrl -xa emacs || emacs
+
 # terminal
-bindsym $mod+Return exec wezterm
+bindsym $mod+Return exec wmctrl -xa kitty || kitty
 
 # screen lock
 bindsym $mod+l exec betterlockscreen -l dimblur
