@@ -84,8 +84,15 @@ plugin-load $plugins
 load-files $files
 
 ### Alias
+
+# Prettify ls
+if (( $+commands[gls] )); then
+    alias ls='gls --color=tty --group-directories-first'
+else
+    alias ls='ls --color=tty'
+fi
+
 # Basic
-alias ls="ls --color=auto"
 alias python="python3"
 alias k="kubectl"
 

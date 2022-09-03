@@ -9,7 +9,14 @@ tap "homebrew/services"
 ### THE ONE TRUE EDITOR
 tap "jimeh/emacs-builds"
 cask "emacs-app-good"
-brew "xapian" # for xeft
+# xeft
+brew "xapian"
+# dirvish
+brew "coreutils"
+brew "poppler"
+brew "ffmpegthumbnailer"
+brew "mediainfo"
+brew "imagemagick"
 
 ### Mail
 # install afew manually
@@ -55,7 +62,6 @@ brew "hunspell" # for emacs spell check
 #brew "bash" # Replace default 2.x bash
 brew "bitwarden-cli" # use bitwarden in raycask
 brew "clipper", restart_service: true
-brew "coreutils" # gnu utils
 brew "git"
 brew "universal-ctags"
 brew "global", args: ["force"] # pip3 install pygments for more languages support like go/rust

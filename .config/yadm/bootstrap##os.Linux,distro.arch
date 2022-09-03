@@ -62,6 +62,13 @@ pkgs=(
     socat       # with mpv
     hunspell    # for emacs spell check
     sdcv        # star dict command line version
+    # dirvish
+    poppler
+    ffmpegthumbnailer
+    mediainfo
+    imagemagick
+    tar
+    unzip
     # Programming
     universal-ctags
     global
