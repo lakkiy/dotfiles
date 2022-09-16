@@ -96,6 +96,8 @@ pkgs=(
     # from lunary emacs
     ttf-ibm-plex
     adobe-source-han-serif-otc-fonts
+    # for discord
+    noto-fonts-emoji
 
     # For Gnome
     bluez-utils
@@ -148,6 +150,8 @@ aurpkgs=(
     tty-bookerly
     # form lunary emacs
     apple-fonts
+    # for discord
+    ttf-symbola
 )
 
 ## TODO
