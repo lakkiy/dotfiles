@@ -8,6 +8,7 @@ pkgs=(
     transmission-gtk # qbittorrent is used for remote
     vlc
     smplayer
+    chromium # firefox dose not support wayland natively
     firefox
     retroarch # game
     spotify-launcher
@@ -116,6 +117,8 @@ aurpkgs=(
     # for gnome
     gnome-shell-extension-gsconnect
     gnome-shell-extension-caffeine-git
+    gnome-shell-extension-blur-my-shell
+    gnome-shell-extension-pop-shell-git
     gnome-console-bin
     extension-manager
     nautilus-dropbox
@@ -128,6 +131,7 @@ aurpkgs=(
     dropbox
     timeshift-bin # create snapshot
     ventoy-bin # flash usb
+    bottles # run windows application
     # Optional
     # feishu-bin
     # wemeet-bin
