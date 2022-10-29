@@ -19,7 +19,7 @@
 ;; git clone https://github.com/willbchang/ward-emacs ~/Developer/emacsconf/ward --depth 1
 ;; git clone https://github.com/Lambda-Emacs/lambda-emacs ~/Developer/emacsconf/lambda-emacs --depth 1
 ;; git clone https://github.com/lijigang/emacs.d.git ~/Developer/emacsconf/lijigang --depth 1
-
+;; git clone https://github.com/doomemacs/doomemacs.git ~/Developer/emacsconf/doomemacs --depth 1
 
 ;; NOTE this requrie emacs 29
 ;; emacs --init-directory ~/.config/emacs
