@@ -8,7 +8,7 @@ if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
     echo "Cloning mattmc3/zsh_unplugged"
     git clone https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged --quiet
 fi
-source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.plugin.zsh
+source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
 
 # use curl download single file and source it
 function load-files () {
@@ -39,6 +39,17 @@ function load-files () {
 
 autoload -U compinit
 compinit
+
+# Use powerline
+USE_POWERLINE="true"
+# Source manjaro-zsh-configuration
+if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+  source /usr/share/zsh/manjaro-zsh-config
+fi
+# Use manjaro zsh prompt
+if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+  source /usr/share/zsh/manjaro-zsh-prompt
+fi
 
 
 ### History
