@@ -15,6 +15,8 @@ pkgs=(
     rime-double-pinyin
 
     # TUI
+    manjaro-settings-samba # yes, manjaro didn't have this
+    nautilus-share
     pnpm
     bind # network tools like dig
     v2ray # network proxy
@@ -42,6 +44,7 @@ pkgs=(
     zoxide # z command
 
     # Emacs
+    emacs-nativecomp
     gperf       # build tdlib
     cmake       # compile vterm
     libgccjit   # native compilation need this
@@ -70,22 +73,21 @@ pkgs=(
     deno
 
     # FONT
-    wqy-zenhei # steam need this for chinese font
-    ttf-roboto-mono # emacs default font
-    wqy-microhei # display chinese
+    wqy-zenhei # Chinese font
+    wqy-microhei
     otf-latin-modern
+    ttf-sarasa-gothic
+    adobe-source-han-serif-otc-fonts
+    ttf-ibm-plex # english font
+    ttf-roboto-mono
     otf-cascadia-code
     noto-fonts-cjk
     noto-fonts-extra
-    ttf-sarasa-gothic
-    # from lunary emacs
-    ttf-ibm-plex
-    adobe-source-han-serif-otc-fonts
-    # for discord
-    noto-fonts-emoji
+    noto-fonts-emoji # emojy
 
     # For Gnome
     gnome-shell-extension-appindicator
+    gnome-shell-extension-pop-shell
 
     ### Product Specific
     # thinkpad x1 carbon gen8 https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
@@ -101,7 +103,8 @@ aurpkgs=(
     gnome-shell-extension-gsconnect
     gnome-shell-extension-caffeine-git
     gnome-shell-extension-blur-my-shell
-    gnome-shell-extension-pop-shell-git # FIXME
+    pop-theme
+    # gnome-shell-extension-pop-shell-git # NOTE if pkg's version not work
     extension-manager
     nautilus-dropbox # FIXME
 
@@ -118,24 +121,22 @@ aurpkgs=(
     # wemeet-bin
 
     # TUI
+    telegram-tdlib
     vscode-langservers-extracted
     keyd
     mycli
     litecli # for sqlite
     clash-premium-bin
-    # mit-scheme
     pandoc-bin                     # convert to pdf
     # FONT
+    nerd-fonts-jetbrains-mono
     otf-monego-git
-    ttf-wps-fonts
-    ttf-cardo # emacs variable pitch
-    ttf-lxgw-wenkai # emacs chinese font
-    nerd-fonts-jetbrains-mono # default for rofi
+    ttf-wps-fonts # For wps-office
+    ttf-cardo # variable font
     tty-bookerly
-    # form lunary emacs
-    # apple-fonts
-    # for discord
-    # ttf-symbola
+    ttf-lxgw-wenkai # Chinese font
+    ttf-symbola # emojy
+    # apple-fonts # NOTE conflict with other emoji fonts
 )
 
 # key remap daemond, better than Xmodmap
@@ -201,16 +202,11 @@ setup() {
 
     yay -S --noconfirm --sudoloop ${pkgs[@]}
     yay -S --noconfirm --sudoloop ${aurpkgs[@]}
-    yay -S --noconfirm --sudoloop ${i3pkgs[@]}
-    yay -S --noconfirm --sudoloop ${i3aurpkgs[@]}
 
     sudo usermod -aG docker $USER
     systemctl enable docker
     systemctl start docker
     # docker pull zevlg/telega-server:latest
-
-    systemctl start bluetooth
-    systemctl enable bluetooth
 }
 
 setup

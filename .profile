@@ -1,5 +1,9 @@
 # enviroment variable
 
+export GTK_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
+export QT_IM_MODULE=fcitx5
+
 export EDITOR='emacs -nw'
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8

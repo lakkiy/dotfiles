@@ -5,3 +5,9 @@ All keybinding of this config is set for Dvorak keyboard layout.
 
 
 NOTE: All keybindings is config for Dvorak keyboard layout.
+
+* Tips
+
+** Enable color for aur
+
+Uncomment =Color= in =/etc/pacman.conf=.

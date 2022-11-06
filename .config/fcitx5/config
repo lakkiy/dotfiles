@@ -13,7 +13,7 @@ ActivateKeys=
 DeactivateKeys=
 
 [Hotkey/TriggerKeys]
-0=Shift+Shift_L
+0=Control+comma
 
 [Hotkey/AltTriggerKeys]
 0=Shift_L
