@@ -44,7 +44,7 @@ pkgs=(
     zoxide # z command
 
     # Emacs
-    emacs-nativecomp
+    pkgconf
     gperf       # build tdlib
     cmake       # compile vterm
     libgccjit   # native compilation need this
