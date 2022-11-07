@@ -106,16 +106,16 @@ aurpkgs=(
     pop-theme
     # gnome-shell-extension-pop-shell-git # NOTE if pkg's version not work
     extension-manager
-    nautilus-dropbox # FIXME
+#    nautilus-dropbox # FIXME
 
     # GUI
     crow-translate
-    sioyek # pdf reader # FIXME
+#    sioyek # pdf reader # FIXME
     wps-office-cn
     drawio-desktop-bin
     dropbox
     timeshift-bin # create snapshot
-    ventoy-bin # flash usb # FIXME
+#    ventoy-bin # flash usb # FIXME
     # Optional
     # feishu-bin
     # wemeet-bin
