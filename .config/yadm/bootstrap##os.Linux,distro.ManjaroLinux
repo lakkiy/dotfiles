@@ -2,7 +2,6 @@
 
 pkgs=(
     # GUI
-    chromium
     discord
     transmission-gtk # qbittorrent is used for remote
     vlc
@@ -45,6 +44,7 @@ pkgs=(
     zoxide # z command
 
     # Emacs
+    autoconf
     pkgconf
     gperf       # build tdlib
     cmake       # compile vterm
@@ -112,7 +112,7 @@ aurpkgs=(
     # GUI
     crow-translate
 #    sioyek # pdf reader # FIXME
-    wps-office-cn
+    # wps-office-cn
     drawio-desktop-bin
     dropbox
     timeshift-bin # create snapshot
