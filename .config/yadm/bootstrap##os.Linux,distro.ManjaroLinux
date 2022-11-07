@@ -1,0 +1,216 @@
+#!/bin/bash
+
+pkgs=(
+    # GUI
+    discord
+    transmission-gtk # qbittorrent is used for remote
+    vlc
+    smplayer
+    retroarch # game
+    spotify-launcher
+
+    # Chinese input method
+    fcitx5-im
+    fcitx5-rime
+    rime-double-pinyin
+
+    # TUI
+    manjaro-settings-samba # yes, manjaro didn't have this
+    nautilus-share
+    pnpm
+    bind # network tools like dig
+    v2ray # network proxy
+    docker
+    kubectl
+    neofetch           # pron!!!!!!
+    tree               # view file tree
+    tealdeer           # rust version tldr
+    syncthing
+    youtube-dl
+    cloc               # count program lines
+    man-db             # for command man
+    mosh
+    python-pip
+    # Extract && Compress
+    p7zip
+    unrar
+    cpio
+    # Modern Unix Tools
+    git-delta
+    fzf
+    fd
+    ripgrep
+    jq
+    zoxide # z command
+
+    # Emacs
+    pkgconf
+    gperf       # build tdlib
+    cmake       # compile vterm
+    libgccjit   # native compilation need this
+    xapian-core # use xeft in emacs for note taking
+    notmuch     # tag email
+    afew        # auto tag email
+    isync       # sync eamil
+    socat       # with mpv
+    sdcv        # star dict command line version
+    # dirvish
+    ffmpegthumbnailer
+    mediainfo
+    # Programming
+    aspell-en
+    universal-ctags
+    global
+    cscope
+    go
+    staticcheck
+    pyright
+    python-orjson
+    clojure
+    leiningen
+    typescript
+    nodejs-lts-gallium
+    deno
+
+    # FONT
+    wqy-zenhei # Chinese font
+    wqy-microhei
+    otf-latin-modern
+    ttf-sarasa-gothic
+    adobe-source-han-serif-otc-fonts
+    ttf-ibm-plex # english font
+    ttf-roboto-mono
+    otf-cascadia-code
+    noto-fonts-cjk
+    noto-fonts-extra
+    noto-fonts-emoji # emojy
+
+    # For Gnome
+    gnome-shell-extension-appindicator
+    gnome-shell-extension-pop-shell
+
+    ### Product Specific
+    # thinkpad x1 carbon gen8 https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
+    # fwupd
+    # sof-firmware
+)
+
+aurpkgs=(
+    # emacs && programming
+    python-epc # for lsp-bridge
+
+    # for gnome
+    gnome-shell-extension-gsconnect
+    gnome-shell-extension-caffeine-git
+    gnome-shell-extension-blur-my-shell
+    pop-theme
+    # gnome-shell-extension-pop-shell-git # NOTE if pkg's version not work
+    extension-manager
+    nautilus-dropbox # FIXME
+
+    # GUI
+    crow-translate
+    sioyek # pdf reader # FIXME
+    wps-office-cn
+    drawio-desktop-bin
+    dropbox
+    timeshift-bin # create snapshot
+    ventoy-bin # flash usb # FIXME
+    # Optional
+    # feishu-bin
+    # wemeet-bin
+
+    # TUI
+    telegram-tdlib
+    vscode-langservers-extracted
+    keyd
+    mycli
+    litecli # for sqlite
+    clash-premium-bin
+    pandoc-bin                     # convert to pdf
+    # FONT
+    nerd-fonts-jetbrains-mono
+    otf-monego-git
+    ttf-wps-fonts # For wps-office
+    ttf-cardo # variable font
+    amazon-fonts
+    ttf-lxgw-wenkai # Chinese font
+    ttf-symbola # emojy
+    # apple-fonts # NOTE conflict with other emoji fonts
+)
+
+# key remap daemond, better than Xmodmap
+setup-keyd () {
+    echo "
+[ids]
+*
+[main]
+capslock = overload(control, esc)
+control = overload(control, esc)
+[control]
+m = enter" | sudo tee -a /etc/keyd/default.conf
+    sudo systemctl enable keyd
+    sudo systemctl restart keyd
+}
+
+setup-syncthing () {
+    systemctl enable syncthing@"$USER"
+    systemctl start syncthing@"$USER"
+}
+
+setup() {
+    if [ ! -d "${HOME}/.mail/gmail" ]; then
+        mkdir -p ${HOME}/.mail/gmail
+    fi
+    if [ ! -d "${HOME}/.cache/gtags" ]; then
+        mkdir -p ${HOME}/.cache/gtags
+    fi
+
+    if [ ! -d "$HOME/Developer" ]; then
+        mkdir $HOME/Developer
+    fi
+
+    if [ ! -d "$HOME/p" ]; then
+        mkdir $HOME/p
+    fi
+
+    sudo pacman -Syyu
+
+    echo "Check yay..."
+    if ! command -v yay >/dev/null 2>&1; then
+	    cd $HOME
+	    git clone -q --depth 1 https://aur.archlinux.org/yay-bin.git $HOME/Developer/yay-bin
+	    cd $HOME/Developer/yay-bin
+	    yes | makepkg -si
+	    cd $HOME
+	    rm -rf $HOME/Developer/yay-bin
+    fi
+
+	if [ ! -d "${HOME}/.config/emacs" ]; then
+	        echo "Clone emacs config..."
+	        git clone -q https://github.com/404cn/eatemacs.git $HOME/.config/emacs
+	fi
+
+	if [ ! -d "${HOME}/.local/share/fcitx5/rime" ]; then
+		    echo "Clone fcitx config..."
+            # use fcitx5-remote -r to redeploy rime
+		    git clone -q https://github.com/404cn/Rime.git $HOME/.local/share/fcitx5/rime
+            echo "Config rime for emacs..."
+            cp -r $HOME/.local/share/fcitx5/rime ~/.config/emacs/rime
+            rm -rf $HOME/.config/emacs/rime/.git
+	fi
+
+    yay -S --noconfirm --sudoloop ${pkgs[@]}
+    yay -S --noconfirm --sudoloop ${aurpkgs[@]}
+
+    sudo usermod -aG docker $USER
+    systemctl enable docker
+    systemctl start docker
+    # docker pull zevlg/telega-server:latest
+}
+
+setup
+setup-keyd
+setup-syncthing
+
+echo "Done, now reboot to make it effect"
