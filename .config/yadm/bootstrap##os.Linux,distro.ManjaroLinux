@@ -2,6 +2,7 @@
 
 pkgs=(
     # GUI
+    chromium
     discord
     transmission-gtk # qbittorrent is used for remote
     vlc
