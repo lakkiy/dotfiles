@@ -8,7 +8,6 @@ pkgs=(
     transmission-gtk # qbittorrent is used for remote
     vlc
     smplayer
-    chromium # firefox dose not support wayland natively
     firefox
     retroarch # game
     spotify-launcher
@@ -24,7 +23,6 @@ pkgs=(
     # nm-connection-editor # networkmanager-l2tp doesn't have gtk4 support now, use nm-connection-editor instead
 
     # TUI
-    bash-completion
     bind # network tools like dig
     v2ray # network proxy
     zsh
@@ -62,7 +60,6 @@ pkgs=(
     isync       # sync eamil
     mpv         # play netease cloud music in emacs
     socat       # with mpv
-    hunspell    # for emacs spell check
     sdcv        # star dict command line version
     # dirvish
     poppler
@@ -77,37 +74,36 @@ pkgs=(
     global
     cscope
     go
-    staticcheck
     pyright
     python-orjson
     clojure
     leiningen
     typescript
     nodejs-lts-gallium
+    deno
 
     # FONT
-    wqy-zenhei # steam need this for chinese font
-    ttf-roboto-mono # emacs default font
-    wqy-microhei # display chinese
+    wqy-zenhei # Chinese font, steam need this for chinese font
+    wqy-microhei
     otf-latin-modern
+    ttf-sarasa-gothic
+    adobe-source-han-serif-otc-fonts
+    ttf-roboto-mono # english font
+    ttf-ibm-plex
     otf-cascadia-code
-    noto-fonts
+    noto-fonts #####
     noto-fonts-cjk
     noto-fonts-extra
-    # from lunary emacs
-    ttf-ibm-plex
-    adobe-source-han-serif-otc-fonts
-    # for discord
     noto-fonts-emoji
 
     # For Gnome
     bluez-utils
     gnome-shell-extension-appindicator
 
-    ### Product Specific
+    ### NOTE Product Specific
     # thinkpad x1 carbon gen8 https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
-    fwupd
-    sof-firmware
+    # fwupd
+    # sof-firmware
 )
 
 aurpkgs=(
@@ -119,31 +115,31 @@ aurpkgs=(
     gnome-shell-extension-caffeine-git
     gnome-shell-extension-blur-my-shell
     gnome-shell-extension-pop-shell-git
-    gnome-console-bin
     extension-manager
     nautilus-dropbox
 
     # GUI
+    sioyek # pdf reader
     crow-translate
-    linuxqq # see archwiki for wechat, use deepin-wine-wechat
-    wps-office-cn
+#    linuxqq # see archwiki for wechat, use deepin-wine-wechat
+#    wps-office-cn
     drawio-desktop-bin
     dropbox
     timeshift-bin # create snapshot
     ventoy-bin # flash usb
-    bottles # run windows application
     # Optional
     # feishu-bin
     # wemeet-bin
 
     # TUI
+    telegram-tdlib
     pnpm
     vscode-langservers-extracted
     keyd
     mycli
     litecli # for sqlite
     clash-premium-bin
-    mit-scheme
+#    mit-scheme
     pandoc-bin                     # convert to pdf
     # FONT
     otf-monego-git
@@ -152,35 +148,29 @@ aurpkgs=(
     ttf-lxgw-wenkai # emacs chinese font
     nerd-fonts-jetbrains-mono # default for rofi
     tty-bookerly
-    # form lunary emacs
-    apple-fonts
-    # for discord
-    ttf-symbola
+    ttf-symbola # discord
 )
 
-## TODO
 i3pkgs=(
     i3-gaps
     i3status-rust
     dmenu
-    polybar # NOTE eww didn't have system tray
+    wezterm # vs kitty: wezterm support windows
     feh # set wallpaper
     lxappearance # change settings
-    kitty
     rofi
     network-manager-applet
     nm-connection-editor
     picom
     flameshot
     wmctrl
+#    polybar # NOTE eww didn't have system tray
 )
 
-## TODO
 i3aurpkgs=(
-    eww-git
     betterlockscreen
-    sioyek # pdf reader
     ly # display manager
+#    eww-git
 )
 
 setup-zsh() {
@@ -251,8 +241,8 @@ setup() {
 
     yay -S --noconfirm --sudoloop ${pkgs[@]}
     yay -S --noconfirm --sudoloop ${aurpkgs[@]}
-    yay -S --noconfirm --sudoloop ${i3pkgs[@]}
-    yay -S --noconfirm --sudoloop ${i3aurpkgs[@]}
+    # yay -S --noconfirm --sudoloop ${i3pkgs[@]}
+    # yay -S --noconfirm --sudoloop ${i3aurpkgs[@]}
 
     sudo usermod -aG docker $USER
     systemctl enable docker

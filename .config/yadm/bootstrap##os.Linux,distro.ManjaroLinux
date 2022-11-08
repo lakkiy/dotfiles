@@ -64,7 +64,6 @@ pkgs=(
     global
     cscope
     go
-    staticcheck
     pyright
     python-orjson
     clojure

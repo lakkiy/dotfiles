@@ -161,7 +161,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run -b -fn "JetBrainsMono Nerd Font:pi
 bindsym $mod+e exec wmctrl -xa emacs || emacs
 
 # terminal
-bindsym $mod+Return exec wmctrl -xa kitty || kitty
+bindsym $mod+Return exec wmctrl -xa wezterm || wezterm
 
 # screen lock
 bindsym $mod+l exec betterlockscreen -l dimblur
