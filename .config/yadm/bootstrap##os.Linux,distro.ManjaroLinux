@@ -80,7 +80,7 @@ pkgs=(
     adobe-source-han-serif-otc-fonts
     ttf-ibm-plex # english font
     ttf-roboto-mono
-    otf-cascadia-code
+    ttf-cascadia-code
     noto-fonts-cjk
     noto-fonts-extra
     noto-fonts-emoji # emojy
@@ -206,6 +206,8 @@ setup() {
     sudo usermod -aG docker $USER
     systemctl enable docker
     systemctl start docker
+    systemctl enable smb
+    systemctl start smb
     # docker pull zevlg/telega-server:latest
 }
 

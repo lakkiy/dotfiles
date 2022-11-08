@@ -90,7 +90,7 @@ pkgs=(
     adobe-source-han-serif-otc-fonts
     ttf-roboto-mono # english font
     ttf-ibm-plex
-    otf-cascadia-code
+    ttf-cascadia-code
     noto-fonts #####
     noto-fonts-cjk
     noto-fonts-extra
@@ -155,7 +155,7 @@ i3pkgs=(
     i3-gaps
     i3status-rust
     dmenu
-    wezterm # vs kitty: wezterm support windows
+    kitty
     feh # set wallpaper
     lxappearance # change settings
     rofi
