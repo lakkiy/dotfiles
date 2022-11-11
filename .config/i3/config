@@ -201,7 +201,7 @@ exec --no-startup-id nm-applet
 # translate
 exec --no-startup-id crow
 # Compositor
-exec --no-startup-id picom
+exec --no-startup-id picom --experimental-backend
 
 # set dvorak keyboard layout
 exec_always --no-startup-id setxkbmap us -v dvorak # FIXME not work

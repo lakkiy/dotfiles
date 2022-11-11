@@ -161,13 +161,13 @@ i3pkgs=(
     rofi
     network-manager-applet
     nm-connection-editor
-    picom
     flameshot
     wmctrl
 #    polybar # NOTE eww didn't have system tray
 )
 
 i3aurpkgs=(
+    picom-jonaburg-git
     betterlockscreen
     ly # display manager
 #    eww-git
