@@ -24,6 +24,7 @@ pkgs=(
 
     # TUI
     bind # network tools like dig
+    clash
     v2ray # network proxy
     zsh
     docker
@@ -99,6 +100,8 @@ pkgs=(
     # For Gnome
     bluez-utils
     gnome-shell-extension-appindicator
+    pop-gtk-theme
+    pop-icon-theme
 
     ### NOTE Product Specific
     # thinkpad x1 carbon gen8 https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
@@ -116,7 +119,7 @@ aurpkgs=(
     gnome-shell-extension-blur-my-shell
     gnome-shell-extension-pop-shell-git
     extension-manager
-    nautilus-dropbox
+#    nautilus-dropbox
 
     # GUI
     sioyek # pdf reader
@@ -138,7 +141,6 @@ aurpkgs=(
     keyd
     mycli
     litecli # for sqlite
-    clash-premium-bin
 #    mit-scheme
     pandoc-bin                     # convert to pdf
     # FONT
@@ -147,7 +149,7 @@ aurpkgs=(
     ttf-cardo # emacs variable pitch
     ttf-lxgw-wenkai # emacs chinese font
     nerd-fonts-jetbrains-mono # default for rofi
-    tty-bookerly
+    amazon-fonts
     ttf-symbola # discord
 )
 
