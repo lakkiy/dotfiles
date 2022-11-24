@@ -14,7 +14,6 @@ export PATH=$HOME/.local/bin:$HOME/bin:$PATH # local/bin for pipx
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
 export FZF_DEFAULT_OPTS=" \
 --height 40% --layout=reverse \
---color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
 --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
 --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
