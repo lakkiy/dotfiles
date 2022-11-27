@@ -113,77 +113,18 @@ flatpkgs=(
     # com.tencent.wemeet
 )
 
-setup-zsh() {
+setup-zsh-fedora() {
     echo "Change shell to zsh, /usr/bin/zsh or /bin/zsh for fedora server."
     lchsh $USER # /bin/zsh for fedora server or /usr/bin/zsh for fedora workstation
 }
 
-# sync file between hosts
-setup-syncthing () {
-    systemctl enable syncthing@${USER}
-    systemctl start syncthing@${USER}
-}
-
-# key remap daemond, better than Xmodmap
-setup-keyd () {
-    echo "
-[ids]
-*
-[main]
-capslock = overload(control, esc)
-control = overload(control, esc)
-[control]
-m = enter
- | sudo tee -a /etc/keyd/default.conf"
-    systemctl enable keyd
-    systemctl restart keyd
-}
-
-setup-docker () {
-    systemctl start docker
-    systemctl enable docker
-    sudo usermod -aG docker ${USER}
-    # reboot to make it work
-    # docker pull zevlg/telega-server:latest
-}
+source ./common.sh
 
 setup() {
+    setup-common
+
     sudo dnf update && sudo dnf upgrade
     dnf builddep emacs
-
-    # if ! command -v pnpm /dev/null
-    # then
-    #     echo "install pnpm..."
-    #     curl -fsSL https://get.pnpm.io/install.sh | sh -
-    # fi
-
-    if [ ! -d "${HOME}/Developer" ]; then
-        mkdir ${HOME}/Developer
-    fi
-    if [ ! -d "${HOME}/.cache/gtags" ]; then
-        mkdir -p ${HOME}/.cache/gtags
-    fi
-
-    if [ ! -d "${HOME}/p" ]; then
-        mkdir ${HOME}/p
-    fi
-
-    if [ ! -d "${HOME}/.mail/gmail" ]; then
-        mkdir -p ${HOME}/.mail/gmail
-    fi
-
-	if [ ! -d "${HOME}/.config/emacs" ]; then
-        echo "Clone emacs config..."
-		git clone -q https://github.com/404cn/eatemacs.git ${HOME}/.config/emacs
-        echo "DONE"
-	fi
-
-	if [ ! -d "${HOME}/.local/share/fcitx5/rime" ]; then
-        echo "Clone fcitx config..."
-		# use fcitx5-remote -r to redeploy rime
-		git clone -q https://github.com/404cn/Rime.git ${HOME}/.local/share/fcitx5/rime
-        echo "DONE"
-	fi
 
     echo "Enable corps..."
 	for copr in ${coprs[@]}; do
@@ -203,6 +144,6 @@ setup
 setup-syncthing
 setup-keyd
 setup-docker
-setup-zsh
+setup-zsh-fedora
 
 echo "Done, now reboot to make it effect"

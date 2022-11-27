@@ -175,45 +175,10 @@ i3aurpkgs=(
 #    eww-git
 )
 
-setup-zsh() {
-    chsh -s $(which zsh)
-    env zsh
-}
-
-# key remap daemond, better than Xmodmap
-setup-keyd () {
-    echo "
-[ids]
-*
-[main]
-capslock = overload(control, esc)
-control = overload(control, esc)
-[control]
-m = enter" | sudo tee -a /etc/keyd/default.conf
-    sudo systemctl enable keyd
-    sudo systemctl restart keyd
-}
-
-setup-syncthing () {
-    systemctl enable syncthing@"$USER"
-    systemctl start syncthing@"$USER"
-}
+source ./common.sh
 
 setup() {
-    if [ ! -d "${HOME}/.mail/gmail" ]; then
-        mkdir -p ${HOME}/.mail/gmail
-    fi
-    if [ ! -d "${HOME}/.cache/gtags" ]; then
-        mkdir -p ${HOME}/.cache/gtags
-    fi
-
-    if [ ! -d "$HOME/Developer" ]; then
-        mkdir $HOME/Developer
-    fi
-
-    if [ ! -d "$HOME/p" ]; then
-        mkdir $HOME/p
-    fi
+    setup-common
 
     sudo pacman -Syyu
 
@@ -227,35 +192,17 @@ setup() {
 	    rm -rf $HOME/Developer/yay-bin
     fi
 
-	if [ ! -d "${HOME}/.config/emacs" ]; then
-	        echo "Clone emacs config..."
-	        git clone -q https://github.com/404cn/eatemacs.git $HOME/.config/emacs
-	fi
-
-	if [ ! -d "${HOME}/.local/share/fcitx5/rime" ]; then
-		    echo "Clone fcitx config..."
-            # use fcitx5-remote -r to redeploy rime
-		    git clone -q https://github.com/404cn/Rime.git $HOME/.local/share/fcitx5/rime
-            echo "Config rime for emacs..."
-            cp -r $HOME/.local/share/fcitx5/rime ~/.config/emacs/rime
-            rm -rf $HOME/.config/emacs/rime/.git
-	fi
-
     yay -S --noconfirm --sudoloop ${pkgs[@]}
     yay -S --noconfirm --sudoloop ${aurpkgs[@]}
     # yay -S --noconfirm --sudoloop ${i3pkgs[@]}
     # yay -S --noconfirm --sudoloop ${i3aurpkgs[@]}
-
-    sudo usermod -aG docker $USER
-    systemctl enable docker
-    systemctl start docker
-    # docker pull zevlg/telega-server:latest
 
     systemctl start bluetooth
     systemctl enable bluetooth
 }
 
 setup
+setup-docker
 setup-keyd
 setup-syncthing
 setup-zsh

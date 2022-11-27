@@ -10,6 +10,13 @@ export LC_CTYPE=en_US.UTF-8
 export TERM=xterm-256color
 export PATH=$HOME/.local/bin:$HOME/bin:$PATH # local/bin for pipx
 
+# home-manager on nixos
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+if [[ -d $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
+    # I don't use home-manager to manage my shell config for now.
+    source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+fi
+
 ### FZF
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
 export FZF_DEFAULT_OPTS=" \
