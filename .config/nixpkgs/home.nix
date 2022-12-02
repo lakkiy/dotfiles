@@ -32,7 +32,7 @@
     (import (builtins.fetchGit {
       url = "https://github.com/nix-community/emacs-overlay.git";
       ref = "master";
-      rev = "7aa0c96397c4864853fa91a66191fb2336a08783";
+      rev = "7419dbeb120e44bfb8cbbb74f1b4e77b3f8401ab";
     }))
   ];
 
