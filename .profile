@@ -10,9 +10,14 @@ export LC_CTYPE=en_US.UTF-8
 export TERM=xterm-256color
 export PATH=$HOME/.local/bin:$HOME/bin:$PATH # local/bin for pipx
 
+# nix
+if [[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
+    # I don't use home-manager to manage my shell config for now.
+    source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
 # home-manager on nixos
 export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
-if [[ -d $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
+if [[ -e $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
     # I don't use home-manager to manage my shell config for now.
     source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 fi
