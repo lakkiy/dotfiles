@@ -120,5 +120,9 @@ alias diff="delta"
 alias find="fd"
 alias grep="rg"
 
+# Emacs eat
+[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+  source "$EAT_SHELL_INTEGRATION_DIR/bash"
+
 ### Local customizations, e.g. theme, plugins, aliases, etc.
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
