@@ -1,5 +1,15 @@
 { lib, inputs, system, home-manager, user, ... }:
 
+let
+  system = "x86_64-linux";
+
+  pkgs = import nixpkgs {
+    inherit system;
+    config.allowUnfree = true;
+  };
+
+  lib = nixpkgs.lib;
+in
 {
   nixos = lib.nixosSystem { # x1carbon gen8 nixos profile
     inherit system;
@@ -19,5 +29,7 @@
     ];
   };
 
-  wsl = lib.nixosSystem {}; # TODO
+  esxi-nixos = lib.nixosSystem { # TODO
+
+  };
 }
