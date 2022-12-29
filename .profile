@@ -10,18 +10,6 @@ export LC_CTYPE=en_US.UTF-8
 export TERM=xterm-256color
 export PATH=$HOME/.local/bin:$HOME/bin:$PATH # local/bin for pipx
 
-# nix
-if [[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
-    # I don't use home-manager to manage my shell config for now.
-    source $HOME/.nix-profile/etc/profile.d/nix.sh
-fi
-# home-manager on nixos
-export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
-if [[ -e $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
-    # I don't use home-manager to manage my shell config for now.
-    source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-fi
-
 ### FZF
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
 export FZF_DEFAULT_OPTS=" \
@@ -52,6 +40,18 @@ export STARDICT_DATA_DIR=$HOME/.sdcv-dict
 
 ### krew -- kubectl plugin manager
 export PATH="${PATH}:${HOME}/.krew/bin"
+
+# nix, NOTE make sure this end of file
+if [[ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]; then
+    # I don't use home-manager to manage my shell config for now.
+    source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+# home-manager on nixos
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+if [[ -e $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]]; then
+    # I don't use home-manager to manage my shell config for now.
+    source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+fi
 
 ### local env
 [ -f ~/.profile.local ] && source ~/.profile.local
