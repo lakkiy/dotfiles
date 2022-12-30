@@ -21,54 +21,27 @@
     }))
   ];
 
-  services.syncthing.enable = true;
-  services.dropbox.enable = true;
+  # services.syncthing.enable = true;
+  # services.dropbox.enable = true;
 
   programs = {
-    fzf = {
-      enable = true;
-      # defaultCommand = "fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find .";
-      # # defaultOptions = "";
-      # # fileWidgetCommand = "";
-      # fileWidgetOptions = [ "--preview '(bat --style=plain --color=always {} || cat {} || tree -NC {}) 2> /dev/null | head -200'" ];
-      # historyWidgetOptions = [
-      #   "--preview 'echo {}'"
-      #   "--preview-window down:3:hidden:wrap"
-      #   "--bind '?:toggle-preview'"
-      #   "--exact"
-      # ];
-      # changeDirWidgetOptions = [ "--preview 'tree -NC {} | head -200'" ];
-    };
-    tealdeer = {
-      enable = true;
-      settings = {
-        updates = {
-          auto_update = true;
-        };
-      };
-    };
-    go.enable = true;
-    pandoc.enable = true;
 
-    mpv.enable = true;
-    sioyek.enable = true;
   };
 
   home.packages = with pkgs; [
     # firefox
     # git
+
     zsh
+
     keyd
+
+    # Terminal
     gcc
     gdb
     gnumake
-    # Proxy
-    v2ray
-    v2ray-geoip
-    v2ray-domain-list-community
-    clash
-    # Tools
     neofetch
+    tealdeer
     tree
     cloc
     delta
@@ -77,11 +50,21 @@
     ripgrep
     jq
     zoxide
+    pandoc
+    mpv
+
+    # Network Proxy
+    v2ray
+    v2ray-geoip
+    v2ray-domain-list-community
+    clash
+
     # Extract
     unrar
     unzip
     p7zip
     cpio
+
     # Misc
     docker
     mycli
@@ -90,30 +73,35 @@
     youtube-dl
     kubectl
     mosh
-    # DEV
+
+    # Programming
     python39Packages.epc
     python39Packages.orjson
     nodePackages.pyright
+    python3Minimal
+
+    go
+
     universal-ctags
     global
     cscope
+
     deno
+
     clojure
     leiningen
+
     nodePackages.typescript
     nodePackages.vscode-langservers-extracted
     nodePackages.pnpm
-    python3Minimal
-    # Emacs tool deps
+
+    # Emacs
     tdlib  # telega
     xapian # xeft
     notmuch # mail
     afew # tag mail
     isync # sync mail
-    cmake # compile vterm
-    libtool
     librime # emacs-rime
-    sdcv # dict
     imagemagick # dirvish
     mediainfo
     ffmpegthumbnailer
@@ -122,6 +110,7 @@
 
 
     # GUI
+    sioyek
     discord
     transmission-gtk
     spotify
