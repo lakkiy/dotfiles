@@ -14,29 +14,26 @@
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, darwin, ... }:
-    let
-      user = "swim";
-    in
     {
-        # nixos-rebuild switch --flake .#
+      # nixos-rebuild switch --flake .#
       nixosConfigurations = ( # NixOS configurations
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager user;
+          inherit inputs nixpkgs home-manager;
         }
       );
 
       darwinConfigurations = ( # Darwin configurations
         import ./darwin {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager darwin user;
+          inherit inputs nixpkgs home-manager darwin;
         }
       );
 
       homeConfigurations = ( # Non-NixOS configurations
         import ./nix {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager user;
+          inherit inputs nixpkgs home-manager;
         }
       );
     };
