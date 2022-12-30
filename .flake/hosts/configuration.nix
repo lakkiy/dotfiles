@@ -5,12 +5,7 @@
   time.timeZone = "Asia/Shanghai";
 
   i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    keyMap = "dvorak";
-  };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
   ];
@@ -20,6 +15,7 @@
   nix = {                                   # Nix Package Manager settings
     settings ={
       auto-optimise-store = true;           # Optimise syslinks
+      experimental-features = [ "nix-command" "flakes" ];
     };
     gc = {                                  # Automatic garbage collection
       automatic = true;
@@ -28,12 +24,8 @@
     };
     package = pkgs.nixVersions.unstable;    # Enable nixFlakes on system
     registry.nixpkgs.flake = inputs.nixpkgs;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs          = true
-      keep-derivations      = true
-    '';
   };
+  nixpkgs.config.allowUnfree = true;        # Allow proprietary software.
 
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "22.11";
 }

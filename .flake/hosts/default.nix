@@ -11,18 +11,18 @@ let
   lib = nixpkgs.lib;
 in
 {
-  nixos = lib.nixosSystem { # x1carbon gen8 nixos profile
+  x1carbon = lib.nixosSystem { # x1carbon gen8 nixos profile
     inherit system;
     specialArgs = { inherit inputs; };
     modules = [
-      ./nixos
+      ./x1carbon
       ./configuration.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.swim = {
-          imports = [(import ./home.nix)] ++ [(import ./nixos/home.nix)];
+          imports = [(import ./home.nix)] ++ [(import ./x1carbon/home.nix)];
         };
       }
     ];
