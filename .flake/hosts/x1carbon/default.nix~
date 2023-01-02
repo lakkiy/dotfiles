@@ -4,7 +4,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./cachix.nix
     ];
 
   # Bootloader.
@@ -73,14 +72,12 @@
     description = "swim";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
     ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # for x1carbon gen8
     fwupd
     sof-firmware
   ];

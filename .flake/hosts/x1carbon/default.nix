@@ -11,8 +11,16 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  networking.hostName = "x1carbon"; # Define your hostname.
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "x1carbon";
+    networkmanager.enable = true;
+    defaultGateway = "192.168.31.222";
+    nameservers = [ "192.168.31.222" ];
+    interfaces.wlan0.ipv4.addresses = [{
+      address = "192.168.31.150";
+      prefixLength = 24;
+    }];
+  };
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "zh_CN.utf8";
