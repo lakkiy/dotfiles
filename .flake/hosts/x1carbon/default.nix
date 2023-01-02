@@ -35,6 +35,23 @@
   };
 
   # Enable the X11 windowing system.
+  services = {
+    xserver = {
+      enable = true;
+      # GNOME
+      displayManager.gdm.enable = false;
+      desktopManager.gnome.enable = false;
+      displayManager = {
+        gdm.enable = false; # FOR GNOME
+	defaultSession = "xfce"; # FOR XFCE
+      };
+      desktopManager = {
+        gnome.enable = false; # GNOME
+	xterm.enable = false;
+	xfce.enable = true;
+      };
+    };
+  };
   services.xserver.enable = true;
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
