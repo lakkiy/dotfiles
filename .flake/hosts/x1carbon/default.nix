@@ -9,7 +9,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.efi.efiSysMountPoint = "/boot";
 
   networking = {
     hostName = "x1carbon";
@@ -39,23 +39,18 @@
     xserver = {
       enable = true;
       # GNOME
-      displayManager.gdm.enable = false;
-      desktopManager.gnome.enable = false;
       displayManager = {
         gdm.enable = false; # FOR GNOME
-	defaultSession = "xfce"; # FOR XFCE
+#        lightdm.enable = true;
+#	defaultSession = "xfce"; # FOR XFCE
       };
       desktopManager = {
         gnome.enable = false; # GNOME
-	xterm.enable = false;
-	xfce.enable = true;
+#	xterm.enable = false;
+#	xfce.enable = true;
       };
     };
   };
-  services.xserver.enable = true;
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
