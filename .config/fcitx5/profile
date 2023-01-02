@@ -2,19 +2,13 @@
 # Group Name
 Name=Default
 # Layout
-Default Layout=us-dvorak
+Default Layout=us
 # Default Input Method
-DefaultIM=rime
+DefaultIM=keyboard-us
 
 [Groups/0/Items/0]
 # Name
-Name=keyboard-us-dvorak
-# Layout
-Layout=
-
-[Groups/0/Items/1]
-# Name
-Name=rime
+Name=keyboard-us
 # Layout
 Layout=
 

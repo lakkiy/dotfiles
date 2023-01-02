@@ -40,12 +40,12 @@
       enable = true;
       # GNOME
       displayManager = {
-        gdm.enable = false; # FOR GNOME
+        gdm.enable = true; # FOR GNOME
 #        lightdm.enable = true;
 #	defaultSession = "xfce"; # FOR XFCE
       };
       desktopManager = {
-        gnome.enable = false; # GNOME
+        gnome.enable = true; # GNOME
 #	xterm.enable = false;
 #	xfce.enable = true;
       };
