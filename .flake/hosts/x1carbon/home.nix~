@@ -29,8 +29,8 @@
   };
 
   home.packages = with pkgs; [
-    firefox
-    git
+    # firefox
+    # git
 
     zsh
 
