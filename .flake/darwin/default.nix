@@ -1,20 +1,19 @@
-{ lib, inputs, nixpkgs, home-manager, darwin, user, ... }:
+{ lib, inputs, nixpkgs, home-manager, darwin, ... }:
 
 let
   system = "x86_64-darwin";
 in
 {
-  macbook = darwin.lib.darwinSystem {
+  mac = darwin.lib.darwinSystem {
     inherit system;
-    specialArgs = { inherit user inputs; };
+    specialArgs = { inherit inputs; };
     modules = [
       ./configuration.nix
 
       home-manager.darwinModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit user; };
-        home-manager.users.${user} = import ./home.nix;
+        home-manager.users.artorias = import ./home.nix;
       }
     ];
   };

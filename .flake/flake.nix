@@ -27,6 +27,13 @@
         }
       );
 
+      # For first time:
+      # mkdir ~/.config/nix
+      # echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+      # nix build .#darwinConfigurations.<host>.system
+      # ./result/sw/bin/darwin-rebuild switch --flake .#<host>
+      # Then:
+      # darwin-rebuild switch --flake .#<host>
       darwinConfigurations = ( # Darwin configurations
         import ./darwin {
           inherit (nixpkgs) lib;
