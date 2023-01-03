@@ -19,7 +19,7 @@
 
   outputs = inputs @ { self, nixpkgs, home-manager, darwin, emacs-overlay, ... }:
     {
-      # nixos-rebuild switch --flake .#
+      # nixos-rebuild switch --flake .#<host>
       nixosConfigurations = ( # NixOS configurations
         import ./hosts {
           inherit (nixpkgs) lib;
@@ -34,6 +34,7 @@
         }
       );
 
+      # home-manager switch --flake .#<host>
       homeConfigurations = ( # Non-NixOS configurations
         import ./nix {
           inherit (nixpkgs) lib;
