@@ -1,13 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    (import ../modules/app.nix) ++
-    (import ../modules/filesync.nix) ++
-    (import ../modules/video.nix) ++
-    (import ../modules/fonts.nix) ++
-    (import ../modules/gnome.nix) ++
-    (import ../modules/fcitx5.nix);
+  imports = [
+    (import ../../modules/app.nix)
+    (import ../../modules/filesync.nix)
+    (import ../../modules/video.nix)
+    (import ../../modules/fonts.nix)
+    (import ../../modules/gnome.nix)
+    (import ../../modules/fcitx5.nix)
+  ];
     # (import ../modules/emacs.nix) ++
 
   home.username = "swim";
