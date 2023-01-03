@@ -8,7 +8,6 @@
   ];
 
   programs = {
-    home-manager.enable = true;
     ssh.enable = true;
   };
 
@@ -24,4 +23,6 @@
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
   nixpkgs.config.allowUnfree = true;                    # Allow proprietary software.
+  # https://github.com/nix-community/home-manager/issues/2942#issuecomment-1119760100
+  nixpkgs.config.allowUnfreePredicate = (pkg: true);
 }
