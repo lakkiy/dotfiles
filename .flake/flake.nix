@@ -34,6 +34,10 @@
         }
       );
 
+      # For first time:
+      # nix build --extra-experimental-features 'nix-command flakes' .#homeConfigurations.<host>.activationPackage
+      # ./result/activate
+      # Then:
       # home-manager switch --flake .#<host>
       homeConfigurations = ( # Non-NixOS configurations
         import ./nix {

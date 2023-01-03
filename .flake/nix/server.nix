@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, user, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -9,6 +9,7 @@
 
   programs = {
     home-manager.enable = true;
+    ssh.enable = true;
   };
 
   home.packages = with pkgs; [

@@ -3,18 +3,17 @@
 let
   system = "x86_64-linux";
   pkgs = nixpkgs.legacyPackages.${system};
-  user = "liubo"; # Just for current already insatlled system.
 in
 {
-  fedora-server = home-manager.lib.homeManagerConfiguration {
+  server = home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-    extraSpecialArgs = { inherit inputs user; };
+    extraSpecialArgs = { inherit inputs; };
     modules = [
-      ./fedora-server.nix
+      ./server.nix
       {
         home = {
-          username = "${user}";
-          homeDirectory = "/home/${user}";
+          username = "root";
+          homeDirectory = "/root";
           packages = [ pkgs.home-manager ];
           stateVersion = "22.05";
         };
