@@ -1,149 +1,17 @@
 #!/bin/bash
 
-# Enable this before install
-coprs=(
-    dspom/keyd
-    carlis/crow-translate
-    endle/sioyek
-)
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS=$NAME
+fi
 
-# packages should remove
-rpkgs=(
-    libreoffice-calc
-    libreoffice-writer
-    libreoffice-impress
-)
-
-pkgs=(
-##################### Must Have ###################################
-    # new gui
-    vlc # TODO chang ffmpeg thread to 4, but hdr color not work
-    kodi # TODO hdr work, but ka le, like jellyfin deskotp client
-    dropbox
-    retroarch             # game
-    transmission
-    timeshift
-    discord
-    sioyek # pdf viewer
-
-    # tui
-    tmux
-    youtube-dl
-    kubernetes-client
-    litecli
-    fcitx5-rime # chinese input
-    flatpak
-    pandoc                # convert to pdf
-    zsh         # shell, replace bash
-    mosh        # udp version ssh
-    mycli       # connect mysql
-    clash       # network proxy
-    alien       # convert dep to rpm
-    syncthing   # sync file between computes
-    docker      # docker pull zevlg/telega-server:latest
-    python3-pip # NOTE pip install afew
-	cloc        # count program lines
-	tealdeer    # rust version tldr
-    # Extract && Compress
-    unrar
-    p7zip
-	file-roller # zip and uoenuthaosnteunzip file
-    # Modern Unix Tools
-    jq
-	fzf         # fuzzy finder
-	ripgrep     # better grep
-	htop        # better top
-	neofetch    # pron!!!!!!
-	git-delta   # pager for git, also can use as diff
-	fd-find     # better find
-    # NOTE install via copr, enable first
-    keyd        # key remapping, better than Xmodmap
-
-    # Emacs
-    # --with-pgtk --with-xwidgets --with-native-compilation --with-json --with-mailutils
-    xapian-core-devel # build xeft module
-    gcc-c++     # build xeft for emacs, and tdlib
-    cmake  # bulid vterm
-    libtool
-    librime-devel # for emacs-rime
-    mpv                   # play netease cloud music in emacs
-    socat                 # with mpv
-    gperf #build tdlib
-    notmuch     # tag email, read mail in emacs
-    isync       # sync mail to localhost, aka mbsync
-	sdcv        # star dict command line version
-    hunspell
-    # programming
-    python3-epc # for lsp-bridge
-    ctags       # universal-ctags for programming
-    global      # gtags for programming
-    nodejs
-    nodejs-typescript
-    cscope
-    clojure
-    golang      # programming language
-    # NOTE staticcheck pyright lein
-
-    # For Gnome
-    nautilus-dropbox
-    gnome-console
-    gnome-console-nautilus
-    gnome-tweaks
-    nautilus-gsconnect
-    gnome-shell-extension-gsconnect
-    gnome-shell-extension-user-theme
-    gnome-shell-extension-workspace-indicator
-    gnome-shell-extension-caffeine
-    gnome-shell-extension-appindicator
-    gnome-shell-extension-sound-output-device-chooser
-
-    # Fonts
-    google-roboto-mono-fonts
-)
-
-flatpkgs=(
-    com.spotify.Client
-    com.github.iwalton3.jellyfin-media-player
-    com.mattjakeman.ExtensionManager
-    com.wps.Office
-    com.jgraph.drawio.desktop
-    com.valvesoftware.Steam
-    # Optional
-    # io.github.Fndroid.clash_for_windows
-    # com.tencent.wemeet
-)
-
-setup-zsh-fedora() {
-    echo "Change shell to zsh, /usr/bin/zsh or /bin/zsh for fedora server."
-    lchsh $USER # /bin/zsh for fedora server or /usr/bin/zsh for fedora workstation
-}
-
-source ./common.sh
-
-setup() {
-    setup-common
-
-    sudo dnf update && sudo dnf upgrade
-    dnf builddep emacs
-
-    echo "Enable corps..."
-	for copr in ${coprs[@]}; do
-		sudo dnf copr enable -y ${copr}
-	done
-    echo "DONE"
-
-    # NOTE don't need to check install, dnf will do this
-	sudo dnf remove -y ${rpkgs[@]}
-	sudo dnf install -y ${pkgs[@]}
-
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    sudo flatpak install flathub ${flatpkgs[@]}
-}
-
-setup
-setup-syncthing
-setup-keyd
-setup-docker
-setup-zsh-fedora
-
-echo "Done, now reboot to make it effect"
+if [ $OS == "NixOS" ]; then
+else
+    if ! command -v nix &> /dev/null; then
+        sh <(curl -L https://nixos.org/nix/install) --daemon
+    fi
+    if ! command -v git &> /dev/null; then
+        nix -iA nixpkgs.git
+    fi
+    # TODO
+fi
