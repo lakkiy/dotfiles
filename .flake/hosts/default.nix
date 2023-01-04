@@ -14,7 +14,7 @@ in
 {
   x1carbon = lib.nixosSystem { # x1carbon gen8 nixos profile
     inherit system;
-    specialArgs = { inherit inputs; };
+    specialArgs = { inherit inputs pkgs; };
     modules = [
       ./x1carbon
       ./configuration.nix
