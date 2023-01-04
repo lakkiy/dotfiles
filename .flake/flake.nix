@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay = {
-      url = github:nix-community/emacs-overlay;
+      url = github:nix-community/emacs-overlay/9ef42377c7985840cfb65b5b9403e518d7d97afb;
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -23,7 +23,7 @@
       nixosConfigurations = ( # NixOS configurations
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager;
+          inherit inputs nixpkgs home-manager emacs-overlay;
         }
       );
 
