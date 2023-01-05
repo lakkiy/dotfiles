@@ -10,7 +10,7 @@
     (import ../modules/gnome.nix)
     (import ../modules/fcitx5.nix)
     (import ../modules/syncthing.nix)
-    (import ../modules/dropbox.nix)
+#   (import ../modules/dropbox.nix)
     (import ../modules/proxy.nix)
   ];
 

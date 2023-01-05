@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    firefox
+    firefox-bin
     sioyek
     discord
     transmission-gtk
