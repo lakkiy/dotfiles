@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, ... }:
+{ lib, inputs, nixpkgs, home-manager, emacs-overlay, ... }:
 
 let
   system = "x86_64-linux";
@@ -9,31 +9,25 @@ in
     inherit pkgs;
     extraSpecialArgs = { inherit inputs; };
     modules = [
+      ./home.nix
       ./server.nix
       {
-        home = {
-          username = "root";
-          homeDirectory = "/root";
-          packages = [ pkgs.home-manager ];
-          stateVersion = "22.05";
-        };
-      }
-    ];
-  };
-  pacman = home-manager.lib.homeManagerConfiguration {
-    inherit pkgs;
-    extraSpecialArgs = { inherit inputs; };
-    modules = [
-      ./pacman.nix
-      {
-        home = {
-          username = "liubo";
-          homeDirectory = "/home/liubo";
-          packages = [ pkgs.home-manager ];
-          stateVersion = "22.05";
-        };
+        home.username = "root";
+        home.homeDirectory = "/root";
       }
     ];
   };
 
+  pacman = home-manager.lib.homeManagerConfiguration {
+    inherit pkgs;
+    extraSpecialArgs = { inherit inputs; };
+    modules = [
+      ./home.nix
+      ./pacman.nix
+      {
+        home.username = "liubo";
+        home.homeDirectory = "/home/liubo";
+      }
+    ];
+  };
 }

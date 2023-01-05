@@ -8,6 +8,6 @@
     (import ../modules/terminal.nix)
   ];
 
-  home.stateVersion = "22.05";
+  home.stateVersion = "22.11";
   programs.home-manager.enable = true;
 }

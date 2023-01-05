@@ -12,12 +12,12 @@ let
   lib = nixpkgs.lib;
 in
 {
-  x1carbon = lib.nixosSystem { # x1carbon gen8 nixos profile
+  x1carbon = lib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs pkgs; };
     modules = [
-      ./x1carbon
       ./configuration.nix
+      ./x1carbon
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
@@ -33,8 +33,8 @@ in
     inherit system;
     specialArgs = { inherit inputs; };
     modules = [
-      ./esxi-nixos
       ./configuration.nix
+      ./esxi-nixos
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;

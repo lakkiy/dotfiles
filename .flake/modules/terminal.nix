@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     git
-    zsh
     gcc
     gdb
     gnumake
@@ -11,12 +10,7 @@
     tealdeer
     tree
     cloc
-    delta
-    fzf
-    fd
-    ripgrep
     jq
-    zoxide
     docker
     mycli
     litecli
