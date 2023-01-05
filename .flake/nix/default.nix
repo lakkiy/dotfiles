@@ -20,4 +20,20 @@ in
       }
     ];
   };
+  pacman = home-manager.lib.homeManagerConfiguration {
+    inherit pkgs;
+    extraSpecialArgs = { inherit inputs; };
+    modules = [
+      ./pacman.nix
+      {
+        home = {
+          username = "liubo";
+          homeDirectory = "/home/liubo";
+          packages = [ pkgs.home-manager ];
+          stateVersion = "22.05";
+        };
+      }
+    ];
+  };
+
 }
