@@ -4,6 +4,7 @@
   imports = [
     (import ../modules/terminal.nix)
     (import ../modules/programming.nix)
+    (import ../modules/zsh.nix)
     (import ../modules/app.nix)
     (import ../modules/video.nix)
     (import ../modules/fonts.nix)
