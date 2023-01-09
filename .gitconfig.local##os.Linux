@@ -1,9 +1,0 @@
-# -*- mode: gitconfig -*-
-[user]
-	name = 404cn
-	email = liubolovelife@gmail.com
-[credential]
-	helper = store
-[github]
-	user =
-	oauth-token =

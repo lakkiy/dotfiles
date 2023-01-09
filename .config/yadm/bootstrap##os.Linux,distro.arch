@@ -1,158 +1,16 @@
 #!/bin/bash
 
 pkgs=(
+    # TODO not in nix for now
+    librime     # for bulid emacs-rime
+    xapian-core # use xeft in emacs for note taking
     archlinux-keyring
-
-    # GUI
-    discord
-    transmission-gtk # qbittorrent is used for remote
-    vlc
-    smplayer
-    firefox
-    retroarch # game
-    spotify-launcher
-
-    # Chinese input method
     fcitx5-im
     fcitx5-rime
     rime-double-pinyin
-
-    # VPN
-    # networkmanager-l2tp # setup L2TP over IPsec type vpn
-    # strongwan # use with l2tp
-    # nm-connection-editor # networkmanager-l2tp doesn't have gtk4 support now, use nm-connection-editor instead
-
-    # TUI
-    bind # network tools like dig
-    clash
-    v2ray # network proxy
-    zsh
-    docker
-    kubectl
-    neofetch           # pron!!!!!!
-    tree               # view file tree
-    tealdeer           # rust version tldr
-    syncthing
-    youtube-dl
-    cloc               # count program lines
-    man-db             # for command man
-    mosh
-    python-pip
-    # Extract && Compress
-    p7zip
-    unrar
-    cpio
-    # Modern Unix Tools
-    git-delta
-    fzf
-    fd
-    ripgrep
-    jq
-    zoxide # z command
-
-    # Emacs
-    librime     # for bulid emacs-rime
-    gperf       # build tdlib
-    cmake       # compile vterm
-    libgccjit   # native compilation need this
-    xapian-core # use xeft in emacs for note taking
-    notmuch     # tag email
-    afew        # auto tag email
-    isync       # sync eamil
-    mpv         # play netease cloud music in emacs
-    socat       # with mpv
-    sdcv        # star dict command line version
-    # dirvish
-    poppler
-    ffmpegthumbnailer
-    mediainfo
-    imagemagick
-    tar
-    unzip
-    # Programming
-    aspell-en
-    universal-ctags
-    global
-    cscope
-    go
-    pyright
-    python-orjson
-    clojure
-    leiningen
-    typescript
-    nodejs-lts-gallium
-    deno
-
-    # FONT
-    wqy-zenhei # Chinese font, steam need this for chinese font
-    wqy-microhei
-    otf-latin-modern
-    ttf-sarasa-gothic
-    adobe-source-han-serif-otc-fonts
-    ttf-roboto-mono # english font
-    ttf-ibm-plex
-    ttf-cascadia-code
-    noto-fonts #####
-    noto-fonts-cjk
-    noto-fonts-extra
-    noto-fonts-emoji
-
-    # For Gnome
-    bluez-utils
-    gnome-shell-extension-appindicator
-    pop-gtk-theme
-    pop-icon-theme
-
-    ### NOTE Product Specific
-    # thinkpad x1 carbon gen8 https://wiki.archlinux.org/title/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#Audio
-    # fwupd
-    # sof-firmware
 )
 
-aurpkgs=(
-    # emacs && programming
-    python-epc # for lsp-bridge
-
-    # for gnome
-    gnome-shell-extension-gsconnect
-    gnome-shell-extension-caffeine-git
-    gnome-shell-extension-blur-my-shell
-    gnome-shell-extension-pop-shell-git
-    extension-manager
-#    nautilus-dropbox
-
-    # GUI
-    sioyek # pdf reader
-    crow-translate
-#    linuxqq # see archwiki for wechat, use deepin-wine-wechat
-#    wps-office-cn
-    drawio-desktop-bin
-    dropbox
-    timeshift-bin # create snapshot
-    ventoy-bin # flash usb
-    # Optional
-    # feishu-bin
-    # wemeet-bin
-
-    # TUI
-    telegram-tdlib
-    pnpm
-    vscode-langservers-extracted
-    keyd
-    mycli
-    litecli # for sqlite
-#    mit-scheme
-    pandoc-bin                     # convert to pdf
-    # FONT
-    otf-monego-git
-    ttf-wps-fonts
-    ttf-cardo # emacs variable pitch
-    ttf-lxgw-wenkai # emacs chinese font
-    nerd-fonts-jetbrains-mono # default for rofi
-    amazon-fonts
-    ttf-symbola # discord
-)
-
+# TODO
 i3pkgs=(
     i3-gaps
     i3status-rust
@@ -175,36 +33,12 @@ i3aurpkgs=(
 #    eww-git
 )
 
-source ./common.sh
 
-setup() {
-    setup-common
-
-    sudo pacman -Syyu
-
-    echo "Check yay..."
-    if ! command -v yay >/dev/null 2>&1; then
-	    cd $HOME
-	    git clone -q --depth 1 https://aur.archlinux.org/yay-bin.git $HOME/Developer/yay-bin
-	    cd $HOME/Developer/yay-bin
-	    yes | makepkg -si
-	    cd $HOME
-	    rm -rf $HOME/Developer/yay-bin
-    fi
-
-    yay -S --noconfirm --sudoloop ${pkgs[@]}
-    yay -S --noconfirm --sudoloop ${aurpkgs[@]}
-    # yay -S --noconfirm --sudoloop ${i3pkgs[@]}
-    # yay -S --noconfirm --sudoloop ${i3aurpkgs[@]}
-
-    systemctl start bluetooth
-    systemctl enable bluetooth
-}
-
-setup
-setup-docker
-setup-keyd
-setup-syncthing
-setup-zsh
-
-echo "Done, now reboot to make it effect"
+if ! command -v yay >/dev/null 2>&1; then
+	cd $HOME
+	git clone -q --depth 1 https://aur.archlinux.org/yay-bin.git $HOME/Developer/yay-bin
+	cd $HOME/Developer/yay-bin
+	yes | makepkg -si
+	cd $HOME
+	rm -rf $HOME/Developer/yay-bin
+fi

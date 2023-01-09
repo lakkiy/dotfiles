@@ -2,13 +2,7 @@
 
 {
   home = {
-    packages = with pkgs; {
-
-    };
+    packages = [ pkgs.home-manager ];
     stateVersion = "22.11";
-  };
-
-  programs = {
-
   };
 }

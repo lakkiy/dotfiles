@@ -5,7 +5,6 @@
     (import ../../modules/app.nix)
 #    (import ../../modules/dropbox.nix)
     (import ../../modules/syncthing.nix)
-    (import ../../modules/video.nix)
     (import ../../modules/fonts.nix)
     (import ../../modules/gnome.nix)
     (import ../../modules/fcitx5.nix)

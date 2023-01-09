@@ -1,4 +1,0 @@
-#!/bin/sh
-# See: man 5 notmuch-hooks
-
-afew -m; mbsync -a;

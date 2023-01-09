@@ -17,6 +17,7 @@
 
     universal-ctags
     global
+    python39Packages.pygments
     cscope
   ];
 
@@ -37,4 +38,6 @@
     # go
     "$GOPATH/bin"
   ];
+
+  home.file.".globalrc".source = ./files/globalrc;
 }

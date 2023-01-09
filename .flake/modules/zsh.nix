@@ -19,7 +19,7 @@ in
       find = "fd";
       grep = "rg";
       k = "kubectl";
-      e = "emacsclient -nc";
+      e = "emacsclient -nw";
       te = "emacs -nw";
     };
     plugins = with pkgs; [
@@ -54,14 +54,14 @@ in
         file = "alias-tips.plugin.zsh";
       }
       # FIXME this should in a directory, can't source single file
-      {
-        name = "git";
-        src = fetchurl {
-          url = omz + "git/git.plugin.zsh";
-          sha256 = "sha256-P/jX4VG24u1wE0MLISWNBulzKPaYjheYvxyRcX4K9n4=";
-        };
-        file = "git.plugin.zsh";
-      }
+      # {
+      #   name = "git";
+      #   src = fetchurl {
+      #     url = omz + "git/git.plugin.zsh";
+      #     sha256 = "sha256-P/jX4VG24u1wE0MLISWNBulzKPaYjheYvxyRcX4K9n4=";
+      #   };
+      #   file = "git.plugin.zsh";
+      # }
       # {
       #   name = "common-aliases";
       #   src = fetchurl {

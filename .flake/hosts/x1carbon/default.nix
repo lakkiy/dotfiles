@@ -12,6 +12,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   networking = {
+
     hostName = "x1carbon";
     networkmanager.enable = true;
     defaultGateway = "192.168.31.222";

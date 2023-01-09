@@ -2,25 +2,27 @@
 
 {
   home.packages = with pkgs; [
-    git
+    cloc
+    docker
     gcc
     gdb
+    git
     gnumake
+    jq
+    kubectl
+    litecli
+    man
+    mosh
+    mycli
     neofetch
     tealdeer
     tree
-    cloc
-    jq
-    docker
-    mycli
-    litecli
-    kubectl
-    mosh
+    bottom
 
     # Extract
+    cpio
+    p7zip
     unrar
     unzip
-    p7zip
-    cpio
   ];
 }
