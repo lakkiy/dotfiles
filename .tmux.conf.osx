@@ -1,3 +1,0 @@
-# https://gist.github.com/suewonjp/171bc15bd81f434df3397140015c8eee
-# Copy selection using a vi-like command; also copy it to system clipboard
-bind -T copy-mode-vi y send-keys -X copy-pipe "pbcopy"
