@@ -4,12 +4,13 @@
   # TODO
   xsession.windowManager.i3 = {
     enable = true;
-    config = {
-      keybindings = {
+    # config = {
+    #   keybindings = {
 
-      };
-    };
+    #   };
+    # };
   };
+  home.file.".config/i3/config".source = ./files/config
 
   services = {
     betterlockscreen.enable = true;
