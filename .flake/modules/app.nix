@@ -46,6 +46,4 @@
       enable_audio_bell   = "no";
     };
   };
-
-  home.sessionVariables.XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
 }

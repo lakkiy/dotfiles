@@ -3,6 +3,7 @@
 {
   home.packages = [ pkgs.home-manager ];
   home.stateVersion = "22.11";
+  targets.genericLinux.enable = true;
 
   nix = {                                               # Nix Package Manager settings
     settings ={
