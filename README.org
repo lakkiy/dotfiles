@@ -1,10 +1,9 @@
+WIP
+
 All keybinding of this config is set for Dvorak keyboard layout.
 
-
-~curl -fsSL https://github.com/TheLocehiliosan/yadm/raw/master/yadm | bash -s clone https://github.com/404cn/dotfiles.git~
-
-
-NOTE: All keybindings is config for Dvorak keyboard layout.
+Clone this repo:
+~git clone https://github.com/404cn/dotfiles.git .setup~
 
 * Tips
 
