@@ -9,6 +9,7 @@
     (import ../modules/app.nix)
     (import ../modules/fonts.nix)
     (import ../modules/syncthing.nix)
+    (import ../modules/emacs.nix)
     # (import ../modules/fcitx5.nix)
     # (import ../modules/proxy.nix)
     # (import ../modules/gnome.nix)
@@ -21,7 +22,7 @@
   home = {
     # See https://wiki.archlinux.org/title/Xorg/Keyboard_configuration#Setting_keyboard_layout
     keyboard = {
-      variant = [ "dvorak" ];
+      variant = "dvorak";
       options = [ "grp:caps_toggle" ];
     };
 

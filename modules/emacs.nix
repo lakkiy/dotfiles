@@ -1,8 +1,14 @@
 { config, pkgs, inputs, ... }:
 
 {
+  services.emacs.enable = true;
   programs.emacs = {
     enable = true;
-    package = inputs.emacs-overlay.packages.x86_64-linux.emacsPgtk;
+    package = pkgs.emacsGit;
   };
+
+  home.packages = with pkgs; [
+    # tdlib # use docker
+    librime
+  ];
 }

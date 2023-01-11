@@ -1,11 +1,6 @@
 {
   description = "A very basic flake";
 
-  nixConfig = {
-    extra-substituters = "https://nix-community.cachix.org";
-    extra-trusted-public-keys = "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
-  };
-
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
@@ -20,14 +15,13 @@
     };
 
     emacs-overlay = {
-      url = github:nix-community/emacs-overlay/9ef42377c7985840cfb65b5b9403e518d7d97afb;
+      url = github:nix-community/emacs-overlay/b537e3cba7307729bf80cdc8ef2b176727cbb645;
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, darwin, emacs-overlay, ... }:
     {
-      # nixos-rebuild switch --flake .#<host>
       nixosConfigurations = ( # NixOS configurations
         import ./hosts {
           inherit (nixpkgs) lib;
@@ -35,13 +29,6 @@
         }
       );
 
-      # For first time:
-      # mkdir ~/.config/nix
-      # echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
-      # nix build .#darwinConfigurations.<host>.system
-      # ./result/sw/bin/darwin-rebuild switch --flake .#<host>
-      # Then:
-      # darwin-rebuild switch --flake .#<host>
       darwinConfigurations = ( # Darwin configurations
         import ./darwin {
           inherit (nixpkgs) lib;
@@ -49,11 +36,6 @@
         }
       );
 
-      # For first time:
-      # nix build --extra-experimental-features 'nix-command flakes' .#homeConfigurations.<host>.activationPackage
-      # ./result/activate
-      # Then:
-      # home-manager switch --flake .#<host>
       homeConfigurations = ( # Non-NixOS configurations
         import ./nix {
           inherit (nixpkgs) lib;

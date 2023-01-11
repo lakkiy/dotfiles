@@ -13,7 +13,7 @@
     ssh.enable = true;
     emacs = {
       enable = true;
-      package = inputs.emacs-overlay.packages.x86_64-linux.emacsGit-nox;
+      package = pkgs.emacsGit-nox;
     };
   };
 }

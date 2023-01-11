@@ -3,7 +3,7 @@
 {
   users.users.artorias = {               # macOS user
     home = "/Users/artorias";
-    shell = pkgs.zsh;                     # Default shell
+    # shell = pkgs.zsh;                     # Default shell
   };
 
   networking = {
@@ -25,12 +25,12 @@
     ];
   };
 
-  environment.shells = [ pkgs.zsh ];          # Default shell
-  programs.zsh.enable = true;             # Shell needs to be enabled
+  # environment.shells = [ pkgs.zsh ];          # Default shell
+  # programs.zsh.enable = true;             # Shell needs to be enabled
 
   homebrew = {
     enable = true;
-    tags = [
+    taps = [
       "jimeh/emacs-builds"
       "homebrew/cask"
       "homebrew/cask-fonts"
@@ -77,4 +77,5 @@
       options = "--delete-older-than 7d";
     };
   };
+  nixpkgs.config.allowUnfree = true;                    # Allow proprietary software.
 }

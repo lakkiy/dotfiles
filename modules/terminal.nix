@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     cloc
-    docker
     gcc
     gdb
     git
