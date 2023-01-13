@@ -19,6 +19,8 @@
     global
     python39Packages.pygments
     cscope
+
+    nixfmt
   ];
 
   programs.go = {

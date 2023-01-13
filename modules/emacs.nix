@@ -2,13 +2,13 @@
 
 {
   services.emacs.enable = true;
+
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGit;
+    package = pkgs.emacsPgtk;
   };
 
   home.packages = with pkgs; [
-    # tdlib # use docker
-    librime
+    emacs-all-the-icons-fonts
   ];
 }

@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    bottom
     cloc
     gcc
     gdb
@@ -16,7 +17,6 @@
     neofetch
     tealdeer
     tree
-    bottom
 
     # Extract
     cpio

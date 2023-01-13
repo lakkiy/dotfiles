@@ -1,7 +1,11 @@
 { config, pkgs, inputs, ... }:
 
 {
-  home.packages = [ pkgs.home-manager ];
+  programs = {
+    home-manager.enable = true;
+    bash.enable = true;
+  };
+
   home.stateVersion = "22.11";
   targets.genericLinux.enable = true;
 

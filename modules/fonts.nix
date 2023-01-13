@@ -1,6 +1,8 @@
 { config, pkgs, ...}:
 
 {
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     lxgw-wenkai
     jetbrains-mono

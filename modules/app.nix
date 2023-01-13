@@ -6,11 +6,9 @@
     discord
     drawio
     firefox-bin
-    retroarch
     plex-media-player
     sioyek
     spotify
-    tdesktop
     timeshift
     transmission-gtk
     ventoy-bin
