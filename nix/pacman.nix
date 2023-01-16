@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, nixgl, ... }:
 
 {
   imports = [
@@ -9,7 +9,6 @@
     (import ../modules/git.nix)
     (import ../modules/gnome.nix)
     (import ../modules/programming.nix)
-    (import ../modules/proxy.nix)
     (import ../modules/syncthing.nix)
     (import ../modules/terminal.nix)
     (import ../modules/zsh.nix)
@@ -27,6 +26,8 @@
     };
 
     packages = with pkgs; [
+      (import nixgl { inherit pkgs; }).nixGLIntel
+                                     #.nixVulkanIntel
     ];
   };
 }
