@@ -4,10 +4,6 @@ let
   mod = "Mod4";
 in
 {
-  imports = [
-    ./kitty.nix
-  ];
-
   home.packages = with pkgs; [
     ly # TUI display manager, systemctl enable ly.service
     dmenu
@@ -30,7 +26,7 @@ in
     enable = true;
     config = {
       modifier = mod;
-      terminal = "kitty";
+      terminal = "urxvt";
       menu = "dmenu_run -b";
 
       fonts = {
@@ -72,7 +68,7 @@ in
       ];
 
       keybindings = lib.mkOptionDefault {
-        "${mod}+Return"  = "exec wmctrl -xa kitty || kitty";
+        "${mod}+Return"  = "exec wmctrl -xa urxvt || urxvt";
         "${mod}+l"       = "exec betterlockscreen -l dimblur";
         "${mod}+Shift+p" = "exec flameshot gui";
 

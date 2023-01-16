@@ -3,7 +3,6 @@
 
 {
   imports = [
-    (import ../modules/proxy.nix)
     (import ../modules/programming.nix)
     (import ../modules/terminal.nix)
   ];
