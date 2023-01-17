@@ -2,11 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    bottom
     cloc
-    gcc
-    gdb
-    git
     gnumake
     jq
     kubectl
@@ -24,4 +20,8 @@
     unrar
     unzip
   ];
+
+  programs = {
+    btop.enable = true;
+  };
 }
