@@ -24,16 +24,6 @@ in
     };
     plugins = with pkgs; [
       {
-        name = "jovial";
-        src = fetchFromGitHub {
-          owner = "zthxxx";
-          repo = "jovial";
-          rev = "v2.3.1";
-          sha256 = "1kcg56ppw0wpf4ybvpvdwsk3zvvz5bysb2i4fx03rp1458jm6jjh";
-        };
-        file = "jovial.zsh-theme";
-      }
-      {
         name = "zsh-autopair";
         src = fetchFromGitHub {
           owner = "hlissner";
@@ -88,8 +78,7 @@ in
       # }
     ];
     initExtra = ''
-[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-  source "$EAT_SHELL_INTEGRATION_DIR/bash"
+PROMPT='[%n@%m %2~]%# '
 
 # For local use.
 [ -f $HOME/.zshrc ] && source $HOME/.zshrc
@@ -123,10 +112,10 @@ in
   ];
 
   home.sessionVariables = {
-    EDITOR   = "emacs -nw";
     LANG     = "en_US.UTF-8";
-    LC_CTYPE = "en_US.UTF-8";
+    EDITOR   = "emacs -nw";
     TERM     = "xterm-256color";
+    LC_CTYPE = "en_US.UTF-8";
     NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
   };
   home.sessionPath = [
