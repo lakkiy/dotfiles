@@ -6,6 +6,10 @@ pkgs=(
     docker
     docker-compose
 
+    fcitx5-im
+    fcitx5-rime
+    rime-double-pinyin
+
     # NOTE Just for thinkpad x1carbon
     fwupd
     sof-firmware
@@ -35,6 +39,14 @@ control = overload(control, esc)
     systemctl start keyd
 }
 
+setup-zsh() {
+    # for kde, change default shell in Konsole
+    echo "
+/home/${USER}/.nix-profile/bin/zsh
+" | sudo tee -a /etc/shells
+    chsh -s $(whereis zsh)
+}
+
 setup-nix() {
     cd ~/.setup
     nix build --extra-experimental-features 'nix-command flakes' .#homeConfigurations.pacman.activationPackage
@@ -56,13 +68,26 @@ setup() {
         sh <(curl -L https://nixos.org/nix/install) --daemon
     fi
 
+    if [ ! -d "$HOME/.config/emacs" ]; then
+        git clone https://github.com/404cn/eatemacs.git $HOME/.config/emacs
+    fi
+    if [ ! -d "$HOME/.local/share/fcitx5/rime" ]; then
+        git clone https://github.com/404cn/rime.git $HOME/.local/share/fcitx5/rime
+        cp -r $HOME/.local/share/fcitx5/rime $HOME/.config/emacs/
+        rm -rf $HOME/.config/emacs/rime/.git
+        cd
+    fi
+
 
     yay -S --sudoloop ${pkgs[@]}
     yay -S --sudoloop ${aurpkgs[@]}
 
+    systemctl enable bluetooth
+    systemctl start bluetooth
 
     setup-docker
     setup-keyd
+    setup-zsh
 }
 
 setup
