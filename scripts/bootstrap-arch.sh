@@ -5,12 +5,10 @@ pkgs=(
 
     docker
     docker-compose
-    librime # emacs-rime
-    xapian-core # emacs xeft
 
     # NOTE Just for thinkpad x1carbon
-    # fwupd
-    # sof-firmware
+    fwupd
+    sof-firmware
 )
 
 aurpkgs=(
@@ -39,7 +37,7 @@ control = overload(control, esc)
 
 setup-nix() {
     cd ~/.setup
-    nix build --extra-experimental-features 'nix-command flakes' .#homeConfigurations.<host>.activationPackage
+    nix build --extra-experimental-features 'nix-command flakes' .#homeConfigurations.pacman.activationPackage
     ./result/activate
     cd
 }

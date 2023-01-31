@@ -7,7 +7,6 @@
     (import ../modules/fcitx5.nix)
     (import ../modules/fonts.nix)
     (import ../modules/git.nix)
-    (import ../modules/gnome.nix)
     (import ../modules/programming.nix)
     (import ../modules/syncthing.nix)
     (import ../modules/terminal.nix)
