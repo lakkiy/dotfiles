@@ -80,6 +80,10 @@ in
     initExtra = ''
 PROMPT='[%n@%m %2~]%# '
 
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
+
 # For local use.
 [ -f $HOME/.zshrc ] && source $HOME/.zshrc
     '';

@@ -1,21 +1,16 @@
-{ config, pkgs, inputs, nixgl, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
-    (import ../modules/app.nix)
-    (import ../modules/emacs.nix)
     (import ../modules/fonts.nix)
     (import ../modules/git.nix)
     (import ../modules/programming.nix)
     (import ../modules/syncthing.nix)
     (import ../modules/terminal.nix)
     (import ../modules/zsh.nix)
-    # (import ../modules/dropbox.nix)
   ];
 
-  programs = {
-  };
-
+  # fcitx5 input method
   home.sessionVariables = {
     GTK_IM_MODULE="fcitx5";
     XMODIFIERS="@im=fcitx5";
@@ -30,10 +25,5 @@
       variant = "dvorak";
       options = [ "grp:caps_toggle" ];
     };
-
-    packages = with pkgs; [
-      (import nixgl { inherit pkgs; }).nixGLIntel
-                                     #.nixVulkanIntel
-    ];
   };
 }

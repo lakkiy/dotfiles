@@ -5,11 +5,10 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsPgtk;
+    package = pkgs.emacsGit;
   };
 
   home.packages = with pkgs; [
-    emacs-all-the-icons-fonts
     librime
     rime-data
     xapian

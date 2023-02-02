@@ -2,7 +2,6 @@
 
 {
   imports = [
-    (import ../../modules/app.nix)
     (import ../../modules/syncthing.nix)
     (import ../../modules/fonts.nix)
   ];

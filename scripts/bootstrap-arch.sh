@@ -3,12 +3,27 @@
 pkgs=(
     archlinux-keyring
 
-    docker
-    docker-compose
+    # GUI APPS
+    firefox
+    discord
+    qbittorrent
+    mpv
+    #intel-gpu-tools # Monitoring
+    #wezterm
 
     fcitx5-im
     fcitx5-rime
     rime-double-pinyin
+
+    ## for compile emacs
+    librime
+    libgccjit
+    tree-sitter
+
+
+    # TUI
+    docker
+    docker-compose
 
     # NOTE Just for thinkpad x1carbon
     fwupd
@@ -16,8 +31,17 @@ pkgs=(
 )
 
 aurpkgs=(
-    keyd # setup keyd
-    dropbox # NOTE nix's dropbox has build error
+    # GUI
+    spotify # spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
+    crow-translate
+    dropbox
+    plex-media-player
+    timeshift-bin
+    ventoy-bin
+    fcitx5-breeze
+
+    # TUI
+    keyd
 )
 
 setup-docker() {
@@ -55,6 +79,10 @@ setup-nix() {
 }
 
 setup() {
+    if [ ! -d "$HOME/p" ]; then
+        mkdir $HOME/p
+    fi
+
     if ! command -v yay >/dev/null 2>&1; then
 	    cd $HOME
 	    git clone -q --depth 1 https://aur.archlinux.org/yay-bin.git $HOME/p/yay-bin
@@ -68,6 +96,9 @@ setup() {
         sh <(curl -L https://nixos.org/nix/install) --daemon
     fi
 
+    if [ ! -d "$HOME/p/emacs" ]; then
+        git clone https://github.com/emacs-mirror/emacs.git $HOME/p/ --depth 1
+    fi
     if [ ! -d "$HOME/.config/emacs" ]; then
         git clone https://github.com/404cn/eatemacs.git $HOME/.config/emacs
     fi

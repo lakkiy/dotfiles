@@ -44,7 +44,7 @@
       homeConfigurations = ( # Non-NixOS configurations
         import ./nix {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager nixgl emacs-overlay;
+          inherit inputs nixpkgs home-manager emacs-overlay;
         }
       );
     };

@@ -39,6 +39,8 @@ darwin-rebuild switch --flake .#<host>
 #+end_src
 
 * Non-Nixos
+Only use nix to config cli tools.
+Some gui app need opengl driver support like firefox and wezterm, use package manager install these apps.
 
 For first time:
 #+begin_src sh

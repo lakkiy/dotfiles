@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, nixgl, emacs-overlay, ... }:
+{ lib, inputs, nixpkgs, home-manager, emacs-overlay, ... }:
 
 let
   system = "x86_64-linux";
@@ -24,7 +24,7 @@ in
 
   pacman = home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-    extraSpecialArgs = { inherit inputs nixgl; };
+    extraSpecialArgs = { inherit inputs; };
     modules = [
       ./home.nix
       ./pacman.nix

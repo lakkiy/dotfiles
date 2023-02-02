@@ -2,6 +2,7 @@
 
 {
   imports = [
+    (import ../modules/emacs.nix)
     (import ../modules/programming.nix)
     (import ../modules/terminal.nix)
     (import ../modules/zsh.nix)
@@ -9,11 +10,5 @@
     (import ../modules/syncthing.nix)
   ];
 
-  programs = {
-    ssh.enable = true;
-    emacs = {
-      enable = true;
-      package = pkgs.emacsGit-nox;
-    };
-  };
+  programs.ssh.enable = true;
 }
