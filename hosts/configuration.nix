@@ -7,7 +7,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   environment.systemPackages = with pkgs; [
-#    emacsPgtk # not from cache, TODO fetch binary cache not build from source
     git
   ];
 

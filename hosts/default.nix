@@ -14,6 +14,7 @@ in
 {
   x1carbon = lib.nixosSystem {
     inherit system;
+    inherit pkgs;
     specialArgs = { inherit inputs pkgs; };
     modules = [
       ./configuration.nix
@@ -31,6 +32,7 @@ in
 
   esxi-nixos = lib.nixosSystem {
     inherit system;
+    inherit pkgs;
     specialArgs = { inherit inputs; };
     modules = [
       ./configuration.nix

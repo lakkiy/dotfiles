@@ -6,7 +6,6 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the GRUB 2 boot loader.
   boot.loader.systemd-boot.enable = true;
 
   networking = {
@@ -26,6 +25,27 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   ];
+
+  # bitwarden, qbittorrent
+  services = {
+    freshrss = {
+      enable = false;
+    };
+    plex = {
+      enable = false;
+    };
+    syncthing = {
+      enable = false;
+    };
+    cloudflared = {
+      enable = false;
+    };
+  };
+
+  # Change default shell to zsh.
+  # https://nixos.wiki/wiki/Command_Shell
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 
   # Enable the OpenSSH daemon.
   services.openssh.permitRootLogin = "yes";

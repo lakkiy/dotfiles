@@ -3,8 +3,7 @@
 
 {
   imports = [
-    (import ../modules/programming.nix)
-    (import ../modules/terminal.nix)
+    (import ../modules/tui-common.nix)
   ];
 
   home.stateVersion = "22.11";
