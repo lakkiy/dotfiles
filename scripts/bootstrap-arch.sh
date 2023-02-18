@@ -8,6 +8,7 @@ pkgs=(
     discord
     qbittorrent
     mpv
+    solaar # logic option
     #intel-gpu-tools # Monitoring
     #wezterm
 
