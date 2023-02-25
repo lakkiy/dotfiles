@@ -9,6 +9,7 @@ pkgs=(
     qbittorrent
     mpv
     solaar # logic option
+    telegram-desktop
     #intel-gpu-tools # Monitoring
     #wezterm
 
