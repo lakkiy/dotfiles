@@ -14,18 +14,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixgl = {                                                             # OpenGL
-      url = "github:guibou/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     emacs-overlay = {
       url = github:nix-community/emacs-overlay/d1ea6872b199edc680917a7248b596e532297538;
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, darwin, nixgl, emacs-overlay, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, darwin, emacs-overlay, ... }:
     {
       nixosConfigurations = ( # NixOS configurations
         import ./hosts {
