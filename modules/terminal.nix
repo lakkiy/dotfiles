@@ -13,7 +13,7 @@
     neofetch
     tealdeer
     tree
-    plantuml
+    plantuml-c4
 
     # Extract
     cpio
