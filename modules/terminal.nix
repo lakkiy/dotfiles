@@ -14,6 +14,7 @@
     tealdeer
     tree
     plantuml-c4
+    hunspell
 
     # Extract
     cpio

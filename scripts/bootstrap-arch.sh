@@ -5,7 +5,6 @@ pkgs=(
 
     # GUI APPS
     firefox
-    microsoft-edge-dev-bin
     discord
     qbittorrent
     mpv
