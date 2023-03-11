@@ -26,6 +26,7 @@ pkgs=(
     # TUI
     docker
     docker-compose
+    podman
 
     # NOTE Just for thinkpad x1carbon
     fwupd
@@ -44,6 +45,7 @@ aurpkgs=(
 
     # TUI
     keyd
+    butane-bin # generate fedora core os config
 )
 
 setup-docker() {
