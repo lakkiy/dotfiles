@@ -15,6 +15,7 @@
     tree
     plantuml-c4
     hunspell
+    ltex-ls
 
     # Extract
     cpio
