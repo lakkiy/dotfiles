@@ -36,6 +36,7 @@ pkgs=(
 aurpkgs=(
     # GUI
     spotify # spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
+    zotero-bin
     crow-translate
     dropbox
     plex-media-player
