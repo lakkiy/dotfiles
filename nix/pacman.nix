@@ -2,12 +2,10 @@
 
 {
   imports = [
-    (import ../modules/fonts.nix)
-    (import ../modules/git.nix)
-    (import ../modules/programming.nix)
-    (import ../modules/syncthing.nix)
-    (import ../modules/terminal.nix)
-    (import ../modules/zsh.nix)
+    (import ../modules/home/desktop.nix)
+    (import ../modules/home/tui.nix)
+    (import ../modules/home/programming.nix)
+    (import ../modules/home/services/syncthing.nix)
   ];
 
   # fcitx5 input method

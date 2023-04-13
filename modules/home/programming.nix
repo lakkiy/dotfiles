@@ -3,9 +3,10 @@
 {
   home.packages = with pkgs; [
     python3Minimal
-    python39Packages.epc
-    python39Packages.orjson
+    pipx
     nodePackages.pyright
+    # python39Packages.epc
+    # python39Packages.orjson
 
     deno
     nodePackages.typescript
@@ -41,5 +42,5 @@
     "$GOPATH/bin"
   ];
 
-  home.file.".globalrc".source = ./files/globalrc;
+  home.file.".globalrc".source = ../files/globalrc;
 }

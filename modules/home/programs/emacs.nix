@@ -8,9 +8,10 @@
     package = pkgs.emacsGit;
   };
 
-  home.packages = with pkgs; [
-    librime
-    rime-data
-    xapian
+  home.packages = with pkgs.emacsPackages; [
+      lsp-bridge
+      rime
+      xeft
+      magit
   ];
 }

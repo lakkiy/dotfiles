@@ -2,12 +2,10 @@
 
 {
   imports = [
-    (import ../modules/emacs.nix)
-    (import ../modules/programming.nix)
-    (import ../modules/terminal.nix)
-    (import ../modules/zsh.nix)
-    (import ../modules/git.nix)
-    (import ../modules/syncthing.nix)
+    (import ../modules/home/programs/emacs.nix)
+    (import ../modules/home/programming.nix)
+    (import ../modules/home/tui.nix)
+    (import ../modules/home/services/syncthing.nix)
   ];
 
   programs.ssh.enable = true;

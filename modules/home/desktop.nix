@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     emacs-all-the-icons-fonts
     lxgw-wenkai
-    jetbrains-mono
     symbola
     sarasa-gothic
     source-han-serif

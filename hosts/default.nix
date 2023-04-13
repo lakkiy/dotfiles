@@ -30,19 +30,19 @@ in
     ];
   };
 
-  esxi-nixos = lib.nixosSystem {
+  server = lib.nixosSystem {
     inherit system;
     inherit pkgs;
     specialArgs = { inherit inputs; };
     modules = [
       ./configuration.nix
-      ./esxi-nixos
+      ./server
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.root = {
-          imports = [(import ./home.nix)] ++ [(import ./esxi-nixos/home.nix)];
+          imports = [(import ./home.nix)] ++ [(import ./server/home.nix)];
         };
       }
     ];
