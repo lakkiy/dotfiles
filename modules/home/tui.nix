@@ -20,7 +20,8 @@ in
     neofetch
     tealdeer
     tree
-    plantuml-c4
+    plantuml
+    nodePackages.mermaid-cli
     hunspell
     ltex-ls
 
