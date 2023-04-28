@@ -139,16 +139,6 @@ in
           };
           file = "autopair.zsh";
         }
-        {
-          name = "alias-tips";
-          src = fetchFromGitHub {
-            owner = "djui";
-            repo = "alias-tips";
-            rev = "4d2cf6f10e5080f3273be06b9801e1fd1f25d28d";
-            sha256 = "1bwr1dbh0szq4yrvlg27i2wls0q41sfk5qff27nqas1bjc587pfh";
-          };
-          file = "alias-tips.plugin.zsh";
-        }
         # FIXME this should in a directory, can't source single file
         # {
         #   name = "git";

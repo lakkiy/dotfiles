@@ -2,11 +2,16 @@
 
 {
   home.packages = with pkgs; [
-    python3Minimal
+    # lsp-bridge dep
+    # python311Packages.epc
+    # python311Packages.orjson
+    # python311Packages.six
+    # python311Packages.paramiko
+    # python311Packages.sexpdata
+
+    pypy3 # python3 with jit enabled
     pipx
     nodePackages.pyright
-    # python39Packages.epc
-    # python39Packages.orjson
 
     deno
     nodePackages.typescript
