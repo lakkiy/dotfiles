@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 let
-  omz = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/";
   # https://nixos.wiki/wiki/TexLive
   tex = (pkgs.texlive.combine {
     inherit (pkgs.texlive) scheme-basic
@@ -16,6 +15,7 @@ in
     delta # diff
     fd # find
     ripgrep # grep
+    ugrep
     cloc
     gnumake
     jq
@@ -139,41 +139,40 @@ in
           };
           file = "autopair.zsh";
         }
-        # FIXME this should in a directory, can't source single file
-        # {
-        #   name = "git";
-        #   src = fetchurl {
-        #     url = omz + "git/git.plugin.zsh";
-        #     sha256 = "sha256-P/jX4VG24u1wE0MLISWNBulzKPaYjheYvxyRcX4K9n4=";
-        #   };
-        #   file = "git.plugin.zsh";
-        # }
-        # {
-        #   name = "common-aliases";
-        #   src = fetchurl {
-        #     url = omz + "common-aliases/common-aliases.plugin.zsh";
-        #     sha256 = "sha256-xiAG25wQJkYcM9+unDNkbxLwNP7x5G4ZmNIOqYjiMrs=";
-        #   };
-        #   file = "common-aliases.plugin.zsh";
-        # }
-        # {
-        #   name = "fancy-ctrl-z.plugin.zsh";
-        #   src = fetchurl {
-        #     url = omz + "fancy-ctrl-z/fancy-ctrl-z.plugin.zsh";
-        #     sha256 = "sha256-oWhQdSDE6unkd6+dg3MlNudvoJdhNqJciLDPE5beWes=";
-        #   };
-        #   file = "fancy-ctrl-z.plugin.zsh";
-        # }
-        # {
-        #   name = "extract.plugin.zsh";
-        #   src = fetchurl {
-        #     url = omz + "extract/extract.plugin.zsh";
-        #     sha256 = "sha256-kktCH8wW23Riz9kMkGhLWtWym/wzvB9eSmmNe75seZg=";
-        #   };
-        #   file = "extract.plugin.zsh";
-        # }
+        {
+          name = "git.plugin.zsh";
+          src = fetchurl {
+            url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh";
+            sha256 = "sha256-9FgkH+GloY3uRZ6QZnaDa8+LLaQRhpbf+eC0NxglgDw=";
+          };
+        }
+        {
+          name = "common-aliases.plugin.zsh";
+          src = fetchurl {
+            url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/common-aliases/common-aliases.plugin.zsh";
+            sha256 = "sha256-xiAG25wQJkYcM9+unDNkbxLwNP7x5G4ZmNIOqYjiMrs=";
+          };
+        }
+        {
+          name = "fancy-ctrl-z.plugin.zsh";
+          src = fetchurl {
+            url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh";
+            sha256 = "sha256-oWhQdSDE6unkd6+dg3MlNudvoJdhNqJciLDPE5beWes=";
+          };
+        }
+        {
+          name = "extract.plugin.zsh";
+          src = fetchurl {
+            url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh";
+            sha256 = "sha256-uIBOFL+IcJrQd3eI5LyuJwq7G5lZlCEDq19gggkbsIQ=";
+          };
+        }
       ];
       initExtra = ''
+for file in $HOME/.config/zsh/plugins/*.zsh; do
+    source "$file"
+done
+
 PROMPT='[%n@%m %2~]%# '
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
