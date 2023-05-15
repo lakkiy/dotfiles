@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  users.users.artorias = {               # macOS user
-    home = "/Users/artorias";
+  users.users.liubo = {               # macOS user
+    home = "/Users/liubo";
     # shell = pkgs.zsh;                     # Default shell
   };
 
@@ -14,14 +14,9 @@
   fonts = {                               # Fonts
     fontDir.enable = true;
     fonts = with pkgs; [
-      lxgw-wenkai
-      jetbrains-mono
-      symbola
-      sarasa-gothic
-      source-han-serif
-      roboto-mono
-      ibm-plex
-      cardo
+      lxgw-wenkai # Chinese font
+      sarasa-gothic # Mono font for English and Chinese
+      cardo # variable pitch font
     ];
   };
 
@@ -35,16 +30,15 @@
       "homebrew/cask"
       "homebrew/cask-fonts"
       "homebrew/cask-versions"
-      "homebrew/core" # TODO maybe delete this
-      "homebrew/bundle"
+      "homebrew/core"
       "homebrew/services"
     ];
     casks = [
-      "emacs-app-good"
+      "emacs-app-good" # NOTE until emacs 29 version out
       "spotify"
-      "easy-move-plus-resize"
+      "easy-move-plus-resize" # use command + cursor to move window
       "anki"
-      "clashx-pro" # NOTE Say it!
+      "clashx" # NOTE Say it!
       "balenaetcher"
       "discord"
       "docker"
@@ -54,13 +48,13 @@
       "karabiner-elements"
       "keepingyouawake"
       "maczip"
-      "miniconda"
       "netnewswire"
       "raycast"
       "squirrel"
       "syncthing"
       "the-unarchiver"
       "via"
+      # steptwo, safari extensions, plash
     ];
   };
 

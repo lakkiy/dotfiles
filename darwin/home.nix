@@ -2,10 +2,8 @@
 
 {
   imports = [
-    (import ../modules/git.nix)
-    (import ../modules/programming.nix)
-    (import ../modules/terminal.nix)
-    (import ../modules/zsh.nix)
+    (import ../modules/home/tui.nix)
+    (import ../modules/home/programming.nix)
   ];
 
   home = {

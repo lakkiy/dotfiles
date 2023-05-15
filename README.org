@@ -27,6 +27,12 @@ nixos-rebuild switch --flake .#<host>
 
 * Darwin
 For first time:
+
+Install homebrew
+#+begin_src sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#+end_src
+
 #+begin_src sh
 mkdir ~/.config/nix
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf

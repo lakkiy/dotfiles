@@ -173,7 +173,7 @@ for file in $HOME/.config/zsh/plugins/*.zsh; do
     source "$file"
 done
 
-PROMPT='[%n@%m %2~]%# '
+PROMPT='%n@%m %1~ %# '
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     export MOZ_ENABLE_WAYLAND=1

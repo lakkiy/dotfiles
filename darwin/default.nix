@@ -13,7 +13,7 @@ in
       home-manager.darwinModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users.artorias = import ./home.nix;
+        home-manager.users.liubo = import ./home.nix;
       }
     ];
   };
