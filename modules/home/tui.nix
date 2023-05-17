@@ -12,27 +12,30 @@ let
 in
 {
   home.packages = with pkgs; [
-    delta # diff
-    fd # find
-    ripgrep # grep
-    ugrep
-    cloc
+    man
     gnumake
-    jq
+    neofetch
+    btop                     # htop
+    delta                    # diff
+    fd                       # find
+    ripgrep                  # grep
+    ugrep                    # interactive grep
+    cloc                     # count code line
+    jq                       # process json
+    mosh                     # udp ssh
+    tealdeer                 # tldr
+    tree                     # show folder as tree view
+    plantuml                 # draw
+    nodePackages.mermaid-cli # draw
+    hunspell                 # spell check
+    ltex-ls                  # lsp server
+    tex                      # basic support for org mode
+
+    # cli client
     kubectl
     litecli
     mongosh
-    man
-    mosh
     mycli
-    neofetch
-    tealdeer
-    tree
-    plantuml
-    nodePackages.mermaid-cli
-    hunspell
-    ltex-ls
-    tex # basic support for org mode
 
     # Extract
     cpio
@@ -55,8 +58,6 @@ in
   ];
 
   programs = {
-    btop.enable = true;
-
     git = {
       enable = true;
       userName = "404cn";
@@ -120,7 +121,9 @@ in
       enableSyntaxHighlighting = true;
       historySubstringSearch.enable = true;
       shellAliases = {
-        l = "ls -alh";
+        ls = "ls --color --group-directories-first";
+        ll = "ls -al --human-readable --time-style=long-iso";
+        htop = "btop";
         diff = "delta";
         find = "fd";
         grep = "rg";

@@ -2,31 +2,26 @@
 
 {
   home.packages = with pkgs; [
-    # lsp-bridge dep
-    # python311Packages.epc
-    # python311Packages.orjson
-    # python311Packages.six
-    # python311Packages.paramiko
-    # python311Packages.sexpdata
+    tree-sitter
+    nixfmt
 
-    pypy3 # python3 with jit enabled
-    pipx
-    nodePackages.pyright
-
-    deno
-    nodePackages.typescript
-    nodePackages.vscode-langservers-extracted
-    nodePackages.pnpm
-
-    clojure
-    leiningen
-
+    # tag system
     universal-ctags
     global
     python39Packages.pygments
     cscope
 
-    nixfmt
+    clojure
+    leiningen
+
+    pypy3                                     # python3 with jit enabled
+    pipx                                      # install single python package like mycli
+    nodePackages.pyright                      # lsp server
+
+    deno
+    nodePackages.typescript
+    nodePackages.vscode-langservers-extracted # lsp server
+    nodePackages.pnpm
   ];
 
   programs.go = {

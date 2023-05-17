@@ -3,8 +3,10 @@
 {
   users.users.liubo = {               # macOS user
     home = "/Users/liubo";
-    # shell = pkgs.zsh;                     # Default shell
+    shell = pkgs.zsh;                 # Default shell
   };
+  environment.shells = [ pkgs.zsh ];  # Default shell
+  programs.zsh.enable = true;         # Shell needs to be enabled
 
   networking = {
     computerName = "cmcm";             # Host name
@@ -20,9 +22,6 @@
     ];
   };
 
-  # environment.shells = [ pkgs.zsh ];          # Default shell
-  # programs.zsh.enable = true;             # Shell needs to be enabled
-
   homebrew = {
     enable = true;
     taps = [
@@ -34,25 +33,24 @@
       "homebrew/services"
     ];
     casks = [
-      "emacs-app-good" # NOTE until emacs 29 version out
-      "spotify"
-      "easy-move-plus-resize" # use command + cursor to move window
-      "anki"
       "clashx" # NOTE Say it!
-      "balenaetcher"
-      "discord"
-      "docker"
-      "dropbox"
       "firefox"
       "iina"
       "karabiner-elements"
-      "keepingyouawake"
-      "maczip"
-      "netnewswire"
       "raycast"
       "squirrel"
       "syncthing"
+      "docker"
+      "emacs-app-good" # NOTE until emacs 29 version out
+      "anki"
+      "discord"
+      "dropbox"
+      "netnewswire"
+      # "spotify" # can't download
+      "keepingyouawake"
+      "maczip"
       "the-unarchiver"
+      "easy-move-plus-resize" # use command + cursor to move window
       "via"
       # steptwo, safari extensions, plash
     ];
@@ -72,4 +70,38 @@
     };
   };
   nixpkgs.config.allowUnfree = true;                    # Allow proprietary software.
+
+  system = {
+    defaults = {
+      trackpad = {                        # Trackpad settings
+        Clicking = true;
+        TrackpadRightClick = true;
+        Dragging = true;
+        TrackpadThreeFingerDrag = true;
+      };
+      NSGlobalDomain = {
+        AppleShowAllFiles = true;
+        AppleInterfaceStyleSwitchesAutomatically = true;
+        NSAutomaticCapitalizationEnabled = false;
+        NSDocumentSaveNewDocumentsToCloud = false;
+        InitialKeyRepeat = 10;
+        KeyRepeat = 1;
+      };
+      dock = {
+        minimize-to-application = true;
+      };
+      finder = {
+        AppleShowAllFiles = true;
+        ShowStatusBar = true;
+        ShowPathbar = true;
+        QuitMenuItem = true;
+      };
+    };
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
+    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh''; # Since it's not possible to declare default shell, run this command after build
+    stateVersion = 4;
+  };
 }

@@ -7,7 +7,12 @@
   ];
 
   home = {
-    packages = [ pkgs.home-manager ];
+    packages = with pkgs; [
+      home-manager
+      coreutils
+    ];
     stateVersion = "22.11";
   };
+
+  home.file.".config/karabiner/karabiner.json".source = ../modules/files/karabiner.json;
 }

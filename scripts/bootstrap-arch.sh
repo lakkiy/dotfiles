@@ -8,10 +8,7 @@ pkgs=(
     discord
     qbittorrent
     mpv
-    solaar # logic option
-    telegram-desktop
     #intel-gpu-tools # Monitoring
-    #wezterm
 
     fcitx5-im
     fcitx5-rime
@@ -20,8 +17,7 @@ pkgs=(
     ## for compile emacs
     librime
     libgccjit
-    tree-sitter
-
+    # tree-sitter
 
     # TUI
     docker
@@ -76,13 +72,6 @@ setup-zsh() {
     chsh -s $(whereis zsh)
 }
 
-setup-nix() {
-    cd ~/.setup
-    nix build --extra-experimental-features 'nix-command flakes' .#homeConfigurations.pacman.activationPackage
-    ./result/activate
-    cd
-}
-
 setup() {
     if [ ! -d "$HOME/p" ]; then
         mkdir $HOME/p
@@ -90,30 +79,26 @@ setup() {
 
     if ! command -v yay >/dev/null 2>&1; then
 	    cd $HOME
-	    git clone -q --depth 1 https://aur.archlinux.org/yay-bin.git $HOME/p/yay-bin
-	    cd $HOME/p/yay-bin
+	    git clone -q --depth 1 https://aur.archlinux.org/yay-bin.git $HOME/tmp/yay-bin
+	    cd $HOME/tmp/yay-bin
 	    yes | makepkg -si
 	    cd $HOME
-	    rm -rf $HOME/p/yay-bin
-    fi
-
-    if ! command -v nix >/dev/null 2>&1; then
-        sh <(curl -L https://nixos.org/nix/install) --daemon
     fi
 
     if [ ! -d "$HOME/p/emacs" ]; then
         git clone https://github.com/emacs-mirror/emacs.git $HOME/p/ --depth 1
     fi
+
     if [ ! -d "$HOME/.config/emacs" ]; then
         git clone https://github.com/404cn/eatemacs.git $HOME/.config/emacs
     fi
+
     if [ ! -d "$HOME/.local/share/fcitx5/rime" ]; then
         git clone https://github.com/404cn/rime.git $HOME/.local/share/fcitx5/rime
         cp -r $HOME/.local/share/fcitx5/rime $HOME/.config/emacs/
         rm -rf $HOME/.config/emacs/rime/.git
         cd
     fi
-
 
     yay -S --sudoloop ${pkgs[@]}
     yay -S --sudoloop ${aurpkgs[@]}
