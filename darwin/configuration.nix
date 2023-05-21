@@ -18,7 +18,6 @@
     fonts = with pkgs; [
       lxgw-wenkai # Chinese font
       sarasa-gothic # Mono font for English and Chinese
-      cardo # variable pitch font
     ];
   };
 
@@ -40,7 +39,7 @@
       "raycast"
       "squirrel"
       "syncthing"
-      "docker"
+      # "docker"
       "emacs-app-good" # NOTE until emacs 29 version out
       "anki"
       "discord"
@@ -89,6 +88,7 @@
       };
       dock = {
         minimize-to-application = true;
+        autohide = true;
       };
       finder = {
         AppleShowAllFiles = true;
