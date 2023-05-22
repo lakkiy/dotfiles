@@ -4,6 +4,21 @@
   home.packages = with pkgs; [
     tree-sitter
     nixfmt
+    protobuf
+
+    # go
+    gopls
+    gotools # goimports
+    go-tools # staticcheck
+    delve
+    gogetdoc
+    impl
+    gotests
+    gomodifytags
+    reftools # fillstruct
+    godef
+    protoc-gen-go
+    protoc-gen-go-grpc
 
     # tag system
     universal-ctags
