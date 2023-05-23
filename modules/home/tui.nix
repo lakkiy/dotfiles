@@ -42,11 +42,22 @@ in
     p7zip
     unrar
     unzip
+
+    # nix tools
+    nurl # generate nix fetcher from url
+    # $ nurl https://github.com/nix-community/patsh v0.2.0 2>/dev/null
+    # fetchFromGitHub {
+    #   owner = "nix-community";
+    #   repo = "patsh";
+    #   rev = "v0.2.0";
+    #   hash = "sha256-7HXJspebluQeejKYmVA7sy/F3dtU1gc4eAbKiPexMMA=";
+    # }
+    nix-init # generate nix package from url, build on top of nurl
   ];
 
   home.sessionVariables = {
     LANG     = "en_US.UTF-8";
-    EDITOR   = "emacsclient -a '' -nc";
+    EDITOR   = "emacsclient -a '' -nc"; # FIXME this make kubectl edit not work
     TERM     = "xterm-256color";
     LC_CTYPE = "en_US.UTF-8";
     NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
