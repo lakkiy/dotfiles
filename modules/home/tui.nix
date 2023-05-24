@@ -57,7 +57,7 @@ in
 
   home.sessionVariables = {
     LANG     = "en_US.UTF-8";
-    EDITOR   = "emacsclient -a '' -nc"; # FIXME this make kubectl edit not work
+    EDITOR   = "emacsclient -a '' -nw";
     TERM     = "xterm-256color";
     LC_CTYPE = "en_US.UTF-8";
     NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
