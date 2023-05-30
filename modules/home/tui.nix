@@ -30,6 +30,7 @@ in
     hunspell                 # spell check
     ltex-ls                  # lsp server
     tex                      # basic support for org mode
+    mg
 
     # cli client
     kubectl
@@ -57,7 +58,8 @@ in
 
   home.sessionVariables = {
     LANG     = "en_US.UTF-8";
-    EDITOR   = "emacsclient -a '' -nw";
+    # EDITOR   = "emacsclient -a '' -nw";
+    EDITOR   = "mg";
     TERM     = "xterm-256color";
     LC_CTYPE = "en_US.UTF-8";
     NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
