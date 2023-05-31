@@ -4,7 +4,7 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    emacs-all-the-icons-fonts
+    lmodern
     lxgw-wenkai
     symbola
     sarasa-gothic
