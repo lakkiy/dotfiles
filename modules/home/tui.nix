@@ -44,6 +44,10 @@ in
     unrar
     unzip
 
+    # misc
+    aria
+    you-get
+
     # nix tools
     nurl # generate nix fetcher from url
     # $ nurl https://github.com/nix-community/patsh v0.2.0 2>/dev/null
