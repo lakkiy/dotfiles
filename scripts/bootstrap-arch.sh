@@ -39,6 +39,7 @@ aurpkgs=(
     timeshift-bin
     ventoy-bin
     fcitx5-breeze
+    goldendict-ng-git
 
     # TUI
     keyd
