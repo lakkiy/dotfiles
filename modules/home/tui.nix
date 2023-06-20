@@ -58,6 +58,7 @@ in
     #   hash = "sha256-7HXJspebluQeejKYmVA7sy/F3dtU1gc4eAbKiPexMMA=";
     # }
     nix-init # generate nix package from url, build on top of nurl
+    nixd # lsp server
   ];
 
   home.sessionVariables = {
