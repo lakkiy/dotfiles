@@ -10,8 +10,6 @@
     git
   ];
 
-  services.openssh.enable = true;
-
   nix = {                                   # Nix Package Manager settings
     settings ={
       auto-optimise-store = true;           # Optimise syslinks
@@ -27,5 +25,5 @@
   };
   nixpkgs.config.allowUnfree = true;        # Allow proprietary software.
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05";
 }

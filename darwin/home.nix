@@ -11,7 +11,7 @@
       home-manager
       coreutils
     ];
-    stateVersion = "22.11";
+    stateVersion = "23.05";
   };
 
   home.file.".config/karabiner/karabiner.json".source = ../modules/files/karabiner.json;

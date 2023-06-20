@@ -12,7 +12,6 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   networking = {
-
     hostName = "x1carbon";
     networkmanager.enable = true;
     defaultGateway = "192.168.31.222";
@@ -88,9 +87,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.swim = {
+  users.users.gray = {
     isNormalUser = true;
-    description = "swim";
+    description = "gray";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     ];
@@ -99,6 +98,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # For sound
     fwupd
     sof-firmware
   ];

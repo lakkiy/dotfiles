@@ -2,12 +2,11 @@
 
 {
   imports = [
-    (import ../../modules/syncthing.nix)
-    (import ../../modules/fonts.nix)
+    # (import ../../modules/syncthing.nix)
   ];
 
-  home.username = "swim";
-  home.homeDirectory = "/home/swim";
+  home.username = "gray";
+  home.homeDirectory = "/home/gray";
 
   home.packages = with pkgs; [
     # TODO

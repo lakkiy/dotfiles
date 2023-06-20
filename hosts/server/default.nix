@@ -26,27 +26,20 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  # bitwarden, qbittorrent
-  services = {
-    freshrss = {
-      enable = false;
-    };
-    plex = {
-      enable = false;
-    };
-    syncthing = {
-      enable = false;
-    };
-    cloudflared = {
-      enable = false;
-    };
-  };
-
   # Change default shell to zsh.
   # https://nixos.wiki/wiki/Command_Shell
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  # Enable the OpenSSH daemon.
-  services.openssh.permitRootLogin = "yes";
+  # bitwarden, qbittorrent
+  services = {
+    freshrss.enable = false;
+    plex.enable = false;
+    syncthing.enable = false;
+    cloudflared.enable = false;
+    openssh = {
+      enable = true;
+      permitRootLogin = "yes";
+    };
+  };
 }

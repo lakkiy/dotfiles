@@ -6,7 +6,7 @@
     bash.enable = true;
   };
 
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
   targets.genericLinux.enable = true;
 
   nix = {                                               # Nix Package Manager settings
