@@ -186,7 +186,7 @@ in
           name = "extract.plugin.zsh";
           src = fetchurl {
             url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh";
-            sha256 = "sha256-uIBOFL+IcJrQd3eI5LyuJwq7G5lZlCEDq19gggkbsIQ=";
+            sha256 = "sha256-hOzpvaIya3Nw6JweS10u5ekLAh7ym9K3sSMGkc2gNJU=";
           };
         }
       ];

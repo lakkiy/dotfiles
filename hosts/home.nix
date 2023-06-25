@@ -3,7 +3,7 @@
 
 {
   imports = [
-    (import ../modules/tui-common.nix)
+    (import ../modules/home/tui.nix)
   ];
 
   home.stateVersion = "23.05";

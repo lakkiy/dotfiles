@@ -20,6 +20,12 @@ sh <(curl -L https://nixos.org/nix/install)
 
 ** TODO NixOS
 
+Install:
+#+begin_src sh
+nixos-install --flake .#<host>
+#+end_src
+
+Rebuild:
 #+begin_src sh
 nixos-rebuild switch --flake .#<host>
 #+end_src

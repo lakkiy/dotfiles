@@ -9,7 +9,6 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";
 
   networking = {
     hostName = "x1carbon";
@@ -22,46 +21,12 @@
     }];
   };
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "zh_CN.utf8";
-    LC_IDENTIFICATION = "zh_CN.utf8";
-    LC_MEASUREMENT = "zh_CN.utf8";
-    LC_MONETARY = "zh_CN.utf8";
-    LC_NAME = "zh_CN.utf8";
-    LC_NUMERIC = "zh_CN.utf8";
-    LC_PAPER = "zh_CN.utf8";
-    LC_TELEPHONE = "zh_CN.utf8";
-    LC_TIME = "zh_CN.utf8";
-  };
-
   # Enable the X11 windowing system.
-  services = {
-    xserver = {
-      enable = true;
-      # GNOME
-      displayManager = {
-        gdm.enable = true; # FOR GNOME
-#        lightdm.enable = true;
-#	defaultSession = "xfce"; # FOR XFCE
-      };
-      desktopManager = {
-        gnome.enable = true; # GNOME
-#	xterm.enable = false;
-#	xfce.enable = true;
-      };
-    };
-  };
+  services.xserver.enable = true;
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "dvorak";
-    xkbOptions = "ctrl:swapcaps";
-  };
-
-  # Configure console keymap
-  #console.keyMap = "dvorak";
-  console.useXkbConfig = true;
+  # Enable the KDE Plasma Desktop Environment.
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -92,6 +57,8 @@
     description = "gray";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      firefox
+      kate
     ];
   };
 

@@ -9,7 +9,6 @@
   home.homeDirectory = "/home/gray";
 
   home.packages = with pkgs; [
-    # TODO
-    keyd
+    #keyd xremap
   ];
 }

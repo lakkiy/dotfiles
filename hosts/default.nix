@@ -23,7 +23,7 @@ in
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users.swim = {
+        home-manager.users.gray = {
           imports = [(import ./home.nix)] ++ [(import ./x1carbon/home.nix)];
         };
       }
