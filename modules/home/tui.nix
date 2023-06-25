@@ -165,7 +165,7 @@ in
           name = "git.plugin.zsh";
           src = fetchurl {
             url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh";
-            sha256 = "sha256-9FgkH+GloY3uRZ6QZnaDa8+LLaQRhpbf+eC0NxglgDw=";
+            sha256 = "sha256-Rw8hayUZJp2J9YpKQQAMbTykb6DG108RU4N3EeDBUew=";
           };
         }
         {

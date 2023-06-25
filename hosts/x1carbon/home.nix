@@ -2,7 +2,7 @@
 
 {
   imports = [
-    # (import ../../modules/syncthing.nix)
+    (import ../../modules/home/programming.nix)
   ];
 
   home.username = "gray";
