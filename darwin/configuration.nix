@@ -45,7 +45,6 @@
       "discord"
       "dropbox"
       "netnewswire"
-      # "spotify" # can't download
       "keepingyouawake"
       "maczip"
       "the-unarchiver"

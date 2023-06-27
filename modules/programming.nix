@@ -37,6 +37,9 @@
     nodePackages.typescript
     nodePackages.vscode-langservers-extracted # lsp server
     nodePackages.pnpm
+
+    # for copilet.el
+    nodejs-slim
   ];
 
   programs.go = {
@@ -57,5 +60,5 @@
     "$GOPATH/bin"
   ];
 
-  home.file.".globalrc".source = ../files/globalrc;
+  home.file.".globalrc".source = ./files/globalrc;
 }

@@ -25,8 +25,7 @@ in
     mosh                     # udp ssh
     tealdeer                 # tldr
     tree                     # show folder as tree view
-    plantuml                 # draw
-    nodePackages.mermaid-cli # draw
+    d2                       # draw
     hunspell                 # spell check
     ltex-ls                  # lsp server
     tex                      # basic support for org mode
@@ -165,7 +164,7 @@ in
           name = "git.plugin.zsh";
           src = fetchurl {
             url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh";
-            sha256 = "sha256-Rw8hayUZJp2J9YpKQQAMbTykb6DG108RU4N3EeDBUew=";
+            sha256 = "sha256-Bp9iv0eQspO6kQfUTig4pznZ7Lw6GrU2oDUpfkbrIHc=";
           };
         }
         {

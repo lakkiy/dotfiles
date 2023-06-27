@@ -18,6 +18,12 @@ Install nix for MacOS:
 sh <(curl -L https://nixos.org/nix/install)
 #+end_src
 
+Use binary cache from community:
+#+begin_src sh
+nix-env -iA cachix -f https://cachix.org/api/v1/install
+sudo cachix use nix-community
+#+end_src
+
 ** TODO NixOS
 
 Install:
@@ -27,7 +33,7 @@ nixos-install --flake .#<host>
 
 Rebuild:
 #+begin_src sh
-nixos-rebuild switch --flake .#<host>
+sudo nixos-rebuild switch --flake .#<host>
 #+end_src
 
 ** MacOS

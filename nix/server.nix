@@ -1,11 +1,11 @@
-{ config, pkgs, inputs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 {
   imports = [
-    (import ../modules/home/programs/emacs.nix)
-    (import ../modules/home/programming.nix)
-    (import ../modules/home/tui.nix)
-    (import ../modules/home/services/syncthing.nix)
+    (import ../modules/programs/emacs.nix { inherit lib pkgs; package = pkgs.emacs-git-nox; })
+    (import ../modules/programming.nix)
+    (import ../modules/tui.nix)
+    (import ../modules/services/syncthing.nix)
   ];
 
   programs.ssh.enable = true;

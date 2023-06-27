@@ -10,6 +10,7 @@ let
 in
 {
   server = home-manager.lib.homeManagerConfiguration {
+    inherit (nixpkgs) lib;
     inherit pkgs;
     extraSpecialArgs = { inherit inputs; };
     modules = [

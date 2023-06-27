@@ -2,8 +2,8 @@
 
 {
   imports = [
-    (import ../modules/home/tui.nix)
-    (import ../modules/home/programming.nix)
+    (import ../modules/tui.nix)
+    (import ../modules/programming.nix)
   ];
 
   home = {
