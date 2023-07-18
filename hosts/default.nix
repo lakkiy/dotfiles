@@ -12,6 +12,24 @@ let
   lib = nixpkgs.lib;
 in
 {
+  north = lib.nixosSystem {
+    inherit system;
+    inherit pkgs;
+    specialArgs = { inherit inputs pkgs; };
+    modules = [
+      ./configuration.nix
+      ./north
+
+      home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.gray = {
+          imports = [(import ./home.nix)] ++ [(import ./north/home.nix)];
+        };
+      }
+    ];
+  };
+
   x1carbon = lib.nixosSystem {
     inherit system;
     inherit pkgs;

@@ -136,7 +136,7 @@ in
       dotDir = ".config/zsh";
       enableCompletion = true;
       enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
+      syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
       shellAliases = {
         ls = "ls --color --group-directories-first";

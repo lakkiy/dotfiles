@@ -1,4 +1,8 @@
-{ lib, config, pkgs, ... }:
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -11,12 +15,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
-    hostName = "x1carbon";
+    hostName = "north";
     networkmanager.enable = true;
     defaultGateway = "192.168.31.222";
     nameservers = [ "192.168.31.222" ];
-    interfaces.wlan0.ipv4.addresses = [{
-      address = "192.168.31.150";
+    interfaces.wlp9s0.ipv4.addresses = [{
+      address = "192.168.31.151";
       prefixLength = 24;
     }];
   };
@@ -72,6 +76,7 @@
       nvtop-nvidia
       cider
       youtube-music
+    #  thunderbird
     ];
   };
   programs.kdeconnect.enable = true;
@@ -79,32 +84,38 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # For sound
-    fwupd
-    sof-firmware
-    # dropbox - we don't need this in the environment. systemd unit pulls it in
-    dropbox-cli
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #  wget
   ];
 
   i18n.inputMethod.enabled = "fcitx5";
   i18n.inputMethod.fcitx5.addons = with pkgs; [ fcitx5-rime ];
 
-  # https://nixos.wiki/wiki/Dropbox
-  systemd.user.services.dropbox = {
-    description = "Dropbox";
-    wantedBy = [ "graphical-session.target" ];
-    environment = {
-      QT_PLUGIN_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtPluginPrefix;
-      QML2_IMPORT_PATH = "/run/current-system/sw/" + pkgs.qt5.qtbase.qtQmlPrefix;
-    };
-    serviceConfig = {
-      ExecStart = "${lib.getBin pkgs.dropbox}/bin/dropbox";
-      ExecReload = "${lib.getBin pkgs.coreutils}/bin/kill -HUP $MAINPID";
-      KillMode = "control-group"; # upstream recommends process
-      Restart = "on-failure";
-      PrivateTmp = true;
-      ProtectSystem = "full";
-      Nice = 10;
-    };
-  };
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  # services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "23.05"; # Did you read the comment?
+
 }
