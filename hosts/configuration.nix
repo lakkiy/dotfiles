@@ -1,5 +1,5 @@
 # General configuration.nix for all host
-{ config, lib, pkgs, inputs, user, ...}:
+{ config, lib, pkgs, inputs, ...}:
 
 {
   time.timeZone = "Asia/Shanghai";
@@ -18,8 +18,8 @@
   };
 
   # Set keyboard repat, rate = 60
-  services.xserver.autoRepeatInterval = 1000;
-  services.xserver.autoRepeatDelay = 150;
+  services.xserver.autoRepeatInterval = 30;
+  services.xserver.autoRepeatDelay = 160;
 
   # Configure keymap in X11
   services.xserver = {

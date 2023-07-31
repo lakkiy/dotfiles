@@ -1,4 +1,4 @@
-{ lib, pkgs, package ? pkgs.emacs-pgtk, ... }:
+{ lib, pkgs, package ? pkgs.emacs29-pgtk, ... }:
 
 {
   services.emacs.enable = true;
@@ -13,13 +13,4 @@
     xeft
     telega
   ];
-
-  home.activation.checkEmacsDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    CONFIG="$HOME/.config/emacs"
-
-    if [ ! -d "$CONFIG" ]; then
-      git clone https://github.com/404cn/eatemacs.git $CONFIG
-      emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "~/.config/emacs/config.org")'
-    fi
-  '';
 }

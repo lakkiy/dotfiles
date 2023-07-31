@@ -2,7 +2,7 @@
 
 {
   imports = [
-    (import ../modules/desktop.nix)
+    (import ../modules/fonts.nix)
     (import ../modules/tui.nix)
     (import ../modules/programming.nix)
     (import ../modules/services/syncthing.nix)

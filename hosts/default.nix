@@ -1,11 +1,10 @@
-{ lib, inputs, nixpkgs, home-manager, emacs-overlay, ... }:
+{ lib, inputs, nixpkgs, home-manager, ... }:
 
 let
   system = "x86_64-linux";
 
   pkgs = import nixpkgs {
     inherit system;
-    overlays = [ emacs-overlay.overlay ];
     config.allowUnfree = true;
   };
 
@@ -14,7 +13,6 @@ in
 {
   north = lib.nixosSystem {
     inherit system;
-    inherit pkgs;
     specialArgs = { inherit inputs pkgs; };
     modules = [
       ./configuration.nix
@@ -30,28 +28,9 @@ in
     ];
   };
 
-  x1carbon = lib.nixosSystem {
-    inherit system;
-    inherit pkgs;
-    specialArgs = { inherit inputs pkgs; };
-    modules = [
-      ./configuration.nix
-      ./x1carbon
-
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.gray = {
-          imports = [(import ./home.nix)] ++ [(import ./x1carbon/home.nix)];
-        };
-      }
-    ];
-  };
-
   server = lib.nixosSystem {
     inherit system;
-    inherit pkgs;
-    specialArgs = { inherit inputs; };
+    specialArgs = { inherit inputs pkgs; };
     modules = [
       ./configuration.nix
       ./server
