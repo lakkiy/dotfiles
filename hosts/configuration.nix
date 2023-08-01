@@ -18,8 +18,8 @@
   };
 
   # Set keyboard repat, rate = 60
-  services.xserver.autoRepeatInterval = 30;
-  services.xserver.autoRepeatDelay = 160;
+  services.xserver.autoRepeatInterval = 60;
+  services.xserver.autoRepeatDelay = 120;
 
   # Configure keymap in X11
   services.xserver = {
@@ -58,6 +58,7 @@
     settings ={
       auto-optimise-store = true;           # Optimise syslinks
       experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "root" "liubo" "gray" ];
     };
     gc = {                                  # Automatic garbage collection
       automatic = true;

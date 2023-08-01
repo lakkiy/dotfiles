@@ -3,28 +3,22 @@ WIP
 NOTE: All keybinding of this config is set for Dvorak keyboard layout.
 
 ** Require
+Install nix:
+#+begin_src sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+#+end_src
+
+Install git:
+#+begin_src sh
+nix-env -i git
+#+end_src
+
 Clone this repo:
 #+begin_src sh
 git clone https://github.com/404cn/dotfiles.git ~/.setup
 #+end_src
 
-Install nix for Non-NixOS Linux:
-#+begin_src sh
-sh <(curl -L https://nixos.org/nix/install) --daemon
-#+end_src
-
-Install nix for MacOS:
-#+begin_src sh
-sh <(curl -L https://nixos.org/nix/install)
-#+end_src
-
-Use binary cache from community:
-#+begin_src sh
-nix-env -iA cachix -f https://cachix.org/api/v1/install
-sudo cachix use nix-community
-#+end_src
-
-** TODO NixOS
+** NixOS
 
 Install:
 #+begin_src sh
@@ -45,10 +39,6 @@ Install =homebrew=:
 
 For the first time:
 #+begin_src sh
-mkdir -p ~/.config/nix
-echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
-nix-env -iA nixpkgs.git
-cd ~/.setup
 nix build .#darwinConfigurations.<host>.system
 ./result/sw/bin/darwin-rebuild switch --flake .#<host>
 #+end_src
@@ -62,9 +52,7 @@ darwin-rebuild switch --flake .#<host>
 
 For first time:
 #+begin_src sh
-nix-env -iA nixpkgs.git
-cd ~/.setup
-nix build --extra-experimental-features 'nix-command flakes' .#homeConfigurations.<host>.activationPackage
+nix build .#homeConfigurations.<host>.activationPackage
 ./result/activate
 #+end_src
 
@@ -84,3 +72,7 @@ Uncomment =Color= in =/etc/pacman.conf=.
 #+begin_src sh
 sudo pacman -S fwupd sof-firmware
 #+end_src
+
+*** Delete Nixos boot generations
+
+Delete =system-*= in =/nix/var/nix/profiles= and rebuild the system.

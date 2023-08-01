@@ -1,11 +1,12 @@
 {
   description = "A very basic flake";
 
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -13,9 +14,13 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nur.url = "github:nix-community/NUR";
+    gotraceui.url = "github:dominikh/gotraceui";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, darwin, ... }:
+
+  outputs = inputs @ { self, nixpkgs, home-manager, darwin, nur, ... }:
     {
       nixosConfigurations = ( # NixOS configurations
         import ./hosts {
@@ -34,8 +39,28 @@
       homeConfigurations = ( # Non-NixOS configurations
         import ./nix {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager;
+          inherit inputs nixpkgs home-manager nur;
         }
       );
     };
+
+
+  # only effect flake itself
+  nixConfig = {
+    experimental-features = [ "nix-command" "flakes" ];
+    substituters = [
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://cache.nixos.org/"
+      "https://hyprland.cachix.org"
+    ];
+
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    ];
+    trusted-users = [ "root" "liubo" "gray" ];
+  };
 }

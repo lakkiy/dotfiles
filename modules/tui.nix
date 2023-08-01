@@ -29,7 +29,9 @@ in
     hunspell                 # spell check
     ltex-ls                  # lsp server
     tex                      # basic support for org mode
+    iperf
     mg
+    w3m                      # read html mail in emacs, should move to emacs.nix
 
     # cli client
     kubectl
@@ -42,6 +44,10 @@ in
     p7zip
     unrar
     unzip
+
+    # clipboard
+    wl-clipboard # wayland
+    xclip # x11
 
     # misc
     aria
@@ -76,6 +82,11 @@ in
   ];
 
   programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
     git = {
       enable = true;
       userName = "404cn";
@@ -98,6 +109,7 @@ in
         "GPATH"
         "GRTAGS"
         "GTAGS"
+        ".direnv"
       ];
     };
 
@@ -148,6 +160,7 @@ in
         k = "kubectl";
         e = "emacsclient -nw";
         te = "emacs -nw";
+        npm = "pnpm";
       };
       plugins = with pkgs; [
         {

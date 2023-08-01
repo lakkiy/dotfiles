@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, ... }:
+{ lib, inputs, nixpkgs, home-manager, nur, ... }:
 
 let
   system = "x86_64-linux";
@@ -26,6 +26,7 @@ in
     inherit pkgs;
     extraSpecialArgs = { inherit inputs; };
     modules = [
+      nur.hmModules.nur
       ./home.nix
       ./pacman.nix
       {

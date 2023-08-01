@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   home.packages = with pkgs; [
-    tree-sitter
+    # (tree-sitter.withPlugins (p: builtins.attrValues p))
     nixfmt
     protobuf
 

@@ -24,7 +24,6 @@
   homebrew = {
     enable = true;
     taps = [
-      "jimeh/emacs-builds"
       "homebrew/cask"
       "homebrew/cask-fonts"
       "homebrew/cask-versions"
@@ -40,7 +39,7 @@
       "squirrel"
       "syncthing"
       # "docker"
-      "emacs-app-good" # NOTE until emacs 29 version out
+      "emacs"
       "anki"
       "discord"
       "dropbox"
@@ -60,6 +59,7 @@
     settings ={
       auto-optimise-store = true;           # Optimise syslinks
       experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "liubo" ];
     };
     gc = {                                # Garbage collection
       automatic = true;

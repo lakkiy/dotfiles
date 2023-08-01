@@ -4,7 +4,7 @@
 {
   imports = [
     (import ../modules/tui.nix)
-    (import ../modules/services/syncthing.nix)
+    (import ../modules/home/syncthing.nix)
   ];
 
   home.stateVersion = "23.05";
