@@ -1,10 +1,9 @@
-{ lib, inputs, nixpkgs, home-manager, emacs-overlay, ... }:
+{ lib, inputs, nixpkgs, home-manager, ... }:
 
 let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
     inherit system;
-    overlays = [ emacs-overlay.overlay ];
     config.allowUnfree = true;
   };
 in
