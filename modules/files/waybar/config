@@ -1,12 +1,13 @@
 // -*- mode: json-ts -*-
 {
+  "output": "DP-3",
   "layer": "top",
   "position": "top",
   "mod": "dock",
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 20,
+  "height": 24,
   "modules-left": [
     "custom/power_btn",
     "wlr/workspaces",

@@ -6,6 +6,8 @@ let
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
+  } // {
+    ags = inputs.ags.packages.${system}.default;
   };
 
   lib = nixpkgs.lib;

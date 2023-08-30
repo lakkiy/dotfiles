@@ -1,5 +1,5 @@
 # General home-manager config
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [

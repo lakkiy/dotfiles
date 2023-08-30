@@ -7,6 +7,7 @@
       ../../modules/nixos/nvidia.nix
       ../../modules/nixos/fcitx5.nix
       ../../modules/nixos/gnome.nix
+      ../../modules/nixos/hyprland.nix
     ];
 
   # Bootloader.

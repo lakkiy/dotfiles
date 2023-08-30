@@ -7,10 +7,6 @@
       xwayland.enable = true;
       enableNvidiaPatches = true;
     };
-    waybar = {
-      enable = true;
-      package = pkgs.waybar-hyprland;
-    };
     nm-applet = {
       enable = true;
       indicator = true;
@@ -25,6 +21,7 @@
     bemenu
     grim
     slurp
+    # replace kitty and bemenu ?
     fuzzel
     foot
   ];
