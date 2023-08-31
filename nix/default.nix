@@ -5,6 +5,11 @@ let
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
+    config.permittedInsecurePackages = [
+      # wechat-uos
+      # https://github.com/nix-community/nur-combined/blob/master/repos/xddxdd/pkgs/uncategorized/wechat-uos/official-bin.nix#L23
+      "openssl-1.1.1v"
+    ];
   };
 in
 {

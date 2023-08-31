@@ -11,6 +11,11 @@
 
   home.file.".config/kitty/kitty.conf".source = ../modules/files/kitty.conf;
 
+  home.packages = with pkgs; [
+    config.nur.repos.xddxdd.wechat-uos-bin
+    qq
+  ];
+
   home = {
     # See https://wiki.archlinux.org/title/Xorg/Keyboard_configuration#Setting_keyboard_layout
     keyboard = {

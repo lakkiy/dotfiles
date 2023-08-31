@@ -53,10 +53,12 @@
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
       "https://hyprland.cachix.org"
+      "https://xddxdd.cachix.org" # wechat-uos in nur
     ];
 
     extra-substituters = [
       "https://nix-community.cachix.org"
+      "xddxdd.cachix.org-1:ay1HJyNDYmlSwj5NXQG065C8LfoqqKaTNCyzeixGjf8="
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="

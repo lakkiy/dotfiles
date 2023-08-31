@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # (tree-sitter.withPlugins (p: builtins.attrValues p))
     nixfmt
     protobuf
 
