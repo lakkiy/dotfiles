@@ -37,7 +37,7 @@
       pip
       pipx
       jedi-language-server
-      epc orjson sexpdata six paramiko rapidfuzz # lsp-bridge for emacs
+      epc orjson sexpdata six setuptools paramiko rapidfuzz # lsp-bridge for emacs
     ]))
     # go
     gopls
