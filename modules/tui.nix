@@ -3,11 +3,13 @@
 let
   # https://nixos.wiki/wiki/TexLive
   tex = (pkgs.texlive.combine {
-    inherit (pkgs.texlive) scheme-basic
+    inherit (pkgs.texlive) scheme-small
       dvisvgm dvipng # for preview and export as html
-      wrapfig amsmath ulem hyperref capt-of;
-      #(setq org-latex-compiler "lualatex")
+      wrapfig amsmath ulem hyperref capt-of
+      #(setq org-latex-compiler "xelatex")
       #(setq org-preview-latex-default-process 'dvisvgm)
+      digestif # lsp server
+      ctex;
   });
 in
 {
@@ -22,18 +24,17 @@ in
     ugrep                    # faster than ripgrep
     cloc                     # count code line
     jq                       # process json
-    mosh                     # udp ssh
     tealdeer                 # tldr
     tree                     # show folder as tree view
     d2                       # draw
     iperf                    # test preformance of network
-    pandoc
     tailspin                 # highlight logs
     websocat                 # curl for websocket
-    hunspell                 # spell check #TODO
+    pandoc
 
     # cli for emacs
     tex                      # basic support for org mode
+    tikzit                   # draw
     ltex-ls                  # lsp server
     w3m                      # read html mail in emacs
     readability-cli          # firefox reader mode, for emacs eww
@@ -43,12 +44,10 @@ in
     litecli
     mongosh
     mycli
+    mosh
 
-    # Extract
-    cpio
+    # https://wiki.archlinux.org/title/Archiving_and_compression
     p7zip
-    unrar
-    unzip
 
     # nix tools
     nurl # generate nix fetcher from url
@@ -76,10 +75,10 @@ in
   ];
 
   programs = {
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+    fzf.enable = true;
+    zoxide.enable = true;
+    direnv.enable = true;
+    direnv.nix-direnv.enable = true;
 
     git = {
       enable = true;
@@ -97,44 +96,11 @@ in
       };
       ignores = [
         ".DS_Store"
-        "*.bak"
-        "*.log"
-        "*.swp"
-        "tags"
-        "GPATH"
-        "GRTAGS"
-        "GTAGS"
+        "*.bak" "*.log" "*.swp"
+        "tags" "GPATH" "GRTAGS" "GTAGS"
         ".direnv"
+        "node_modules"
       ];
-    };
-
-    # FIXME
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-      defaultCommand = "fd --type f --hidden --follow --exclude .git";
-      defaultOptions = [
-        "--height 40%"
-        "--layout=reverse"
-      ];
-      fileWidgetCommand = "${config.programs.fzf.defaultCommand}";
-      fileWidgetOptions = [
-        "cat {} || tree -NC {}) 2> /dev/null | head -200"
-      ];
-      historyWidgetOptions = [
-        "--preview 'echo {}'"
-        "--preview-window down:3:hidden:wrap"
-        "--bind '?:toggle-preview'"
-        "--exact"
-      ];
-      changeDirWidgetOptions = [
-        "--preview 'tree -NC {} | head -200"
-      ];
-    };
-
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
     };
 
     zsh = {

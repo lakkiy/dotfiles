@@ -30,12 +30,11 @@
       "homebrew/cask-versions"
       "homebrew/core"
       "homebrew/services"
-      # have emacs-plus patchs, prebuilded
       "jimeh/emacs-builds"
     ];
     brews = [
-      "pngpaste"
-      "docker"
+      "pngpaste" # paste image in emacs telega
+      "docker" # docker tdlib
     ];
     casks = [
       "clashx" # NOTE Say it!
@@ -45,18 +44,13 @@
       "raycast"
       "squirrel"
       "syncthing"
-      # "docker"
       "anki"
       "emacs-app-good"
       "discord"
       "dropbox"
       "netnewswire"
       "keepingyouawake"
-      "maczip"
       "the-unarchiver"
-      "easy-move-plus-resize" # use command + cursor to move window
-      "via"
-      # steptwo, safari extensions, plash
     ];
   };
 
