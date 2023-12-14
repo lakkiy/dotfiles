@@ -10,7 +10,7 @@
   #   CONFIG="$HOME/.local/share/fcitx5/rime"
 
   #   if [ ! -d "$CONFIG" ]; then
-  #     git clone https://github.com/404cn/rime.git $CONFIG
+  #     git clone https://github.com/mrunhap/rime.git $CONFIG
   #   fi
   # '';
 }

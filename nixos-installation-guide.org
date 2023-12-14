@@ -40,12 +40,12 @@ rm 2
 # mkfs.fat -F 32 -n boot /dev/nvme0n1p3
 
 # mount /dev/disk/by-label/nixos /mnt
-# mkdir -p /mnt/boot                      
-# mount /dev/disk/by-label/boot /mnt/boot 
+# mkdir -p /mnt/boot
+# mount /dev/disk/by-label/boot /mnt/boot
 # nixos-generate-config --root /mnt
 
 # nix-env -iA nixos.git
-# git clone https://github.com/404cn/dotfiles /mnt/etc/nixos/<name>
+# git clone https://github.com/mrunhap/dotfiles /mnt/etc/nixos/<name>
 # cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/dotfiles/.flake/hosts/x1carbon/
 # cd /mnt/etc/nixos/dotfiles/.flake
 # nixos-install --flake .#<host>

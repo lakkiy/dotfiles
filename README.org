@@ -15,7 +15,7 @@ nix-env -i git
 
 Clone this repo:
 #+begin_src sh
-git clone https://github.com/404cn/dotfiles.git ~/.setup
+git clone https://github.com/mrunhap/dotfiles.git ~/.setup
 #+end_src
 
 * NixOS

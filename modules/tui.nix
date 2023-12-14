@@ -88,17 +88,18 @@ in
 
     git = {
       enable = true;
-      userName = "404cn";
+      userName = "mrunhap";
       userEmail = "liubolovelife@gmail.com";
       delta.enable = true;
       extraConfig = {
+        init.defaultBranch = "master";
         pull.rebase = true;
         push.default = "current";
         diff.colorMoved = "default";
         merge.conflictStyle = "diff3";
         include.path = "$HOME/.gitconfig";
         credential.helper = if pkgs.stdenv.isLinux then "store" else "osxkeychain";
-        github.user = "404cn";
+        github.user = "mrunhap";
       };
       ignores = [
         ".DS_Store"
