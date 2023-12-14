@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    gcc
     gdb
     nixfmt
     protobuf
@@ -24,7 +25,7 @@
     # yaegi # go's repl
 
     # python
-    vscode-extensions.ms-python.vscode-pylance
+    #vscode-extensions.ms-python.vscode-pylance
     nodePackages.pyright                      # lsp server
     (python3.withPackages(ps: with ps; [
       pygments # for gtags
