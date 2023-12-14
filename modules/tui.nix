@@ -36,6 +36,7 @@ in
     readability-cli          # firefox reader mode, for emacs eww
     pandoc
     tailspin                 # highlight logs
+    websocat                 # curl for websocket
 
     # cli client
     kubectl
