@@ -34,7 +34,8 @@
 
     deno
     nodePackages.typescript
-    nodePackages.vscode-langservers-extracted # lsp server
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted # html, css etc
     nodePackages.pnpm
 
     # for copilet.el

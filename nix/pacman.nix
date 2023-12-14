@@ -7,6 +7,7 @@
     (import ../modules/home/syncthing.nix)
     (import ../modules/home/fonts.nix)
     (import ../modules/home/fcitx5.nix)
+    (import ../modules/home/gtk.nix)
   ];
 
   home.file.".config/kitty/kitty.conf".source = ../modules/files/kitty.conf;
@@ -14,6 +15,19 @@
   home.packages = with pkgs; [
     config.nur.repos.xddxdd.wechat-uos-bin
     qq
+
+    # TODO
+    inputs.ags.packages.${pkgs.system}.default
+    blueberry # bluetooth manager
+    swww # animated wallpaper for wayland
+    sassc # front end for libsass
+    brightnessctl # control device brightness
+    hyprpicker # color picker for wayland
+    wf-recorder # screen recording
+    wayshot # screenshot
+    imagemagick # for bitmap images
+    wl-gammactl # Contrast, brightness, and gamma adjustments
+    pwvucontrol # pipewire volume control, replace pavucontrol
   ];
 
   home = {
