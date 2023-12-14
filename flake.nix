@@ -26,7 +26,7 @@
   outputs = inputs @ { self, nixpkgs, home-manager, darwin, nur, ... }:
     {
       nixosConfigurations = ( # NixOS configurations
-        import ./hosts {
+        import ./nixos {
           inherit (nixpkgs) lib;
           inherit inputs nixpkgs home-manager;
         }
@@ -40,7 +40,7 @@
       );
 
       homeConfigurations = ( # Non-NixOS configurations
-        import ./nix {
+        import ./home-manager {
           inherit (nixpkgs) lib;
           inherit inputs nixpkgs home-manager nur;
         }

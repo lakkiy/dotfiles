@@ -2,7 +2,7 @@ WIP
 
 NOTE: All keybinding of this config is set for Dvorak keyboard layout.
 
-** Require
+* Require
 Install nix:
 #+begin_src sh
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
@@ -18,7 +18,7 @@ Clone this repo:
 git clone https://github.com/404cn/dotfiles.git ~/.setup
 #+end_src
 
-** NixOS
+* NixOS
 
 Install:
 #+begin_src sh
@@ -30,7 +30,7 @@ Rebuild:
 sudo nixos-rebuild switch --flake .#<host>
 #+end_src
 
-** MacOS
+* MacOS
 
 Install =homebrew=:
 #+begin_src sh
@@ -48,7 +48,7 @@ Then use ~darwin-rebuild~ to rebuild and activate:
 darwin-rebuild switch --flake .#<host>
 #+end_src
 
-** Non-NixOS Linux
+* Non-NixOS Linux
 
 For first time:
 #+begin_src sh
@@ -61,18 +61,18 @@ Then use ~home-manager~ to rebuild and activate:
 home-manager switch --flake .#<host>
 #+end_src
 
-** Tips
+* Tips
 
-*** Enable color for pacman
+** Enable color for pacman
 
 Uncomment =Color= in =/etc/pacman.conf=.
 
-*** No audio on thinkpad x1carbon
+** No audio on thinkpad x1carbon
 
 #+begin_src sh
 sudo pacman -S fwupd sof-firmware
 #+end_src
 
-*** Delete Nixos boot generations
+** Delete Nixos boot generations
 
 Delete =system-*= in =/nix/var/nix/profiles= and rebuild the system.
