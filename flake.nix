@@ -17,7 +17,6 @@
 
     gotraceui.url = "github:dominikh/gotraceui";
     ags.url = "github:Aylur/ags";
-    daeuniverse.url = "github:daeuniverse/flake.nix";
   };
 
 

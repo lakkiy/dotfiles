@@ -71,6 +71,9 @@
       pcmanfm # file manager
       fractal # matrix client
       qq
+
+      # chi e
+      dae v2ray-geoip v2ray-domain-list-community
     ];
   };
   virtualisation.docker.enable = true;
@@ -100,28 +103,6 @@
       # password=<PASSWORD>
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
   };
-
-
-  services.daed = {
-    enable = true;
-    configDir = "/etc/daed";
-    listen = "0.0.0.0:2023";
-    openFirewall = {
-      enable = true;
-      port = 12345;
-    };
-  };
-
-  # services.dae = {
-  #   enable = true;
-  #   disableTxChecksumIpGeneric = false;
-  #   configFile = "/etc/dae/config.dae";
-  #   assets = with pkgs; [ v2ray-geoip v2ray-domain-list-community ];
-  #   openFirewall = {
-  #     enable = true;
-  #     port = 12345;
-  #   };
-  # };
 
   # wayland support for electron base app
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

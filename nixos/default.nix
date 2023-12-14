@@ -19,8 +19,6 @@ in
     modules = [
       ./configuration.nix
       ./north
-      inputs.daeuniverse.nixosModules.dae
-      inputs.daeuniverse.nixosModules.daed
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
