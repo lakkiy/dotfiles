@@ -63,5 +63,16 @@
   };
   virtualisation.docker.enable = true;
 
+  environment.systemPackages = [
+    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
+     pkgs.buildFHSUserEnv (base // {
+       name = "fhs";
+       targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+       profile = "export FHS=1";
+       runScript = "bash";
+       extraOutputsToInstall = ["dev"];
+     }))
+  ];
+
   system.stateVersion = "23.05";
 }

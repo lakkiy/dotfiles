@@ -116,14 +116,14 @@ in
     fzf = {
       enable = true;
       enableZshIntegration = true;
-      defaultCommand = "fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find .";
+      defaultCommand = "fd --type f --hidden --follow --exclude .git";
       defaultOptions = [
         "--height 40%"
         "--layout=reverse"
       ];
       fileWidgetCommand = "${config.programs.fzf.defaultCommand}";
       fileWidgetOptions = [
-        "--preview '(bat --style=plain --color=always {} || cat {} || tree -NC {}) 2> /dev/null | head -200"
+        "cat {} || tree -NC {}) 2> /dev/null | head -200"
       ];
       historyWidgetOptions = [
         "--preview 'echo {}'"
@@ -207,7 +207,8 @@ for file in $HOME/.config/zsh/plugins/*.zsh; do
     source "$file"
 done
 
-PROMPT='%n@%m %1~ %# '
+# PROMPT='%n@%m %1~ %# '
+PROMPT='%F{green}[%n@%m:%~]%#%f '
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     export MOZ_ENABLE_WAYLAND=1
