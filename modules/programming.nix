@@ -29,6 +29,7 @@
       pipx
       python-lsp-server
       pam # for ags
+      epc orjson sexpdata six paramiko rapidfuzz # lsp-bridge for emacs
     ]))
 
     # tag system
