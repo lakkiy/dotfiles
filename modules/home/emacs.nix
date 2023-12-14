@@ -11,7 +11,7 @@
     enable = true;
     package = pkgs.emacs29-pgtk;
     extraPackages = epkgs: with epkgs; [
-      (treesit-grammars.with-grammars (p: builtins.attrValues p))
+      # (treesit-grammars.with-grammars (p: builtins.attrValues p))
 
       # packages
       lsp-bridge
