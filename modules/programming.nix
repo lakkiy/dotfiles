@@ -18,6 +18,7 @@
     godef
     protoc-gen-go
     protoc-gen-go-grpc
+    wire # DI
 
     # python
     nodePackages.pyright                      # lsp server
