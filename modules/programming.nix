@@ -19,22 +19,26 @@
     protoc-gen-go
     protoc-gen-go-grpc
 
+    # python
+    nodePackages.pyright                      # lsp server
+    (python3.withPackages(ps: with ps; [
+      pygments # for gtags
+      pdm
+      pip
+      pipx
+    ]))
+
     # tag system
     universal-ctags
     global
-    python39Packages.pygments
     cscope
 
     clojure
     leiningen
 
-    pypy3                                     # python3 with jit enabled
-    pipx                                      # install single python package like mycli
-    nodePackages.pyright                      # lsp server
-
     deno
     nodePackages.typescript
-    nodePackages.typescript-language-server
+    nodePackages.typescript-language-server   # also for js
     nodePackages.vscode-langservers-extracted # html, css etc
     nodePackages.pnpm
 

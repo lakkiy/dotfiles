@@ -10,10 +10,10 @@
       (treesit-grammars.with-grammars (p: builtins.attrValues p))
 
       # packages
+      lsp-bridge
       tabnine
       acm-terminal
       popon
-      lsp-bridge
       eldoc-box
       citre
       aggressive-indent
