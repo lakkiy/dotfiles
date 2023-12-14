@@ -29,6 +29,7 @@
       "homebrew/cask-versions"
       "homebrew/core"
       "homebrew/services"
+      "railwaycat/emacsmacport"
     ];
     casks = [
       "clashx" # NOTE Say it!
@@ -39,7 +40,7 @@
       "squirrel"
       "syncthing"
       # "docker"
-      "emacs"
+      "emacs-mac"
       "anki"
       "discord"
       "dropbox"
