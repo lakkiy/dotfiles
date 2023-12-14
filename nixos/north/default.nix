@@ -64,6 +64,7 @@
       kcc # Kindle Comic Converter
       zathura # pdf reader
       pcmanfm # file manager
+      fractal # matrix client
     ];
   };
   virtualisation.docker.enable = true;
