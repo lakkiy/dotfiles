@@ -16,6 +16,9 @@
     config.nur.repos.xddxdd.wechat-uos-bin
     qq
 
+    # TODO nixglhost
+    inputs.nix-gl-host.defaultPackage.${pkgs.system}
+
     # TODO
     inputs.ags.packages.${pkgs.system}.default
     blueberry # bluetooth manager

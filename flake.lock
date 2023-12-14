@@ -114,6 +114,24 @@
         "type": "github"
       }
     },
+    "nix-gl-host": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1692806827,
+        "narHash": "sha256-cHZbURRIJkS5AmA/mqXzbmMKbKj5Tdvu1of6GE1bdrk=",
+        "owner": "numtide",
+        "repo": "nix-gl-host",
+        "rev": "69dc3580aec3dc98980d6cc3815ed2860c5b5e8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-gl-host",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1690031011,
@@ -146,6 +164,22 @@
       }
     },
     "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1669045945,
+        "narHash": "sha256-BQxzijvZpLQ7R+KuQzCPcFgIS6OK0Onb29pYFe2pzJo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6b5019a48f876f3288efc626fa8b70ad0c64eb46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1692638711,
         "narHash": "sha256-J0LgSFgJVGCC1+j5R2QndadWI1oumusg6hCtYAzLID4=",
@@ -182,7 +216,8 @@
         "darwin": "darwin",
         "gotraceui": "gotraceui",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_3",
+        "nix-gl-host": "nix-gl-host",
+        "nixpkgs": "nixpkgs_4",
         "nur": "nur"
       }
     }
