@@ -150,8 +150,10 @@ in
         ls = if pkgs.stdenv.isLinux then "ls --color --group-directories-first" else "ls --color";
         ll = "ls -al --human-readable --time-style=long-iso";
         k = "kubectl";
-        e = "emacsclient -nw";
+        e = "emacs";
         te = "emacs -nw";
+        ec = ''emacsclient -c -a ""'';
+        tec = ''emacsclient -nw -a ""'';
         npm = "pnpm";
         # https://github.com/Genivia/ugrep#equivalence-to-gnubsd-grep
         grep = "ugrep -G -U -Y -. --sort -Dread -dread";
