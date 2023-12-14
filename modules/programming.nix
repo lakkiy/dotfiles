@@ -38,6 +38,7 @@
       pipx
       jedi-language-server
       epc orjson sexpdata six setuptools paramiko rapidfuzz # lsp-bridge for emacs
+      requests # blink-search for emacs
     ]))
     # go
     gopls
