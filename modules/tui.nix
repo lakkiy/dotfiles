@@ -14,23 +14,17 @@ let
 in
 {
   home.packages = with pkgs; [
-    man
     gnumake
     neofetch
-    htop
     delta                    # diff
     fd                       # find
-    ripgrep                  # grep
     ugrep                    # faster than ripgrep
     cloc                     # count code line
-    jq                       # process json
-    tealdeer                 # tldr
     tree                     # show folder as tree view
     d2                       # draw
     iperf                    # test preformance of network
     tailspin                 # highlight logs
     websocat                 # curl for websocket
-    pandoc
 
     # cli for emacs
     tex                      # basic support for org mode
@@ -75,15 +69,20 @@ in
     # https://github.com/localsend/localsend/issues/461#issuecomment-1715170140
     XDG_DOWNLOAD_DIR = "$HOME/Downloads";
   };
-
   home.sessionPath = [
     "$HOME/bin"
     "$HOME/.local/bin"
   ];
 
   programs = {
+    man.enable = true;
+    htop.enable = true;
     fzf.enable = true;
+    ripgrep.enable = true;
     zoxide.enable = true;
+    tealdeer.enable = true;
+    jq.enable = true;
+    pandoc.enable = true;
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
 
@@ -131,6 +130,24 @@ in
         # https://github.com/Genivia/ugrep#equivalence-to-gnubsd-grep
         grep = "ugrep -G -U -Y -. --sort -Dread -dread";
       };
+      initExtra = ''
+for file in $HOME/.config/zsh/plugins/*.zsh; do
+    source "$file"
+done
+
+PROMPT='%F{green}[%n@%m:%~]%#%f '
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
+
+# For emacs eat
+[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+  source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+
+# For local use.
+[ -f $HOME/.zshrc ] && source $HOME/.zshrc
+    '';
       plugins = with pkgs; [
         {
           name = "zsh-autopair";
@@ -171,24 +188,6 @@ in
           };
         }
       ];
-      initExtra = ''
-for file in $HOME/.config/zsh/plugins/*.zsh; do
-    source "$file"
-done
-
-PROMPT='%F{green}[%n@%m:%~]%#%f '
-
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    export MOZ_ENABLE_WAYLAND=1
-fi
-
-# For emacs eat
-[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-  source "$EAT_SHELL_INTEGRATION_DIR/zsh"
-
-# For local use.
-[ -f $HOME/.zshrc ] && source $HOME/.zshrc
-    '';
     };
   };
 }

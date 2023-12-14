@@ -62,16 +62,13 @@
     goPath = ".go";
   };
   home.sessionVariables = {
-    # go
     GO111MODULE="auto";
     GOPROXY="https://goproxy.io,direct";
-    # global gtags
     GTAGSOBJDIRPREFIX="$HOME/.cache/gtags/";
     GTAGSCONF="$HOME/.globalrc";
     GTAGSLABEL="native-pygments";
   };
   home.sessionPath = [
-    # go
     "$GOPATH/bin"
   ];
 

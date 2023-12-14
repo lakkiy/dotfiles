@@ -49,9 +49,6 @@
 
   environment.systemPackages = with pkgs; [
     git
-
-    # https://unix.stackexchange.com/questions/522822/different-methods-to-run-a-non-nixos-executable-on-nixos
-    steam-run # run commands in the same FHS env
   ];
 
   nix = {                                   # Nix Package Manager settings

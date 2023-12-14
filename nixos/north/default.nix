@@ -70,6 +70,7 @@
       kcc # Kindle Comic Converter # TODO
       pcmanfm # file manager
       fractal # matrix client
+      qq
     ];
   };
   virtualisation.docker.enable = true;

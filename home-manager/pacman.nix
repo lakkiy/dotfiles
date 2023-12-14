@@ -10,18 +10,9 @@
     (import ../modules/home/gtk.nix)
   ];
 
-  home.file.".config/wezterm" = {
-    source = ../modules/files/wezterm;
-    recursive = true;
-  };
-
   home.packages = with pkgs; [
-    config.nur.repos.xddxdd.wechat-uos-bin
     qq
 
-    nixgl.nixGLIntel
-
-    # TODO
     inputs.ags.packages.${pkgs.system}.default
     blueberry # bluetooth manager
     swww # animated wallpaper for wayland
