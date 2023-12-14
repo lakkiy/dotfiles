@@ -30,7 +30,8 @@
       cider
       clj-refactor
       visual-fill-column
-      deadgrep
+      wgrep
+      urgrep
       go-translate
       fanyi
       restclient

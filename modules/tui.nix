@@ -18,8 +18,8 @@ in
     btop                     # htop
     delta                    # diff
     fd                       # find
-    ripgrep                  # grep
-    ugrep                    # interactive grep
+    # ripgrep                  # grep
+    ugrep                    # faster than ripgrep
     cloc                     # count code line
     jq                       # process json
     mosh                     # udp ssh
@@ -153,14 +153,12 @@ in
       shellAliases = {
         ls = "ls --color --group-directories-first";
         ll = "ls -al --human-readable --time-style=long-iso";
-        htop = "btop";
-        diff = "delta";
-        find = "fd";
-        grep = "rg";
         k = "kubectl";
         e = "emacsclient -nw";
         te = "emacs -nw";
         npm = "pnpm";
+        # https://github.com/Genivia/ugrep#equivalence-to-gnubsd-grep
+        grep = "ugrep -G -U -Y -. --sort -Dread -dread";
       };
       plugins = with pkgs; [
         {
