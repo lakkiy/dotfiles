@@ -152,7 +152,7 @@ in
       syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
       shellAliases = {
-        ls = "ls --color --group-directories-first";
+        ls = if pkgs.stdenv.isLinux then "ls --color --group-directories-first" else "ls --color";
         ll = "ls -al --human-readable --time-style=long-iso";
         k = "kubectl";
         e = "emacsclient -nw";
