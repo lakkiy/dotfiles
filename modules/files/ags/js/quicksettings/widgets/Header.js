@@ -1,18 +1,22 @@
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
 import icons from '../../icons.js';
 import PowerMenu from '../../services/powermenu.js';
-import Theme from '../../services/theme/theme.js';
 import Lockscreen from '../../services/lockscreen.js';
 import Avatar from '../../misc/Avatar.js';
 import { uptime } from '../../variables.js';
-import { Battery, Widget } from '../../imports.js';
+import options from '../../options.js';
+import { openSettings } from '../../settings/theme.js';
 
 export const BatteryProgress = () => Widget.Box({
-    className: 'battery-progress',
+    class_name: 'battery-progress',
     vexpand: true,
     binds: [['visible', Battery, 'available']],
     connections: [[Battery, w => {
-        w.toggleClassName('half', Battery.percent < 46);
-        w.toggleClassName('low', Battery.percent < 30);
+        w.toggleClassName('charging', Battery.charging || Battery.charged);
+        w.toggleClassName('medium', Battery.percent < options.battery.medium.value);
+        w.toggleClassName('low', Battery.percent < options.battery.low.value);
+        w.toggleClassName('half', Battery.percent < 48);
     }]],
     child: Widget.Overlay({
         vexpand: true,
@@ -34,37 +38,37 @@ export const BatteryProgress = () => Widget.Box({
 });
 
 export default () => Widget.Box({
-    className: 'header',
+    class_name: 'header horizontal',
     children: [
         Avatar(),
         Widget.Box({
-            className: 'system-box',
+            class_name: 'system-box',
             vertical: true,
             hexpand: true,
             children: [
                 Widget.Box({
                     children: [
                         Widget.Button({
-                            valign: 'center',
-                            onClicked: () => Theme.openSettings(),
+                            vpack: 'center',
+                            on_clicked: openSettings,
                             child: Widget.Icon(icons.settings),
                         }),
                         Widget.Label({
-                            className: 'uptime',
+                            class_name: 'uptime',
                             hexpand: true,
-                            valign: 'center',
+                            vpack: 'center',
                             connections: [[uptime, label => {
                                 label.label = `uptime: ${uptime.value}`;
                             }]],
                         }),
                         Widget.Button({
-                            valign: 'center',
-                            onClicked: () => Lockscreen.lockscreen(),
+                            vpack: 'center',
+                            on_clicked: () => Lockscreen.lockscreen(),
                             child: Widget.Icon(icons.lock),
                         }),
                         Widget.Button({
-                            valign: 'center',
-                            onClicked: () => PowerMenu.action('shutdown'),
+                            vpack: 'center',
+                            on_clicked: () => PowerMenu.action('shutdown'),
                             child: Widget.Icon(icons.powermenu.shutdown),
                         }),
                     ],

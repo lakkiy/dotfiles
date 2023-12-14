@@ -1,3 +1,9 @@
+import SystemTray from 'resource:///com/github/Aylur/ags/service/systemtray.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import Variable from 'resource:///com/github/Aylur/ags/variable.js';
+import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
+import Mpris from 'resource:///com/github/Aylur/ags/service/mpris.js';
+import Battery from 'resource:///com/github/Aylur/ags/service/battery.js';
 import OverviewButton from './buttons/OverviewButton.js';
 import Workspaces from './buttons/Workspaces.js';
 import FocusedClient from './buttons/FocusedClient.js';
@@ -8,29 +14,42 @@ import SysTray from './buttons/SysTray.js';
 import ColorPicker from './buttons/ColorPicker.js';
 import SystemIndicators from './buttons/SystemIndicators.js';
 import PowerMenu from './buttons/PowerMenu.js';
-import Separator from '../misc/Separator.js';
 import ScreenRecord from './buttons/ScreenRecord.js';
 import BatteryBar from './buttons/BatteryBar.js';
 import SubMenu from './buttons/SubMenu.js';
-import { SystemTray, Widget, Variable } from '../imports.js';
-import { Notifications, Mpris, Battery } from '../imports.js';
 import Recorder from '../services/screenrecord.js';
+import options from '../options.js';
 
 const submenuItems = Variable(1);
 SystemTray.connect('changed', () => {
     submenuItems.setValue(SystemTray.items.length + 1);
 });
 
-const SeparatorDot = (service, condition) => Separator({
-    orientation: 'vertical',
-    valign: 'center',
-    connections: service && [[service, dot => {
-        dot.visible = condition(service);
-    }]],
-});
+/**
+ * @template T
+ * @param {T=} service
+ * @param {(self: T) => boolean=} condition
+ */
+const SeparatorDot = (service, condition) => {
+    const visibility = self => {
+        if (!options.bar.separators.value)
+            return self.visible = false;
+
+        self.visible = condition && service
+            ? condition(service)
+            : options.bar.separators.value;
+    };
+
+    const conn = service ? [[service, visibility]] : [];
+    return Widget.Separator({
+        connections: [['draw', visibility], ...conn],
+        binds: [['visible', options.bar.separators]],
+        vpack: 'center',
+    });
+};
 
 const Start = () => Widget.Box({
-    className: 'start',
+    class_name: 'start',
     children: [
         OverviewButton(),
         SeparatorDot(),
@@ -44,14 +63,14 @@ const Start = () => Widget.Box({
 });
 
 const Center = () => Widget.Box({
-    className: 'center',
+    class_name: 'center',
     children: [
         DateButton(),
     ],
 });
 
 const End = () => Widget.Box({
-    className: 'end',
+    class_name: 'end',
     children: [
         SeparatorDot(Mpris, m => m.players.length > 0),
         MediaIndicator(),
@@ -64,6 +83,7 @@ const End = () => Widget.Box({
                 ColorPicker(),
             ],
         }),
+
         SeparatorDot(),
         ScreenRecord(),
         SeparatorDot(Recorder, r => r.recording),
@@ -75,15 +95,19 @@ const End = () => Widget.Box({
     ],
 });
 
+/** @param {number} monitor */
 export default monitor => Widget.Window({
     name: `bar${monitor}`,
+    class_name: 'transparent',
     exclusive: true,
     monitor,
-    anchor: ['top', 'left', 'right'],
+    binds: [['anchor', options.bar.position, 'value', pos => ([
+        pos, 'left', 'right',
+    ])]],
     child: Widget.CenterBox({
-        className: 'panel',
-        startWidget: Start(),
-        centerWidget: Center(),
-        endWidget: End(),
+        class_name: 'panel',
+        start_widget: Start(),
+        center_widget: Center(),
+        end_widget: End(),
     }),
 });

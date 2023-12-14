@@ -15,14 +15,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixgl = {
-      url = "github:guibou/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nur.url = "github:nix-community/NUR";
     gotraceui.url = "github:dominikh/gotraceui";
-    ags.url = "github:Aylur/ags"; # replace eww
+    ags.url = "github:Aylur/ags";
     hyprland.url = "github:hyprwm/Hyprland";
     daeuniverse.url = "github:daeuniverse/flake.nix";
   };
@@ -54,7 +49,6 @@
 
 
   nixConfig = {
-    warn-dirty = false;
     experimental-features = [ "nix-command" "flakes" ];
     substituters = [
       "https://mirrors.ustc.edu.cn/nix-channels/store"
@@ -62,7 +56,6 @@
       "https://hyprland.cachix.org"
       "https://xddxdd.cachix.org" # wechat-uos in nur
     ];
-
     extra-substituters = [
       "https://nix-community.cachix.org"
     ];

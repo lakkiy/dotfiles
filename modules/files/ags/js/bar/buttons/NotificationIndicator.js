@@ -1,9 +1,16 @@
+import App from 'resource:///com/github/Aylur/ags/app.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 import icons from '../../icons.js';
 import HoverRevealer from '../../misc/HoverRevealer.js';
-import { Widget, Notifications, Utils, App } from '../../imports.js';
 
+/**
+ * @param {Object} o
+ * @param {import('../../misc/HoverRevealer').HoverRevealProps['direction']=} o.direction
+ */
 export default ({ direction = 'left' } = {}) => HoverRevealer({
-    className: 'notifications panel-button',
+    class_name: 'notifications panel-button',
     eventboxConnections: [
         ['button-press-event', () => App.openWindow('dashboard')],
         [Notifications, box => box.visible =
@@ -15,9 +22,9 @@ export default ({ direction = 'left' } = {}) => HoverRevealer({
             return;
 
         revealer._title = title;
-        revealer.revealChild = true;
+        revealer.reveal_child = true;
         Utils.timeout(3000, () => {
-            revealer.revealChild = false;
+            revealer.reveal_child = false;
         });
     }]],
     direction,
@@ -29,7 +36,7 @@ export default ({ direction = 'left' } = {}) => HoverRevealer({
     }),
     child: Widget.Label({
         truncate: 'end',
-        maxWidthChars: 40,
+        max_width_chars: 40,
         binds: [['label', Notifications, 'notifications', n => n.reverse()[0]?.summary || '']],
     }),
 });

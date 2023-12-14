@@ -16,10 +16,9 @@ in
     gnumake
     neofetch
     htop
-    btop                     # htop
     delta                    # diff
     fd                       # find
-    # ripgrep                  # grep
+    ripgrep                  # grep
     ugrep                    # faster than ripgrep
     cloc                     # count code line
     jq                       # process json
@@ -27,16 +26,17 @@ in
     tealdeer                 # tldr
     tree                     # show folder as tree view
     d2                       # draw
-    hunspell                 # spell check
-    ltex-ls                  # lsp server
-    tex                      # basic support for org mode
-    iperf
-    mg
-    w3m                      # read html mail in emacs, should move to # emacs.nix
-    readability-cli          # firefox reader mode, for emacs eww
+    iperf                    # test preformance of network
     pandoc
     tailspin                 # highlight logs
     websocat                 # curl for websocket
+    hunspell                 # spell check #TODO
+
+    # cli for emacs
+    tex                      # basic support for org mode
+    ltex-ls                  # lsp server
+    w3m                      # read html mail in emacs
+    readability-cli          # firefox reader mode, for emacs eww
 
     # cli client
     kubectl
@@ -50,14 +50,6 @@ in
     unrar
     unzip
 
-    # clipboard
-    wl-clipboard # wayland
-    xclip # x11
-
-    # misc
-    aria
-    you-get
-
     # nix tools
     nurl # generate nix fetcher from url
     # $ nurl https://github.com/nix-community/patsh v0.2.0 2>/dev/null
@@ -68,14 +60,11 @@ in
     #   hash = "sha256-7HXJspebluQeejKYmVA7sy/F3dtU1gc4eAbKiPexMMA=";
     # }
     nix-init # generate nix package from url, build on top of nurl
-    # lsp server
-    nixd
   ];
 
   home.sessionVariables = {
     LANG     = "en_US.UTF-8";
-    # EDITOR   = "emacsclient -a '' -nw";
-    EDITOR   = "mg";
+    EDITOR   = "emacsclient -a '' -nw";
     TERM     = "xterm-256color";
     LC_CTYPE = "en_US.UTF-8";
     NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
@@ -119,6 +108,7 @@ in
       ];
     };
 
+    # FIXME
     fzf = {
       enable = true;
       enableZshIntegration = true;
@@ -211,7 +201,6 @@ for file in $HOME/.config/zsh/plugins/*.zsh; do
     source "$file"
 done
 
-# PROMPT='%n@%m %1~ %# '
 PROMPT='%F{green}[%n@%m:%~]%#%f '
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then

@@ -53,23 +53,4 @@ in
     # TODO Webextension configuration.
     # "3rdparty".Extensions = {};
   };
-
-  programs.firefox.preferences = {
-    "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-    "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-    "svg.context-properties.content.enabled" = true;
-    "gnomeTheme.normalWidthTabs" = true;
-    "gnomeTheme.tabsAsHeaderbar" = true;
-    "browser.download.useDownloadDir" = true;
-    "permissions.memory_only" = true;
-    "signon.rememberSignons" = false;
-    "browser.tabs.insertAfterCurrent" = true;
-    "extensions.pocket.enabled" = false;
-    "ui.systemUsesDarkTheme" = "1";
-    "general.autoScroll" = true;
-    "browser.tabs.inTitlebar" = "1";
-    "browser.tabs.firefox-view" = false;
-    "browser.bookmarks.addedImportButton" = true;
-    "pref.general.disable_button.default_browser" = true;
-  };
 }

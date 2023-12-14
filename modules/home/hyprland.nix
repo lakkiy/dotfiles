@@ -1,24 +1,41 @@
 { lib, config, pkgs, inputs, ... }:
 
-# TODO this should not build from source
-
 {
   services.swayidle.enable = true;
+  programs.wlogout.enable = true;
 
   wayland.windowManager.hyprland = {
     enable = true;
     enableNvidiaPatches = true;
+    xwayland.enable = true;
   };
 
-  programs.wezterm.enable = true;
-  programs.wlogout.enable = true;
+  home.packages = with pkgs; [
+    bemenu # dmenu for wayland
+    wlrctl # switch to application or run it
+    swaybg
+    gtklock #FIXME can't login, keep saying wrong password
+    networkmanagerapplet
+
+    blueberry     # bluetooth manager
+    inotify-tools # for ags
+
+    # wayland
+    wl-gammactl   # Contrast, brightness, and gamma adjustments
+    wl-clipboard
+    wf-recorder   # screen recording
+    hyprpicker    # color picker for wayland
+    wayshot       # screenshot
+    swappy        # snapshot editing
+    slurp
+    imagemagick   # for bitmap images
+    pwvucontrol   # pipewire volume control, replace pavucontrol
+    brightnessctl # control device brightness
+    swww          # animated wallpaper for wayland
+  ];
 
   home.file.".config/wlogout" = {
     source = ../files/wlogout;
-    recursive = true;
-  };
-  home.file.".config/wezterm" = {
-    source = ../files/wezterm;
     recursive = true;
   };
 
@@ -28,32 +45,4 @@
     source = ../files/hypr;
     recursive = true;
   };
-
-  home.file.".config/ags" = {
-    source = ../files/ags;
-    recursive = true;
-  };
-
-  home.packages = with pkgs; [
-    swaybg
-    networkmanagerapplet
-    gtklock
-    bemenu
-    grim
-    slurp
-    # ags and it's dep
-    ags
-    blueberry # bluetooth manager
-    swww # animated wallpaper for wayland
-    sassc # front end for libsass
-    brightnessctl # control device brightness
-    hyprpicker # color picker for wayland
-    wf-recorder # screen recording
-    wayshot # screenshot
-    imagemagick # for bitmap images
-    wl-gammactl # Contrast, brightness, and gamma adjustments
-    pwvucontrol # pipewire volume control, replace pavucontrol
-    inotify-tools # for ags
-  ];
-
 }

@@ -1,18 +1,21 @@
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import DateColumn from './DateColumn.js';
 import NotificationColumn from './NotificationColumn.js';
 import PopupWindow from '../misc/PopupWindow.js';
-import Separator from '../misc/Separator.js';
-import { Widget } from '../imports.js';
 
+/**
+ * @param {Object} o
+ * @param {import('types/widgets/window').WindowProps['anchor']=} o.anchor
+ * @param {import('../misc/PopupWindow.js').PopopWindowProps['layout']=} o.layout
+ */
 export default ({ anchor = ['top'], layout = 'top' } = {}) => PopupWindow({
     name: 'dashboard',
     layout,
     anchor,
     content: Widget.Box({
-        className: 'dashboard',
         children: [
             NotificationColumn(),
-            Separator({ orientation: 'vertical' }),
+            Widget.Separator({ orientation: 1 }),
             DateColumn(),
         ],
     }),

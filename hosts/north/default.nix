@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -47,7 +47,7 @@
   users.users.gray = {
     isNormalUser = true;
     description = "gray";
-    extraGroups = [ "docker" "networkmanager" "wheel" ];
+    extraGroups = [ "docker" "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
       steam
       mpv
@@ -59,9 +59,11 @@
       localsend
       # dropbox version can't login
       obs-studio
+      floorp # custom firefox, testing
     ];
   };
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   environment.systemPackages = [
     (let base = pkgs.appimageTools.defaultFhsEnvArgs; in

@@ -9,6 +9,8 @@
     # (import ../../modules/home/gnome.nix)
     (import ../../modules/home/gtk.nix)
     (import ../../modules/home/hyprland.nix)
+    (import ../../modules/home/ags.nix)
+    (import ../../modules/home/wezterm.nix)
     (import ../../modules/home/browser.nix)
   ];
 

@@ -2,13 +2,42 @@
 
 {
   home.packages = with pkgs; [
+    protobuf
+
+    # tag system
+    universal-ctags
+    global
+    cscope
+
+    #langs
+    nixd
+    nixfmt
     gcc
     gdb
-    nixfmt
-    protobuf
     ccls
-    jdk # for run some java programs
-
+    jdk
+    clojure
+    leiningen
+    sassc # front end for libsass
+    # js
+    deno
+    nodejs-slim # for copilet.el
+    typescript
+    nodePackages.typescript-language-server   # also for js
+    nodePackages.vscode-langservers-extracted # html, css etc
+    nodePackages.pnpm
+    # python
+    #vscode-extensions.ms-python.vscode-pylance
+    nodePackages.pyright                      # lsp server
+    (python3.withPackages(ps: with ps; [
+      pam # for ags
+      pygments # for gtags
+      pdm
+      pip
+      pipx
+      python-lsp-server
+      epc orjson sexpdata six paramiko rapidfuzz # lsp-bridge for emacs
+    ]))
     # go
     gopls
     gotools # goimports
@@ -23,37 +52,6 @@
     protoc-gen-go
     protoc-gen-go-grpc
     wire # DI
-    # yaegi # go's repl
-
-    # python
-    #vscode-extensions.ms-python.vscode-pylance
-    nodePackages.pyright                      # lsp server
-    (python3.withPackages(ps: with ps; [
-      pygments # for gtags
-      pdm
-      pip
-      pipx
-      python-lsp-server
-      pam # for ags
-      epc orjson sexpdata six paramiko rapidfuzz # lsp-bridge for emacs
-    ]))
-
-    # tag system
-    universal-ctags
-    global
-    cscope
-
-    clojure
-    leiningen
-
-    deno
-    nodePackages.typescript
-    nodePackages.typescript-language-server   # also for js
-    nodePackages.vscode-langservers-extracted # html, css etc
-    nodePackages.pnpm
-
-    # for copilet.el
-    nodejs-slim
   ];
 
   programs.go = {
