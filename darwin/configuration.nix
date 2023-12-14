@@ -35,6 +35,7 @@
     ];
     brews = [
       "pngpaste"
+      "docker"
     ];
     casks = [
       "clashx" # NOTE Say it!
