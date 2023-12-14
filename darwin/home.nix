@@ -11,7 +11,7 @@
       home-manager
       coreutils
     ];
-    stateVersion = "23.05";
+    stateVersion = "23.11";
   };
 
   home.file."Pictures/wallpapers".source = ../modules/files/wallpapers;

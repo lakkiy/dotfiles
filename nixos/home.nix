@@ -9,6 +9,6 @@
 
   home.file."Pictures/wallpapers".source = ../modules/files/wallpapers;
 
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 }
