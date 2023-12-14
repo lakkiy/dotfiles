@@ -10,6 +10,7 @@ with lib.hm.gvariant;
     gnomeExtensions.blur-my-shell
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.shu-zhi
+    gnomeExtensions.just-perfection
   ];
 
   dconf.settings = {
