@@ -38,6 +38,10 @@ in
     ltex-ls                  # lsp server
     w3m                      # read html mail in emacs
     readability-cli          # firefox reader mode, for emacs eww
+    typst
+    typstfmt
+    typst-lsp
+    typst-live
 
     # cli client
     kubectl
