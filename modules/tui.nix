@@ -35,6 +35,7 @@ in
     w3m                      # read html mail in emacs, should move to # emacs.nix
     readability-cli          # firefox reader mode, for emacs eww
     pandoc
+    tailspin                 # highlight logs
 
     # cli client
     kubectl
