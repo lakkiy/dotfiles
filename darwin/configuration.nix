@@ -3,10 +3,10 @@
 {
   users.users.liubo = {               # macOS user
     home = "/Users/liubo";
-    # shell = pkgs.zsh;                 # Default shell
+    shell = pkgs.zsh;                 # Default shell
   };
-  # environment.shells = [ pkgs.zsh ];  # Default shell
-  # programs.zsh.enable = true;         # Shell needs to be enabled
+  environment.shells = [ pkgs.zsh ];  # Default shell
+  programs.zsh.enable = true;         # Shell needs to be enabled
 
   networking = {
     computerName = "cmcm";             # Host name
@@ -100,7 +100,7 @@
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
-    # activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh''; # Since it's not possible to declare default shell, run this command after build
+    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh''; # Since it's not possible to declare default shell, run this command after build
     stateVersion = 4;
   };
 }

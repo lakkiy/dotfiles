@@ -59,7 +59,6 @@
       magit
       magit-delta
       diff-hl
-      magit-todos
       dirvish
       eat
       w3m
