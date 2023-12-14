@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     gnome.nautilus
     gnome.eog # image viewer
+    gnome.evince # pdf viewer
   ];
 
   programs.hyprland = {

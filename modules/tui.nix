@@ -71,6 +71,9 @@ in
     TERM     = "xterm-256color";
     LC_CTYPE = "en_US.UTF-8";
     NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
+    # fix 500 error for localsend
+    # https://github.com/localsend/localsend/issues/461#issuecomment-1715170140
+    XDG_DOWNLOAD_DIR = "$HOME/Downloads";
   };
 
   home.sessionPath = [

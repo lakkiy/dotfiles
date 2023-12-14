@@ -24,6 +24,12 @@
       address = "192.168.31.151";
       prefixLength = 24;
     }];
+    firewall = {
+      enable = true;
+      # 53317 for localsend
+      allowedTCPPorts = [ 53317 ];
+      allowedUDPPorts = [ 53317 ];
+    };
   };
 
   # Enable the X11 windowing system.
@@ -59,10 +65,9 @@
       ventoy # bootable usb
       butane # create fedora coreos ignition file
       cider # apple music client
-      localsend # send/recv file to phone
+      localsend xdg-user-dirs # send/recv file to phone
       inkscape # Vector graphics editor
-      kcc # Kindle Comic Converter
-      zathura # pdf reader
+      kcc # Kindle Comic Converter # TODO
       pcmanfm # file manager
       fractal # matrix client
     ];
