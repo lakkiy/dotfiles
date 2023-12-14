@@ -19,6 +19,7 @@
     protoc-gen-go
     protoc-gen-go-grpc
     wire # DI
+    yaegi # go's repl
 
     # python
     nodePackages.pyright                      # lsp server
