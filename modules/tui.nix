@@ -15,6 +15,7 @@ in
     man
     gnumake
     neofetch
+    htop
     btop                     # htop
     delta                    # diff
     fd                       # find
