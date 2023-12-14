@@ -33,6 +33,9 @@
       # have emacs-plus patchs, prebuilded
       "jimeh/emacs-builds"
     ];
+    brews = [
+      "pngpaste"
+    ];
     casks = [
       "clashx" # NOTE Say it!
       "firefox"
