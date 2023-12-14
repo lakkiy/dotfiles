@@ -58,6 +58,7 @@
       ventoy
       butane
       cider
+      localsend
       # dropbox version can't login
     ];
   };
