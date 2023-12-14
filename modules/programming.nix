@@ -7,6 +7,7 @@
     nixfmt
     protobuf
     ccls
+    jdk # for run some java programs
 
     # go
     gopls
