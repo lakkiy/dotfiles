@@ -65,8 +65,8 @@
         "swayidle -w timeout 1800 'systemctl suspend'"
         "emacs --daemon"
         "hyprctl setcursor Bibata-Modern-Amber 32"
-        "swww init"
-        "swww img '$HOME/Pictures/wallpapers/default.jpg' -o DP-2 & swww img '$HOME/Pictures/wallpapers/v/default.jpg' -o DP-3"
+        # https://github.com/Horus645/swww/issues/100
+        "swww init && swww img '$HOME/Pictures/wallpapers/default.jpg' -o DP-2 & swww img '$HOME/Pictures/wallpapers/v/default.jpg' -o DP-3"
         "ags -b hypr"
         "udiskie &"
       ];
