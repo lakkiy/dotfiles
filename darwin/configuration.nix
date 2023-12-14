@@ -30,7 +30,8 @@
       "homebrew/cask-versions"
       "homebrew/core"
       "homebrew/services"
-      "railwaycat/emacsmacport"
+      # have emacs-plus patchs, prebuilded
+      "jimeh/emacs-builds"
     ];
     casks = [
       "clashx" # NOTE Say it!
@@ -41,8 +42,8 @@
       "squirrel"
       "syncthing"
       # "docker"
-      "emacs-mac"
       "anki"
+      "emacs-app-good"
       "discord"
       "dropbox"
       "netnewswire"
