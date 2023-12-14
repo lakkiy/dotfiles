@@ -74,10 +74,11 @@
      }))
   ];
 
-  services.daed = {
+  services.dae = {
       enable = true;
-      configDir = "/etc/daed";
-      listen = "0.0.0.0:2023";
+      disableTxChecksumIpGeneric = false;
+      configFile = "/etc/dae/config.dae";
+      assets = with pkgs; [ v2ray-geoip v2ray-domain-list-community ];
       openFirewall = {
         enable = true;
         port = 12345;
