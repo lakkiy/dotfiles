@@ -14,5 +14,6 @@
     stateVersion = "23.05";
   };
 
+  home.file."Pictures/wallpapers".source = ../modules/files/wallpapers;
   home.file.".config/karabiner/karabiner.json".source = ../modules/files/karabiner.json;
 }

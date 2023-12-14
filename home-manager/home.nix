@@ -6,6 +6,7 @@
     bash.enable = true;
   };
 
+  home.file."Pictures/wallpapers".source = ../modules/files/wallpapers;
   home.stateVersion = "23.05";
   targets.genericLinux.enable = true;
 

@@ -60,6 +60,7 @@
       # dropbox version can't login
       obs-studio
       floorp # custom firefox, testing
+      inkscape # Vector graphics editor
     ];
   };
   virtualisation.docker.enable = true;

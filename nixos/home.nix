@@ -7,6 +7,8 @@
     (import ../modules/home/syncthing.nix)
   ];
 
+  home.file."Pictures/wallpapers".source = ../modules/files/wallpapers;
+
   home.stateVersion = "23.05";
   programs.home-manager.enable = true;
 }

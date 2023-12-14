@@ -1,16 +1,22 @@
 import App from 'resource:///com/github/Aylur/ags/app.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import { exec } from 'resource:///com/github/Aylur/ags/utils.js';
+import GLib from 'gi://GLib';
 
-const expectedVersion = '1.5.1';
-let config = {};
-
-if (pkg.version === expectedVersion) {
-    config = (await import('./js/main.js')).default;
+export default {
+  style: App.configDir + '/style.css',
+  windows: [
+	Widget.Window({
+	  monitor: 'HDMI-A-2',
+	  name: 'viewedge-clock',
+	  class_name: 'viewedge-clock',
+	  anchor: ['top', 'bottom', 'left', 'right'],
+	  layer: 'background',
+	  child: Widget.Label({
+		connections: [
+		  [1000, self => { self.label = GLib.DateTime.new_now_local().format('%H:%M:%S') }]
+		]
+	  })
+	})
+  ]
 }
-else {
-    print('your ags version is ' + pkg.version);
-    print('my config uses the git branch which is ' + expectedVersion);
-    print('update ags to the current git version');
-    App.connect('config-parsed', app => app.Quit());
-}
-
-export default config;
