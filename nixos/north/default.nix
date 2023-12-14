@@ -49,18 +49,21 @@
     description = "gray";
     extraGroups = [ "docker" "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
+      # must have packages for all DE/WM
       steam
       mpv
       plex-media-player
       qbittorrent
-      ventoy
-      butane
-      cider
-      localsend
-      # dropbox version can't login
       obs-studio
-      floorp # custom firefox, testing
+      dropbox
+      ventoy # bootable usb
+      butane # create fedora coreos ignition file
+      cider # apple music client
+      localsend # send/recv file to phone
       inkscape # Vector graphics editor
+      kcc # Kindle Comic Converter
+      zathura # pdf reader
+      pcmanfm # file manager
     ];
   };
   virtualisation.docker.enable = true;
