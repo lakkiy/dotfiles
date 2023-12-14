@@ -11,6 +11,7 @@
     cardo         # variable pitch font
     sarasa-gothic # 中英等宽
     lxgw-wenkai   # 中文字体
+    symbola
 
     # anything need nerd icon(editor, system bar, etc...)
    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
