@@ -15,10 +15,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixgl = {
+      url = "github:guibou/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur.url = "github:nix-community/NUR";
     gotraceui.url = "github:dominikh/gotraceui";
     ags.url = "github:Aylur/ags"; # replace eww
-    nix-gl-host.url = "github:numtide/nix-gl-host";
   };
 
 

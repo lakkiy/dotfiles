@@ -75,6 +75,21 @@
         "type": "github"
       }
     },
+    "flake-utils_2": {
+      "locked": {
+        "lastModified": 1659877975,
+        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "gotraceui": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -114,21 +129,24 @@
         "type": "github"
       }
     },
-    "nix-gl-host": {
+    "nixgl": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1692806827,
-        "narHash": "sha256-cHZbURRIJkS5AmA/mqXzbmMKbKj5Tdvu1of6GE1bdrk=",
-        "owner": "numtide",
-        "repo": "nix-gl-host",
-        "rev": "69dc3580aec3dc98980d6cc3815ed2860c5b5e8b",
+        "lastModified": 1685908677,
+        "narHash": "sha256-E4zUPEUFyVWjVm45zICaHRpfGepfkE9Z2OECV9HXfA4=",
+        "owner": "guibou",
+        "repo": "nixGL",
+        "rev": "489d6b095ab9d289fe11af0219a9ff00fe87c7c5",
         "type": "github"
       },
       "original": {
-        "owner": "numtide",
-        "repo": "nix-gl-host",
+        "owner": "guibou",
+        "repo": "nixGL",
         "type": "github"
       }
     },
@@ -165,22 +183,6 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1669045945,
-        "narHash": "sha256-BQxzijvZpLQ7R+KuQzCPcFgIS6OK0Onb29pYFe2pzJo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "6b5019a48f876f3288efc626fa8b70ad0c64eb46",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
         "lastModified": 1692638711,
         "narHash": "sha256-J0LgSFgJVGCC1+j5R2QndadWI1oumusg6hCtYAzLID4=",
         "owner": "nixos",
@@ -216,8 +218,8 @@
         "darwin": "darwin",
         "gotraceui": "gotraceui",
         "home-manager": "home-manager",
-        "nix-gl-host": "nix-gl-host",
-        "nixpkgs": "nixpkgs_4",
+        "nixgl": "nixgl",
+        "nixpkgs": "nixpkgs_3",
         "nur": "nur"
       }
     }

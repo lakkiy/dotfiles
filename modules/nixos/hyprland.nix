@@ -13,7 +13,6 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    mako
     wlogout
     swaybg
     swayidle
@@ -21,7 +20,8 @@
     bemenu
     grim
     slurp
-    # replace kitty and bemenu ?
+    wezterm
+    # replace wezterm and bemenu ?
     fuzzel
     foot
   ];
