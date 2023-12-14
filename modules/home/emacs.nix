@@ -125,7 +125,6 @@
       puni
       dumb-jump
       apheleia
-      # TODO
       rime
     ];
   };

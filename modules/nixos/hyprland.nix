@@ -1,17 +1,18 @@
 { config, pkgs, ... }:
 
 {
-  programs = {
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-      enableNvidiaPatches = true;
-    };
-    nm-applet = {
-      enable = true;
-      indicator = true;
-    };
+  services.xserver.displayManager.gdm.enable = true;
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    enableNvidiaPatches = true;
   };
+  programs.nm-applet = {
+    enable = true;
+    indicator = true;
+  };
+
   environment.systemPackages = with pkgs; [
     wlogout
     swaybg

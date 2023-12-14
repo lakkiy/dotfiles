@@ -3,6 +3,16 @@
 # TODO this should not build from source
 
 {
+  services.swayidle.enable = true;
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    enableNvidiaPatches = true;
+  };
+
+  programs.wezterm.enable = true;
+  programs.wlogout.enable = true;
+
   home.file.".config/wlogout" = {
     source = ../files/wlogout;
     recursive = true;
@@ -45,24 +55,4 @@
     pwvucontrol # pipewire volume control, replace pavucontrol
   ];
 
-  services = {
-    swayidle = {
-      enable = true;
-    };
-  };
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-    enableNvidiaPatches = true;
-  };
-
-  programs = {
-    wezterm = {
-      enable = true;
-    };
-    wlogout = {
-      # enable before waybar
-      enable = true;
-    };
-  };
 }

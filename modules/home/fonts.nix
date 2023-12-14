@@ -4,6 +4,7 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    dejavu_fonts
     font-awesome_5
     noto-fonts-emoji
     noto-fonts    # no 豆腐

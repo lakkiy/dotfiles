@@ -6,8 +6,9 @@
       ./hardware-configuration.nix
       ../../modules/nixos/nvidia.nix
       ../../modules/nixos/fcitx5.nix
-      ../../modules/nixos/gnome.nix
+      # ../../modules/nixos/gnome.nix
       ../../modules/nixos/hyprland.nix
+      ../../modules/nixos/browser.nix
     ];
 
   # Bootloader.
@@ -48,7 +49,6 @@
     description = "gray";
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
       steam
       mpv
       plex-media-player
