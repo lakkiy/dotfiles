@@ -60,7 +60,6 @@
       magit-delta
       diff-hl
       magit-todos
-      dired-sidebar
       dirvish
       eat
       w3m
@@ -70,13 +69,7 @@
       telega
       org-static-blog
       xeft
-      toml-mode
-      yaml-mode
-      docker-compose-mode
-      dockerfile-mode
-      k8s-mode
       git-modes
-      terraform-mode
       markdown-mode
       markdown-toc
       protobuf-mode

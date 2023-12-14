@@ -26,6 +26,7 @@
       pdm
       pip
       pipx
+      python-lsp-server
     ]))
 
     # tag system

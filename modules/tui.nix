@@ -31,7 +31,8 @@ in
     tex                      # basic support for org mode
     iperf
     mg
-    w3m                      # read html mail in emacs, should move to emacs.nix
+    w3m                      # read html mail in emacs, should move to # emacs.nix
+    readability-cli          # firefox reader mode, for emacs eww
 
     # cli client
     kubectl
