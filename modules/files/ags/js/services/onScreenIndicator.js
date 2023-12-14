@@ -1,4 +1,5 @@
 import icons from '../icons.js';
+import { getAudioTypeIcon } from '../utils.js';
 const { Service } = ags;
 const { timeout, connect } = ags.Utils;
 
@@ -24,29 +25,24 @@ class IndicatorService extends Service {
     }
 
     speaker() {
-        const value = ags.Service.Audio.speaker.volume;
-        const { muted, low, medium, high, overamplified } = icons.audio.volume;
-        const icon = [[101, overamplified], [67, high], [34, medium], [1, low], [0, muted]]
-            .find(([threshold]) => threshold <= value * 100)[1];
-
-        this.popup(value, icon);
+        this.popup(
+            ags.Service.Audio.speaker.volume,
+            getAudioTypeIcon(ags.Service.Audio.speaker.iconName),
+        );
     }
 
     display() {
         // brightness is async, so lets wait a bit
-        timeout(10, () => {
-            const value = ags.Service.Brightness.screen;
-            const icon = icons.brightness.screen[Math.ceil(value * 10)];
-            this.popup(value, icon);
-        });
+        timeout(10, () => this.popup(
+            ags.Service.Brightness.screen,
+            icons.brightness.screen));
     }
 
     kbd() {
         // brightness is async, so lets wait a bit
-        timeout(10, () => {
-            const value = ags.Service.Brightness.kbd;
-            this.popup((value * 33 + 1) / 100, icons.brightness.keyboard);
-        });
+        timeout(10, () => this.popup(
+            (ags.Service.Brightness.kbd * 33 + 1) / 100,
+            icons.brightness.keyboard));
     }
 
     connectWidget(widget, callback) {

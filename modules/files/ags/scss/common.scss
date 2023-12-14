@@ -212,6 +212,7 @@ window {
 
 @mixin shader($width: 3em){
     @include common;
+    border-radius: max($radii - $border_width, 0);
 
     label {
         color: $shader_fg;
@@ -301,6 +302,8 @@ window {
 
 tooltip {
     @include common;
+    * { all: unset; }
+
     background-color: transparent;
     border: none;
 

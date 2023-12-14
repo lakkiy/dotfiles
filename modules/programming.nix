@@ -28,6 +28,7 @@
       pip
       pipx
       python-lsp-server
+      pam # for ags
     ]))
 
     # tag system

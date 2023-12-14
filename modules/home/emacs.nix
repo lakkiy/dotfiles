@@ -11,6 +11,7 @@
 
       # packages
       lsp-bridge
+      gruber-darker-theme
       tabnine
       acm-terminal
       popon

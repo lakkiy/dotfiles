@@ -59,20 +59,7 @@ window#dashboard .dashboard {
             }
         }
 
-        .notification-wallpaper-box {
-            @include widget;
-
-            .wallpaper {
-                border-radius: max($radii - $border_width, 0);
-                background-position: bottom right;
-
-                @if $drop_shadow {
-                    box-shadow: inset 0 0 $spacing 0 $shadow;
-                }
-            }
-        }
-
-        .notification-list-box {
+        .notification-scrollable {
             @include scrollbar;
 
             scrollbar, scrollbar:hover {
@@ -81,19 +68,13 @@ window#dashboard .dashboard {
                 border-bottom-left-radius: 0;
             }
 
-
-            .notification-list {
-                padding: $spacing/2;
-            }
-
             .notification {
                 @include notification;
 
                 > box {
-                    @include floating_widget;
-                    border-radius: $radii;
+                    @include widget;
+                    margin: $spacing/2 0;
                     padding: $spacing;
-                    margin: $spacing/2;
                 }
             }
         }
@@ -143,17 +124,18 @@ window#dashboard .dashboard {
         margin-top: $spacing;
         margin-right: $spacing;
         &:last-child { margin-right: 0; }
-        padding: 10px;
+        padding: $spacing;
 
         .circular-progress {
-            min-height: 70px;
+            min-height: $spacing * 8;
+            min-width: $spacing * 8;
             margin: $spacing/2;
-            font-size: $spacing*1.2;
+            font-size: $spacing;
             background-color: $bg_color;
             color: $accent;
 
             image {
-                font-size: 2em;
+                font-size: 1.8em;
             }
         }
     }

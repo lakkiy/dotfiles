@@ -53,6 +53,7 @@
     imagemagick # for bitmap images
     wl-gammactl # Contrast, brightness, and gamma adjustments
     pwvucontrol # pipewire volume control, replace pavucontrol
+    inotify-tools # for ags
   ];
 
 }

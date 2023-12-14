@@ -1,4 +1,3 @@
-// common
 const WP = `/home/${ags.Utils.USER}/Pictures/Wallpapers/`;
 
 const editScheme = (scheme, edit) => {

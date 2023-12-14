@@ -1,6 +1,12 @@
 import Cairo from 'cairo';
 import options from './options.js';
 import icons from './icons.js';
+import Theme from './services/theme/theme.js';
+
+export function forMonitors(widget) {
+    const ws = ags.Service.Hyprland.HyprctlGet('monitors');
+    return ws.map(mon => widget(mon.id));
+}
 
 export function createSurfaceFromWidget(widget) {
     const alloc = widget.get_allocation();
@@ -31,4 +37,28 @@ export function warnOnLowBattery() {
             ]);
         }
     });
+}
+
+export function getAudioTypeIcon(icon) {
+    const substitues = [
+        ['audio-headset-bluetooth', icons.audio.type.headset],
+        ['audio-card-analog-usb', icons.audio.type.speaker],
+        ['audio-card-analog-pci', icons.audio.type.card],
+    ];
+
+    for (const [from, to] of substitues) {
+        if (from === icon)
+            return to;
+    }
+
+    return icon;
+}
+
+export function scssWatcher() {
+    return ags.Utils.subprocess([
+        'inotifywait',
+        '--recursive',
+        '--event', 'create,modify',
+        '-m', ags.App.configDir + '/scss',
+    ], Theme.setup);
 }

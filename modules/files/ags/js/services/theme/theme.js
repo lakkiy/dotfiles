@@ -2,7 +2,6 @@ import themes from '../../themes.js';
 import setupScss from './scss.js';
 import setupHyprland from './hyprland.js';
 import { SettingsDialog } from '../../settingsdialog/SettingsDialog.js';
-const { App } = ags;
 const { Service } = ags;
 const { USER, exec, execAsync, readFile, writeFile, CACHE_DIR } = ags.Utils;
 const THEME_CACHE = CACHE_DIR + '/theme-overrides.json';
@@ -52,11 +51,10 @@ class ThemeService extends Service {
     setupOther() {
         const darkmode = this.getSetting('color_scheme') === 'dark';
 
-        const gsettings = 'gsettings set org.gnome.desktop.interface color-scheme';
-        execAsync(`${gsettings} "prefer-${darkmode ? 'dark' : 'light'}"`).catch(print);
-
-        const wezterm = `/home/${USER}/.config/wezterm/theme.lua`;
-        writeFile(`return require("charm${darkmode ? '' : '-light'}")`, wezterm);
+        if (exec('which gsettings')) {
+            const gsettings = 'gsettings set org.gnome.desktop.interface color-scheme';
+            execAsync(`${gsettings} "prefer-${darkmode ? 'dark' : 'light'}"`).catch(print);
+        }
     }
 
     setupWallpaper() {
@@ -117,6 +115,7 @@ export default class Theme {
     static instance = new ThemeService();
     static get themes() { return themes; }
 
+    static setup() { Theme.instance.setup(); }
     static reset() { Theme.instance.reset(); }
     static openSettings() { Theme.instance.openSettings(); }
     static getSetting(prop) { return Theme.instance.getSetting(prop); }

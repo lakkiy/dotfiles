@@ -1,4 +1,4 @@
-const { execAsync, writeFile } = ags.Utils;
+const { exec, writeFile, ensureDirectory } = ags.Utils;
 
 const generated = str => `// THIS FILE IS GENERATED
 ${str}`;
@@ -54,14 +54,15 @@ $bar_style: ${t.bar_style};
 $layout: ${t.layout};`;
 
 export default async function(theme) {
-    const path = ags.App.configDir;
+    const tmp = '/tmp/ags/scss';
+    ensureDirectory(tmp);
     try {
-        await writeFile(generated(scss(theme)), `${path}/scss/.generated.scss`);
-        await writeFile(generated(theme.additional_scss || ''), `${path}/scss/.additional.scss`);
-        await execAsync(['sassc', `${path}/scss/main.scss`, `${path}/style.css`]);
+        await writeFile(generated(scss(theme)), `${tmp}/generated.scss`);
+        await writeFile(generated(theme.additional_scss || ''), `${tmp}/additional.scss`);
+        exec(`sassc ${ags.App.configDir}/scss/main.scss ${tmp}/style.css`);
         ags.App.resetCss();
-        ags.App.applyCss(`${path}/style.css`);
+        ags.App.applyCss(`${tmp}/style.css`);
     } catch (error) {
-        logError(error);
+        console.error(error);
     }
 }

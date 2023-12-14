@@ -100,6 +100,7 @@ in
         merge.conflictStyle = "diff3";
         include.path = "$HOME/.gitconfig";
         credential.helper = if pkgs.stdenv.isLinux then "store" else "osxkeychain";
+        github.user = "404cn";
       };
       ignores = [
         ".DS_Store"
