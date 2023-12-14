@@ -13,7 +13,6 @@
   home.packages = with pkgs; [
     bemenu # dmenu for wayland
     wlrctl # switch to application or run it
-    gtklock #FIXME can't login, keep saying wrong password
     networkmanagerapplet
 
     blueberry     # bluetooth manager
