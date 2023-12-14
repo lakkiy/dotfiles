@@ -36,6 +36,7 @@
       pip
       pipx
       python-lsp-server
+      jedi-language-server
       epc orjson sexpdata six paramiko rapidfuzz # lsp-bridge for emacs
     ]))
     # go
