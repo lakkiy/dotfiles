@@ -53,7 +53,6 @@
       mpv
       plex-media-player
       qbittorrent
-      zotero
       crow-translate
       ventoy
       butane
@@ -74,6 +73,16 @@
        extraOutputsToInstall = ["dev"];
      }))
   ];
+
+  services.daed = {
+      enable = true;
+      configDir = "/etc/daed";
+      listen = "0.0.0.0:2023";
+      openFirewall = {
+        enable = true;
+        port = 12345;
+      };
+  };
 
   system.stateVersion = "23.05";
 }

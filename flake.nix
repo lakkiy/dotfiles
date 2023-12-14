@@ -24,6 +24,7 @@
     gotraceui.url = "github:dominikh/gotraceui";
     ags.url = "github:Aylur/ags"; # replace eww
     hyprland.url = "github:hyprwm/Hyprland";
+    daeuniverse.url = "github:daeuniverse/flake.nix";
   };
 
 

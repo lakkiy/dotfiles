@@ -3,12 +3,13 @@ import { Notifications, Utils, Widget, Variable } from '../../imports.js';
 import Gdk from 'gi://Gdk';
 
 const COLORS_CACHE = Utils.CACHE_DIR + '/colorpicker.json';
-const wlCopy = color => Utils.execAsync(['wl-copy', color]).catch(print);
+const wlCopy = color => Utils.execAsync(['wl-copy', color])
+    .catch(err => console.error(err));
 
 const colors = Variable([]);
 Utils.readFileAsync(COLORS_CACHE)
-    .catch(() => print('no colorpicker cache found'))
-    .then(out => colors.setValue(JSON.parse(out || '[]')));
+    .then(out => colors.setValue(JSON.parse(out || '[]')))
+    .catch(() => print('no colorpicker cache found'));
 
 export default () => PanelButton({
     className: 'panel-button colorpicker',
@@ -26,7 +27,8 @@ export default () => PanelButton({
                 list.shift();
 
             colors.value = list;
-            Utils.writeFile(JSON.stringify(list, null, 2), COLORS_CACHE);
+            Utils.writeFile(JSON.stringify(list, null, 2), COLORS_CACHE)
+                .catch(err => console.error(err));
         }
 
         btn._id = Notifications.Notify(
@@ -38,7 +40,7 @@ export default () => PanelButton({
             [],
             {},
         );
-    }).catch(print),
+    }).catch(err => console.error(err)),
     onSecondaryClick: btn => colors.value.length > 0 ? Widget.Menu({
         className: 'colorpicker',
         children: colors.value.map(color => Widget.MenuItem({

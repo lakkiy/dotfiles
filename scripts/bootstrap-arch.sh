@@ -31,7 +31,6 @@ pkgs=(
 
 aurpkgs=(
     # GUI
-    zotero-bin
     crow-translate
     dropbox
     plex-media-player

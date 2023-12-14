@@ -2,25 +2,19 @@ import { createSurfaceFromWidget } from '../utils.js';
 import Gdk from 'gi://Gdk';
 import Gtk from 'gi://Gtk';
 import { Hyprland, Utils, Widget, App } from '../imports.js';
+import options from '../options.js';
 
 const SCALE = 0.08;
 const TARGET = [Gtk.TargetEntry.new('text/plain', Gtk.TargetFlags.SAME_APP, 0)];
 
-function substitute(str) {
-    const subs = [
-        { from: 'Caprine', to: 'facebook-messenger' },
-    ];
+const dispatch = args => Utils.execAsync(`hyprctl dispatch ${args}`);
 
-    for (const { from, to } of subs) {
-        if (from === str)
-            return to;
-    }
+const substitute = str => options.substitutions.icons
+    .find(([from]) => from === str)?.[1] || str;
 
-    return str;
-}
-
-const Client = ({ address, size: [w, h], class: c, title } = {}) => Widget.Button({
+const Client = ({ address, size: [w, h], class: c, title }) => Widget.Button({
     className: 'client',
+    tooltipText: title,
     child: Widget.Icon({
         style: `
             min-width: ${w * SCALE}px;
@@ -28,21 +22,18 @@ const Client = ({ address, size: [w, h], class: c, title } = {}) => Widget.Butto
         `,
         icon: substitute(c),
     }),
-    tooltipText: title,
-    onSecondaryClick: () => Utils.execAsync(`hyprctl dispatch closewindow address:${address}`).catch(print),
-    onClicked: () => {
-        Utils.execAsync(`hyprctl dispatch focuswindow address:${address}`)
-            .then(() => App.closeWindow('overview'))
-            .catch(print);
-    },
-    setup: button => {
-        button.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, TARGET, Gdk.DragAction.COPY);
-        button.connect('drag-data-get', (_w, _c, data) => data.set_text(address, address.length));
-        button.connect('drag-begin', (_, context) => {
-            Gtk.drag_set_icon_surface(context, createSurfaceFromWidget(button));
-            button.toggleClassName('hidden', true);
+    onSecondaryClick: () => dispatch(`closewindow address:${address}`),
+    onClicked: () => dispatch(`focuswindow address:${address}`)
+        .then(() => App.closeWindow('overview')),
+
+    setup: btn => {
+        btn.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, TARGET, Gdk.DragAction.COPY);
+        btn.connect('drag-data-get', (_w, _c, data) => data.set_text(address, address.length));
+        btn.connect('drag-begin', (_, context) => {
+            Gtk.drag_set_icon_surface(context, createSurfaceFromWidget(btn));
+            btn.toggleClassName('hidden', true);
         });
-        button.connect('drag-end', () => button.toggleClassName('hidden', false));
+        btn.connect('drag-end', () => btn.toggleClassName('hidden', false));
     },
 });
 
@@ -62,11 +53,11 @@ export default index => {
         child: Widget.EventBox({
             hexpand: true,
             vexpand: true,
-            onPrimaryClick: () => Utils.execAsync(`hyprctl dispatch workspace ${index}`).catch(print),
+            onPrimaryClick: () => dispatch(`workspace ${index}`),
             setup: eventbox => {
                 eventbox.drag_dest_set(Gtk.DestDefaults.ALL, TARGET, Gdk.DragAction.COPY);
                 eventbox.connect('drag-data-received', (_w, _c, _x, _y, data) => {
-                    Utils.execAsync(`hyprctl dispatch movetoworkspacesilent ${index},address:${data.get_text()}`).catch(print);
+                    dispatch(`movetoworkspacesilent ${index},address:${data.get_text()}`);
                 });
             },
             child: fixed,
@@ -77,7 +68,11 @@ export default index => {
         fixed.get_children().forEach(ch => ch.destroy());
         clients
             .filter(({ workspace: { id } }) => id === index)
-            .forEach(c => c.mapped && fixed.put(Client(c), c.at[0] * SCALE, c.at[1] * SCALE));
+            .forEach(c => {
+                c.at[0] -= Hyprland.monitors.find(m => m.name === Hyprland.getWorkspace(c.workspace.id).monitor).x;
+                c.at[1] -= Hyprland.monitors.find(m => m.name === Hyprland.getWorkspace(c.workspace.id).monitor).y;
+                c.mapped && fixed.put(Client(c), c.at[0] * SCALE, c.at[1] * SCALE);
+            });
 
         fixed.show_all();
     };

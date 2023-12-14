@@ -17,7 +17,11 @@ class ThemeService extends Service {
 
     constructor() {
         super();
-        Utils.exec('swww init');
+        try {
+            Utils.exec('swww init');
+        } catch (error) {
+            print('missing dependancy: swww');
+        }
         this.setup();
     }
 
@@ -60,7 +64,12 @@ class ThemeService extends Service {
 
         if (Utils.exec('which gsettings')) {
             const gsettings = 'gsettings set org.gnome.desktop.interface color-scheme';
-            Utils.execAsync(`${gsettings} "prefer-${darkmode ? 'dark' : 'light'}"`).catch(print);
+            Utils.execAsync(`${gsettings} "prefer-${darkmode ? 'dark' : 'light'}"`);
+        }
+
+        if (Utils.exec('which tmux')) {
+            const color = c => this.getSetting(c).replace('$', '');
+            Utils.execAsync(`tmux set @main_accent ${color('accent')}`);
         }
     }
 
@@ -70,7 +79,7 @@ class ThemeService extends Service {
             '--transition-type', 'grow',
             '--transition-pos', Utils.exec('hyprctl cursorpos').replace(' ', ''),
             this.getSetting('wallpaper'),
-        ]).catch(print);
+        ]).catch(err => console.error(err));
     }
 
     get settings() {
@@ -89,7 +98,9 @@ class ThemeService extends Service {
     setSetting(prop, value) {
         const settings = this.settings;
         settings[prop] = value;
-        Utils.writeFile(JSON.stringify(settings, null, 2), THEME_CACHE).catch(print);
+        Utils.writeFile(JSON.stringify(settings, null, 2), THEME_CACHE)
+            .catch(err => console.error(err));
+
         this._settings = settings;
         this.emit('changed');
 
