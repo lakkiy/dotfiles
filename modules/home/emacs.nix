@@ -7,6 +7,28 @@
     enable = true;
     package = pkgs.emacs29-pgtk;
     extraPackages = epkgs: with epkgs; [
+      (treesit-grammars.with-grammars (p: builtins.attrValues p))
+
+      # packages
+      tabnine
+      acm-terminal
+      popon
+      lsp-bridge
+      eldoc-box
+      citre
+      aggressive-indent
+      go-mode
+      flymake-go-staticcheck
+      go-gen-test
+      go-tag
+      go-dlv
+      go-fill-struct
+      go-impl
+      gotest
+      nix-mode
+      clojure-mode
+      cider
+      clj-refactor
       visual-fill-column
       deadgrep
       go-translate
@@ -19,6 +41,8 @@
       async-await
       markdown-mode
       gptel
+      gpt-commit
+      tabnine
       envrc
       ox-gfm
       ob-restclient
@@ -60,7 +84,6 @@
       elpa-mirror
       bind
       gcmh
-      async
       fullframe
       hide-mode-line
       pinyinlib
@@ -75,6 +98,7 @@
       consult
       orderless
       embark
+      embark-consult
       consult-yasnippet
       consult-dir
       consult-eglot
@@ -86,7 +110,6 @@
       separedit
       iscroll
       vundo
-      rime
       symbol-overlay
       hl-todo
       ligature
@@ -101,31 +124,7 @@
       puni
       dumb-jump
       apheleia
-      eldoc-box
-      citre
-      aggressive-indent
-      go-mode
-      flymake-go-staticcheck
-      go-gen-test
-      go-tag
-      go-dlv
-      go-fill-struct
-      go-impl
-      gotest
-      nix-mode
-      clojure-mode
-      cider
-      clj-refactor
-      lua-mode
-      rust-mode
-      typescript-mode
-      (treesit-grammars.with-grammars (p: builtins.attrValues p))
-      # NOTE these is undefined
-      # nix-ts-mode
-      # gpt-commit
-      # tabnine
-      #------------
-      # FIXME compile rime failed
+      # TODO
       rime
     ];
   };
