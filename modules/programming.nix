@@ -30,6 +30,7 @@
     #vscode-extensions.ms-python.vscode-pylance
     nodePackages.pyright                      # lsp server
     (python3.withPackages(ps: with ps; [
+      ipython
       pam # for ags
       pygments # for gtags
       pdm
