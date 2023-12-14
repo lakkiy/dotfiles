@@ -59,6 +59,7 @@
       cider
       localsend
       # dropbox version can't login
+      obs-studio
     ];
   };
   virtualisation.docker.enable = true;
