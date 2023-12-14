@@ -18,6 +18,7 @@
     fonts = with pkgs; [
       lxgw-wenkai # Chinese font
       sarasa-gothic # Mono font for English and Chinese
+      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     ];
   };
 
