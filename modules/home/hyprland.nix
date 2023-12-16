@@ -40,7 +40,7 @@
     imagemagick          # for bitmap images
     brightnessctl        # control device brightness
     inotify-tools        # for ags
-    pwvucontrol          # pipewire volume control, replace pavucontrol
+    pavucontrol
     swww                 # wallpaper
     bemenu               # application launcher
     networkmanagerapplet # network manager applet on tray
