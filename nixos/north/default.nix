@@ -86,6 +86,7 @@
       pcmanfm # file manager
       fractal # matrix client
       qq
+      vivaldi vivaldi-ffmpeg-codecs # a backup browser
 
       # chi e
       dae v2ray-geoip v2ray-domain-list-community
