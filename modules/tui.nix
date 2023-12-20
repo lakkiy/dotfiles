@@ -36,6 +36,8 @@ in
     typstfmt
     typst-lsp
     typst-live
+    aspell                   # spell check
+    aspellDicts.en aspellDicts.en-science aspellDicts.en-computers
 
     # cli client
     kubectl
