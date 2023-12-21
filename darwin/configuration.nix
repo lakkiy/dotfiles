@@ -33,6 +33,7 @@
       "jimeh/emacs-builds"
     ];
     brews = [
+      "aspell" # nix 安装的 aspell 在 mac 上 command not found
       "pngpaste" # paste image in emacs telega
       "docker" # docker tdlib
     ];
