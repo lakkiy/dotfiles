@@ -128,6 +128,7 @@ in
         k = "kubectl";
         e = "emacs";
         te = "emacs -nw";
+        kec = "emacsclient -e '(kill-emacs)'";
         ec = ''emacsclient -c -a ""'';
         tec = ''emacsclient -nw -a ""'';
         npm = "pnpm";
