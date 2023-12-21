@@ -38,6 +38,7 @@ in
     typst-live
     aspell                   # spell check
     aspellDicts.en aspellDicts.en-science aspellDicts.en-computers
+    translate-shell
 
     # cli client
     kubectl

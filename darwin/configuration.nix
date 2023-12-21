@@ -34,6 +34,7 @@
     ];
     brews = [
       "aspell" # nix 安装的 aspell 在 mac 上 command not found
+      "translate-shell" # same as aspell
       "pngpaste" # paste image in emacs telega
       "docker" # docker tdlib
     ];
