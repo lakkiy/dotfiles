@@ -86,10 +86,13 @@
       pcmanfm # file manager
       fractal # matrix client
       qq
-      vivaldi vivaldi-ffmpeg-codecs # a backup browser
+      discord
 
       # chi e
       dae v2ray-geoip v2ray-domain-list-community
+
+      # a backup browser 没有使用 GPU，scroll 卡顿， CPU 飙升
+      vivaldi vivaldi-ffmpeg-codecs
     ];
   };
   virtualisation.docker.enable = true;
