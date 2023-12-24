@@ -75,6 +75,7 @@
         "DP-2,3840x2160@144,1440x0,1.5,bitdepth,10"
         "DP-3,3840x2160,0x0,1.5,transform,1"
         "HDMI-A-2,preferred,1440x2440,auto,transform,3"
+        "HDMI-A-1,disable"
       ];
       workspace = [
         "1, monitor:DP-2, default:true"
