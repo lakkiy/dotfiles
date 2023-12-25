@@ -53,6 +53,7 @@
       "netnewswire"
       "keepingyouawake"
       "the-unarchiver"
+      "easydict" # open source version of bob
     ];
   };
 
