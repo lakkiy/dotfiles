@@ -87,6 +87,7 @@
       fractal # matrix client
       qq
       discord
+      darktable # edit raw image
 
       # chi e
       dae v2ray-geoip v2ray-domain-list-community
