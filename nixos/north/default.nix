@@ -88,6 +88,7 @@
       qq
       discord
       darktable # edit raw image
+      goldendict-ng
 
       # chi e
       dae v2ray-geoip v2ray-domain-list-community
