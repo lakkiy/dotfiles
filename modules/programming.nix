@@ -55,6 +55,10 @@
     protoc-gen-go
     protoc-gen-go-grpc
     wire # DI
+    # common lisp
+    sbcl
+    lispPackages.quicklisp
+    sbclPackages.lisp-stat
   ];
 
   programs.go = {
