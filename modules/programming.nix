@@ -58,7 +58,7 @@
     # common lisp
     sbcl
     lispPackages.quicklisp
-    sbclPackages.lisp-stat
+    sbclPackages.quicklisp-stats
   ];
 
   programs.go = {
