@@ -71,7 +71,6 @@
     extraGroups = [ "docker" "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
       # must have packages for all DE/WM
-      steam
       mpv
       plex-media-player
       qbittorrent
@@ -99,6 +98,12 @@
   };
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
 
   environment.systemPackages = [
     (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
