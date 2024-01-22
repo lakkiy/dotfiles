@@ -45,7 +45,6 @@
     gotools # goimports
     go-tools # staticcheck
     delve
-    gdlv
     gogetdoc
     impl
     gotests
