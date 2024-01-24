@@ -169,7 +169,7 @@ fi
           name = "git.plugin.zsh";
           src = fetchurl {
             url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh";
-            sha256 = "sha256-Bp9iv0eQspO6kQfUTig4pznZ7Lw6GrU2oDUpfkbrIHc=";
+            sha256 = "sha256-YCTWWJVp6fGnn38FswhN6+1RS6anBJNQ+RwJMDksxrM=";
           };
         }
         {
@@ -190,7 +190,7 @@ fi
           name = "extract.plugin.zsh";
           src = fetchurl {
             url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh";
-            sha256 = "sha256-hOzpvaIya3Nw6JweS10u5ekLAh7ym9K3sSMGkc2gNJU=";
+            sha256 = "sha256-rGtWvdHo0F0wucLyEfs8OVY70AdEpnkEt1DDYKTjvb8=";
           };
         }
       ];

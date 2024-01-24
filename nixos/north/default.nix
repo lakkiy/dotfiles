@@ -9,6 +9,7 @@
       # ../../modules/nixos/gnome.nix
       ../../modules/nixos/hyprland.nix
       ../../modules/nixos/browser.nix
+      ../../modules/nixos/vsftpd.nix
     ];
 
   # Bootloader.
@@ -101,36 +102,8 @@
       dae v2ray-geoip v2ray-domain-list-community
     ];
   };
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
-  services.vsftpd = {
-    enable = true;
-    writeEnable = true;
-    localUsers = true;
-    extraConfig = "
-      listen_port=2121
-    ";
-  };
-
-  environment.systemPackages = [
-    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
-     pkgs.buildFHSUserEnv (base // {
-       name = "fhs";
-       targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
-       profile = "export FHS=1";
-       runScript = "bash";
-       extraOutputsToInstall = ["dev"];
-     }))
-    pkgs.cifs-utils
-  ];
-
+  # mount nas smb share dir
   fileSystems."/mnt/share" = {
     device = "//192.168.31.61/share";
     fsType = "cifs";
@@ -142,6 +115,12 @@
       # domain=<DOMAIN>
       # password=<PASSWORD>
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
   # wayland support for electron base app

@@ -15,10 +15,17 @@
     networkmanager.enable = true;
     defaultGateway = "192.168.31.222";
     nameservers = [ "192.168.31.222" ];
-    interfaces.ens33.ipv4.addresses = [{
-      address = "192.168.31.54";
+    interfaces.ens192.ipv4.addresses = [{
+      address = "192.168.31.52";
       prefixLength = 24;
     }];
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        # vsftpd
+        2121
+      ];
+    };
   };
 
   environment.systemPackages = with pkgs; [git
@@ -28,6 +35,30 @@
   services.openssh.settings.PermitRootLogin = "yes";
   services.sshd.enable = true;
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  # mount nas smb share dir, as root for now
+  fileSystems."/mnt/share" = {
+    device = "//192.168.31.61/share";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
 
+      # username=<USERNAME>
+      # domain=<DOMAIN>
+      # password=<PASSWORD>
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+  };
+
+  services.vsftpd = {
+    enable = true;
+    writeEnable = true;
+    localUsers = true;
+    # make sure add port to networking.firewall.allowedTCPPorts
+    extraConfig = "
+      listen_port=2121
+      allow_root=YES
+    ";
+  };
+
+  system.stateVersion = "23.11"; # Did you read the comment?
 }

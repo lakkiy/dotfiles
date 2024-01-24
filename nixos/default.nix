@@ -30,7 +30,7 @@ in
     ];
   };
 
-  homelab = lib.nixosSystem {
+  nixos-homelab = lib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs pkgs; };
     modules = [

@@ -47,8 +47,22 @@
   # Many programs look at /etc/shells to determine if a user is a "normal" user and not a "system" user. Therefore it is recommended to add the user shells to this list. To add a shell to /etc/shells use the following line in your config:
   environment.shells = with pkgs; [ zsh ];
 
-  environment.systemPackages = with pkgs; [
-    git
+  virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
+
+  environment.systemPackages = [
+    pkgs.git
+    # fhs environment
+    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
+     pkgs.buildFHSUserEnv (base // {
+       name = "fhs";
+       targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+       profile = "export FHS=1";
+       runScript = "bash";
+       extraOutputsToInstall = ["dev"];
+     }))
+    # for mount samba
+    pkgs.cifs-utils
   ];
 
   nix = {                                   # Nix Package Manager settings
