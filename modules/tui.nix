@@ -14,6 +14,7 @@ let
 in
 {
   home.packages = with pkgs; [
+    inetutils                # ftp client
     gnumake
     neofetch
     delta                    # diff

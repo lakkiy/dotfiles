@@ -26,8 +26,12 @@
     }];
     firewall = {
       enable = true;
-      # 53317 for localsend
-      allowedTCPPorts = [ 53317 ];
+      allowedTCPPorts = [
+        # localsend
+        53317
+        # vsftpd
+        2121
+      ];
       allowedUDPPorts = [ 53317 ];
     };
   };
@@ -71,6 +75,11 @@
     extraGroups = [ "docker" "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
       # must have packages for all DE/WM
+      # 取代 firefox，不知道为什么 firefox 会卡，看视频时对于 gpu 和
+      # cpu 的利用率也没有 vivaldi 好
+      # see archwiki for wayland support (use fcitx5)
+      # https://wiki.archlinux.org/title/Vivaldi#Native_Wayland_support
+      vivaldi vivaldi-ffmpeg-codecs
       mpv
       plex-media-player
       qbittorrent
@@ -86,14 +95,10 @@
       fractal # matrix client
       qq
       discord
-      darktable # edit raw image
       goldendict-ng
-
+      filezilla                # ftp ftps sftp client
       # chi e
       dae v2ray-geoip v2ray-domain-list-community
-
-      # a backup browser 没有使用 GPU，scroll 卡顿， CPU 飙升
-      vivaldi vivaldi-ffmpeg-codecs
     ];
   };
   virtualisation.docker.enable = true;
@@ -103,6 +108,15 @@
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  services.vsftpd = {
+    enable = true;
+    writeEnable = true;
+    localUsers = true;
+    extraConfig = "
+      listen_port=2121
+    ";
   };
 
   environment.systemPackages = [
