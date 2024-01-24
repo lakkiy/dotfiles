@@ -30,18 +30,18 @@ in
     ];
   };
 
-  server = lib.nixosSystem {
+  homelab = lib.nixosSystem {
     inherit system;
     specialArgs = { inherit inputs pkgs; };
     modules = [
       ./configuration.nix
-      ./server
+      ./homelab
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.root = {
-          imports = [(import ./home.nix)] ++ [(import ./server/home.nix)];
+          imports = [(import ./home.nix)] ++ [(import ./homelab/home.nix)];
         };
       }
     ];
