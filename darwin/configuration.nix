@@ -38,6 +38,7 @@
       "pngpaste" # paste image in emacs telega
     ];
     casks = [
+      "vivaldi"
       "clashx" # NOTE Say it!
       "firefox"
       "iina"
