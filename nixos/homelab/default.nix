@@ -26,10 +26,14 @@
         2121
         # syncthing
         8384 22000
+        # plex
+        32400
       ];
       allowedUDPPorts = [
         # syncthing
         22000 21027
+        # plex
+        32400
       ];
     };
   };
@@ -69,6 +73,9 @@
   # syncthing
   services.syncthing = {
     enable = true;
+    user = "root";
+    configDir = "/mnt/share/app/syncthing/config";
+    databaseDir = "/mnt/share/app/syncthing/database";
     extraFlags = [ "--no-default-folder" ];
     guiAddress = "0.0.0.0:8384";
     settings.gui = {
@@ -76,6 +83,16 @@
       user = "syncthing";
       password = "syncthing";
     };
+  };
+
+  # plex
+  # http://ip:32400/web
+  services.plex = {
+    enable = true;
+    user = "root";
+    group = "root";
+    openFirewall = true;
+    dataDir = "/mnt/share/app/plex";
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?
