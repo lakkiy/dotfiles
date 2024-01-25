@@ -84,6 +84,13 @@
     };
   };
 
+  services.ombi = {
+    enable = true;
+    user = "root";
+    group = "root";
+    openFirewall = true;
+    dataDir = "/mnt/share/app/ombi";
+  };
   services.sonarr = {
     enable = true;
     user = "root";
