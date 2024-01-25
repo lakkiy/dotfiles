@@ -61,6 +61,7 @@
 
   # transmission
   # ip:9091
+  # TODO create sub directory
   services.transmission = {
     enable = true;
     user = "root";
@@ -84,6 +85,7 @@
     };
   };
 
+  # TODO config
   services.ombi = {
     enable = true;
     user = "root";
@@ -111,6 +113,12 @@
     group = "root";
     openFirewall = true;
     dataDir = "/mnt/share/app/jackett";
+  };
+  services.bazarr = {
+    enable = true;
+    user = "root";
+    group = "root";
+    openFirewall = true;
   };
 
   # vsftpd
