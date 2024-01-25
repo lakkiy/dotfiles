@@ -84,9 +84,24 @@
     };
   };
 
+  services.sonarr = {
+    enable = true;
+    user = "root";
+    group = "root";
+    openFirewall = true;
+    dataDir = "/mnt/share/app/sonarr";
+  };
+  services.radarr = {
+    enable = true;
+    user = "root";
+    group = "root";
+    openFirewall = true;
+    dataDir = "/mnt/share/app/radarr";
+  };
   services.jackett = {
     enable = true;
     user = "root";
+    group = "root";
     openFirewall = true;
     dataDir = "/mnt/share/app/jackett";
   };
