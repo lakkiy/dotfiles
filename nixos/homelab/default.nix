@@ -59,6 +59,31 @@
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
   };
 
+  # transmission
+  # ip:9091
+  services.transmission = {
+    enable = true;
+    user = "root";
+    webHome = pkgs.flood-for-transmission;
+    openFirewall = true;
+    performanceNetParameters = true;
+    openRPCPort = true; #Open firewall for RPC
+    settings = { #Override default settings
+      download-dir = "/mnt/share/Downloads";
+      incomplete-dir = "/mnt/share/Downloads/.incomplete";
+      watch-dir-enabled = true;
+      watch-dir = "/mnt/share/Downloads/watch";
+      rpc-bind-address = "0.0.0.0"; #Bind to own IP
+      dht-enabled = false;
+      pex-enabled = false;
+      lpd-enabled = false;
+      rpc-username = "mrunhap";
+      rpc-password= "transmission";
+      rpc-host-whitelist-enabled = false;
+      rpc-whitelist-enabled = false;
+    };
+  };
+
   # vsftpd
   services.vsftpd = {
     enable = true;
