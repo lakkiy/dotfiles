@@ -84,6 +84,13 @@
     };
   };
 
+  services.jackett = {
+    enable = true;
+    user = "root";
+    openFirewall = true;
+    dataDir = "/mnt/share/app/jackett";
+  };
+
   # vsftpd
   services.vsftpd = {
     enable = true;
