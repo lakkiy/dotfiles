@@ -24,6 +24,12 @@
       allowedTCPPorts = [
         # vsftpd
         2121
+        # syncthing
+        8384 22000
+      ];
+      allowedUDPPorts = [
+        # syncthing
+        22000 21027
       ];
     };
   };
@@ -49,6 +55,7 @@
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
   };
 
+  # vsftpd
   services.vsftpd = {
     enable = true;
     writeEnable = true;
@@ -56,8 +63,19 @@
     # make sure add port to networking.firewall.allowedTCPPorts
     extraConfig = "
       listen_port=2121
-      allow_root=YES
     ";
+  };
+
+  # syncthing
+  services.syncthing = {
+    enable = true;
+    extraFlags = [ "--no-default-folder" ];
+    guiAddress = "0.0.0.0:8384";
+    settings.gui = {
+      enabled = true;
+      user = "syncthing";
+      password = "syncthing";
+    };
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?
