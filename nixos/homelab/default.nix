@@ -12,7 +12,7 @@
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
   networking = {
-    hostName = "nixos-homelab";
+    hostName = "homelab";
     networkmanager.enable = true;
     defaultGateway = "192.168.31.222";
     nameservers = [ "192.168.31.222" ];
