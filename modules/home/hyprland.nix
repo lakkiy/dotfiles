@@ -30,7 +30,7 @@
     recursive = true;
   };
 
-  home.file.".config/hypr/hyprpaper.conf".source = "
+  home.file.".config/hypr/hyprpaper.conf".text = "
 preload = $HOME/Pictures/wallpapers/default.jpg
 preload = $HOME/Pictures/wallpapers/v/default.jpg
 wallpaper = DP-2,$HOME/Pictures/wallpapers/default.jpg

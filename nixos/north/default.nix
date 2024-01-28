@@ -75,11 +75,6 @@
     description = "gray";
     extraGroups = [ "docker" "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
-      # must have packages for all DE/WM
-      # 取代 firefox，不知道为什么 firefox 会卡，看视频时对于 gpu 和
-      # cpu 的利用率也没有 vivaldi 好
-      # see archwiki for wayland support (use fcitx5)
-      # https://wiki.archlinux.org/title/Vivaldi#Native_Wayland_support
       vivaldi vivaldi-ffmpeg-codecs
       mpv
       plex-media-player
@@ -87,21 +82,19 @@
       obs-studio
       dropbox
       ventoy # bootable usb
-      butane # create fedora coreos ignition file
       cider # apple music client
       localsend xdg-user-dirs # send/recv file to phone
       inkscape # Vector graphics editor
-      kcc # Kindle Comic Converter # TODO
-      pcmanfm # file manager
       fractal # matrix client
       qq
       discord
       goldendict-ng
-      filezilla                # ftp ftps sftp client
-      # chi e
-      dae v2ray-geoip v2ray-domain-list-community
+      filezilla # ftp ftps sftp gui client
     ];
   };
+
+  # for fractal
+  services.gnome.gnome-keyring.enable = true;
 
   # mount nas smb share dir
   fileSystems."/mnt/share" = {
@@ -121,6 +114,14 @@
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  services.dae = {
+    enable = true;
+    # make sure to create the config file
+    # global{}
+    # routing{}
+    configFile = "/etc/dae/config.dae";
   };
 
   # wayland support for electron base app
