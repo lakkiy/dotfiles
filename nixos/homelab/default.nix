@@ -27,10 +27,14 @@
         2121
         # syncthing
         8384 22000
+        # photoprism
+        2342
       ];
       allowedUDPPorts = [
         # syncthing
         22000 21027
+        # photoprism
+        2342
       ];
     };
   };
@@ -124,6 +128,35 @@
       user = "syncthing";
       password = "syncthing";
     };
+  };
+
+  # Photoprism
+  services.photoprism = {
+    enable = true;
+    port = 2342;
+    originalsPath = "/mnt/share/media/pictures";
+    address = "0.0.0.0";
+    settings = {
+      PHOTOPRISM_ADMIN_USER = "admin";
+      PHOTOPRISM_ADMIN_PASSWORD = "abcd_1234!";
+      PHOTOPRISM_DEFAULT_LOCALE = "zh_CN";
+      PHOTOPRISM_DATABASE_DRIVER = "mysql";
+      PHOTOPRISM_DATABASE_NAME = "photoprism";
+      PHOTOPRISM_DATABASE_SERVER = "/run/mysqld/mysqld.sock";
+      PHOTOPRISM_DATABASE_USER = "photoprism";
+    };
+  };
+  # MySQL
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+    ensureDatabases = [ "photoprism" ];
+    ensureUsers = [ {
+      name = "photoprism";
+      ensurePermissions = {
+        "photoprism.*" = "ALL PRIVILEGES";
+      };
+    } ];
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?
