@@ -31,10 +31,10 @@
   };
 
   home.file.".config/hypr/hyprpaper.conf".text = "
-preload = $HOME/Pictures/wallpapers/default.jpg
-preload = $HOME/Pictures/wallpapers/v/default.jpg
-wallpaper = DP-2,$HOME/Pictures/wallpapers/default.jpg
-wallpaper = DP-3,$HOME/Pictures/wallpapers/v/default.jpg
+preload = ~/Pictures/wallpapers/default.jpg
+preload = ~/Pictures/wallpapers/v/default.jpg
+wallpaper = DP-2,~/Pictures/wallpapers/default.jpg
+wallpaper = DP-3,~/Pictures/wallpapers/v/default.jpg
 ipc = off
 ";
 
