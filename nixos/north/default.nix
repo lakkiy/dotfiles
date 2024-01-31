@@ -62,12 +62,14 @@
 			["bluez5.enable-msbc"] = true,
 			["bluez5.enable-hw-volume"] = true,
 			["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-		            }
+		}
 	'';
   };
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  services.blueman.enable = true;
+
+  # For dual boot must disable windows's hibernate
+  services.logind.powerKey = "hibernate";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gray = {
