@@ -61,6 +61,13 @@
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
   };
 
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    permitCertUid = "root";
+    useRoutingFeatures = "server";
+  };
+
   # NOTE can't work with sqlite on NFS
   services.qbittorrent-nox = {
     enable = true;
