@@ -38,9 +38,9 @@
       "pngpaste" # paste image in emacs telega
     ];
     casks = [
-      "vivaldi"
-      "clashx" # NOTE Say it!
       "firefox"
+      "chromium" # for feishu doc, which is slow in firefox
+      "clashx" # NOTE Say it!
       "iina"
       "karabiner-elements"
       "raycast"
