@@ -77,7 +77,6 @@
     description = "gray";
     extraGroups = [ "docker" "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
-      vivaldi vivaldi-ffmpeg-codecs
       mpv
       plex-media-player
       qbittorrent

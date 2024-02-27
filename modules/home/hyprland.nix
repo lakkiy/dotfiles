@@ -180,7 +180,7 @@ ipc = off
         arr = [1 2 3 4 5 6 7 8 9];
       in [
         "SUPER, Return, exec, wlrctl window focus xterm || xterm"
-        "SUPER, B, exec, wlrctl window focus vivaldi-stable || vivaldi"
+        "SUPER, B, exec, wlrctl window focus firefox || firefox"
         "SUPER, E, exec, wlrctl window focus emacs || emacs"
         "SUPER, D, exec, bemenu-run -i --fn 'Sarasa Gothic SC 20'"
         "SUPER_SHIFT, P, exec, grimblast copysave area"
