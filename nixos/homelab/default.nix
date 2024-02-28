@@ -61,11 +61,13 @@
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
   };
 
+  # https://tailscale.com/blog/nixos-minecraft
   services.tailscale = {
     enable = true;
     openFirewall = true;
     permitCertUid = "root";
     useRoutingFeatures = "server";
+    authKeyFile = "/run/secrets/tailscale_key";
   };
 
   # NOTE can't work with sqlite on NFS
