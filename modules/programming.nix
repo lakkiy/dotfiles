@@ -31,14 +31,11 @@
     nodePackages.pyright                      # lsp server
     (python3.withPackages(ps: with ps; [
       ipython
-      pam # for ags
-      pygments # for gtags
       pdm
       pip
       pipx
-      jedi-language-server
-      epc orjson sexpdata six setuptools paramiko rapidfuzz # lsp-bridge for emacs
-      requests # blink-search for emacs
+      pam # for ags
+      pygments # for gtags
     ]))
     # go
     gopls
