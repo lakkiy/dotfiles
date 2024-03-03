@@ -128,9 +128,8 @@
   services.syncthing = {
     enable = true;
     user = "root";
-    configDir = "/mnt/share/app/syncthing/config";
-    databaseDir = "/mnt/share/app/syncthing/database";
     extraFlags = [ "--no-default-folder" ];
+    configDir = "/root/.config/syncthing";
     guiAddress = "0.0.0.0:8384";
     settings.gui = {
       enabled = true;
