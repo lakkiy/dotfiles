@@ -25,6 +25,7 @@
     typescript
     nodePackages.typescript-language-server   # also for js
     nodePackages.vscode-langservers-extracted # html, css etc
+    nodePackages.npm # emacs copilot need this to install copilot server
     nodePackages.pnpm
     # python
     #vscode-extensions.ms-python.vscode-pylance
