@@ -11,7 +11,10 @@
     cscope
 
     #langs
-    nixd
+    # FIXME the nix version that nixd used was insecure, casue the
+    # nixos-build false, also see:
+    # https://github.com/nix-community/nixd/issues/357
+    # nixd
     nixfmt
     gcc
     gdb

@@ -120,7 +120,7 @@ in
       autocd = true;
       dotDir = ".config/zsh";
       enableCompletion = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
       shellAliases = {
