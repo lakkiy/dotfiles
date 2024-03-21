@@ -2,8 +2,39 @@
 { config, lib, pkgs, inputs, ...}:
 
 {
+  # Always enable the shell system-wide, even if it's already enabled in
+  # your home.nix. # Otherwise it wont source the necessary files.
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  # Many programs look at /etc/shells to determine if a user is a
+  # "normal" user and not a "system" user. Therefore it is recommended
+  # to add the user shells to this list. To add a shell to /etc/shells
+  # use the following line in your config:
+  environment.shells = with pkgs; [ zsh ];
+
+  # Enable docker.
+  virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
+
+  environment.systemPackages = [
+    pkgs.git
+    # FHS environment
+    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
+     pkgs.buildFHSUserEnv (base // {
+       name = "fhs";
+       targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+       profile = "export FHS=1";
+       runScript = "bash";
+       extraOutputsToInstall = ["dev"];
+     }))
+    # For mount samba
+    pkgs.cifs-utils
+  ];
+
+  # Set timezone
   time.timeZone = "Asia/Shanghai";
 
+  # Set locale
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -30,6 +61,7 @@
   # Configure console keymap
   console.keyMap = "dvorak";
 
+  # Use keyd to remap keys
   services.keyd.enable = true;
   services.keyd.keyboards.default = {
     ids = [ "*" ];
@@ -41,45 +73,61 @@
     };
   };
 
-  # Always enable the shell system-wide, even if it's already enabled in your home.nix. # Otherwise it wont source the necessary files.
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-  # Many programs look at /etc/shells to determine if a user is a "normal" user and not a "system" user. Therefore it is recommended to add the user shells to this list. To add a shell to /etc/shells use the following line in your config:
-  environment.shells = with pkgs; [ zsh ];
-
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
-
-  environment.systemPackages = [
-    pkgs.git
-    # fhs environment
-    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
-     pkgs.buildFHSUserEnv (base // {
-       name = "fhs";
-       targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
-       profile = "export FHS=1";
-       runScript = "bash";
-       extraOutputsToInstall = ["dev"];
-     }))
-    # for mount samba
-    pkgs.cifs-utils
-  ];
-
-  nix = {                                   # Nix Package Manager settings
+  nix = {
     settings ={
-      auto-optimise-store = true;           # Optimise syslinks
+      # Deduplicate and optimize nix store
+      auto-optimise-store = true;
+      # Enable flakes and new 'nix' command
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "root" "liubo" "gray" ];
     };
-    gc = {                                  # Automatic garbage collection
+    gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 2d";
     };
-    package = pkgs.nixVersions.unstable;    # Enable nixFlakes on system
+    # Enable nixFlakes on system
+    package = pkgs.nixVersions.unstable;
+
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    # nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
     registry.nixpkgs.flake = inputs.nixpkgs;
+
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = ["/etc/nix/path"];
   };
-  nixpkgs.config.allowUnfree = true;        # Allow proprietary software.
+  # Together with nix.nixPath config.
+  environment.etc =
+    lib.mapAttrs'
+    (name: value: {
+      name = "nix/path/${name}";
+      value.source = value.flake;
+    })
+    config.nix.registry;
+
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      # outputs.overlays.additions
+      # outputs.overlays.modifications
+      # outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
+    # Allow proprietary software.
+    config.allowUnfree = true;
+  };
 
   system.stateVersion = "23.11";
 }

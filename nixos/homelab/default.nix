@@ -4,7 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/nixos/services/qbittorrent.nix
+      ../../modules/nixos/services/qbittorrent-nox.nix
     ];
 
   # Use the GRUB 2 boot loader.

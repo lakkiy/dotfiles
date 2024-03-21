@@ -1,4 +1,4 @@
-# General home-manager config
+# General home-manager config for NixOS
 { config, lib, pkgs, inputs, ... }:
 
 {
