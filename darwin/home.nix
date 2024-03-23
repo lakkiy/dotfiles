@@ -21,8 +21,8 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    (import ../modules/tui.nix)
-    (import ../modules/programming.nix)
+    (import ../home-manager/shell.nix)
+    (import ../home-manager/programming.nix)
   ];
 
   home = {
@@ -33,6 +33,6 @@
     stateVersion = "23.11";
   };
 
-  home.file."Pictures/wallpapers".source = ../modules/files/wallpapers;
-  home.file.".config/karabiner/karabiner.json".source = ../modules/files/karabiner.json;
+  home.file."Pictures/wallpapers".source = ../files/wallpapers;
+  home.file.".config/karabiner/karabiner.json".source = ../files/karabiner.json;
 }

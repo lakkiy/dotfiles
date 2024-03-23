@@ -2,12 +2,12 @@
 
 {
   imports = [
-    (import ../modules/tui.nix)
-    (import ../modules/programming.nix)
-    (import ../modules/home/syncthing.nix)
-    (import ../modules/home/fonts.nix)
-    (import ../modules/home/fcitx5.nix)
-    (import ../modules/home/gtk.nix)
+    (import ./shell.nix)
+    (import ./programming.nix)
+    (import ./syncthing.nix)
+    (import ./fonts.nix)
+    (import ./fcitx5.nix)
+    (import ./gtk.nix)
   ];
 
   home.packages = with pkgs; [

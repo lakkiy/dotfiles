@@ -132,7 +132,6 @@ in
         kec = "emacsclient -e '(kill-emacs)'";
         ec = ''emacsclient -c -a ""'';
         tec = ''emacsclient -nw -a ""'';
-        npm = "pnpm";
         # https://github.com/Genivia/ugrep#equivalence-to-gnubsd-grep
         grep = "ugrep -G -U -Y -. --sort -Dread -dread";
       };

@@ -3,11 +3,11 @@
 
 {
   imports = [
-    (import ../modules/tui.nix)
-    (import ../modules/home/syncthing.nix)
+    (import ../home-manager/shell.nix)
+    (import ../home-manager/syncthing.nix)
   ];
 
-  home.file."Pictures/wallpapers".source = ../modules/files/wallpapers;
+  home.file."Pictures/wallpapers".source = ../files/wallpapers;
 
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;

@@ -32,15 +32,18 @@
     nodePackages.npm # emacs copilot need this to install copilot server
     nodePackages.pnpm
     # python
-    #vscode-extensions.ms-python.vscode-pylance
     nodePackages.pyright                      # lsp server
     (python3.withPackages(ps: with ps; [
       ipython
-      pdm
+      pdm # manage project dep
       pip
-      pipx
+      pipx # venv for cli tools installed by pip
       pam # for ags
       pygments # for gtags
+       # lsp-bridge for emacs
+      epc orjson sexpdata six setuptools paramiko rapidfuzz
+      # blink-search for emacs
+      requests
     ]))
     # go
     gopls
@@ -77,5 +80,5 @@
     "$GOPATH/bin"
   ];
 
-  home.file.".globalrc".source = ./files/globalrc;
+  home.file.".globalrc".source = ../files/globalrc;
 }

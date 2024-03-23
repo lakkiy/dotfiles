@@ -19,12 +19,28 @@ in
     modules = [
       ./configuration.nix
       ./north
+      ./nvidia.nix
+      ./fcitx5.nix
+      ./vsftpd.nix
+      ./hyprland.nix
+      # ./gnome.nix
 
       home-manager.nixosModules.home-manager {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.gray = {
-          imports = [(import ./home.nix)] ++ [(import ./north/home.nix)];
+          imports = [(import ./home.nix)] ++
+                    [(import ./north/home.nix)] ++
+                    [
+                      (import ../home-manager/programming.nix)
+                      (import ../home-manager/fonts.nix)
+                      (import ../home-manager/fcitx5.nix)
+                      (import ../home-manager/emacs.nix)
+                      (import ../home-manager/gtk.nix)
+                      (import ../home-manager/browser.nix)
+                      (import ../home-manager/hyprland.nix)
+                      # (import ../home-manager/gnome.nix)
+                    ];
         };
       }
     ];

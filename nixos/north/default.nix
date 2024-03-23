@@ -24,12 +24,6 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-
-    ../../modules/nixos/nvidia.nix
-    ../../modules/nixos/fcitx5.nix
-    # ../../modules/nixos/gnome.nix
-    ../../modules/nixos/hyprland.nix
-    ../../modules/nixos/vsftpd.nix
   ];
 
   # Bootloader.

@@ -1,10 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/nixos/services/qbittorrent-nox.nix
+
+      outputs.nixosModules.qbittorrent-nox
     ];
 
   # Use the GRUB 2 boot loader.

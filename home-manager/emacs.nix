@@ -3,6 +3,10 @@
 {
   services.emacs.enable = true;
 
+  home.packages = with pkgs; [
+    tdlib
+  ];
+
   programs.emacs = {
     enable = true;
     package = pkgs.emacs29-pgtk;

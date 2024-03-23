@@ -11,7 +11,7 @@
     rm -rf ~/.config/fcitx5
   '';
   home.file.".config/fcitx5" = {
-    source = ../../modules/files/fcitx5;
+    source = ../files/fcitx5;
     recursive = true;
   };
   # TODO check rime
