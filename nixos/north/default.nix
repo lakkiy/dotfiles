@@ -29,7 +29,6 @@
     ../../modules/nixos/fcitx5.nix
     # ../../modules/nixos/gnome.nix
     ../../modules/nixos/hyprland.nix
-    ../../modules/nixos/browser.nix
     ../../modules/nixos/vsftpd.nix
   ];
 
@@ -98,6 +97,7 @@
     description = "gray";
     extraGroups = [ "docker" "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
+      firefox
       mpv
       plex-media-player
       qbittorrent
