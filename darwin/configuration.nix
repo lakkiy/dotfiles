@@ -25,12 +25,10 @@
 
   homebrew = {
     enable = true;
+    global.autoUpdate = true;
+    # masApps = [];
     taps = [
       "homebrew/cask"
-      "homebrew/cask-fonts"
-      "homebrew/cask-versions"
-      "homebrew/core"
-      "homebrew/services"
       "jimeh/emacs-builds"
     ];
     brews = [
@@ -60,6 +58,8 @@
       "keepingyouawake"
       "the-unarchiver"
       # "goldendict-ng"
+      # display monitor info on menu bar
+      "stats"
     ];
   };
 
