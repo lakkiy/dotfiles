@@ -127,11 +127,10 @@ in
         ls = if pkgs.stdenv.isLinux then "ls --color --group-directories-first" else "ls --color";
         ll = "ls -al --human-readable --time-style=long-iso";
         k = "kubectl";
-        e = "emacs";
-        te = "emacs -nw";
+        e = "emacs -nw";
+        me = "emacs -q -nw -l ~/.config/emacs/init.el-mini.el";
+        ec = ''emacsclient -nw -a ""'';
         kec = "emacsclient -e '(kill-emacs)'";
-        ec = ''emacsclient -c -a ""'';
-        tec = ''emacsclient -nw -a ""'';
         # https://github.com/Genivia/ugrep#equivalence-to-gnubsd-grep
         grep = "ugrep -G -U -Y -. --sort -Dread -dread";
       };
