@@ -7,9 +7,7 @@
   config,
   pkgs,
   ...
-}:
-
-{
+}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -56,7 +54,6 @@
   };
   # Make GUI applications show in menu.
   targets.genericLinux.enable = true;
-
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

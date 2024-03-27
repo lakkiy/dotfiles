@@ -1,44 +1,57 @@
-{ config, pkgs, ... }:
-
-let
-  # https://nixos.wiki/wiki/TexLive
-  tex = (pkgs.texlive.combine {
-    inherit (pkgs.texlive) scheme-small
-      dvisvgm dvipng # for preview and export as html
-      wrapfig amsmath ulem hyperref capt-of
-      #(setq org-latex-compiler "xelatex")
-      #(setq org-preview-latex-default-process 'dvisvgm)
-      digestif # lsp server
-      ctex;
-  });
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  # https://nixos.wiki/wiki/TexLive
+  tex = pkgs.texlive.combine {
+    inherit
+      (pkgs.texlive)
+      scheme-small
+      dvisvgm
+      dvipng # for preview and export as html
+      wrapfig
+      amsmath
+      ulem
+      hyperref
+      capt-of
+      #(setq org-latex-compiler "xelatex")
+      
+      #(setq org-preview-latex-default-process 'dvisvgm)
+      
+      digestif # lsp server
+      ctex
+      ;
+  };
+in {
   home.packages = with pkgs; [
-    inetutils                # ftp client
+    inetutils # ftp client
     gnumake
     neofetch
-    delta                    # diff
-    fd                       # find
-    ugrep                    # faster than ripgrep
-    cloc                     # count code line
-    tree                     # show folder as tree view
-    d2                       # draw
-    iperf                    # test preformance of network
-    tailspin                 # highlight logs
-    websocat                 # curl for websocket
+    delta # diff
+    fd # find
+    ugrep # faster than ripgrep
+    cloc # count code line
+    tree # show folder as tree view
+    d2 # draw
+    iperf # test preformance of network
+    tailspin # highlight logs
+    websocat # curl for websocket
 
     # cli for emacs
-    tex                      # basic support for org mode
-    tikzit                   # draw
-    ltex-ls                  # lsp server
-    w3m                      # read html mail in emacs
-    readability-cli          # firefox reader mode, for emacs eww
+    tex # basic support for org mode
+    tikzit # draw
+    ltex-ls # lsp server
+    w3m # read html mail in emacs
+    readability-cli # firefox reader mode, for emacs eww
     typst
     typstfmt
     typst-lsp
     typst-live
-    aspell                   # spell check
-    aspellDicts.en aspellDicts.en-science aspellDicts.en-computers
+    aspell # spell check
+    aspellDicts.en
+    aspellDicts.en-science
+    aspellDicts.en-computers
     translate-shell
 
     # cli client
@@ -64,9 +77,9 @@ in
   ];
 
   home.sessionVariables = {
-    LANG     = "en_US.UTF-8";
-    EDITOR   = "emacsclient -a '' -nw";
-    TERM     = "xterm-256color";
+    LANG = "en_US.UTF-8";
+    EDITOR = "emacsclient -a '' -nw";
+    TERM = "xterm-256color";
     LC_CTYPE = "en_US.UTF-8";
     NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
     # fix 500 error for localsend
@@ -102,13 +115,21 @@ in
         diff.colorMoved = "default";
         merge.conflictStyle = "diff3";
         include.path = "$HOME/.gitconfig";
-        credential.helper = if pkgs.stdenv.isLinux then "store" else "osxkeychain";
+        credential.helper =
+          if pkgs.stdenv.isLinux
+          then "store"
+          else "osxkeychain";
         github.user = "mrunhap";
       };
       ignores = [
         ".DS_Store"
-        "*.bak" "*.log" "*.swp"
-        "tags" "GPATH" "GRTAGS" "GTAGS"
+        "*.bak"
+        "*.log"
+        "*.swp"
+        "tags"
+        "GPATH"
+        "GRTAGS"
+        "GTAGS"
         ".direnv"
         "node_modules"
       ];
@@ -124,7 +145,10 @@ in
       syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
       shellAliases = {
-        ls = if pkgs.stdenv.isLinux then "ls --color --group-directories-first" else "ls --color";
+        ls =
+          if pkgs.stdenv.isLinux
+          then "ls --color --group-directories-first"
+          else "ls --color";
         ll = "ls -al --human-readable --time-style=long-iso";
         k = "kubectl";
         e = "emacs -nw";
@@ -135,23 +159,23 @@ in
         grep = "ugrep -G -U -Y -. --sort -Dread -dread";
       };
       initExtra = ''
-for file in $HOME/.config/zsh/plugins/*.zsh; do
-    source "$file"
-done
+        for file in $HOME/.config/zsh/plugins/*.zsh; do
+            source "$file"
+        done
 
-PROMPT='%F{green}[%n@%m:%~]%#%f '
+        PROMPT='%F{green}[%n@%m:%~]%#%f '
 
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    export MOZ_ENABLE_WAYLAND=1
-fi
+        if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+            export MOZ_ENABLE_WAYLAND=1
+        fi
 
-# For emacs eat
-[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-  source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+        # For emacs eat
+        [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+          source "$EAT_SHELL_INTEGRATION_DIR/zsh"
 
-# For local use.
-[ -f $HOME/.zshrc ] && source $HOME/.zshrc
-    '';
+        # For local use.
+        [ -f $HOME/.zshrc ] && source $HOME/.zshrc
+      '';
       plugins = with pkgs; [
         {
           name = "zsh-autopair";

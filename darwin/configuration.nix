@@ -1,6 +1,10 @@
-{ lib, inputs, config, pkgs, ... }:
-
 {
+  lib,
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   # macOS user
   users.users.liubo = {
     home = "/Users/liubo";
@@ -19,7 +23,7 @@
       lxgw-wenkai
       # Mono font for English and Chinese
       sarasa-gothic
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     ];
   };
 
@@ -64,17 +68,17 @@
   };
 
   # Config for all darwin system.
-  environment.shells = [ pkgs.zsh ];
+  environment.shells = [pkgs.zsh];
   programs.zsh.enable = true;
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
   nix = {
-    settings ={
+    settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "liubo" ];
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["liubo"];
     };
     gc = {
       automatic = true;

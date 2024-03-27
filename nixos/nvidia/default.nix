@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # https://nixos.wiki/wiki/Nvidia
   hardware.opengl = {
     enable = true;

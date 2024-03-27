@@ -1,0 +1,4 @@
+[
+  ./hyprland.nix
+  ./gnome.nix
+]

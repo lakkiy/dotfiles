@@ -1,6 +1,5 @@
 {
-  description = "A very basic flake";
-
+  description = "Configurations of Mr.Unhappy";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -19,19 +18,20 @@
     ags.url = "github:Aylur/ags";
   };
 
-
-  outputs = {
+  outputs = inputs @ {
     self,
-      nixpkgs,
-      home-manager,
-      darwin,
-      ...
-  } @ inputs : let
+    nixpkgs,
+    home-manager,
+    darwin,
+    ...
+  }: let
     inherit (self) outputs;
+    # Variables Used In Flake.
+    vars = {
+      user = "mrunhap";
+    };
     # Supported systems for your flake packages, shell, etc.
     systems = [
-      "aarch64-linux"
-      "i686-linux"
       "x86_64-linux"
       "aarch64-darwin"
       "x86_64-darwin"
@@ -45,7 +45,7 @@
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    # formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays {inherit inputs;};
@@ -57,7 +57,7 @@
     homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
+    # Available through 'nixos-rebuild --flake .#{$HOST}'
     nixosConfigurations = (
       import ./nixos {
         inherit (nixpkgs) lib;
@@ -66,7 +66,7 @@
     );
 
     # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
+    # Available through 'home-manager --flake .#{$USER}@{$HOST}'
     homeConfigurations = ( # Non-NixOS configurations
       import ./home-manager {
         inherit (nixpkgs) lib;
@@ -75,7 +75,7 @@
     );
 
     # Standalone darwin configuration entrypoint (macOS)
-    # Available through 'darwin-rebuild --flake .#your-hostname'
+    # Available through 'darwin-rebuild --flake .#{$HOST}'
     darwinConfigurations = ( # Darwin configurations
       import ./darwin {
         inherit (nixpkgs) lib;
@@ -84,9 +84,8 @@
     );
   };
 
-
   nixConfig = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
     substituters = [
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
@@ -97,6 +96,6 @@
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
-    trusted-users = [ "root" "liubo" "gray" ];
+    trusted-users = ["root" "liubo" "gray" "mrunhap"];
   };
 }

@@ -1,6 +1,10 @@
-{ lib, config, pkgs, inputs, ... }:
-
 {
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     (import ./shell.nix)
     (import ./programming.nix)
@@ -10,10 +14,14 @@
     (import ./gtk.nix)
   ];
 
+  # archinstall option
+  # desktop: gnome
+  # set keyboard to dvorak
+  # firefox, noto-fonts, noto-fonts-cjk
+
   home.packages = with pkgs; [
     qq
 
-    inputs.ags.packages.${pkgs.system}.default
     blueberry # bluetooth manager
     swww # animated wallpaper for wayland
     sassc # front end for libsass
@@ -31,7 +39,7 @@
     # See https://wiki.archlinux.org/title/Xorg/Keyboard_configuration#Setting_keyboard_layout
     keyboard = {
       variant = "dvorak";
-      options = [ "grp:caps_toggle" ];
+      options = ["grp:caps_toggle"];
     };
   };
 }

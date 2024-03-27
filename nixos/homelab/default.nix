@@ -5,15 +5,13 @@
   config,
   pkgs,
   ...
-}:
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-
-      outputs.nixosModules.qbittorrent-nox
-    ];
+    outputs.nixosModules.qbittorrent-nox
+  ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -23,24 +21,28 @@
     hostName = "homelab";
     networkmanager.enable = true;
     defaultGateway = "192.168.31.222";
-    nameservers = [ "192.168.31.222" ];
-    interfaces.ens192.ipv4.addresses = [{
-      address = "192.168.31.52";
-      prefixLength = 24;
-    }];
+    nameservers = ["192.168.31.222"];
+    interfaces.ens192.ipv4.addresses = [
+      {
+        address = "192.168.31.52";
+        prefixLength = 24;
+      }
+    ];
     firewall = {
       enable = true;
       allowedTCPPorts = [
         # vsftpd
         2121
         # syncthing
-        8384 22000
+        8384
+        22000
         # photoprism
         2342
       ];
       allowedUDPPorts = [
         # syncthing
-        22000 21027
+        22000
+        21027
         # photoprism
         2342
       ];
@@ -50,6 +52,8 @@
   environment.systemPackages = with pkgs; [
     git
   ];
+
+  virtualisation.docker.enable = true;
 
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "yes";
@@ -62,7 +66,6 @@
     options = let
       # this line prevents hanging on network split
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-
       # username=<USERNAME>
       # domain=<DOMAIN>
       # password=<PASSWORD>
@@ -123,7 +126,6 @@
     openFirewall = true;
   };
 
-
   services.vsftpd = {
     enable = true;
     writeEnable = true;
@@ -136,7 +138,7 @@
   services.syncthing = {
     enable = true;
     user = "root";
-    extraFlags = [ "--no-default-folder" ];
+    extraFlags = ["--no-default-folder"];
     configDir = "/root/.config/syncthing";
     guiAddress = "0.0.0.0:8384";
     settings.gui = {
@@ -166,13 +168,15 @@
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
-    ensureDatabases = [ "photoprism" ];
-    ensureUsers = [ {
-      name = "photoprism";
-      ensurePermissions = {
-        "photoprism.*" = "ALL PRIVILEGES";
-      };
-    } ];
+    ensureDatabases = ["photoprism"];
+    ensureUsers = [
+      {
+        name = "photoprism";
+        ensurePermissions = {
+          "photoprism.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?

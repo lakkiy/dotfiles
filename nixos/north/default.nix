@@ -7,9 +7,7 @@
   config,
   pkgs,
   ...
-}:
-
-{
+}: {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -34,11 +32,13 @@
     hostName = "north";
     networkmanager.enable = true;
     defaultGateway = "192.168.31.222";
-    nameservers = [ "192.168.31.222" ];
-    interfaces.wlp9s0.ipv4.addresses = [{
-      address = "192.168.31.151";
-      prefixLength = 24;
-    }];
+    nameservers = ["192.168.31.222"];
+    interfaces.wlp9s0.ipv4.addresses = [
+      {
+        address = "192.168.31.151";
+        prefixLength = 24;
+      }
+    ];
     firewall = {
       enable = true;
       allowedTCPPorts = [
@@ -47,7 +47,7 @@
         # vsftpd
         2121
       ];
-      allowedUDPPorts = [ 53317 ];
+      allowedUDPPorts = [53317];
     };
   };
 
@@ -68,16 +68,16 @@
     pulse.enable = true;
   };
 
-  # Bluetooth
+  # Bluetooth #TODO auto connect
   services.pipewire.wireplumber.configPackages = [
-	  (pkgs.writeTextDir "share/wireplumber/bluetooth.lua.d/51-bluez-config.lua" ''
-  		bluez_monitor.properties = {
-  			["bluez5.enable-sbc-xq"] = true,
-  			["bluez5.enable-msbc"] = true,
-  			["bluez5.enable-hw-volume"] = true,
-  			["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-  		}
-	  '')
+    (pkgs.writeTextDir "share/wireplumber/bluetooth.lua.d/51-bluez-config.lua" ''
+      bluez_monitor.properties = {
+      	["bluez5.enable-sbc-xq"] = true,
+      	["bluez5.enable-msbc"] = true,
+      	["bluez5.enable-hw-volume"] = true,
+      	["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+      }
+    '')
   ];
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -89,7 +89,7 @@
   users.users.gray = {
     isNormalUser = true;
     description = "gray";
-    extraGroups = [ "docker" "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
       mpv
@@ -99,7 +99,8 @@
       dropbox
       ventoy # bootable usb
       cider # apple music client
-      localsend xdg-user-dirs # send/recv file to phone
+      localsend
+      xdg-user-dirs # send/recv file to phone
       inkscape # Vector graphics editor
       fractal # matrix client
       qq
@@ -108,7 +109,6 @@
       filezilla # ftp ftps sftp gui client
     ];
   };
-
   # for fractal
   services.gnome.gnome-keyring.enable = true;
 
@@ -119,25 +119,10 @@
     options = let
       # this line prevents hanging on network split
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-
       # username=<USERNAME>
       # domain=<DOMAIN>
       # password=<PASSWORD>
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
-  };
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
-  services.dae = {
-    enable = true;
-    # make sure to create the config file
-    # global{}
-    # routing{}
-    configFile = "/etc/dae/config.dae";
   };
 
   # wayland support for electron base app

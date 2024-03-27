@@ -1,10 +1,14 @@
 # General home-manager config for NixOS
-{ config, lib, pkgs, inputs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
-    (import ../home-manager/shell.nix)
-    (import ../home-manager/syncthing.nix)
+    ../home-manager/shell
+    ../home-manager/syncthing
   ];
 
   home.file."Pictures/wallpapers".source = ../files/wallpapers;

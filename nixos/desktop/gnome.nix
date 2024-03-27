@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
@@ -8,7 +10,14 @@
     gnome.gnome-tweaks
   ];
   # gnome system tray, with addindicator
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
 
   programs.dconf.enable = true;
+
+  home-manager.users.gray = {
+    imports = [
+      ../../home-manager/desktop/gnome.nix
+      ../../home-manager/desktop/gtk.nix
+    ];
+  };
 }

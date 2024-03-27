@@ -1,7 +1,17 @@
-{ lib, config, pkgs, inputs, ... }:
-
 {
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    ../wezterm
+    # ../ags #FIXME rec imports?
+  ];
+
   # automatically change dark mode and light mode on linux desktop
+  # NOT WORK? TEST
   services.darkman = {
     enable = true;
     # beijing
@@ -16,18 +26,37 @@
   programs.wlogout = {
     enable = true;
     layout = [
-      {label = "lock"; action = "swaylock"; text = "Lock";}
-      {label = "hibernate"; action = "systemctl hibernate"; text = "Hibernate";}
-      {label = "logout"; action = "hyprctl dispatch exit 0"; text = "Logout";}
-      {label = "shutdown"; action = "systemctl poweroff"; text = "Shutdown";}
-      {label = "suspend"; action = "systemctl suspend"; text = "Suspend";}
-      {label = "reboot"; action = "systemctl reboot"; text = "Reboot";}
+      {
+        label = "lock";
+        action = "swaylock";
+        text = "Lock";
+      }
+      {
+        label = "hibernate";
+        action = "systemctl hibernate";
+        text = "Hibernate";
+      }
+      {
+        label = "logout";
+        action = "hyprctl dispatch exit 0";
+        text = "Logout";
+      }
+      {
+        label = "shutdown";
+        action = "systemctl poweroff";
+        text = "Shutdown";
+      }
+      {
+        label = "suspend";
+        action = "systemctl suspend";
+        text = "Suspend";
+      }
+      {
+        label = "reboot";
+        action = "systemctl reboot";
+        text = "Reboot";
+      }
     ];
-  };
-
-  home.file.".config/ags" = {
-    source = ../files/ags;
-    recursive = true;
   };
 
   home.file.".config/hypr/hyprpaper.conf".text = "
@@ -39,24 +68,22 @@ ipc = off
 ";
 
   home.packages = with pkgs; [
+    wezterm
     hyprpaper
-    grimblast            # screenshot
-    wl-clipboard         # copy to clipboard
-    wlrctl               # switch to application or run it
-    wl-gammactl          # Contrast, brightness, and gamma adjustments
-    hyprpicker           # color picker for wayland
-    swappy               # snapshot editing
-    imagemagick          # for bitmap images
-    brightnessctl        # control device brightness
-    inotify-tools        # for ags
+    grimblast # screenshot
+    wl-clipboard # copy to clipboard
+    wlrctl # switch to application or run it
+    wl-gammactl # Contrast, brightness, and gamma adjustments
+    hyprpicker # color picker for wayland
+    swappy # snapshot editing
+    imagemagick # for bitmap images
+    brightnessctl # control device brightness
+    inotify-tools # for ags
     pavucontrol
-    bemenu               # application launcher
+    bemenu # application launcher
     networkmanagerapplet # network manager applet on tray
-    blueberry            # bluetooth manager
-    pkgs.bibata-cursors  # cursor theme
-
-    ags
-    libsoup_3
+    blueberry # bluetooth manager
+    pkgs.bibata-cursors # cursor theme
   ];
 
   # for now only use home-manager to config hyprland
@@ -100,17 +127,17 @@ ipc = off
       windowrule = let
         f = regex: "float, ^(${regex})$";
       in [
-		    (f "pavucontrol")
-		    (f "nm-connection-editor")
-		    (f "org.gnome.Settings")
-		    (f "org.gnome.design.Palette")
-		    (f "Color Picker")
-		    (f "xdg-desktop-portal")
-		    (f "xdg-desktop-portal-gnome")
-		    (f "qbittorrent")
-		    (f "com.github.Aylur.ags")
-		    "workspace 7, title:Spotify"
-        "noblur,^(?!emacs$|xterm|fuzzel$).*$"
+        (f "pavucontrol")
+        (f "nm-connection-editor")
+        (f "org.gnome.Settings")
+        (f "org.gnome.design.Palette")
+        (f "Color Picker")
+        (f "xdg-desktop-portal")
+        (f "xdg-desktop-portal-gnome")
+        (f "qbittorrent")
+        (f "com.github.Aylur.ags")
+        "workspace 7, title:Spotify"
+        "noblur,^(?!emacs$|wezterm|fuzzel$).*$"
       ];
 
       general = {
@@ -178,33 +205,48 @@ ipc = off
         mvtows = binding "SUPER SHIFT" "movetoworkspace";
         mvw = binding "SUPER SHIFT" "movewindow";
         arr = [1 2 3 4 5 6 7 8 9];
-      in [
-        "SUPER, Return, exec, wlrctl window focus xterm || xterm"
-        "SUPER, B, exec, wlrctl window focus firefox || firefox"
-        "SUPER, E, exec, wlrctl window focus emacs || emacs"
-        "SUPER, D, exec, bemenu-run -i --fn 'Sarasa Gothic SC 20'"
-        "SUPER_SHIFT, P, exec, grimblast copysave area"
-        # TODO scratch pad, tab layout
-        # "bind = SUPER_SHIFT, c, movetoworkspace, special"
-        # "bind = SUPER , c, togglespecialworkspace,"
+      in
+        [
+          # hyprctl clients | grep class
+          "SUPER, Return, exec, wlrctl window focus org.wezfurlong.wezterm || wezterm"
+          "SUPER, B, exec, wlrctl window focus firefox || firefox"
+          "SUPER, E, exec, wlrctl window focus emacs || emacs"
+          "SUPER, D, exec, bemenu-run -i --fn 'Sarasa Gothic SC 20'"
+          "SUPER_SHIFT, P, exec, grimblast copysave area"
+          # TODO scratch pad, tab layout
+          # "bind = SUPER_SHIFT, c, movetoworkspace, special"
+          # "bind = SUPER , c, togglespecialworkspace,"
 
+          "ALT, Tab, focuscurrentorlast"
+          "SUPER, Q, killactive"
+          "SUPER, F, togglefloating"
+          "SUPER, G, fullscreen"
+          "SUPER, O, fakefullscreen"
+          "SUPER, P, togglesplit"
 
-        "ALT, Tab, focuscurrentorlast"
-        "SUPER, Q, killactive"
-        "SUPER, F, togglefloating"
-        "SUPER, G, fullscreen"
-        "SUPER, O, fakefullscreen"
-        "SUPER, P, togglesplit"
-
-        (mvw "h" "l") (mvw "s" "r") (mvw "t" "u") (mvw "n" "d")
-        (mvfocus "h" "l") (mvfocus "s" "r") (mvfocus "t" "u") (mvfocus "n" "d")
-        (ws "left" "e-1") (ws "right" "e+1")
-        (mvtows "left" "e-1") (mvtows "right" "e+1")
-        (resizeactive "n" "0 -20") (resizeactive "t" "0 20") (resizeactive "s" "20 0") (resizeactive "h" "-20 0")
-        (mvactive "n" "0 -20") (mvactive "t" "0 20") (mvactive "s" "20 0") (mvactive "h" "-20 0")
-      ]
-      ++ (map (i: ws (toString i) (toString i)) arr)
-      ++ (map (i: mvtows (toString i) (toString i)) arr);
+          (mvw "h" "l")
+          (mvw "s" "r")
+          (mvw "t" "u")
+          (mvw "n" "d")
+          (mvfocus "h" "l")
+          (mvfocus "s" "r")
+          (mvfocus "t" "u")
+          (mvfocus "n" "d")
+          (ws "left" "e-1")
+          (ws "right" "e+1")
+          (mvtows "left" "e-1")
+          (mvtows "right" "e+1")
+          (resizeactive "n" "0 -20")
+          (resizeactive "t" "0 20")
+          (resizeactive "s" "20 0")
+          (resizeactive "h" "-20 0")
+          (mvactive "n" "0 -20")
+          (mvactive "t" "0 20")
+          (mvactive "s" "20 0")
+          (mvactive "h" "-20 0")
+        ]
+        ++ (map (i: ws (toString i) (toString i)) arr)
+        ++ (map (i: mvtows (toString i) (toString i)) arr);
 
       bindm = [
         "SUPER, mouse:273, resizewindow"

@@ -7,9 +7,7 @@
   config,
   pkgs,
   ...
-}:
-
-{
+}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -21,8 +19,8 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    (import ../home-manager/shell.nix)
-    (import ../home-manager/programming.nix)
+    ../home-manager/shell
+    ../home-manager/develop
   ];
 
   home = {
@@ -34,5 +32,5 @@
   };
 
   home.file."Pictures/wallpapers".source = ../files/wallpapers;
-  home.file.".config/karabiner/karabiner.json".source = ../files/karabiner.json;
+  home.file.".config/karabiner/karabiner.json".source = ./karabiner.json;
 }

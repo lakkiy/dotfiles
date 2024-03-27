@@ -1,9 +1,11 @@
 # wait to merge https://github.com/NixOS/nixpkgs/pull/279716
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.services.qbittorrent-nox;
 in {
   options = {
@@ -72,13 +74,12 @@ in {
           '';
         };
 
-        package = mkPackageOption pkgs "qbittorrent-nox" { };
+        package = mkPackageOption pkgs "qbittorrent-nox" {};
       };
     };
   };
 
   config = mkIf cfg.enable {
-
     services.qbittorrent-nox.package = mkDefault (pkgs.qbittorrent-nox);
 
     systemd.tmpfiles.rules = [
@@ -88,9 +89,9 @@ in {
     ];
 
     systemd.services.qbittorrent-nox = {
-      after = [ "network.target" "local-fs.target" "network-online.target" "nss-lookup.target" ];
-      wantedBy = [ "multi-user.target" ];
-      path = [ cfg.package ];
+      after = ["network.target" "local-fs.target" "network-online.target" "nss-lookup.target"];
+      wantedBy = ["multi-user.target"];
+      path = [cfg.package];
       unitConfig = {
         Description = "qBittorrent-nox Daemon";
         Documentation = "man:qbittorrent-nox(1)";
@@ -114,15 +115,15 @@ in {
 
     networking.firewall = mkMerge [
       (mkIf (cfg.torrenting.openFirewall) {
-        allowedTCPPorts = [ cfg.torrenting.port ];
-        allowedUDPPorts = [ cfg.torrenting.port ];
+        allowedTCPPorts = [cfg.torrenting.port];
+        allowedUDPPorts = [cfg.torrenting.port];
       })
       (mkIf (cfg.web.openFirewall) {
-        allowedTCPPorts = [ cfg.web.port ];
+        allowedTCPPorts = [cfg.web.port];
       })
     ];
 
-    environment.systemPackages = [ cfg.package ];
+    environment.systemPackages = [cfg.package];
 
     users.users = mkIf (cfg.user == "qbittorrent") {
       qbittorrent = {

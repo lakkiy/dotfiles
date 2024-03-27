@@ -1,7 +1,11 @@
 # General configuration.nix for all host
-{ config, lib, pkgs, inputs, ...}:
-
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
   # Always enable the shell system-wide, even if it's already enabled in
   # your home.nix. # Otherwise it wont source the necessary files.
   programs.zsh.enable = true;
@@ -10,23 +14,22 @@
   # "normal" user and not a "system" user. Therefore it is recommended
   # to add the user shells to this list. To add a shell to /etc/shells
   # use the following line in your config:
-  environment.shells = with pkgs; [ zsh ];
-
-  # Enable docker.
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
+  environment.shells = with pkgs; [zsh];
 
   environment.systemPackages = [
     pkgs.git
     # FHS environment
-    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
-     pkgs.buildFHSUserEnv (base // {
-       name = "fhs";
-       targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
-       profile = "export FHS=1";
-       runScript = "bash";
-       extraOutputsToInstall = ["dev"];
-     }))
+    (let
+      base = pkgs.appimageTools.defaultFhsEnvArgs;
+    in
+      pkgs.buildFHSUserEnv (base
+        // {
+          name = "fhs";
+          targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+          profile = "export FHS=1";
+          runScript = "bash";
+          extraOutputsToInstall = ["dev"];
+        }))
     # For mount samba
     pkgs.cifs-utils
   ];
@@ -64,7 +67,7 @@
   # Use keyd to remap keys
   services.keyd.enable = true;
   services.keyd.keyboards.default = {
-    ids = [ "*" ];
+    ids = ["*"];
     settings = {
       main = {
         capslock = "overload(control, esc)";
@@ -74,12 +77,12 @@
   };
 
   nix = {
-    settings ={
+    settings = {
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
       # Enable flakes and new 'nix' command
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "root" "liubo" "gray" ];
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["root" "liubo" "gray"];
     };
     gc = {
       automatic = true;

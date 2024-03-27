@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     protobuf
     emacs-lsp-booster
@@ -27,24 +30,31 @@
     deno
     nodejs-slim # for copilet.el
     typescript
-    nodePackages.typescript-language-server   # also for js
+    nodePackages.typescript-language-server # also for js
     nodePackages.vscode-langservers-extracted # html, css etc
     nodePackages.npm # emacs copilot need this to install copilot server
     nodePackages.pnpm
     # python
-    nodePackages.pyright                      # lsp server
-    (python3.withPackages(ps: with ps; [
-      ipython
-      pdm # manage project dep
-      pip
-      pipx # venv for cli tools installed by pip
-      pam # for ags
-      pygments # for gtags
-       # lsp-bridge for emacs
-      epc orjson sexpdata six setuptools paramiko rapidfuzz
-      # blink-search for emacs
-      requests
-    ]))
+    nodePackages.pyright # lsp server
+    (python3.withPackages (ps:
+      with ps; [
+        ipython
+        pdm # manage project dep
+        pip
+        pipx # venv for cli tools installed by pip
+        pam # for ags
+        pygments # for gtags
+        # lsp-bridge for emacs
+        epc
+        orjson
+        sexpdata
+        six
+        setuptools
+        paramiko
+        rapidfuzz
+        # blink-search for emacs
+        requests
+      ]))
     # go
     gopls
     gotools # goimports
@@ -70,15 +80,15 @@
     goPath = ".go";
   };
   home.sessionVariables = {
-    GO111MODULE="auto";
-    GOPROXY="https://goproxy.io,direct";
-    GTAGSOBJDIRPREFIX="$HOME/.cache/gtags/";
-    GTAGSCONF="$HOME/.globalrc";
-    GTAGSLABEL="native-pygments";
+    GO111MODULE = "auto";
+    GOPROXY = "https://goproxy.io,direct";
+    GTAGSOBJDIRPREFIX = "$HOME/.cache/gtags/";
+    GTAGSCONF = "$HOME/.globalrc";
+    GTAGSLABEL = "native-pygments";
   };
   home.sessionPath = [
     "$GOPATH/bin"
   ];
 
-  home.file.".globalrc".source = ../files/globalrc;
+  home.file.".globalrc".source = ./globalrc;
 }
