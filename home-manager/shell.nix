@@ -128,7 +128,7 @@ in
         ll = "ls -al --human-readable --time-style=long-iso";
         k = "kubectl";
         e = "emacs -nw";
-        me = "emacs -q -nw -l ~/.config/emacs/init.el-mini.el";
+        me = "emacs -q -nw -l ~/.config/emacs/init-mini.el";
         ec = ''emacsclient -nw -a ""'';
         kec = "emacsclient -e '(kill-emacs)'";
         # https://github.com/Genivia/ugrep#equivalence-to-gnubsd-grep
