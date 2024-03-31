@@ -6,6 +6,16 @@
 }: {
   programs.hyprland.enable = true;
 
+  # for now, ly module not in nixos or don't support hyprland
+  services.xserver.displayManager.gdm.enable = true;
+
+  home-manager.users.gray = {
+    imports = [
+      ../../home-manager/desktop/hyprland
+      ../../home-manager/desktop/gtk.nix
+    ];
+  };
+
   xdg.portal = {
     enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gnome];
@@ -38,16 +48,7 @@
     };
   };
 
-  # display manager, maybe replace with ly(don't supprot hyprland for now?)
-  services.xserver.displayManager.gdm.enable = true;
-
   # samba support for GTK-based file managers like
   services.gvfs.enable = true;
 
-  home-manager.users.gray = {
-    imports = [
-      ../../home-manager/desktop/hyprland.nix
-      ../../home-manager/desktop/gtk.nix
-    ];
-  };
 }

@@ -1,9 +1,9 @@
 {
-  inputs,
+  flake-inputs,
   pkgs,
   ...
 }: {
-  imports = [inputs.ags.homeManagerModules.default];
+  imports = [flake-inputs.ags.homeManagerModules.default];
 
   programs.ags = {
     enable = true;

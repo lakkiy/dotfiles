@@ -8,14 +8,9 @@ Install nix:
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 #+end_src
 
-Install git:
-#+begin_src sh
-nix-env -i git
-#+end_src
-
 Clone this repo:
 #+begin_src sh
-git clone https://github.com/mrunhap/dotfiles.git ~/.setup
+nix run nixpkgs#git clone https://github.com/mrunhap/dotfiles.git ~/.setup
 #+end_src
 
 * NixOS

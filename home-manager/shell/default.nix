@@ -16,9 +16,8 @@
       hyperref
       capt-of
       #(setq org-latex-compiler "xelatex")
-      
       #(setq org-preview-latex-default-process 'dvisvgm)
-      
+
       digestif # lsp server
       ctex
       ;

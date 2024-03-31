@@ -2,107 +2,129 @@
   lib,
   config,
   pkgs,
-  inputs,
+  flake-inputs,
   ...
 }: {
   imports = [
-    ../wezterm
-    # ../ags #FIXME rec imports?
+    ./ags.nix
+    ../../wezterm
+
+    # https://github.com/gmodena/nix-flatpak#infinte-recusion-in-home-manager-imports
+    flake-inputs.hyprlock.homeManagerModules.hyprlock
+    flake-inputs.hypridle.homeManagerModules.hypridle
   ];
 
-  # automatically change dark mode and light mode on linux desktop
-  # NOT WORK? TEST
-  services.darkman = {
+  # launcher
+  programs.bemenu.enable = true;
+
+  home.file.".config/hypr/hyprpaper.conf".source = ./hypr/hyprpaper.conf;
+  home.file.".local/share/icons/Bibata-Modern-Ice".source = ./Bibata-Modern-Ice;
+
+  home.packages = with pkgs; [
+    # clipboard for wayland, also needed by other tools like hyprpicker
+    # to paste color to clipboard
+    # provide command: wl-copy, wl-paste
+    wl-clipboard
+
+    # switch to application or run it
+    wlrctl
+
+    # screenshot
+    grim slurp
+
+    hyprpaper
+    hyprpicker
+    hyprcursor
+
+    # voice control
+    pavucontrol
+
+    # network manager on tray
+    networkmanagerapplet
+
+    # bluetooth manager
+    blueberry
+
+    # cursor theme for x
+    bibata-cursors
+  ];
+
+
+  programs.hyprlock = {
     enable = true;
-    # beijing
-    settings = {
-      lat = 39.9;
-      lng = 116.3;
-    };
+    general.disable_loading_bar = true;
+    backgrounds = [{
+      monitor = "";
+      path = "$HOME/Pictures/wall.png";
+      color = "rgba(25, 20, 20, 1.0)";
+      blur_passes = 1;
+      blur_size = 0;
+      brightness = 0.8;
+    }];
+    labels = [{
+      monitor = "";
+      text = ''$TIME Hi <i><span foreground="##ff2222">$USER</span></i> :)'';
+      font_size = 70;
+      position = {
+        x = 0;
+        y = 80;
+      };
+      valign = "center";
+      halign = "center";
+    }];
   };
-
-  services.swayidle.enable = true;
-
-  programs.wlogout = {
+  services.hypridle = {
     enable = true;
-    layout = [
+    beforeSleepCmd = "loginctl lock-session";
+    afterSleepCmd = "hyprctl dispatch dpms on";
+    ignoreDbusInhibit = true;
+    lockCmd = "pidof hyprlock || hyprlock";
+    listeners = [
       {
-        label = "lock";
-        action = "swaylock";
-        text = "Lock";
+        timeout = 300;
+        onTimeout = "loginctl lock-session";
       }
       {
-        label = "hibernate";
-        action = "systemctl hibernate";
-        text = "Hibernate";
-      }
-      {
-        label = "logout";
-        action = "hyprctl dispatch exit 0";
-        text = "Logout";
-      }
-      {
-        label = "shutdown";
-        action = "systemctl poweroff";
-        text = "Shutdown";
-      }
-      {
-        label = "suspend";
-        action = "systemctl suspend";
-        text = "Suspend";
-      }
-      {
-        label = "reboot";
-        action = "systemctl reboot";
-        text = "Reboot";
+        timeout = 1800;
+        onTimeout = "systemctl suspend";
       }
     ];
   };
 
-  home.file.".config/hypr/hyprpaper.conf".text = "
-preload = ~/Pictures/wallpapers/default.jpg
-preload = ~/Pictures/wallpapers/v/default.jpg
-wallpaper = DP-2,~/Pictures/wallpapers/default.jpg
-wallpaper = DP-3,~/Pictures/wallpapers/v/default.jpg
-ipc = off
-";
-
-  home.packages = with pkgs; [
-    wezterm
-    hyprpaper
-    grimblast # screenshot
-    wl-clipboard # copy to clipboard
-    wlrctl # switch to application or run it
-    wl-gammactl # Contrast, brightness, and gamma adjustments
-    hyprpicker # color picker for wayland
-    swappy # snapshot editing
-    imagemagick # for bitmap images
-    brightnessctl # control device brightness
-    inotify-tools # for ags
-    pavucontrol
-    bemenu # application launcher
-    networkmanagerapplet # network manager applet on tray
-    blueberry # bluetooth manager
-    pkgs.bibata-cursors # cursor theme
-  ];
-
-  # for now only use home-manager to config hyprland
   wayland.windowManager.hyprland = {
     enable = true;
+
     settings = {
       env = [
         # Fix cursor don't show with Nvidia card
         "WLR_NO_HARDWARE_CURSORS,1"
+
+        # hyprcursor
+        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
+        "HYPRCURSOR_SIZE,32"
+        "XCURSOR_THEME,Bibata-Modern-Ice"
+        "XCURSOR_SIZE,32"
       ];
 
       exec-once = [
-        "nm-applet --indicator & fcitx5 -d"
-        "swayidle -w timeout 1800 'systemctl suspend'"
-        "emacs --daemon"
-        "hyprctl setcursor Bibata-Modern-Amber 32"
+        "hyprctl setcursor Bibata-Modern-Ice 32"
+
+        # status bar
         "ags -b hypr"
+        "nm-applet --indicator"
+
+        # input method
+        "fcitx5 -d"
+
+        # auto mount usb
         "udiskie &"
+
+        # wallpaper
         "hyprpaper"
+
+        # others
+        "hypridle"
+        "emacs --daemon"
       ];
 
       monitor = [
@@ -111,6 +133,7 @@ ipc = off
         "HDMI-A-2,preferred,1440x2440,auto,transform,3"
         "HDMI-A-1,disable"
       ];
+
       workspace = [
         "1, monitor:DP-2, default:true"
         "2, monitor:DP-2"
@@ -128,6 +151,7 @@ ipc = off
         f = regex: "float, ^(${regex})$";
       in [
         (f "pavucontrol")
+        (f "bluetooth")
         (f "nm-connection-editor")
         (f "org.gnome.Settings")
         (f "org.gnome.design.Palette")
@@ -136,8 +160,9 @@ ipc = off
         (f "xdg-desktop-portal-gnome")
         (f "qbittorrent")
         (f "com.github.Aylur.ags")
-        "workspace 7, title:Spotify"
         "noblur,^(?!emacs$|wezterm|fuzzel$).*$"
+      ] ++ [
+        "float, title:(emacs-run-launcher)"
       ];
 
       general = {
@@ -207,16 +232,22 @@ ipc = off
         arr = [1 2 3 4 5 6 7 8 9];
       in
         [
-          # hyprctl clients | grep class
+          # launcher
+          "SUPER, D, exec, bemenu-run -i --fn 'Sarasa Gothic SC 20'"
+
+          # application (hyprctl clients | grep class)
           "SUPER, Return, exec, wlrctl window focus org.wezfurlong.wezterm || wezterm"
           "SUPER, B, exec, wlrctl window focus firefox || firefox"
           "SUPER, E, exec, wlrctl window focus emacs || emacs"
-          "SUPER, D, exec, bemenu-run -i --fn 'Sarasa Gothic SC 20'"
-          "SUPER_SHIFT, P, exec, grimblast copysave area"
-          # TODO scratch pad, tab layout
-          # "bind = SUPER_SHIFT, c, movetoworkspace, special"
-          # "bind = SUPER , c, togglespecialworkspace,"
 
+          # lock screen
+          "SUPER, L, exec, hyprlock"
+
+          # screenshot
+          "SUPER_SHIFT, 4, exec, grim -g \"$(slurp -d)\" - | wl-copy"
+          " , Print, exec, grim -g \"$(slurp -d)\" - | wl-copy"
+
+          # hyprland
           "ALT, Tab, focuscurrentorlast"
           "SUPER, Q, killactive"
           "SUPER, F, togglefloating"

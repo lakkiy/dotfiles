@@ -107,6 +107,7 @@
       discord
       goldendict-ng
       filezilla # ftp ftps sftp gui client
+      spacedrive
     ];
   };
   # for fractal

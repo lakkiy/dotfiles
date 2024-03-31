@@ -1,6 +1,7 @@
 {
   lib,
   inputs,
+  outputs,
   nixpkgs,
   home-manager,
   ...
@@ -32,6 +33,8 @@ in {
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        # see https://github.com/gmodena/nix-flatpak#notes-on-homemanager
+        home-manager.extraSpecialArgs.flake-inputs = inputs;
         home-manager.users.gray = {
           imports = [
             ./home.nix
@@ -49,7 +52,7 @@ in {
 
   homelab = lib.nixosSystem {
     inherit system;
-    specialArgs = {inherit inputs pkgs;};
+    specialArgs = {inherit inputs outputs pkgs;};
     modules = [
       ./configuration.nix
       ./homelab
@@ -58,6 +61,7 @@ in {
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs.flake-inputs = inputs;
         home-manager.users.root = {
           imports = [ ./home.nix ];
           home.username = "root";
