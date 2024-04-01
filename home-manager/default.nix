@@ -17,7 +17,6 @@ in {
     extraSpecialArgs = {inherit inputs;};
     modules = [
       ./home.nix
-      ./server.nix
       ./editor
       ./develop
       ./shell
