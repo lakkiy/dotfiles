@@ -241,7 +241,7 @@
           "SUPER, E, exec, wlrctl window focus emacs || emacs"
 
           # lock screen
-          "SUPER, L, exec, hyprlock"
+          "SUPER, L, exec, hyprlock --immediate -q"
 
           # screenshot
           "SUPER_SHIFT, 4, exec, grim -g \"$(slurp -d)\" - | wl-copy"
