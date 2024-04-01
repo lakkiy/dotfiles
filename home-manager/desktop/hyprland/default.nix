@@ -14,6 +14,9 @@
     flake-inputs.hypridle.homeManagerModules.hypridle
   ];
 
+  # A notification daemon
+  services.dunst.enable = true;
+
   # launcher
   programs.bemenu.enable = true;
 
