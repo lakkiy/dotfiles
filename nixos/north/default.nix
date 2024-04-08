@@ -108,6 +108,7 @@
       goldendict-ng
       filezilla # ftp ftps sftp gui client
       spacedrive
+      xournalpp
     ];
   };
   # for fractal

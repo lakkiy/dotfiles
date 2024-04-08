@@ -64,6 +64,7 @@
       # "goldendict-ng"
       # display monitor info on menu bar
       "stats"
+      "xournal-plus-plus"
     ];
   };
 
