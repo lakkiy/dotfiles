@@ -29,7 +29,6 @@ in {
     neofetch
     delta # diff
     fd # find
-    ugrep # faster than ripgrep
     cloc # count code line
     tree # show folder as tree view
     d2 # draw
@@ -154,8 +153,6 @@ in {
         me = "emacs -q -nw -l ~/.config/emacs/init-mini.el";
         ec = ''emacsclient -nw -a ""'';
         kec = "emacsclient -e '(kill-emacs)'";
-        # https://github.com/Genivia/ugrep#equivalence-to-gnubsd-grep
-        grep = "ugrep -G -U -Y -. --sort -Dread -dread";
       };
       initExtra = ''
         for file in $HOME/.config/zsh/plugins/*.zsh; do
