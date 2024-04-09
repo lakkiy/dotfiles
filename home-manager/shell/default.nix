@@ -101,6 +101,21 @@ in {
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
 
+    # shell history to replace, also see eshll-atuin
+    # run 'atuin import auto' if already have history
+    atuin = {
+      enable = true;
+      flags = [ "--disable-up-arrow" ];
+      settings = {
+        db_path = "~/Sync/atuin/history.db";
+        key_path = "~/Sync/atuin/keys";
+        session_path = "~/Sync/atuin/sessions";
+        auto_sync = false;
+        update_check = false;
+        search_mode = "fuzzy";
+      };
+    };
+
     git = {
       enable = true;
       userName = "mrunhap";
