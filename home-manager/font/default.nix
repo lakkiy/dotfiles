@@ -6,10 +6,16 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    # no 豆腐
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-color-emoji
+    noto-fonts-emoji-blob-bin
+    noto-fonts-monochrome-emoji
+
     dejavu_fonts
     font-awesome_5
-    noto-fonts-emoji
-    noto-fonts # no 豆腐
     cardo # variable pitch font
     sarasa-gothic # 中英等宽
     lxgw-wenkai # 中文字体

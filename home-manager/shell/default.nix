@@ -101,21 +101,6 @@ in {
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
 
-    # shell history to replace, also see eshll-atuin
-    # run 'atuin import auto' if already have history
-    atuin = {
-      enable = true;
-      flags = [ "--disable-up-arrow" ];
-      settings = {
-        db_path = "~/Sync/atuin/history.db";
-        key_path = "~/Sync/atuin/keys";
-        session_path = "~/Sync/atuin/sessions";
-        auto_sync = false;
-        update_check = false;
-        search_mode = "fuzzy";
-      };
-    };
-
     git = {
       enable = true;
       userName = "mrunhap";
@@ -157,6 +142,20 @@ in {
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
+      # https://martinheinz.dev/blog/110
+      history = {
+        size = 10000000;
+        save = 10000000;
+        path = "$HOME/Sync/.zsh_history";
+        ignorePatterns = [ "(ls|cd|pwd|exit|cd)*" ];
+        ignoreAllDups = true;
+        # This can be useful if you want to avoid storing secrets in
+        # history - simply prefix any command that includes a
+        # secret/password with space, e.g. export
+        # AWS_ACCESS_KEY_ID=... (notice the space before export) and it
+        # won't appear in history.
+        ignoreSpace = true;
+      };
       shellAliases = {
         ls =
           if pkgs.stdenv.isLinux

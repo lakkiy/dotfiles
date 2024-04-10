@@ -10,6 +10,8 @@
   # your home.nix. # Otherwise it wont source the necessary files.
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
+  # get zsh completion for system packages (e.g. systemd)
+  environment.pathsToLink = [ "/share/zsh" ];
   # Many programs look at /etc/shells to determine if a user is a
   # "normal" user and not a "system" user. Therefore it is recommended
   # to add the user shells to this list. To add a shell to /etc/shells

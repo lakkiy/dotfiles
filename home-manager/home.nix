@@ -20,6 +20,20 @@
     # ./nvim.nix
   ];
 
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["mrunhap"];
+    };
+    # Enable nixFlakes on system
+    package = pkgs.nixVersions.unstable;
+
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    # nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+    registry.nixpkgs.flake = inputs.nixpkgs;
+  };
   nixpkgs = {
     # You can add overlays here
     overlays = [

@@ -6,7 +6,6 @@
 }: {
   home.packages = with pkgs; [
     protobuf
-    emacs-lsp-booster
 
     # tag system
     universal-ctags

@@ -36,8 +36,8 @@ in {
       ./home.nix
       ./pacman.nix
       {
-        home.username = "liubo";
-        home.homeDirectory = "/home/liubo";
+        home.username = "mrunhap";
+        home.homeDirectory = "/home/mrunhap";
       }
     ];
   };
