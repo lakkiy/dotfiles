@@ -131,23 +131,22 @@
       ];
 
       monitor = [
-        "DP-2,3840x2160@144,1440x0,1.5,bitdepth,10"
-        "DP-3,3840x2160,0x0,1.5,transform,1"
-        "HDMI-A-2,preferred,1440x2440,auto,transform,3"
-        "HDMI-A-1,disable"
+        "desc:Sony SDMU27M90*30 9706757,3840x2160@144,1440x0,1.5,bitdepth,10"
+        "desc:HFC X24 Pro demoset-1,3840x2160,0x0,1.5,transform,1"
+        "desc:LZT Viewedge.CR   00000000,preferred,1440x2440,auto,transform,3"
       ];
 
       workspace = [
-        "1, monitor:DP-2, default:true"
-        "2, monitor:DP-2"
-        "3, monitor:DP-2"
-        "4, monitor:DP-3"
-        "5, monitor:DP-3"
-        "6, monitor:DP-2"
-        "7, monitor:DP-2"
-        "8, monitor:DP-2"
-        "9, monitor:HDMI-A-2"
-        "10, monitor:HDMI-A-2"
+        "1, monitor:desc:Sony SDMU27M90*30 9706757, default:true"
+        "2, monitor:desc:Sony SDMU27M90*30 9706757"
+        "3, monitor:desc:Sony SDMU27M90*30 9706757"
+        "4, monitor:desc:HFC X24 Pro demoset-1"
+        "5, monitor:desc:HFC X24 Pro demoset-1"
+        "6, monitor:desc:HFC X24 Pro demoset-1"
+        "7, monitor:desc:HFC X24 Pro demoset-1"
+        "8, monitor:desc:HFC X24 Pro demoset-1"
+        "9, monitor:desc:LZT Viewedge.CR   00000000"
+        "10, monitor:desc:LZT Viewedge.CR   00000000"
       ];
 
       windowrule = let
