@@ -3,7 +3,7 @@ return {
         ["Gnome Light"] = require("gnome"),
         ["Charmful Dark"] = require("charmful"),
     },
-    color_scheme = "Charmful Dark",
+    color_scheme = "Gnome Light",
     cell_width = 0.9,
     default_cursor_style = "BlinkingBar",
 
