@@ -89,36 +89,7 @@
     web.openFirewall = true;
     torrenting.openFirewall = true;
   };
-  services.ombi = {
-    enable = true;
-    user = "root";
-    group = "root";
-    openFirewall = true;
-  };
-  services.sonarr = {
-    enable = true;
-    user = "root";
-    group = "root";
-    openFirewall = true;
-  };
-  services.radarr = {
-    enable = true;
-    user = "root";
-    group = "root";
-    openFirewall = true;
-  };
-  services.jackett = {
-    enable = true;
-    user = "root";
-    group = "root";
-    openFirewall = true;
-  };
-  services.bazarr = {
-    enable = true;
-    user = "root";
-    group = "root";
-    openFirewall = true;
-  };
+
   services.plex = {
     enable = true;
     user = "root";
@@ -180,4 +151,36 @@
   };
 
   system.stateVersion = "23.11"; # Did you read the comment?
+
+  # pt plugin plus is better
+  # services.ombi = {
+  #   enable = true;
+  #   user = "root";
+  #   group = "root";
+  #   openFirewall = true;
+  # };
+  # services.sonarr = {
+  #   enable = true;
+  #   user = "root";
+  #   group = "root";
+  #   openFirewall = true;
+  # };
+  # services.radarr = {
+  #   enable = true;
+  #   user = "root";
+  #   group = "root";
+  #   openFirewall = true;
+  # };
+  # services.jackett = {
+  #   enable = true;
+  #   user = "root";
+  #   group = "root";
+  #   openFirewall = true;
+  # };
+  # services.bazarr = {
+  #   enable = true;
+  #   user = "root";
+  #   group = "root";
+  #   openFirewall = true;
+  # };
 }
