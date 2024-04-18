@@ -35,7 +35,7 @@
     nameservers = ["192.168.31.222"];
     interfaces.wlp9s0.ipv4.addresses = [
       {
-        address = "192.168.31.151";
+        address = "192.168.31.41";
         prefixLength = 24;
       }
     ];

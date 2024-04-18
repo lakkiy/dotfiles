@@ -26,7 +26,7 @@ in {
       ./vsftpd
       ./desktop/hyprland.nix
       ./game
-      ./proxy
+      # ./proxy
       ./virt
 
       home-manager.nixosModules.home-manager

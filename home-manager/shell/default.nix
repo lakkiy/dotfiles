@@ -201,7 +201,7 @@ in {
           name = "git.plugin.zsh";
           src = fetchurl {
             url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh";
-            sha256 = "sha256-QRCoe9YFInLO3MS1PdfDm8Elv0/jKI3spYm7XQyfeWI=";
+            sha256 = "sha256-CuHFFH8zD35p8ujSbmc9kdbQtM8gFPN7vgCJ152swv8=";
           };
         }
         {
@@ -216,13 +216,6 @@ in {
           src = fetchurl {
             url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh";
             sha256 = "sha256-oWhQdSDE6unkd6+dg3MlNudvoJdhNqJciLDPE5beWes=";
-          };
-        }
-        {
-          name = "extract.plugin.zsh";
-          src = fetchurl {
-            url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh";
-            sha256 = "sha256-rGtWvdHo0F0wucLyEfs8OVY70AdEpnkEt1DDYKTjvb8=";
           };
         }
       ];
