@@ -6,5 +6,5 @@
     enable = true;
     setSocketVariable = true;
   };
-  users.users.gray.extraGroups = [ "docker" ];
+  users.users.mrunhap.extraGroups = [ "docker" ];
 }

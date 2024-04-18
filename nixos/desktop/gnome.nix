@@ -14,7 +14,7 @@
 
   programs.dconf.enable = true;
 
-  home-manager.users.gray = {
+  home-manager.users.mrunhap = {
     imports = [
       ../../home-manager/desktop/gnome.nix
       ../../home-manager/desktop/gtk.nix

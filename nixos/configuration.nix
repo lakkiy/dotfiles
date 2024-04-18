@@ -84,7 +84,7 @@
       auto-optimise-store = true;
       # Enable flakes and new 'nix' command
       experimental-features = ["nix-command" "flakes"];
-      trusted-users = ["root" "liubo" "gray"];
+      trusted-users = ["root" "liubo" "mrunhap"];
     };
     gc = {
       automatic = true;

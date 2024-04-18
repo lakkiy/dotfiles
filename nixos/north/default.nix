@@ -86,9 +86,9 @@
   services.logind.powerKey = "hibernate";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.gray = {
+  users.users.mrunhap = {
     isNormalUser = true;
-    description = "gray";
+    description = "mrunhap";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox

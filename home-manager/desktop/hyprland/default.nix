@@ -76,6 +76,8 @@
       halign = "center";
     }];
   };
+
+  # TODO can't move after suspend by hyprlock?
   services.hypridle = {
     enable = true;
     beforeSleepCmd = "loginctl lock-session";

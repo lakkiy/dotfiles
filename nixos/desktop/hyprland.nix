@@ -9,7 +9,7 @@
   # for now, ly module not in nixos or don't support hyprland
   services.xserver.displayManager.gdm.enable = true;
 
-  home-manager.users.gray = {
+  home-manager.users.mrunhap = {
     imports = [
       ../../home-manager/desktop/hyprland
       ../../home-manager/desktop/gtk.nix

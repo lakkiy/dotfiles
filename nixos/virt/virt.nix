@@ -7,9 +7,9 @@
   # sudo virsh net-autostart default
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
-  users.users.gray.extraGroups = [ "libvirtd" ];
+  users.users.mrunhap.extraGroups = [ "libvirtd" ];
 
-  home-manager.users.gray = {
+  home-manager.users.mrunhap = {
     dconf.settings = {
       "org/virt-manager/virt-manager/connections" = {
         autoconnect = ["qemu:///system"];

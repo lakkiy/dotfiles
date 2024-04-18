@@ -9,6 +9,10 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 #+end_src
 
 Clone this repo:
+#+begin_src
+git clone https://github.com/mrunhap/dotfiles.git ~/.setup
+#+end_src
+Or:
 #+begin_src sh
 nix run nixpkgs#git clone https://github.com/mrunhap/dotfiles.git ~/.setup
 #+end_src

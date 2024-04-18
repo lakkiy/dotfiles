@@ -35,7 +35,7 @@ in {
         home-manager.useUserPackages = true;
         # see https://github.com/gmodena/nix-flatpak#notes-on-homemanager
         home-manager.extraSpecialArgs.flake-inputs = inputs;
-        home-manager.users.gray = {
+        home-manager.users.mrunhap = {
           imports = [
             ./home.nix
             ../home-manager/browser
@@ -43,8 +43,8 @@ in {
             ../home-manager/font
             ../home-manager/develop
           ];
-          home.username = "gray";
-          home.homeDirectory = "/home/gray";
+          home.username = "mrunhap";
+          home.homeDirectory = "/home/mrunhap";
         };
       }
     ];
