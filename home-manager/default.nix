@@ -34,7 +34,23 @@ in {
     extraSpecialArgs = {inherit inputs;};
     modules = [
       ./home.nix
-      ./pacman.nix
+      ./develop
+      ./shell
+      ./syncthing
+      {
+        home.username = "mrunhap";
+        home.homeDirectory = "/home/mrunhap";
+      }
+    ];
+  };
+
+  virt = home-manager.lib.homeManagerConfiguration {
+    inherit pkgs;
+    extraSpecialArgs = {inherit inputs;};
+    modules = [
+      ./home.nix
+      ./develop
+      ./shell
       {
         home.username = "mrunhap";
         home.homeDirectory = "/home/mrunhap";

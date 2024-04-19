@@ -2,77 +2,27 @@
   config,
   pkgs,
   ...
-}: let
-  # https://nixos.wiki/wiki/TexLive
-  tex = pkgs.texlive.combine {
-    inherit
-      (pkgs.texlive)
-      scheme-small
-      dvisvgm
-      dvipng # for preview and export as html
-      wrapfig
-      amsmath
-      ulem
-      hyperref
-      capt-of
-      #(setq org-latex-compiler "xelatex")
-      #(setq org-preview-latex-default-process 'dvisvgm)
+}:
 
-      digestif # lsp server
-      ctex
-      ;
-  };
-in {
+{
   home.packages = with pkgs; [
+    gnumake neofetch
+    rsync delta fd cloc tree
     inetutils # ftp client
-    gnumake
-    neofetch
-    delta # diff
-    fd # find
-    cloc # count code line
-    tree # show folder as tree view
-    d2 # draw
     iperf # test preformance of network
     tailspin # highlight logs
+    d2 # draw
     websocat # curl for websocket
-    rsync
-
-    # cli for emacs
-    tex # basic support for org mode
-    tikzit # draw
-    ltex-ls # lsp server
-    w3m # read html mail in emacs
-    readability-cli # firefox reader mode, for emacs eww
-    typst
-    typstfmt
-    typst-lsp
-    typst-live
-    aspell # spell check
-    aspellDicts.en
-    aspellDicts.en-science
-    aspellDicts.en-computers
-    translate-shell
-
-    # cli client
-    kubectl
-    litecli
-    mongosh
-    mycli
-    mosh
-
     # https://wiki.archlinux.org/title/Archiving_and_compression
     p7zip
 
-    # nix tools
-    nurl # generate nix fetcher from url
+    kubectl litecli mongosh mycli mosh
+
+    # generate nix fetcher from url
     # $ nurl https://github.com/nix-community/patsh v0.2.0 2>/dev/null
-    # fetchFromGitHub {
-    #   owner = "nix-community";
-    #   repo = "patsh";
-    #   rev = "v0.2.0";
-    #   hash = "sha256-7HXJspebluQeejKYmVA7sy/F3dtU1gc4eAbKiPexMMA=";
-    # }
-    nix-init # generate nix package from url, build on top of nurl
+    nurl
+    # generate nix package from url, build on top of nurl
+    nix-init
   ];
 
   home.sessionVariables = {
@@ -131,6 +81,7 @@ in {
         "GTAGS"
         ".direnv"
         "node_modules"
+        "bin"
       ];
     };
 

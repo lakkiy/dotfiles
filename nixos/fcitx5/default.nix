@@ -12,15 +12,4 @@
   home-manager.users.mrunhap = {
     imports = [../../home-manager/fcitx5];
   };
-
-  # TODO auto config rime
-  # FIXME source will make kernal panic, not syncthing
-  # system.activationScripts.rime.text = ''
-  #   source ${config.system.build.setEnvironment}
-  #   CONFIG="$HOME/.local/share/fcitx5/rime"
-
-  #   if [ ! -d "$CONFIG" ]; then
-  #     git clone https://github.com/mrunhap/rime.git $CONFIG
-  #   fi
-  # '';
 }
