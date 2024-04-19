@@ -35,6 +35,7 @@ in {
     iperf # test preformance of network
     tailspin # highlight logs
     websocat # curl for websocket
+    rsync
 
     # cli for emacs
     tex # basic support for org mode

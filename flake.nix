@@ -87,7 +87,6 @@
   };
 
   nixConfig = {
-    builders-use-substituters = true;
     experimental-features = ["nix-command" "flakes"];
     substituters = [
       "https://mirrors.ustc.edu.cn/nix-channels/store"
