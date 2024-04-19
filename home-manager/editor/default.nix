@@ -6,7 +6,7 @@
   services.emacs.enable = true;
 
   home.packages = with pkgs; [
-    tdlib
+    emacsPackages.telega
   ];
 
   programs.emacs = {
