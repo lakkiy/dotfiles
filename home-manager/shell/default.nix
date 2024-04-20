@@ -6,6 +6,7 @@
 
 {
   home.packages = with pkgs; [
+    git
     gnumake neofetch
     rsync delta fd cloc tree
     inetutils # ftp client

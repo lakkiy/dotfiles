@@ -15,7 +15,7 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   # https://wiki.hyprland.org/Nvidia/#fixing-suspendwakeup-issues
-  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  # boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
   hardware.nvidia = {
 
@@ -26,20 +26,20 @@
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
-    powerManagement.enable = true;
+    powerManagement.enable = false;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = true;
-    prime = {
-      offload = {
-			  enable = true;
-			  enableOffloadCmd = true;
-		  };
-		  # Make sure to use the correct Bus ID values for your system!
-		  intelBusId = "PCI:12:0:0";
-		  nvidiaBusId = "PCI:1:0:0";
-    };
+    powerManagement.finegrained = false;
+    # prime = {
+    #   offload = {
+		# 	  enable = true;
+		# 	  enableOffloadCmd = true;
+		#   };
+		#   # Make sure to use the correct Bus ID values for your system!
+		#   intelBusId = "PCI:12:0:0";
+		#   nvidiaBusId = "PCI:1:0:0";
+    # };
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).sudo lshw -c display

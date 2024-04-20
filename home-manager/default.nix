@@ -24,7 +24,6 @@ in {
       {
         home.username = "root";
         home.homeDirectory = "/root";
-        programs.ssh.enable = true;
       }
     ];
   };
@@ -54,7 +53,6 @@ in {
       {
         home.username = "mrunhap";
         home.homeDirectory = "/home/mrunhap";
-        programs.ssh.enable = true;
       }
     ];
   };
