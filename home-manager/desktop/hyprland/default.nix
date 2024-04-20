@@ -248,16 +248,29 @@
           "SUPER, L, exec, hyprlock --immediate -q"
 
           # screenshot
-          "SUPER_SHIFT, 4, exec, grim -g \"$(slurp -d)\" - | wl-copy"
+          "SUPER_SHIFT, p, exec, grim -g \"$(slurp -d)\" - | wl-copy"
           " , Print, exec, grim -g \"$(slurp -d)\" - | wl-copy"
+
+          # start/stop recording
+          "SUPER,F10,pass,^(com\.obsproject\.Studio)$"
 
           # hyprland
           "ALT, Tab, focuscurrentorlast"
           "SUPER, Q, killactive"
           "SUPER, F, togglefloating"
-          "SUPER, G, fullscreen"
-          "SUPER, O, fakefullscreen"
+          "SUPER_SHIFT, F, fullscreen"
           "SUPER, P, togglesplit"
+
+          # tabbed
+          "SUPER, G, togglegroup"
+
+          # scratchpad
+          "SUPER, C, movetoworkspace, special"
+          "SUPER_SHIFT, C, togglespecialworkspace"
+
+          # mouse
+          "SUPER,mouse_up,workspace,e+1"
+          "SUPER,mouse_down,workspace,e-1"
 
           (mvw "h" "l")
           (mvw "s" "r")
