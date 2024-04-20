@@ -14,6 +14,7 @@
     noto-fonts-emoji-blob-bin
     noto-fonts-monochrome-emoji
 
+    roboto-mono
     dejavu_fonts
     font-awesome_5
     cardo # variable pitch font
