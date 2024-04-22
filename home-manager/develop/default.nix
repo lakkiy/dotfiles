@@ -24,12 +24,10 @@
     nodePackages.vscode-langservers-extracted
     sassc # compile scss/sass to css
 
-    nodePackages.pyright
+    pyright ruff pipx pdm
     (python3.withPackages (ps:
       with ps; [
         requests ipython pip
-        pdm      # manage project dep
-        pipx     # venv for cli tools installed by pip
         pygments # for gtags
         # lsp-bridge for emacs
         epc orjson sexpdata six setuptools paramiko rapidfuzz

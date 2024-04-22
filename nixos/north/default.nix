@@ -96,7 +96,6 @@
       plex-media-player
       qbittorrent
       obs-studio
-      dropbox
       ventoy # bootable usb
       cider # apple music client
       localsend
@@ -109,6 +108,10 @@
       filezilla # ftp ftps sftp gui client
       spacedrive
       xournalpp
+
+      # open source dropbox cli and gui
+      # can't use dropbox since it can't login
+      maestral maestral-gui
     ];
   };
   # for fractal
