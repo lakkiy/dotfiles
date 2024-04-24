@@ -58,6 +58,7 @@
       userName = "mrunhap";
       userEmail = "liubolovelife@gmail.com";
       delta.enable = true;
+      lfs.enable = true;
       extraConfig = {
         init.defaultBranch = "master";
         pull.rebase = true;
@@ -83,6 +84,9 @@
         ".direnv"
         "node_modules"
         "bin"
+        "__pycache__"
+        "__pypackages__"
+        "main"
       ];
     };
 
