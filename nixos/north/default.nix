@@ -119,7 +119,7 @@
 
   # mount nas smb share dir
   fileSystems."/mnt/share" = {
-    device = "//192.168.31.61/share";
+    device = "//192.168.31.203/share";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split
