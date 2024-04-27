@@ -49,25 +49,4 @@ in {
       }
     ];
   };
-
-  homelab = lib.nixosSystem {
-    inherit system;
-    specialArgs = {inherit inputs outputs pkgs;};
-    modules = [
-      ./configuration.nix
-      ./homelab
-
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs.flake-inputs = inputs;
-        home-manager.users.root = {
-          imports = [ ./home.nix ];
-          home.username = "root";
-          home.homeDirectory = "/root";
-        };
-      }
-    ];
-  };
 }
