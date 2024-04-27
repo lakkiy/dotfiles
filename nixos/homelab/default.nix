@@ -110,7 +110,6 @@
     enable = true;
     user = "root";
     extraFlags = ["--no-default-folder"];
-    configDir = "/root/.config/syncthing";
     guiAddress = "0.0.0.0:8384";
     settings.gui = {
       enabled = true;

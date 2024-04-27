@@ -268,10 +268,6 @@
           "SUPER, C, movetoworkspace, special"
           "SUPER_SHIFT, C, togglespecialworkspace"
 
-          # mouse
-          "SUPER,mouse_up,workspace,e+1"
-          "SUPER,mouse_down,workspace,e-1"
-
           (mvw "h" "l")
           (mvw "s" "r")
           (mvw "t" "u")
