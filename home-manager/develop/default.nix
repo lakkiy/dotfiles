@@ -27,9 +27,9 @@
     pyright ruff pipx pdm
     (python3.withPackages (ps:
       with ps; [
-        pip ipython debugpy requests pytest
+        pip ipython debugpy requests pytest numpy
+        jupyterlab notebook jupytext
         pygments # for gtags
-        # TODO jupyter
 
         # lsp-bridge for emacs
         epc orjson sexpdata six setuptools paramiko rapidfuzz
