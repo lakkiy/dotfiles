@@ -65,6 +65,7 @@
       # display monitor info on menu bar
       "stats"
       "xournal-plus-plus"
+      "inkscape" # draw
     ];
   };
 
