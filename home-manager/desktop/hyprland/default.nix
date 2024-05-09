@@ -77,18 +77,9 @@
     }];
   };
 
-  # TODO can't move after suspend by hyprlock?
   services.hypridle = {
     enable = true;
-    beforeSleepCmd = "loginctl lock-session";
-    afterSleepCmd = "hyprctl dispatch dpms on";
-    ignoreDbusInhibit = true;
-    lockCmd = "pidof hyprlock || hyprlock";
     listeners = [
-      {
-        timeout = 300;
-        onTimeout = "loginctl lock-session";
-      }
       {
         timeout = 1800;
         onTimeout = "systemctl suspend";
