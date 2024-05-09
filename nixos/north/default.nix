@@ -92,27 +92,40 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      mpv
-      plex-media-player
+      mpv vlc plex-media-player
       qbittorrent
       obs-studio
-      ventoy # bootable usb
-      cider # apple music client
-      localsend
-      xdg-user-dirs # send/recv file to phone
-      inkscape # Vector graphics editor
-      fractal # matrix client
-      qq
+      ventoy
+      cider
       discord
       goldendict-ng
-      filezilla # ftp ftps sftp gui client
-      spacedrive
-      xournalpp
+      anki-bin anki-sync-server
+      ruffle
 
       # open source dropbox cli and gui
       # can't use dropbox since it can't login
       maestral maestral-gui
-    ];
+
+      localsend xdg-user-dirs
+
+      # best linux app
+      blender
+      gimp
+      inkscape
+      xournalpp
+      filezilla
+      audacious audacious-plugins
+      pidgin
+      # from gnome
+      amberol # music player
+      gnome.dconf-editor
+      gnome.nautilus nautilus-open-any-terminal gnome.sushi
+      gnome.gnome-disk-utility baobab gnome.gnome-system-monitor # disk
+      loupe # image viewer
+      gnome.evince # document viewer
+      komikku # comic reader
+      cartridges # game launcher
+   ];
   };
   # for fractal
   services.gnome.gnome-keyring.enable = true;
