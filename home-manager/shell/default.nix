@@ -73,6 +73,8 @@
         github.user = "mrunhap";
       };
       ignores = [
+        ".venv"
+        "pyrightconfig.json"
         ".DS_Store"
         "*.bak"
         "*.log"
