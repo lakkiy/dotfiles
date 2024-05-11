@@ -116,14 +116,14 @@
         ignoreSpace = true;
       };
       shellAliases = {
-        ls =
-          if pkgs.stdenv.isLinux
-          then "ls --color --group-directories-first"
-          else "ls --color";
-        ll = "ls -al --human-readable --time-style=long-iso";
+        grep = "grep --binary-files=without-match";
+        ls = if pkgs.stdenv.isLinux
+             then "ls --color --group-directories-first --human-readable --time-style=long-iso"
+             else "ls --color --human-readable --time-style=long-iso";
+        ll = "ls -al";
         k = "kubectl";
         e = "emacs -nw";
-        me = "emacs -q -nw -l ~/.config/emacs/init-mini.el";
+        me = "emacs -q -nw -l ~/.emacs.d/init-mini.el";
         ec = ''emacsclient -nw -a ""'';
         kec = "emacsclient -e '(kill-emacs)'";
       };
