@@ -14,8 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprlock.url = "github:hyprwm/hyprlock";
-    hypridle.url = "github:hyprwm/hypridle";
     ags.url = "github:Aylur/ags";
     gotraceui.url = "github:dominikh/gotraceui";
   };

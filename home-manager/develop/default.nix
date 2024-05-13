@@ -40,7 +40,7 @@
     protoc-gen-go protoc-gen-go-grpc
     wire
 
-    sbcl lispPackages.quicklisp sbclPackages.quicklisp-stats
+    sbcl
   ];
 
   programs.go = {

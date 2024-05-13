@@ -27,7 +27,7 @@
       trusted-users = ["mrunhap"];
     };
     # Enable nixFlakes on system
-    package = pkgs.nixVersions.unstable;
+    package = pkgs.nixVersions.latest;
 
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake

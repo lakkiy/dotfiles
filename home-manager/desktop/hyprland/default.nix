@@ -8,10 +8,6 @@
   imports = [
     ./ags.nix
     ../../wezterm
-
-    # https://github.com/gmodena/nix-flatpak#infinte-recusion-in-home-manager-imports
-    flake-inputs.hyprlock.homeManagerModules.hyprlock
-    flake-inputs.hypridle.homeManagerModules.hypridle
   ];
 
   # A notification daemon
@@ -52,39 +48,30 @@
     bibata-cursors
   ];
 
-
   programs.hyprlock = {
     enable = true;
-    general.disable_loading_bar = true;
-    backgrounds = [{
-      monitor = "";
-      path = "$HOME/Pictures/wall.png";
-      color = "rgba(25, 20, 20, 1.0)";
-      blur_passes = 1;
-      blur_size = 0;
-      brightness = 0.8;
-    }];
-    labels = [{
-      monitor = "";
-      text = ''$TIME Hi <i><span foreground="##ff2222">$USER</span></i> :)'';
-      font_size = 70;
-      position = {
-        x = 0;
-        y = 80;
+    settings = {
+      general.disable_loading_bar = true;
+      background = {
+        monitor = "";
+        path = "$HOME/Pictures/wall.png";
+        color = "rgba(25, 20, 20, 1.0)";
+        blur_passes = 1;
+        blur_size = 0;
+        brightness = 0.8;
       };
-      valign = "center";
-      halign = "center";
-    }];
-  };
-
-  services.hypridle = {
-    enable = true;
-    listeners = [
-      {
-        timeout = 1800;
-        onTimeout = "systemctl suspend";
-      }
-    ];
+      label = {
+        monitor = "";
+        text = ''$TIME Hi <i><span foreground="##ff2222">$USER</span></i> :)'';
+        font_size = 70;
+        position = {
+          x = 0;
+          y = 80;
+        };
+        valign = "center";
+        halign = "center";
+      };
+    };
   };
 
   wayland.windowManager.hyprland = {
@@ -118,8 +105,6 @@
         # wallpaper
         "hyprpaper"
 
-        # others
-        "hypridle"
         "emacs --daemon"
       ];
 

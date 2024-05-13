@@ -92,7 +92,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      mpv vlc plex-media-player
+      mpv plex-media-player
       qbittorrent
       obs-studio
       ventoy
