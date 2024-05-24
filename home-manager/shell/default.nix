@@ -9,6 +9,7 @@
     git
     gnumake neofetch
     rsync delta fd cloc tree
+    ast-grep
     inetutils # ftp client
     iperf # test preformance of network
     tailspin # highlight logs
