@@ -1,26 +1,7 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
+{ inputs, outputs, lib, config, pkgs, ... }:
+
 {
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
-  # You can import other NixOS modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/nixos):
-    # outputs.nixosModules.example
-
-    # Or modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
 
@@ -47,12 +28,9 @@
         # vsftpd
         2121
       ];
-      allowedUDPPorts = [53317];
+      allowedUDPPorts = [ 53317 ];
     };
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -146,5 +124,61 @@
   # wayland support for electron base app
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  # Always enable the shell system-wide, even if it's already enabled in
+  # your home.nix. # Otherwise it wont source the necessary files.
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  # get zsh completion for system packages (e.g. systemd)
+  environment.pathsToLink = [ "/share/zsh" ];
+  # Many programs look at /etc/shells to determine if a user is a
+  # "normal" user and not a "system" user. Therefore it is recommended
+  # to add the user shells to this list. To add a shell to /etc/shells
+  # use the following line in your config:
+  environment.shells = with pkgs; [zsh];
+
+  # timezone & locale
+  time.timeZone = "Asia/Shanghai";
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
+
+  # Configure console keymap
+  console.keyMap = "dvorak";
+
+  services.xserver = {
+    enable = true;
+    # Set keyboard repat, rate = 60
+    autoRepeatInterval = 60;
+    autoRepeatDelay = 120;
+    xkb.layout = "us";
+    xkb.variant = "dvorak";
+  };
+
+  # Use keyd to remap keys
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = ["*"];
+      settings = {
+        main = {
+          capslock = "overload(control, esc)";
+          control = "overload(control, esc)";
+        };
+      };
+    };
+  };
+
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.trusted-users = ["root" "mrunhap"];
+  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "23.11";
 }

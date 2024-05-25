@@ -1,11 +1,5 @@
-{
-  lib,
-  inputs,
-  outputs,
-  nixpkgs,
-  home-manager,
-  ...
-}: let
+{lib, inputs, outputs, nixpkgs, home-manager, ...}:
+let
   system = "x86_64-linux";
 
   pkgs = import nixpkgs {
@@ -19,7 +13,6 @@ in {
     inherit system;
     specialArgs = {inherit inputs pkgs;};
     modules = [
-      ./configuration.nix
       ./north
       ./nvidia
       ./fcitx5
@@ -36,15 +29,32 @@ in {
         # see https://github.com/gmodena/nix-flatpak#notes-on-homemanager
         home-manager.extraSpecialArgs.flake-inputs = inputs;
         home-manager.users.mrunhap = {
-          imports = [
-            ./home.nix
-            ../home-manager/browser
-            ../home-manager/editor
-            ../home-manager/font
-            ../home-manager/develop
-          ];
+          imports = [ ./north/home.nix ];
+          programs.home-manager.enable = true;
           home.username = "mrunhap";
           home.homeDirectory = "/home/mrunhap";
+          home.stateVersion = "23.11";
+        };
+      }
+    ];
+  };
+
+  homelab = lib.nixosSystem {
+    inherit system;
+    specialArgs = { inherit inputs outputs pkgs; };
+    modules = [
+      ./homelab
+
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs.flake-inputs = inputs;
+        home-manager.users.root = {
+          programs.home-manager.enable = true;
+          home.username = "root";
+          home.homeDirectory = "/root";
+          home.stateVersion = "23.11";
         };
       }
     ];
