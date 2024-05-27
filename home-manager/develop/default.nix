@@ -61,4 +61,10 @@
   ];
 
   home.file.".globalrc".source = ./globalrc;
+  # https://github.com/NixOS/nixpkgs/issues/225730
+  home.file.".config/pdm/config.toml".text = ''
+[venv]
+backend = "venv"
+'';
+
 }
