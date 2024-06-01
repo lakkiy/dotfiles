@@ -12,5 +12,5 @@
     ../../home-manager/font
     ../../home-manager/develop
   ];
-  home.file."Pictures/wallpapers".source = ../files/wallpapers;
+  home.file."Pictures/wallpapers".source = ../../files/wallpapers;
 }
