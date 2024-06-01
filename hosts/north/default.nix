@@ -12,7 +12,14 @@
   networking = {
     hostName = "north";
     networkmanager.enable = true;
-    defaultGateway = "192.168.31.222";
+    interfaces.eno1.ipv4.addresses = [{
+      address = "192.168.31.200";
+      prefixLength = ;
+    }];
+    defaultGateway = {
+      address = "192.168.31.222";
+      interface = "eno1";
+    };
     nameservers = ["192.168.31.222"];
     firewall = {
       enable = true;
