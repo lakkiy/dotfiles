@@ -44,6 +44,7 @@
       "pngpaste"
     ];
     casks = [
+      "iterm2" # better search and filter
       "firefox"
       # for feishu doc, which is slow in firefox
       "chromium"
