@@ -28,6 +28,23 @@ in {
     ];
   };
 
+  titan = home-manager.lib.homeManagerConfiguration {
+    inherit (nixpkgs) lib;
+    inherit pkgs;
+    extraSpecialArgs = {inherit inputs;};
+    modules = [
+      ./home.nix
+      ./editor
+      ./develop
+      ./shell
+      ./syncthing
+      {
+        home.username = "liubo";
+        home.homeDirectory = "/home/liubo";
+      }
+    ];
+  };
+
   pacman = home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
     extraSpecialArgs = {inherit inputs;};
