@@ -110,7 +110,7 @@
 
       monitor = [
         "desc:Sony SDMU27M90*30 9706757,3840x2160@144,1440x0,1.5,bitdepth,10"
-        "desc:HFC X24 Pro demoset-1,3840x2160,0x0,1.5,transform,1"
+        "desc:HFC X24 Pro demoset-1,3840x2160,0x0,1.5,transform,3"
         "desc:LZT Viewedge.CR   00000000,preferred,1440x2440,auto,transform,3"
       ];
 
