@@ -11,14 +11,6 @@
   networking = {
     hostName = "homelab";
     networkmanager.enable = true;
-    defaultGateway = "192.168.31.222";
-    nameservers = ["192.168.31.222"];
-    interfaces.ens33.ipv4.addresses = [
-      {
-        address = "192.168.31.103";
-        prefixLength = 24;
-      }
-    ];
     firewall = {
       enable = true;
       allowedTCPPorts = [
