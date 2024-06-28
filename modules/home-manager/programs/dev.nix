@@ -35,7 +35,7 @@ in {
       pyright ruff pipx pdm
       (python3.withPackages (ps:
         with ps; [
-          pip ipython debugpy requests pytest numpy
+          pip conda ipython debugpy requests pytest numpy
           jupyterlab notebook jupytext
           pygments # for gtags
 
