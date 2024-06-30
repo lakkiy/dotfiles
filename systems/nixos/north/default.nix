@@ -120,10 +120,9 @@
     options = let
       # this line prevents hanging on network split
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-      # username=<USERNAME>
-      # domain=<DOMAIN>
-      # password=<PASSWORD>
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+      username="share";
+      password="share";
+    in ["${automount_opts},username=${username},password=${password},${config.users.users.mrunhap.uid},gid=${config.users.groups.mrunhap.gid}"];
   };
 
   # wayland support for electron base app
