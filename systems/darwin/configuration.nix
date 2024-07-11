@@ -38,6 +38,7 @@
       "translate-shell"
       # paste image in emacs telega
       "pngpaste"
+      "tree-sitter"
     ];
     casks = [
       "iterm2" # better search and filter
