@@ -113,7 +113,6 @@ in {
         history = {
           size = 10000000;
           save = 10000000;
-          path = "$HOME/Sync/.zsh_history";
           ignorePatterns = [ "(ls|cd|pwd|exit|cd)*" ];
           ignoreAllDups = true;
           # This can be useful if you want to avoid storing secrets in

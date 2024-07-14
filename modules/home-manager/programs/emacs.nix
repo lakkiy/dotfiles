@@ -53,6 +53,8 @@ in {
       package = config.my.emacs.package;
       extraPackages = epkgs:
         with epkgs; [
+          telega
+
           # install all treesitter grammars
           (treesit-grammars.with-grammars (p: builtins.attrValues p))
 

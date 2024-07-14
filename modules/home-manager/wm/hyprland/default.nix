@@ -19,6 +19,8 @@ in {
     # launcher
     programs.bemenu.enable = true;
 
+    programs.hyprlock.enable = true;
+
     home.file.".config/hypr/hyprpaper.conf".source = ../../../../static/hypr/hyprpaper.conf;
     home.file.".local/share/icons/Bibata-Modern-Ice".source = ../../../../static/Bibata-Modern-Ice;
     home.file.".config/ags".source = ../../../../static/ags;
@@ -62,32 +64,6 @@ in {
       webkitgtk
       accountsservice
     ];
-
-    programs.hyprlock = {
-      enable = true;
-      settings = {
-        general.disable_loading_bar = true;
-        background = {
-          monitor = "";
-          path = "$HOME/Pictures/wall.png";
-          color = "rgba(25, 20, 20, 1.0)";
-          blur_passes = 1;
-          blur_size = 0;
-          brightness = 0.8;
-        };
-        label = {
-          monitor = "";
-          text = ''$TIME Hi <i><span foreground="##ff2222">$USER</span></i> :)'';
-          font_size = 70;
-          position = {
-            x = 0;
-            y = 80;
-          };
-          valign = "center";
-          halign = "center";
-        };
-      };
-    };
 
     wayland.windowManager.hyprland = {
       enable = true;
@@ -155,7 +131,7 @@ in {
           (f "xdg-desktop-portal-gnome")
           (f "qbittorrent")
           (f "com.github.Aylur.ags")
-          "noblur,^(?!emacs$|wezterm|fuzzel$).*$"
+          "noblur,^(?!emacs$|fuzzel|kitty$).*$"
         ] ++ [
           "float, title:(emacs-run-launcher)"
         ];
@@ -163,58 +139,20 @@ in {
         general = {
           layout = "dwindle";
           resize_on_border = true;
+          border_size = 5;
+          "col.active_border"="0xffb072d1";
+          "col.inactive_border"="0xff292a37";
         };
 
         input = {
-          kb_layout = "us";
           kb_variant = "dvorak";
-          follow_mouse = 1;
           repeat_rate = 60;
           repeat_delay = 150;
-          touchpad = {
-            natural_scroll = "yes";
-            disable_while_typing = true;
-            drag_lock = true;
-          };
+          touchpad.natural_scroll = "yes";
         };
 
-        gestures = {
-          workspace_swipe = "on";
-        };
-
-        dwindle = {
-          pseudotile = true;
-          preserve_split = true;
-        };
-
-        misc = {
-          layers_hog_keyboard_focus = true;
-          disable_splash_rendering = true;
-        };
-
-        decoration = {
-          drop_shadow = "yes";
-          shadow_range = 8;
-          shadow_render_power = 2;
-          "col.shadow" = "rgba(00000044)";
-
-          dim_inactive = false;
-
-          blur = {
-            enabled = true;
-            size = 8;
-            passes = 3;
-            new_optimizations = "on";
-            noise = 0.01;
-            contrast = 0.9;
-            brightness = 0.8;
-          };
-        };
-
-        animations = {
-          enabled = "yes";
-          bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        };
+        decoration.rounding = 5;
+        gestures.workspace_swipe = "on";
 
         bind = let
           binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
@@ -231,7 +169,7 @@ in {
             "SUPER, D, exec, bemenu-run -i --fn 'Sarasa Gothic SC 20'"
 
             # application (hyprctl clients | grep class)
-            "SUPER, Return, exec, wlrctl window focus org.wezfurlong.wezterm || wezterm"
+            "SUPER, Return, exec, wlrctl window focus kitty || kitty"
             "SUPER, B, exec, wlrctl window focus firefox || firefox"
             "SUPER, E, exec, wlrctl window focus emacs || emacs"
 

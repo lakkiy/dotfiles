@@ -47,7 +47,7 @@ in {
           my.chromium.enable = true;
           my.firefox.enable = true;
           my.font.enable = true;
-          my.wezterm.enable = true;
+          my.kitty.enable = true;
           home.file."Pictures/wallpapers".source = ../../static/wallpapers;
         };
       }
