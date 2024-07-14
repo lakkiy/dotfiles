@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, upkgs, ... }:
 
 with lib;
 
@@ -49,6 +49,8 @@ in {
       wire
 
       sbcl
+    ] ++ [
+      upkgs.basedpyright
     ];
 
     programs.go = {

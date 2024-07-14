@@ -6,12 +6,16 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  upkgs = import nixpkgs-unstable {
+    inherit system;
+    config.allowUnfree = true;
+  };
 
   lib = nixpkgs.lib;
 in {
   north = lib.nixosSystem {
     inherit system;
-    specialArgs = {inherit inputs pkgs;};
+    specialArgs = {inherit inputs pkgs upkgs;};
     modules = [
       ./north
       ../../modules/nixos
@@ -28,6 +32,7 @@ in {
         home-manager.useUserPackages = true;
         # see https://github.com/gmodena/nix-flatpak#notes-on-homemanager
         home-manager.extraSpecialArgs.flake-inputs = inputs;
+        home-manager.extraSpecialArgs.upkgs = upkgs;
         home-manager.users.mrunhap = {
           imports = [ ../../modules/home-manager ];
           programs.home-manager.enable = true;
