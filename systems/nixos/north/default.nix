@@ -122,7 +122,7 @@
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
       username="share";
       password="share";
-    in ["${automount_opts},username=${username},password=${password},${config.users.users.mrunhap.uid},gid=${config.users.groups.mrunhap.gid}"];
+    in ["${automount_opts},username=${username},password=${password},uid=1000,gid=100"];
   };
 
   # wayland support for electron base app
