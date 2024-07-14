@@ -92,6 +92,7 @@
       localsend xdg-user-dirs
 
       # best linux app
+      zotero_7
       blender
       gimp
       inkscape
