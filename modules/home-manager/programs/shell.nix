@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      git
+      git wget
       gnumake neofetch
       rsync delta fd cloc tree
       ast-grep
