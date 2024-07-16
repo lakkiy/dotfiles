@@ -15,47 +15,42 @@
     };
   };
 
-  outputs = inputs @ {self, nixpkgs, nixpkgs-unstable, home-manager, darwin, ...}: {
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#{$HOST}'
-    nixosConfigurations = (
-      import ./systems/nixos {
-        inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable home-manager;
-      }
-    );
+  outputs = inputs @ {self, nixpkgs, nixpkgs-unstable, home-manager, darwin, ...}:
+    let
+      vars = {
+        user = "mrunhap";
+      };
+    in
+      {
+        nixosConfigurations = (
+          import ./systems/nixos {
+            inherit (nixpkgs) lib;
+            inherit inputs nixpkgs nixpkgs-unstable home-manager vars;
+          }
+        );
 
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#{$USER}@{$HOST}'
-    homeConfigurations = ( # Non-NixOS configurations
-      import ./systems/nonnixos {
-        inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable home-manager;
-      }
-    );
+        homeConfigurations = ( # Non-NixOS configurations
+          import ./systems/nonnixos {
+            inherit (nixpkgs) lib;
+            inherit inputs nixpkgs nixpkgs-unstable home-manager vars;
+          }
+        );
 
-    # Standalone darwin configuration entrypoint (macOS)
-    # Available through 'darwin-rebuild --flake .#{$HOST}'
-    darwinConfigurations = ( # Darwin configurations
-      import ./systems/darwin {
-        inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable home-manager darwin;
-      }
-    );
-  };
+        darwinConfigurations = ( # Darwin configurations
+          import ./systems/darwin {
+            inherit (nixpkgs) lib;
+            inherit inputs nixpkgs nixpkgs-unstable home-manager darwin vars;
+          }
+        );
+      };
 
   nixConfig = {
     experimental-features = ["nix-command" "flakes"];
-    substituters = [
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://cache.nixos.org/"
-    ];
     extra-substituters = [
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
-    trusted-users = ["root" "liubo" "mrunhap"];
   };
 }

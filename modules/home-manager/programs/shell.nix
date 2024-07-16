@@ -126,7 +126,7 @@ in {
           grep = "grep --binary-files=without-match";
           ls = if pkgs.stdenv.isLinux
                then "ls --color --group-directories-first --human-readable --time-style=long-iso"
-               else "ls --color --human-readable --time-style=long-iso";
+               else "gls --color --group-directories-first --human-readable --time-style=long-iso";
           ll = "ls -al";
           k = "kubectl";
           e = "emacs -nw";
@@ -177,7 +177,7 @@ in {
             name = "git.plugin.zsh";
             src = fetchurl {
               url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh";
-              sha256 = "sha256-ksIRXfJ8JrzEnYOjSmKc+9YeW+6ZehPETrSYh6zbojw=";
+              sha256 = "sha256-owgMEMBx86gQXIAI8a8lkOt7lo3eLJApsOQesk9w3pY=";
             };
           }
           {

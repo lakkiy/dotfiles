@@ -31,6 +31,13 @@ sudo nixos-rebuild switch --flake .#<host>
 
 * MacOS
 
+Type ~git~ to ensure you have xcode developer tools installed.
+
+Install nix:
+#+begin_src sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+#+end_src
+
 Install =homebrew=:
 #+begin_src sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

@@ -1,17 +1,13 @@
-{ lib, inputs, config, pkgs, ... }:
+{ lib, inputs, config, pkgs, vars, ... }:
 
 {
-  # macOS user
-  users.users.liubo = {
-    home = "/Users/liubo";
-    # Default shell
+  users.users.${vars.user} = {
+    home = "/Users/${vars.user}";
     shell = pkgs.zsh;
   };
 
-  networking = {
-    computerName = "cmcm";
-    hostName = "cmcm";
-  };
+  environment.shells = [ pkgs.zsh ];
+  programs.zsh.enable = true;
 
   fonts = {
     fontDir.enable = true;
@@ -28,10 +24,10 @@
     global.autoUpdate = true;
     # masApps = [];
     taps = [
-      # "homebrew/cask"
       "jimeh/emacs-builds"
     ];
     brews = [
+      "coreutils"
       # nix 安装的 aspell 在 mac 上 command not found
       "aspell"
       # same as aspell
@@ -45,15 +41,13 @@
       "firefox"
       # for feishu doc, which is slow in firefox
       "chromium"
-      # NOTE Say it!
-      "clashx"
       "iina"
       "karabiner-elements"
       "raycast"
       "squirrel"
       "syncthing"
       "anki"
-      # "emacs-app-good"
+      "emacs-app-good"
       "discord"
       "dropbox"
       "netnewswire"
@@ -64,47 +58,44 @@
       "stats"
       "xournal-plus-plus"
       "inkscape" # draw
+      "zotero"
+
+      # Unavaiable
+      # NOTE Say it!
+      # "clashx"
+
+      # TODO split into default and work config
+      "feishu"
+      "tencent-meeting"
+      "mongodb-compass"
+      "easy-move-plus-resize"
+      "openlens"
+      "qq"
+      "wechat"
     ];
   };
-
-  # Config for all darwin system.
-  environment.shells = [pkgs.zsh];
-  programs.zsh.enable = true;
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
   nix = {
+    # Enable nixFlakes on system
+    package = pkgs.nix;
     settings = {
+      trusted-users = ["root" "mrunhap"];
+      substituters = [
+        "https://mirrors.ustc.edu.cn/nix-channels/store"
+        "https://cache.nixos.org"
+      ];
       auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
-      trusted-users = ["liubo"];
     };
     gc = {
       automatic = true;
       interval.Day = 7;
       options = "--delete-older-than 7d";
     };
-    # Enable nixFlakes on system
-    package = pkgs.nixVersions.latest;
-
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
-    # nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-    registry.nixpkgs.flake = inputs.nixpkgs;
-
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
-    nixPath = ["/etc/nix/path"];
   };
-  # Together with nix.nixPath config.
-  environment.etc =
-    lib.mapAttrs'
-    (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    })
-    config.nix.registry;
 
   nixpkgs.config.allowUnfree = true;
 
