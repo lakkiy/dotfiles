@@ -38,7 +38,6 @@ in {
 
     home.packages = with pkgs; [
       emacsPackages.telega
-
       tex # basic support for org mode
       tikzit # draw
       ltex-ls # lsp server
@@ -46,7 +45,6 @@ in {
       readability-cli # firefox reader mode, for emacs eww
       typst typstfmt typst-lsp typst-live
       aspell aspellDicts.en aspellDicts.en-computers
-      translate-shell
     ];
 
     programs.emacs = {
@@ -77,14 +75,5 @@ in {
           }))
         ];
     };
-
-    home.activation.checkEmacsDir = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    if [ ! -d $HOME/.emacs.d ]; then
-       git clone https://github.com/mrunhap/.emacs.d $HOME/.emacs.d
-    fi
-    if [ ! -d $HOME/.emacs.d/rime ]; then
-       git clone https://github.com/mrunhap/rime $HOME/.emacs.d/rime
-    fi
-  '';
   };
 }

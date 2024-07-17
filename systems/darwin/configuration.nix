@@ -28,19 +28,14 @@
     ];
     brews = [
       "coreutils"
-      # nix 安装的 aspell 在 mac 上 command not found
-      "aspell"
-      # same as aspell
-      "translate-shell"
-      # paste image in emacs telega
-      "pngpaste"
+      "aspell" # nix 安装的 aspell 在 mac 上 command not found
+      "pngpaste" # paste image in emacs telega
       "tree-sitter"
     ];
     casks = [
       "iterm2" # better search and filter
       "firefox"
-      # for feishu doc, which is slow in firefox
-      "chromium"
+      "chromium"       # for feishu doc, which is slow in firefox
       "iina"
       "karabiner-elements"
       "raycast"
@@ -54,8 +49,7 @@
       "keepingyouawake"
       "the-unarchiver"
       # "goldendict-ng"
-      # display monitor info on menu bar
-      "stats"
+      "stats"       # display monitor info on menu bar
       "xournal-plus-plus"
       "inkscape" # draw
       "zotero"
