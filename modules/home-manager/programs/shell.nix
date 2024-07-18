@@ -149,6 +149,9 @@ in {
         [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
           source "$EAT_SHELL_INTEGRATION_DIR/zsh"
 
+        # For iterm2 shell integration
+        [ -f $HOME/.config/zsh/.iterm2_shell_integration.zsh ] && source $HOME/.config/zsh/.iterm2_shell_integration.zsh
+
         # For local use.
         [ -f $HOME/.zshrc ] && source $HOME/.zshrc
       '';
