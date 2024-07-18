@@ -71,5 +71,6 @@ in {
     ];
 
     home.file.".globalrc".source = ../../../static/globalrc;
+    home.file.".condarc".text = "auto_activate_base: false";
   };
 }
