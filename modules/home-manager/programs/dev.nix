@@ -64,6 +64,7 @@ in {
       GTAGSOBJDIRPREFIX = "$HOME/.cache/gtags/";
       GTAGSCONF = "$HOME/.globalrc";
       GTAGSLABEL = "native-pygments";
+      PDM_CONFIG_FILE = "$HOME/.config/pdm/config.toml";
     };
 
     home.sessionPath = [
@@ -72,5 +73,10 @@ in {
 
     home.file.".globalrc".source = ../../../static/globalrc;
     home.file.".condarc".text = "auto_activate_base: false";
+    home.file.".config/pdm/config.toml".text = ''
+[venv]
+backend = "venv"
+'';
+
   };
 }
