@@ -22,7 +22,6 @@ let
 in {
   options.my.emacs = {
     enable = mkEnableOption "emacs";
-    service.enable = mkEnableOption "emacs service";
 
     package = mkOption {
       type = types.package;
@@ -34,7 +33,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.emacs.enable = config.my.emacs.package.service.enable;
+    services.emacs.enable = true;
 
     home.packages = with pkgs; [
       emacsPackages.telega
