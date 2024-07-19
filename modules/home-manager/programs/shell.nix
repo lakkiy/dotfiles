@@ -14,6 +14,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       git wget
+      progress # coreutils viewer
       gnumake neofetch
       rsync delta fd cloc tree
       ast-grep
