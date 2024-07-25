@@ -9,15 +9,12 @@
   environment.shells = [ pkgs.zsh ];
   programs.zsh.enable = true;
 
-  fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
-      lxgw-wenkai
-      # Mono font for English and Chinese
-      sarasa-gothic
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-    ];
-  };
+  fonts.packages = with pkgs; [
+    lxgw-wenkai
+    # Mono font for English and Chinese
+    sarasa-gothic
+    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+  ];
 
   homebrew = {
     enable = true;
@@ -42,7 +39,7 @@
       "squirrel"
       "syncthing"
       "anki"
-      "emacs-app-good"
+      # "emacs-app-good"
       "discord"
       "dropbox"
       "netnewswire"
