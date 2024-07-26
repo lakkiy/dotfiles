@@ -49,7 +49,7 @@
       "stats"       # display monitor info on menu bar
       "xournal-plus-plus"
       "inkscape" # draw
-      "zotero"
+      "zotero@beta"
 
       # Unavaiable
       # NOTE Say it!
