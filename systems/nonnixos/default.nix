@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, ... }:
+{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, ... }:
 
 let
   system = "x86_64-linux";
@@ -7,12 +7,16 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  upkgs = import nixpkgs-unstable {
+    inherit system;
+    config.allowUnfree = true;
+  };
 in
 {
   server = home-manager.lib.homeManagerConfiguration {
     inherit (nixpkgs) lib;
     inherit pkgs;
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {inherit inputs upkgs;};
     modules = [
       ./home.nix
       ../../modules/home-manager
@@ -31,7 +35,7 @@ in
   titan = home-manager.lib.homeManagerConfiguration {
     inherit (nixpkgs) lib;
     inherit pkgs;
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {inherit inputs upkgs;};
     modules = [
       ./home.nix
       ../../modules/home-manager
@@ -49,7 +53,7 @@ in
 
   pacman = home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {inherit inputs upkgs;};
     modules = [
       ./home.nix
       ../../modules/home-manager
@@ -65,7 +69,7 @@ in
 
   virt = home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {inherit inputs upkgs;};
     modules = [
       ./home.nix
       ../../modules/home-manager
