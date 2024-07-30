@@ -15,7 +15,7 @@ in {
     home.packages = with pkgs; [
       git wget
       progress # coreutils viewer
-      gnumake neofetch
+      gnumake neofetch just
       rsync delta fd cloc tree
       ast-grep
       inetutils # ftp client
