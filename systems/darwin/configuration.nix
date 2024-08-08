@@ -10,8 +10,19 @@
   programs.zsh.enable = true;
 
   fonts.packages = with pkgs; [
+    # mono
+    lmodern
+    roboto-mono
+    dejavu_fonts
+    ibm-plex
+
+    # var
+    cardo
+
+    # 中文字体
     lxgw-wenkai
-    # Mono font for English and Chinese
+
+    # 中英等宽
     sarasa-gothic
     (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
   ];

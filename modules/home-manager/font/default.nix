@@ -23,13 +23,24 @@ in {
       noto-fonts-emoji-blob-bin
       noto-fonts-monochrome-emoji
 
+      # mono
+      lmodern
       roboto-mono
       dejavu_fonts
+      ibm-plex
+
+      # var
+      cardo
+
+      # symbol
       font-awesome_5
-      cardo # variable pitch font
-      sarasa-gothic # 中英等宽
-      lxgw-wenkai # 中文字体
       symbola
+
+      # 中文字体
+      lxgw-wenkai
+
+      # 中英等宽
+      sarasa-gothic
 
       # anything need nerd icon(editor, system bar, etc...)
       (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
