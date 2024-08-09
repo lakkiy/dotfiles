@@ -48,6 +48,9 @@ in {
       protoc-gen-go protoc-gen-go-grpc
       wire
 
+      rustup cargo-watch cargo-tarpaulin cargo-audit
+      lld
+
       sbcl
     ] ++ [
       upkgs.basedpyright
