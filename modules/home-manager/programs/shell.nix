@@ -23,6 +23,10 @@ in {
       tailspin # highlight logs
       d2 # draw
       websocat # curl for websocket
+      gdu # disk analyzer
+      bandwidth # network monitor
+      dufs # simple file server
+      git-filter-repo
       # https://wiki.archlinux.org/title/Archiving_and_compression
       p7zip
 
