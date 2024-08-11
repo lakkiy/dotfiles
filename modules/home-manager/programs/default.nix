@@ -8,6 +8,6 @@
     ./firefox.nix
     ./fcitx5.nix
     ./shell.nix
-    ./kitty.nix
+    ./foot.nix
   ];
 }

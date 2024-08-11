@@ -131,7 +131,7 @@ in {
           (f "xdg-desktop-portal-gnome")
           (f "qbittorrent")
           (f "com.github.Aylur.ags")
-          "noblur,^(?!emacs$|fuzzel|kitty$).*$"
+          "noblur,^(?!emacs$|fuzzel|foot$).*$"
         ] ++ [
           "float, title:(emacs-run-launcher)"
         ];
@@ -169,7 +169,7 @@ in {
             "SUPER, D, exec, bemenu-run -i --fn 'Sarasa Gothic SC 20'"
 
             # application (hyprctl clients | grep class)
-            "SUPER, Return, exec, wlrctl window focus kitty || kitty"
+            "SUPER, Return, exec, wlrctl window focus foot || foot"
             "SUPER, B, exec, wlrctl window focus firefox || firefox"
             "SUPER, E, exec, wlrctl window focus emacs || emacs"
 
