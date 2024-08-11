@@ -12,6 +12,19 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.ags = {
+      enable = true;
+
+      # null or path, leave as null if you don't want hm to manage the config
+      configDir = ../../../../static/ags;
+
+      # additional packages to add to gjs's runtime
+      extraPackages = with pkgs; [
+        gtksourceview
+        webkitgtk
+        accountsservice
+      ];
+    };
 
     # A notification daemon
     services.dunst.enable = true;
@@ -23,7 +36,7 @@ in {
 
     home.file.".config/hypr/hyprpaper.conf".source = ../../../../static/hypr/hyprpaper.conf;
     home.file.".local/share/icons/Bibata-Modern-Ice".source = ../../../../static/Bibata-Modern-Ice;
-    home.file.".config/ags".source = ../../../../static/ags;
+    # home.file.".config/ags".source = ../../../../static/ags;
 
     home.packages = with pkgs; [
       # clipboard for wayland, also needed by other tools like hyprpicker
@@ -57,12 +70,6 @@ in {
       # udiskie is a udisks2 front-end that allows to manage removable
       # media such as CDs or flash drives from userspace.
       udiskie
-
-      ags
-      # additional packages to add to gjs's runtime
-      gtksourceview
-      webkitgtk
-      accountsservice
     ];
 
     wayland.windowManager.hyprland = {

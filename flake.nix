@@ -13,6 +13,8 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = inputs @ {self, nixpkgs, nixpkgs-unstable, home-manager, darwin, ...}:

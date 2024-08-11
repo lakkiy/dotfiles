@@ -34,7 +34,10 @@ in {
         home-manager.extraSpecialArgs.flake-inputs = inputs;
         home-manager.extraSpecialArgs.upkgs = upkgs;
         home-manager.users.mrunhap = {
-          imports = [ ../../modules/home-manager ];
+          imports = [
+            ../../modules/home-manager
+            inputs.ags.homeManagerModules.default
+          ];
           programs.home-manager.enable = true;
           home.username = "mrunhap";
           home.homeDirectory = "/home/mrunhap";
