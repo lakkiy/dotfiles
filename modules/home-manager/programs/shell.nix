@@ -30,7 +30,7 @@ in {
       # https://wiki.archlinux.org/title/Archiving_and_compression
       p7zip
 
-      kubectl litecli mongosh mycli mosh
+      kubectl litecli mongosh mycli mosh pgcli
 
       # generate nix fetcher from url
       # $ nurl https://github.com/nix-community/patsh v0.2.0 2>/dev/null
