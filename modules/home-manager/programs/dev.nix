@@ -52,6 +52,12 @@ in {
       lld
 
       sbcl
+
+      # $raco pkg install sicp
+      # Add #lang sicp at the top of the file.
+      # When using the REPL, we need to first evaluate (require sicp) before
+      # evaluating anything else.
+      racket
     ] ++ [
       upkgs.basedpyright
     ];
