@@ -1,7 +1,10 @@
-{ lib, inputs, config, pkgs, ... }:
+{ lib, flake-inputs, config, pkgs, ... }:
 
 {
-  imports = [ ../../modules/home-manager ];
+  imports = [
+    flake-inputs.ags.homeManagerModules.default
+    ../../modules/home-manager
+  ];
 
   programs.home-manager.enable = true;
   home.stateVersion = "24.05";

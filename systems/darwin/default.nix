@@ -27,6 +27,7 @@ in {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs.upkgs = upkgs;
+            home-manager.extraSpecialArgs.flake-inputs = inputs;
             home-manager.users.${vars.user} = import ./home.nix;
           }
         ];
