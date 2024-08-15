@@ -22,7 +22,7 @@ in {
       # nixd
       nixfmt
 
-      gcc gdb ccls
+      gdb ccls
 
       clojure leiningen jdk
 
@@ -48,8 +48,15 @@ in {
       protoc-gen-go protoc-gen-go-grpc
       wire
 
-      rustup cargo-watch cargo-tarpaulin cargo-audit
-      lld
+      cargo rustc rust-analyzer
+      llvmPackages.bintools # lld, faster linking
+      cargo-watch # monitor source code and trigger commands
+      cargo-tarpaulin # code coverage
+      clippy # lint
+      cargo-audit # security
+      rustfmt
+      cargo-expand
+      cargo-edit
 
       sbcl
 
@@ -85,6 +92,29 @@ in {
     home.file.".config/pdm/config.toml".text = ''
 [venv]
 backend = "venv"
+'';
+    home.file.".cargo/config.toml".text = ''
+# On Windows
+# ```
+# cargo install -f cargo-binutils
+# rustup component add llvm-tools-preview
+# ```
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+[target.x86_64-pc-windows-gnu]
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+
+# On Linux:
+# - Ubuntu, `sudo apt-get install lld clang`
+# - Arch, `sudo pacman -S lld clang`
+[target.x86_64-unknown-linux-gnu]
+rustflags = ["-C", "linker=clang", "-C", "link-arg=-fuse-ld=lld"]
+
+# On MacOS
+[target.x86_64-apple-darwin]
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+[target.aarch64-apple-darwin]
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
 '';
 
   };
