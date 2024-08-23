@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ./wm
-    ./de
-    ./fcitx5
-    ./game
-    ./nvidia
-    ./virt
+    ./nvidia.nix
+    ./game.nix
+    ./gnome.nix
+    ./hyprland.nix
+    ./rime.nix
+    ./virt.nix
   ];
 }

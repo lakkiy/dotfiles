@@ -43,6 +43,11 @@ Install =homebrew=:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 #+end_src
 
+For Apple Sillison Macs, install ~Rosetta~:
+#+begin_src sh
+softwareupdate --install-rosetta --agree-to-license
+#+end_src
+
 For the first time:
 #+begin_src sh
 nix build .#darwinConfigurations.<host>.system

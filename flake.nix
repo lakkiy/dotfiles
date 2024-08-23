@@ -2,52 +2,155 @@
   description = "Configurations of Mr.Unhappy";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-utils.url = github:numtide/flake-utils;
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+    unstable-nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
+    unstable-home-manager = {
+      url = github:nix-community/home-manager;
+      inputs.nixpkgs.follows = "unstable-nixpkgs";
     };
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+    unstable-nixos-hardware.url = github:NixOS/nixos-hardware;
+    ags = {
+      url = github:Aylur/ags;
+      inputs.nixpkgs.follows = "unstable-nixpkgs";
+    };
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+      inputs.nixpkgs.follows = "unstable-nixpkgs";
     };
 
-    ags.url = "github:Aylur/ags";
+    darwin-nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-24.05-darwin;
+    darwin-nix-darwin = {
+      url = github:LnL7/nix-darwin/master;
+      inputs.nixpkgs.follows = "darwin-nixpkgs";
+    };
+    darwin-home-manager = {
+      url = github:nix-community/home-manager/release-24.05;
+      inputs.nixpkgs.follows = "darwin-nixpkgs";
+    };
   };
 
-  outputs = inputs @ {self, nixpkgs, nixpkgs-unstable, home-manager, darwin, ...}:
-    let
-      vars = {
-        user = "mrunhap";
+  outputs = inputs @ {
+    self,
+    flake-utils,
+    unstable-nixpkgs,
+    unstable-home-manager,
+    unstable-nixos-hardware,
+    ags,
+    zen-browser,
+    darwin-nixpkgs,
+    darwin-nix-darwin,
+    darwin-home-manager,
+    ...
+  }: let
+    mkHost = user: hostName: system: specifiedModules: let
+      isDarwin = builtins.elem system unstable-nixpkgs.lib.platforms.darwin;
+      specifics =
+        {
+          nixos = {
+            nixpkgs = unstable-nixpkgs;
+            nixSystem = unstable-nixpkgs.lib.nixosSystem;
+            modules = [
+              unstable-home-manager.nixosModules.home-manager
+              ./modules/nixos-common.nix
+              ./modules/nixos
+            ];
+            hm-modules = [
+              ags.homeManagerModules.default
+            ];
+          };
+          darwin = {
+            nixpkgs = darwin-nixpkgs;
+            nixSystem = darwin-nix-darwin.lib.darwinSystem;
+            modules = [
+              darwin-home-manager.darwinModules.home-manager
+              ./modules/darwin-common.nix
+            ];
+            hm-modules = [
+              ags.homeManagerModules.default
+            ];
+          };
+        }
+        .${
+          if isDarwin
+          then "darwin"
+          else "nixos"
+        };
+    in let
+      hostConfig = import ./hosts/${hostName}.nix {
+        inherit (specifics) nixpkgs;
+        inherit system hostName user;
       };
+      lib = specifics.nixpkgs.lib.extend (final: prev: {
+        # …
+      });
+      freezeRegistry = {
+        nix.registry = lib.mapAttrs (_: flake: {inherit flake;}) inputs;
+      };
+      hostRootModule =
+        {
+          system.configurationRevision =
+            if (self ? rev)
+            then self.rev
+            else throw "refuse to build: git tree is dirty";
+        }
+        // hostConfig.root;
+      homeManagerModules = [
+        ({config, ...}: {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.${user} = import ./home.nix;
+            sharedModules = specifics.hm-modules;
+            extraSpecialArgs = {
+              inherit isDarwin;
+            };
+          };
+        })
+      ];
     in
-      {
-        nixosConfigurations = (
-          import ./systems/nixos {
-            inherit (nixpkgs) lib;
-            inherit inputs nixpkgs nixpkgs-unstable home-manager vars;
-          }
-        );
+      specifics.nixSystem {
+        inherit system;
+        specialArgs = {
+          inherit (specifics) nixpkgs;
+          inherit isDarwin hostName lib user;
+        };
 
-        homeConfigurations = ( # Non-NixOS configurations
-          import ./systems/nonnixos {
-            inherit (nixpkgs) lib;
-            inherit inputs nixpkgs nixpkgs-unstable home-manager vars;
-          }
-        );
-
-        darwinConfigurations = ( # Darwin configurations
-          import ./systems/darwin {
-            inherit (nixpkgs) lib;
-            inherit inputs nixpkgs nixpkgs-unstable home-manager darwin vars;
-          }
-        );
+        modules =
+          [
+            ./common.nix
+            freezeRegistry
+          ]
+          ++ specifics.modules
+          ++ [
+            hostRootModule
+            hostConfig.module
+          ]
+          ++ homeManagerModules
+          ++ specifiedModules;
       };
+  in
+    flake-utils.lib.eachDefaultSystem (system: {
+      formatter = unstable-nixpkgs.legacyPackages.${system}.alejandra;
+    })
+    // {
+      nixosConfigurations = {
+        north = mkHost "mrunhap" "north" "x86_64-linux" [
+          {
+            environment.systemPackages = [zen-browser.packages."x86_64-linux".default];
+          }
+        ];
+        homelab = mkHost "root" "homelab" "x86_64-linux" [];
+      };
+      darwinConfigurations = {
+        cmcm = mkHost "mrunhap" "cmcm" "x86_64-darwin" [];
+        macmini = mkHost "liubo" "macmini" "aarch64-darwin" [];
+      };
+    };
 
   nixConfig = {
-    experimental-features = ["nix-command" "flakes"];
+    accept-flake-config = true;
+    experimental-features = ["nix-command" "flakes" "repl-flake"];
     extra-substituters = [
       "https://nix-community.cachix.org"
     ];
