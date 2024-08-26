@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  isDarwin,
   ...
 }: {
   imports = [
@@ -13,7 +12,7 @@
   programs.home-manager.enable = true;
 
   # Make GUI applications show in menu.
-  targets.genericLinux.enable = lib.mkIf (!isDarwin) true;
+  # targets.genericLinux.enable = lib.mkIf (!isDarwin) true;
 
   home.sessionPath = [
     "$HOME/bin"
@@ -39,7 +38,6 @@
     delta
     cloc
     tree
-    ast-grep
     inetutils # ftp client
     iperf # test preformance of network
     tailspin # highlight logs

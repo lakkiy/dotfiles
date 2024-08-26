@@ -71,7 +71,7 @@
         "stats" # display monitor info on menu bar
         "xournal-plus-plus"
         "inkscape" # draw
-        "zotero@beta"
+        "zotero"
 
         # TODO split into default and work config
         "feishu"

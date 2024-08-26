@@ -26,7 +26,7 @@ in {
     ];
 
     home.packages = with pkgs; ([
-      protobuf
+      protobuf buf grpcurl
       emacs-lsp-booster
       universal-ctags
       global

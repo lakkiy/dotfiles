@@ -87,7 +87,7 @@
         localsend
         xdg-user-dirs
 
-        zotero_7
+        zotero
         blender
         gimp
         inkscape
