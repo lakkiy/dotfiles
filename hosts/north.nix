@@ -71,7 +71,7 @@
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.${user} = {
       isNormalUser = true;
-      description = "...";
+      description = "Mr. Unhappy";
       extraGroups = ["networkmanager" "wheel"];
       packages = with pkgs; [
         firefox

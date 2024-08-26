@@ -17,7 +17,7 @@ in {
       server.enable = true;
       settings = {
         main = {
-          font = "Latin Modern Mono:size=17";
+          font = "Latin Modern Mono:size=13";
           pad = "10x10";
         };
         colors = {
