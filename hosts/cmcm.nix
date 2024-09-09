@@ -45,6 +45,7 @@
     ];
 
     homebrew = {
+      enable = true;
       # masApps = [];
       taps = [
         "jimeh/emacs-builds"

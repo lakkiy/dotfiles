@@ -29,12 +29,24 @@
       home.file.".config/karabiner/karabiner.json".source = ../static/karabiner.json;
     };
 
+    fonts.packages = with pkgs; [
+      cardo
+      lxgw-wenkai
+      sarasa-gothic
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+    ];
+
+    environment.systemPath = [
+      /opt/homebrew/bin
+    ];
     homebrew = {
+      enable = true;
       # masApps = [];
       taps = [
         "homebrew/services"
       ];
       brews = [
+        "coreutils" # gls
       ];
       casks = [
         "karabiner-elements"
