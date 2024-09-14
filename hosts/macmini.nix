@@ -49,6 +49,7 @@
         "coreutils" # gls
       ];
       casks = [
+        "zen-browser"
         "karabiner-elements"
         "squirrel"
         "syncthing"

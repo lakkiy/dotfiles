@@ -58,7 +58,7 @@
       ];
       casks = [
         "iterm2" # better search and filter
-        "firefox"
+        "firefox" "zen-browser"
         "chromium" # for feishu doc, which is slow in firefox
         "iina"
         "karabiner-elements"
