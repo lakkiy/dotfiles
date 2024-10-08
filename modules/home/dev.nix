@@ -52,6 +52,7 @@ in {
       protoc-gen-go
       protoc-gen-go-grpc
       wire
+      oapi-codegen
     ]
     ++ [
       # Python
@@ -82,6 +83,7 @@ in {
           paramiko
           rapidfuzz
         ]))
+      aider-chat
     ]
     ++ [
       # Web
