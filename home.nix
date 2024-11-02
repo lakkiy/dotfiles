@@ -171,6 +171,9 @@
           # For iterm2 shell integration
           [ -f $HOME/.config/zsh/.iterm2_shell_integration.zsh ] && source $HOME/.config/zsh/.iterm2_shell_integration.zsh
 
+          # https://discourse.nixos.org/t/brew-not-on-path-on-m1-mac/26770
+          [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
           # For local use.
           [ -f $HOME/.zshrc ] && source $HOME/.zshrc
         '';
@@ -199,7 +202,7 @@
         name = "git.plugin.zsh";
         src = fetchurl {
           url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh";
-          sha256 = "sha256-noUouJ7sjWce4D/jZgUXjBKsYxI06SfDJoQsqEkSjtc=";
+          sha256 = "sha256-V8U3xrRTvh/4xrCtUvsatDrQdJeFil46wuo+Jd3XAwo=";
         };
       }
       {

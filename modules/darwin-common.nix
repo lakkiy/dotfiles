@@ -26,13 +26,18 @@
   system.defaults.NSGlobalDomain.NSDocumentSaveNewDocumentsToCloud = false;
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
   system.defaults.NSGlobalDomain.KeyRepeat = 1;
+  system.defaults.NSGlobalDomain."com.apple.sound.beep.volume" = 0.4723665;
 
   system.defaults.dock.minimize-to-application = true;
   system.defaults.dock.autohide = true;
 
+  system.defaults.screencapture.location = "~/Pictures";
+
   system.defaults.finder.AppleShowAllFiles = true;
   system.defaults.finder.ShowStatusBar = true;
   system.defaults.finder.ShowPathbar = true;
+  system.defaults.finder.FXDefaultSearchScope = "SCcf";
+  system.defaults.finder.FXPreferredViewStyle = "Nlsv";
   system.defaults.finder.QuitMenuItem = true;
 
   system.keyboard.enableKeyMapping = true;

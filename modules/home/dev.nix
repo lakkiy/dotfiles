@@ -28,14 +28,12 @@ in {
     home.packages = with pkgs; ([
       protobuf buf grpcurl
       emacs-lsp-booster
-      universal-ctags
-      global
+      universal-ctags global
     ]
     ++ [
       # C
-      gdb
       ccls
-      cscope
+      # gdb # FIXME platform not support for m3air
     ]
     ++ [
       # Golang
@@ -56,59 +54,38 @@ in {
     ]
     ++ [
       # Python
-      pyright
-      ruff
-      pipx
-      pdm
+      ruff pipx pdm
       (python3.withPackages (ps:
         with ps; [
-          pip
-          conda
-          ipython
-          debugpy
-          requests
-          pytest
-          numpy
-          jupyterlab
-          notebook
-          jupytext
-          pygments # for gtags
+          pygments #  for gtags
+          debugpy pip
+          requests pytest
+
+          # conda # FIXME build failed on m-mac
+
+          # jupytext ipython jupyterlab notebook
 
           # lsp-bridge for emacs
-          epc
-          orjson
-          sexpdata
-          six
-          setuptools
-          paramiko
-          rapidfuzz
+          # epc orjson sexpdata six setuptools paramiko rapidfuzz
         ]))
-      aider-chat
+
+      # FIXME not in nixpkgs darwin 24
+      # aider-chat
     ]
     ++ [
       # Web
-      nodejs-slim
-      typescript
-      deno
-      nodePackages.npm
-      nodePackages.pnpm
+      nodejs-slim typescript deno
+      nodePackages.npm nodePackages.pnpm
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       sassc # compile scss/sass to css
     ]
     ++ [
       # Rust
-      cargo
-      rustc
-      rust-analyzer
+      cargo rustc rust-analyzer rustfmt
       llvmPackages.bintools # lld, faster linking
-      cargo-watch # monitor source code and trigger commands
-      cargo-tarpaulin # code coverage
-      clippy # lint
-      cargo-audit # security
-      rustfmt
-      cargo-expand
-      cargo-edit
+      # cargo-audit cargo-expand cargo-edit cargo-watch cargo-tarpaulin
+      # clippy # lint #FIXME build failed on m-mac
     ]
     ++ [
       # Lisp
@@ -116,12 +93,9 @@ in {
       leiningen
       jdk
 
-      sbcl
-
       # $raco pkg install sicp
-      # Add #lang sicp at the top of the file.
-      # When using the REPL, we need to first evaluate (require sicp) before
-      # evaluating anything else.
+      # #lang sicp
+      # (require sicp) in REPL
       racket
     ]);
 

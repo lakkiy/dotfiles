@@ -16,6 +16,10 @@
   }: {
     imports = [];
 
+    nix.extraOptions = ''
+      extra-platforms = x86_64-darwin aarch64-darwin
+    '';
+
     users.users.${user} = {
       home = "/Users/${user}";
       shell = pkgs.zsh;
@@ -27,61 +31,47 @@
     };
 
     fonts.packages = with pkgs; [
-      # mono
-      lmodern
-      roboto-mono
-      dejavu_fonts
-      ibm-plex
-
-      # var
       cardo
-
-      # 中文字体
       lxgw-wenkai
-
-      # 中英等宽
       sarasa-gothic
       (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     ];
 
+    environment.systemPath = [
+      /opt/homebrew/bin
+    ];
     homebrew = {
       enable = true;
       # masApps = [];
       taps = [
-        "jimeh/emacs-builds"
+        "homebrew/services"
       ];
       brews = [
         "coreutils"
         "aspell" # nix 安装的 aspell 在 mac 上 command not found
         "pngpaste" # paste image in emacs telega
         "tree-sitter"
+
+        "aider"
+        "basedpyright"
       ];
       casks = [
-        "iterm2" # better search and filter
-        "firefox" "zen-browser"
-        "chromium" # for feishu doc, which is slow in firefox
-        "iina"
+        "iterm2"
+        "zen-browser"
         "karabiner-elements"
-        "raycast"
         "squirrel"
         "syncthing"
-        # "emacs-app-good"
-        "dropbox"
-        "keepingyouawake"
-        "the-unarchiver"
-        "stats" # display monitor info on menu bar
-        "xournal-plus-plus"
-        "inkscape" # draw
-        "zotero"
+        "chatgpt"
+        "raycast"
 
-        # TODO split into default and work config
-        "feishu"
         "tencent-meeting"
-        "mongodb-compass"
-        "easy-move-plus-resize"
-        "openlens"
-        "qq"
-        "wechat"
+        "zotero"
+        "the-unarchiver"
+        "iina"
+        "dropbox"
+        "imaging-edge"
+        "topnotch"
+        "keepingyouawake"
       ];
     };
   };

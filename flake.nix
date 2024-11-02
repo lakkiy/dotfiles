@@ -43,15 +43,6 @@
     darwin-home-manager,
     ...
   }: let
-    mkHome = user: hostName: system: specifiedModules:
-      unstable-home-manager.lib.homeManagerConfiguration {
-        inherit (import unstable-nixpkgs { inherit system; }) pkgs;
-        modules = [
-          ags.homeManagerModules.default
-          ./home.nix
-          ./hosts/${hostName}.nix
-        ];
-    };
     mkHost = user: hostName: system: specifiedModules: let
       isDarwin = builtins.elem system unstable-nixpkgs.lib.platforms.darwin;
       specifics =
@@ -153,11 +144,8 @@
         homelab = mkHost "root" "homelab" "x86_64-linux" [];
       };
       darwinConfigurations = {
-        cmcm = mkHost "mrunhap" "cmcm" "x86_64-darwin" [];
+        m3air = mkHost "liubo" "m3air" "aarch64-darwin" [];
         macmini = mkHost "liubo" "macmini" "aarch64-darwin" [];
-      };
-      homeConfigurations = {
-        server = mkHome "root" "server" "x86_64-linux" [];
       };
     };
 

@@ -53,12 +53,6 @@
         "karabiner-elements"
         "squirrel"
         "syncthing"
-        "dropbox"
-        "stats"
-
-        "chatgpt"
-        "plex"
-        "plex-htpc"
         "plex-media-server"
       ];
     };
