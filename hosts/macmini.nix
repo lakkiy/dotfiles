@@ -54,6 +54,7 @@
         "squirrel"
         "syncthing"
         "plex-media-server"
+        "orbstack"
       ];
     };
   };
