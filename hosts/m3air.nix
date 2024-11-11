@@ -64,6 +64,7 @@
         "chatgpt"
         "raycast"
 
+        "follow"
         "tencent-meeting"
         "zotero"
         "the-unarchiver"
