@@ -6,8 +6,8 @@
 }: {
   nix = {
     package = pkgs.nix;
+    optimise.automatic = true;
     settings = {
-      auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes" "repl-flake"];
       trusted-users = ["mrunhap" "liubo" "root"];
       substituters = [
