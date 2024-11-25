@@ -70,8 +70,6 @@
         "the-unarchiver"
         "iina"
         "dropbox"
-        "imaging-edge"
-        "topnotch"
         "keepingyouawake"
       ];
     };
