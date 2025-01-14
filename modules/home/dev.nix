@@ -74,7 +74,7 @@ in {
     ]
     ++ [
       # Web
-      nodejs-slim typescript deno
+      nodejs typescript deno
       nodePackages.npm nodePackages.pnpm
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted

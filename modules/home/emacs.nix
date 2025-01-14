@@ -20,9 +20,9 @@ with lib; let
       hyperref
       capt-of
       #(setq org-latex-compiler "xelatex")
-      
+
       #(setq org-preview-latex-default-process 'dvisvgm)
-      
+
       digestif # lsp server
       ctex
       ;
@@ -70,21 +70,21 @@ in {
           (treesit-grammars.with-grammars (p: builtins.attrValues p))
 
           # emacs-rime
-          (epkgs.melpaPackages.rime.overrideAttrs (old: {
-            recipe = pkgs.writeText "recipe" ''
-              (rime :repo "DogLooksGood/emacs-rime"
-                    :files (:defaults "lib.c" "Makefile" "librime-emacs.so")
-                    :fetcher github)
-            '';
-            postPatch =
-              old.postPatch
-              or ""
-              + ''
-                emacs --batch -Q -L . \
-                    --eval "(progn (require 'rime) (rime-compile-module))"
-              '';
-            buildInputs = old.buildInputs ++ (with pkgs; [librime]);
-          }))
+          # (epkgs.melpaPackages.rime.overrideAttrs (old: {
+          #   recipe = pkgs.writeText "recipe" ''
+          #     (rime :repo "DogLooksGood/emacs-rime"
+          #           :files (:defaults "lib.c" "Makefile" "librime-emacs.so")
+          #           :fetcher github)
+          #   '';
+          #   postPatch =
+          #     old.postPatch
+          #     or ""
+          #     + ''
+          #       emacs --batch -Q -L . \
+          #           --eval "(progn (require 'rime) (rime-compile-module))"
+          #     '';
+          #   buildInputs = old.buildInputs ++ (with pkgs; [librime]);
+          # }))
         ];
     };
   };
