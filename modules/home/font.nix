@@ -45,7 +45,7 @@ in {
       sarasa-gothic
 
       # anything need nerd icon(editor, system bar, etc...)
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      nerd-fonts.symbols-only
     ];
   };
 }

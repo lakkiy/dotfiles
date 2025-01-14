@@ -8,8 +8,8 @@
     package = pkgs.nix;
     optimise.automatic = true;
     settings = {
-      experimental-features = ["nix-command" "flakes" "repl-flake"];
-      trusted-users = ["mrunhap" "liubo" "root"];
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["lakkiy" "liubo" "root"];
       substituters = [
         # cache mirror located in China
         # status: https://mirror.sjtu.edu.cn/

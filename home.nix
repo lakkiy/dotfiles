@@ -8,7 +8,7 @@
     ./modules/home
   ];
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
   programs.home-manager.enable = true;
 
   # Make GUI applications show in menu.
@@ -81,7 +81,7 @@
 
   programs.git = {
     enable = true;
-    userName = "mrunhap";
+    userName = "lakkiy";
     userEmail = "liubolovelife@gmail.com";
     delta.enable = true;
     lfs.enable = true;
@@ -96,7 +96,7 @@
         if pkgs.stdenv.isLinux
         then "store"
         else "osxkeychain";
-      github.user = "mrunhap";
+      github.user = "lakkiy";
     };
     ignores = [
       ".venv"

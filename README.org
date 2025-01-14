@@ -10,11 +10,11 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 Clone this repo:
 #+begin_src
-git clone https://github.com/mrunhap/dotfiles.git ~/.setup
+git clone https://github.com/lakkiy/dotfiles.git ~/.setup
 #+end_src
 Or:
 #+begin_src sh
-nix run nixpkgs#git clone https://github.com/mrunhap/dotfiles.git ~/.setup
+nix run nixpkgs#git clone https://github.com/lakkiy/dotfiles.git ~/.setup
 #+end_src
 
 * NixOS
@@ -87,3 +87,10 @@ sudo pacman -S fwupd sof-firmware
 ** Delete Nixos boot generations
 
 Delete =system-*= in =/nix/var/nix/profiles= and rebuild the system.
+
+** Rate limit on update flake
+
+#+begin_src
+$ cat ~/.config/nix/nix.conf
+access-tokens = github.com=***censored***
+#+end_src

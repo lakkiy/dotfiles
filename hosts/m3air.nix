@@ -71,6 +71,9 @@
         "iina"
         "dropbox"
         "keepingyouawake"
+
+        # convert flac to alac
+        "ffmpeg"
       ];
     };
   };

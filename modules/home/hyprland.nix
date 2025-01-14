@@ -113,13 +113,15 @@ in {
           "1, monitor:desc:Sony SDMU27M90*30 9706757, default:true"
           "2, monitor:desc:Sony SDMU27M90*30 9706757"
           "3, monitor:desc:Sony SDMU27M90*30 9706757"
-          "4, monitor:desc:HFC X24 Pro demoset-1, default: true"
+          "4, monitor:desc:HFC X24 Pro demoset-1"
           "5, monitor:desc:HFC X24 Pro demoset-1"
           "6, monitor:desc:HFC X24 Pro demoset-1"
           "7, monitor:desc:HFC X24 Pro demoset-1"
           "8, monitor:desc:HFC X24 Pro demoset-1"
-          "9, monitor:desc:LZT Viewedge.CR   00000000, default: true"
-          "10, monitor:desc:LZT Viewedge.CR   00000000"
+          "9, monitor:desc:HFC X24 Pro demoset-1"
+          "10, monitor:desc:HFC X24 Pro demoset-1"
+          # "9, monitor:desc:LZT Viewedge.CR   00000000, default: true"
+          # "10, monitor:desc:LZT Viewedge.CR   00000000"
         ];
 
         windowrule = let

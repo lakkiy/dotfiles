@@ -15,17 +15,17 @@
       inputs.nixpkgs.follows = "unstable-nixpkgs";
     };
     zen-browser = {
-      url = "github:MarceColl/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "unstable-nixpkgs";
     };
 
-    darwin-nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-24.05-darwin;
+    darwin-nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-24.11-darwin;
     darwin-nix-darwin = {
-      url = github:LnL7/nix-darwin/master;
+      url = github:LnL7/nix-darwin/nix-darwin-24.11;
       inputs.nixpkgs.follows = "darwin-nixpkgs";
     };
     darwin-home-manager = {
-      url = github:nix-community/home-manager/release-24.05;
+      url = github:nix-community/home-manager/release-24.11;
       inputs.nixpkgs.follows = "darwin-nixpkgs";
     };
   };
@@ -136,9 +136,11 @@
     })
     // {
       nixosConfigurations = {
-        north = mkHost "mrunhap" "north" "x86_64-linux" [
+        north = mkHost "lakkiy" "north" "x86_64-linux" [
           {
-            environment.systemPackages = [zen-browser.packages."x86_64-linux".default];
+            environment.systemPackages = [
+              zen-browser.packages."x86_64-linux".default
+            ];
           }
         ];
         homelab = mkHost "root" "homelab" "x86_64-linux" [];
@@ -151,7 +153,7 @@
 
   nixConfig = {
     accept-flake-config = true;
-    experimental-features = ["nix-command" "flakes" "repl-flake"];
+    experimental-features = ["nix-command" "flakes"];
     extra-substituters = [
       "https://nix-community.cachix.org"
     ];

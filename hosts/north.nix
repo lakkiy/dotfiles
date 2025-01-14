@@ -15,14 +15,14 @@
     boot.extraModulePackages = [];
 
     fileSystems."/" = {
-      device = "/dev/disk/by-uuid/cf69bdf1-74bf-44ef-b9c5-9ca59cefdd10";
+      device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
     };
 
     fileSystems."/boot" = {
-      device = "/dev/disk/by-uuid/0E46-2DBB";
+      device = "/dev/disk/by-label/boot";
       fsType = "vfat";
-      options = ["fmask=0022" "dmask=0022"];
+      options = ["fmask=0077" "dmask=0077"];
     };
 
     fileSystems."/mnt/share" = {
@@ -37,7 +37,7 @@
     };
 
     swapDevices = [
-      {device = "/dev/disk/by-uuid/fd8b2ba7-38bf-44fb-9c90-3baa42d8bd4a";}
+      {device = "/dev/disk/by-label/swap";}
     ];
   };
 
@@ -71,7 +71,7 @@
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.${user} = {
       isNormalUser = true;
-      description = "Mr. Unhappy";
+      description = "LiuBo";
       extraGroups = ["networkmanager" "wheel"];
       packages = with pkgs; [
         firefox
@@ -97,7 +97,7 @@
       ];
     };
 
-    system.stateVersion = "24.05";
+    system.stateVersion = "24.11";
     networking.useDHCP = lib.mkDefault true;
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
