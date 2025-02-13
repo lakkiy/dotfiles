@@ -37,9 +37,11 @@
       (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     ];
 
-    environment.systemPath = [
-      /opt/homebrew/bin
-    ];
+    # error: access to absolute path '/opt' is forbidden in pure evaluation mode (use '--impure' to override)
+    # environment.systemPath = [
+    #   /opt/homebrew/bin
+    # ];
+
     homebrew = {
       enable = true;
       # masApps = [];
@@ -71,9 +73,6 @@
         "iina"
         "dropbox"
         "keepingyouawake"
-
-        # convert flac to alac
-        "ffmpeg"
       ];
     };
   };
