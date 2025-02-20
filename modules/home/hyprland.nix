@@ -12,64 +12,31 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # Status bar
     programs.ags = {
       enable = true;
       configDir = ../../static/ags;
       extraPackages = with pkgs; [
         # additional packages to add to gjs's runtime
-        gtksourceview
-        webkitgtk
-        accountsservice
+        gtksourceview webkitgtk accountsservice
       ];
     };
 
-    # A notification daemon
-    services.dunst.enable = true;
-
-    # Application launcher
-    programs.bemenu.enable = true;
-
-    # Lock screen
-    programs.hyprlock.enable = true;
-
+    services.dunst.enable = true;    # A notification daemon
+    programs.bemenu.enable = true;   # Application launcher
+    programs.hyprlock.enable = true; # Lock screen
     home.file.".config/hypr/hyprpaper.conf".source = ../../static/hypr/hyprpaper.conf;
     home.file.".local/share/icons/Bibata-Modern-Ice".source = ../../static/Bibata-Modern-Ice;
 
     home.packages = with pkgs; [
-      # clipboard for wayland, also needed by other tools like hyprpicker
-      # to paste color to clipboard
-      # provide command: wl-copy, wl-paste
-      wl-clipboard
-
-      # switch to application or run it
-      wlrctl
-
-      # screenshot
-      grim
-      slurp
-
-      # echo tools
-      hyprpaper
-      hyprpicker
-      hyprcursor
-
-      # voice control
-      pavucontrol
-
-      # network manager on tray
-      networkmanagerapplet
-
-      # bluetooth manager
-      blueberry
-
-      # cursor theme for x
-      bibata-cursors
-
-      # Automatically Mounting
-      # udiskie is a udisks2 front-end that allows to manage removable
-      # media such as CDs or flash drives from userspace.
-      udiskie
+      wl-clipboard                    # clipboard for wayland
+      wlrctl                          # switch to application or run it
+      grim slurp                      # screenshot
+      hyprpaper hyprpicker hyprcursor # echo tools
+      pavucontrol                     # voice control
+      networkmanagerapplet            # network manager on tray
+      blueberry                       # bluetooth manager
+      bibata-cursors                  # cursor theme for x
+      udiskie                         # automatically mounting media
     ];
 
     wayland.windowManager.hyprland = {
@@ -77,31 +44,84 @@ in {
 
       settings = {
         env = [
-          # Fix cursor don't show with Nvidia card
-          "WLR_NO_HARDWARE_CURSORS,1"
-
-          # hyprcursor
-          "HYPRCURSOR_THEME,Bibata-Modern-Ice"
+          "WLR_NO_HARDWARE_CURSORS,1"          # Fix cursor don't show with Nvidia card
+          "HYPRCURSOR_THEME,Bibata-Modern-Ice" # hyprcursor
           "HYPRCURSOR_SIZE,32"
           "XCURSOR_THEME,Bibata-Modern-Ice"
           "XCURSOR_SIZE,32"
         ];
 
         exec-once = [
-          "hyprctl setcursor Bibata-Modern-Ice 32"
+          "hyprctl setcursor Bibata-Modern-Ice 32" # curser theme
+          "ags -b hypr"                            # status bar
+          "nm-applet --indicator"                  # networkmanager indicator on tray
+          "fcitx5 -d"                              # input method
+          "udiskie &"                              # auto mount usb
+          "hyprpaper"                              # wallpaper
+        ];
 
-          # status bar
-          "ags -b hypr"
-          "nm-applet --indicator"
+        bind = let
+          binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
+          mvfocus = binding "SUPER" "movefocus";
+          ws = binding "SUPER" "workspace";
+          resizeactive = binding "SUPER CTRL" "resizeactive";
+          mvactive = binding "SUPER ALT" "moveactive";
+          mvtows = binding "SUPER SHIFT" "movetoworkspace";
+          mvw = binding "SUPER SHIFT" "movewindow";
+          arr = [1 2 3 4 5 6 7 8 9];
+        in
+          [
+            # Applications (hyprctl clients | grep class)
+            "SUPER, B, exec, wlrctl window focus zen || zen"            # browser
+            "SUPER, E, exec, wlrctl window focus emacs || emacs"        # editor
+            "SUPER, Return, exec, wlrctl window focus kitty || kitty"   # terminal
+            "SUPER, D, exec, bemenu-run -i --fn 'Sarasa Gothic SC 20'"  # launcher
+            "SUPER, L, exec, hyprlock --immediate -q"                   # lock screen
+            "SUPER,F10,pass,^(com\.obsproject\.Studio)$"                # Start/Stop Recording
+            "SUPER_SHIFT, p, exec, grim -g \"$(slurp -d)\" - | wl-copy" # screenshot
+            " , Print, exec, grim -g \"$(slurp -d)\" - | wl-copy"
 
-          # input method
-          "fcitx5 -d"
+            # hyprland
+            "ALT, Tab, focuscurrentorlast"
+            "SUPER, Q, killactive"
+            "SUPER, F, togglefloating"
+            "SUPER_SHIFT, F, fullscreen"
+            "SUPER, P, togglesplit"
 
-          # auto mount usb
-          "udiskie &"
+            # tabbed
+            "SUPER, G, togglegroup"
 
-          # wallpaper
-          "hyprpaper"
+            # scratchpad
+            "SUPER, C, movetoworkspace, special"
+            "SUPER_SHIFT, C, togglespecialworkspace"
+
+            (mvw "h" "l")
+            (mvw "s" "r")
+            (mvw "t" "u")
+            (mvw "n" "d")
+            (mvfocus "h" "l")
+            (mvfocus "s" "r")
+            (mvfocus "t" "u")
+            (mvfocus "n" "d")
+            (ws "left" "e-1")
+            (ws "right" "e+1")
+            (mvtows "left" "e-1")
+            (mvtows "right" "e+1")
+            (resizeactive "n" "0 -20")
+            (resizeactive "t" "0 20")
+            (resizeactive "s" "20 0")
+            (resizeactive "h" "-20 0")
+            (mvactive "n" "0 -20")
+            (mvactive "t" "0 20")
+            (mvactive "s" "20 0")
+            (mvactive "h" "-20 0")
+          ]
+          ++ (map (i: ws (toString i) (toString i)) arr)
+          ++ (map (i: mvtows (toString i) (toString i)) arr);
+
+        bindm = [
+          "SUPER, mouse:273, resizewindow"
+          "SUPER, mouse:272, movewindow"
         ];
 
         monitor = [
@@ -161,79 +181,6 @@ in {
 
         decoration.rounding = 5;
         gestures.workspace_swipe = "on";
-
-        bind = let
-          binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
-          mvfocus = binding "SUPER" "movefocus";
-          ws = binding "SUPER" "workspace";
-          resizeactive = binding "SUPER CTRL" "resizeactive";
-          mvactive = binding "SUPER ALT" "moveactive";
-          mvtows = binding "SUPER SHIFT" "movetoworkspace";
-          mvw = binding "SUPER SHIFT" "movewindow";
-          arr = [1 2 3 4 5 6 7 8 9];
-        in
-          [
-            # Launcher
-            "SUPER, D, exec, bemenu-run -i --fn 'Sarasa Gothic SC 20'"
-
-            # Applications (hyprctl clients | grep class)
-            "SUPER, Return, exec, wlrctl window focus kitty || kitty"
-            # "SUPER, B, exec, wlrctl window focus firefox || firefox"
-            "SUPER, B, exec, wlrctl window focus zen || zen-alpha"
-            "SUPER, E, exec, wlrctl window focus emacs || emacs"
-
-            # Lock screen
-            "SUPER, L, exec, hyprlock --immediate -q"
-
-            # Screenshot
-            "SUPER_SHIFT, p, exec, grim -g \"$(slurp -d)\" - | wl-copy"
-            " , Print, exec, grim -g \"$(slurp -d)\" - | wl-copy"
-
-            # Start/Stop Recording
-            "SUPER,F10,pass,^(com\.obsproject\.Studio)$"
-
-            # hyprland
-            "ALT, Tab, focuscurrentorlast"
-            "SUPER, Q, killactive"
-            "SUPER, F, togglefloating"
-            "SUPER_SHIFT, F, fullscreen"
-            "SUPER, P, togglesplit"
-
-            # tabbed
-            "SUPER, G, togglegroup"
-
-            # scratchpad
-            "SUPER, C, movetoworkspace, special"
-            "SUPER_SHIFT, C, togglespecialworkspace"
-
-            (mvw "h" "l")
-            (mvw "s" "r")
-            (mvw "t" "u")
-            (mvw "n" "d")
-            (mvfocus "h" "l")
-            (mvfocus "s" "r")
-            (mvfocus "t" "u")
-            (mvfocus "n" "d")
-            (ws "left" "e-1")
-            (ws "right" "e+1")
-            (mvtows "left" "e-1")
-            (mvtows "right" "e+1")
-            (resizeactive "n" "0 -20")
-            (resizeactive "t" "0 20")
-            (resizeactive "s" "20 0")
-            (resizeactive "h" "-20 0")
-            (mvactive "n" "0 -20")
-            (mvactive "t" "0 20")
-            (mvactive "s" "20 0")
-            (mvactive "h" "-20 0")
-          ]
-          ++ (map (i: ws (toString i) (toString i)) arr)
-          ++ (map (i: mvtows (toString i) (toString i)) arr);
-
-        bindm = [
-          "SUPER, mouse:273, resizewindow"
-          "SUPER, mouse:272, movewindow"
-        ];
       };
     };
   };
