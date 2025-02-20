@@ -35,7 +35,6 @@ in {
     services.emacs.enable = true;
 
     home.packages = with pkgs; [
-      emacsPackages.telega
       tex                       # basic support for org mode
       tikzit                    # draw in LaTeX
       ltex-ls                   # lsp server for grammar/spell check for org,md etc
@@ -51,10 +50,9 @@ in {
       package = config.my.emacs.package;
       extraPackages = epkgs:
         with epkgs; [
+          telega
           # install all treesitter grammars
           (treesit-grammars.with-grammars (p: builtins.attrValues p))
-
-          telega
 
           # TODO
           # emacs-rime

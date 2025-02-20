@@ -18,6 +18,10 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "unstable-nixpkgs";
     };
+    telega-overlay = {
+      url = "github:ipvych/telega-overlay";
+      inputs.nixpkgs.follows = "unstable-nixpkgs";
+    };
 
     darwin-nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-24.11-darwin;
     darwin-nix-darwin = {
@@ -38,6 +42,7 @@
     unstable-nixos-hardware,
     ags,
     zen-browser,
+    telega-overlay,
     darwin-nixpkgs,
     darwin-nix-darwin,
     darwin-home-manager,
@@ -54,6 +59,7 @@
               unstable-home-manager.nixosModules.home-manager
               ./modules/nixos-common.nix
               ./modules/nixos
+              {nixpkgs.overlays = [ telega-overlay.overlay ];}
             ];
             hm-modules = [
               ags.homeManagerModules.default
