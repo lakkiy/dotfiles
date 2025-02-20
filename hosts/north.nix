@@ -63,6 +63,21 @@
       ];
     };
 
+    # mdns
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      nssmdns6 = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        domain = true;
+        hinfo = true;
+        userServices = true;
+        workstation = true;
+      };
+    };
+
     #-------------------------------------------------------------
     # For dual boot must disable windows's hibernate
     services.logind.powerKey = "hibernate";
