@@ -6,7 +6,7 @@
     ./game.nix
     ./gnome.nix
     ./hyprland.nix
-    ./rime.nix
+    ./inputMethod.nix
     ./virt.nix
   ];
 }

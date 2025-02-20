@@ -13,11 +13,16 @@ in {
 
   config = mkIf cfg.enable {
     home.sessionVariables = {
+      # golang
       GO111MODULE = "auto";
       GOPROXY = "https://goproxy.io,direct";
+
+      # gtags
       GTAGSOBJDIRPREFIX = "$HOME/.cache/gtags/";
       GTAGSCONF = "$HOME/.globalrc";
       GTAGSLABEL = "native-pygments";
+
+      # python pdm
       PDM_CONFIG_FILE = "$HOME/.config/pdm/config.toml";
     };
 
@@ -26,83 +31,76 @@ in {
     ];
 
     home.packages = with pkgs; ([
-      protobuf buf grpcurl
       emacs-lsp-booster
-      universal-ctags global
+      protobuf buf grpcurl   # rpc
+      universal-ctags global # tag system
+      delta                  # better diff
+      just gnumake           # command runner
+      cloc                   # counts lines of source code
+      tailspin               # highlight logs
+      litecli mycli pgcli    # rds cli
+      kubectl                # k8s
+      mongosh                # mongodb
+      mosh                   # ssh on udp
     ]
     ++ [
-      # C
-      ccls
-      # gdb # FIXME platform not support for m3air
+      ccls # lsp server for C
     ]
     ++ [
-      # Golang
-      gopls
-      gotools
-      go-tools
-      delve
-      gogetdoc
-      impl
-      gotests
-      gomodifytags
-      reftools
-      godef
-      protoc-gen-go
-      protoc-gen-go-grpc
-      wire
-      oapi-codegen
+      gopls                            # lsp server for go
+      gotools go-tools                 # goimports staticcheck
+      delve                            # debug tool
+      gotests                          # generate go test
+      gomodifytags                     # modify struct tag
+      reftools                         # fillstruct
+      protoc-gen-go protoc-gen-go-grpc # rpc
+      wire oapi-codegen
     ]
     ++ [
-      # Python
-      ruff pipx pdm
+      pipx       # install python cli app
+      ruff       # format and check python code
+      pdm        # manage python project
+      aider-chat # AI tools for editor(emacs)
       (python3.withPackages (ps:
         with ps; [
-          pygments #  for gtags
-          debugpy pip
-          requests pytest
-
-          # conda # FIXME build failed on m-mac
-
+          pip
+          pygments        # for gtags
+          debugpy         # debug tool
+          requests pytest # general python package
+          # conda # if need different python version for virtual environment
           # jupytext ipython jupyterlab notebook
-
-          # lsp-bridge for emacs
-          # epc orjson sexpdata six setuptools paramiko rapidfuzz
         ]))
-
-      # FIXME not in nixpkgs darwin 24
-      # aider-chat
     ]
     ++ [
-      # Web
-      nodejs typescript deno
-      nodePackages.npm nodePackages.pnpm
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      sassc # compile scss/sass to css
+      nodejs typescript deno                    # runtime
+      nodePackages.npm nodePackages.pnpm        # package management
+      nodePackages.typescript-language-server   # lsp server
+      nodePackages.vscode-langservers-extracted # lsp server
+      sassc                                     # compile scss/sass to css
     ]
     ++ [
-      # Rust
-      cargo rustc rust-analyzer rustfmt
+      rustc                 # runtime
+      cargo                 # dependencies management
+      rust-analyzer         # lsp server
+      rustfmt               # formatter
       llvmPackages.bintools # lld, faster linking
+      # clippy # lint FIXME build failed on m-mac
       # cargo-audit cargo-expand cargo-edit cargo-watch cargo-tarpaulin
-      # clippy # lint #FIXME build failed on m-mac
     ]
     ++ [
-      # Lisp
-      clojure
-      leiningen
-      jdk
+      clojure jdk # lisp on jvm
+      leiningen  # dependencies management for clojure
 
       # $raco pkg install sicp
       # #lang sicp
       # (require sicp) in REPL
-      racket
+      racket # lisp for run sicp
     ]);
 
-    programs.go = {
-      enable = true;
-      goPath = ".go";
-    };
+    programs.go.enable = true;
+    programs.go.goPath = ".go";
+    programs.direnv.enable = true;
+    programs.direnv.nix-direnv.enable = true;
 
     home.file.".globalrc".source = ../../static/globalrc;
     home.file.".condarc".text = "auto_activate_base: false";

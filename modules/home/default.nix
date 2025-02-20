@@ -2,15 +2,15 @@
 
 {
   imports = [
+    ./terminal.nix
+
     ./dev.nix
     ./emacs.nix
-    ./firefox.nix
     ./font.nix
-    ./foot.nix
     ./gnome.nix
     ./gtk.nix
     ./hyprland.nix
-    ./rime.nix
+    ./inputMethod.nix
     ./syncthing.nix
   ];
 }

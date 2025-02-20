@@ -1,5 +1,5 @@
 {
-  description = "Configurations of Mr.Unhappy";
+  description = "Configurations of Lakkiy";
 
   inputs = {
     flake-utils.url = github:numtide/flake-utils;

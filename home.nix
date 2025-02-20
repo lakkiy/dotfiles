@@ -8,56 +8,20 @@
     ./modules/home
   ];
 
-  home.stateVersion = "24.11";
-  programs.home-manager.enable = true;
-
-  # Make GUI applications show in menu.
-  # targets.genericLinux.enable = lib.mkIf (!isDarwin) true;
-
-  home.sessionPath = [
-    "$HOME/bin"
-    "$HOME/.local/bin"
-  ];
-
-  home.sessionVariables = {
-    LANG = "en_US.UTF-8";
-    EDITOR = "emacsclient -a '' -nw";
-    TERM = "xterm-256color";
-    LC_CTYPE = "en_US.UTF-8";
-    NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
-    # https://github.com/localsend/localsend/issues/461#issuecomment-1715170140
-    XDG_DOWNLOAD_DIR = "$HOME/Downloads";
-  };
-
   home.packages = with pkgs; ([
-    wget
-    progress # coreutils viewer
-    just
-    gnumake
-    rsync
-    delta
-    cloc
-    tree
-    inetutils # ftp client
-    iperf # test preformance of network
-    tailspin # highlight logs
-    d2 # draw
-    websocat # curl for websocket
-    gdu # disk analyzer
-    bandwidth # network monitor
-    dufs # simple file server
-    git-filter-repo
+    wget rsync tree
+    git-filter-repo # remove big file from git history
+    progress        # coreutils viewer(dd)
+    inetutils       # ftp client
+    iperf           # test preformance of network
+    websocat        # curl for websocket
+    gdu             # disk analyzer
+    bandwidth       # network monitor
+    dufs            # simple file server
+
     # https://wiki.archlinux.org/title/Archiving_and_compression
     p7zip
-  ]++[
-    # Cli Clients
-    kubectl
-    litecli
-    mongosh
-    mycli
-    mosh
-    pgcli
-  ]++[
+  ] ++[
     # Nix Tools
     # generate nix fetcher from url
     # $ nurl https://github.com/nix-community/patsh v0.2.0 2>/dev/null
@@ -76,8 +40,6 @@
   programs.zoxide.enable = true;
   programs.tealdeer.enable = true;
   programs.pandoc.enable = true;
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
 
   programs.git = {
     enable = true;
@@ -99,22 +61,13 @@
       github.user = "lakkiy";
     };
     ignores = [
-      ".venv"
-      "pyrightconfig.json"
-      ".DS_Store"
-      "*.bak"
-      "*.log"
-      "*.swp"
-      "tags"
-      "GPATH"
-      "GRTAGS"
-      "GTAGS"
       ".direnv"
-      "node_modules"
-      "bin"
-      "__pycache__"
-      "__pypackages__"
-      "main"
+      "bin" "main"
+      "*.bak" "*.log" "*.swp"
+      ".DS_Store"                     # darwin system
+      "tags" "GPATH" "GRTAGS" "GTAGS" # tag
+      "node_modules"                  # black hole
+      ".venv" "pyrightconfig.json" "__pycache__" "__pypackages__"
     ];
   };
 
@@ -221,4 +174,22 @@
       }
     ];
   };
+
+  # -------------------------------------------------------
+  programs.home-manager.enable = true;
+  home.sessionPath = [
+    "$HOME/bin"
+    "$HOME/.local/bin"
+  ];
+  home.sessionVariables = {
+    EDITOR = "emacsclient -a '' -nw";
+    LANG = "en_US.UTF-8";
+    TERM = "xterm-256color";
+    LC_CTYPE = "en_US.UTF-8";
+    NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
+    # NOTE https://github.com/localsend/localsend/issues/461#issuecomment-1715170140
+    XDG_DOWNLOAD_DIR = "$HOME/Downloads";
+  };
+  home.stateVersion = "24.11";
+  # -------------------------------------------------------
 }

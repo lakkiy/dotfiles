@@ -8,7 +8,7 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Always enable the shell system-wide, even if it's already enabled in
-  # your home.nix. # Otherwise it wont source the necessary files.
+  # your home.nix. Otherwise it wont source the necessary files.
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   # get zsh completion for system packages (e.g. systemd)
