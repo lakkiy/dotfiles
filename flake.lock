@@ -125,6 +125,7 @@
         "darwin-nix-darwin": "darwin-nix-darwin",
         "darwin-nixpkgs": "darwin-nixpkgs",
         "flake-utils": "flake-utils",
+        "telega-overlay": "telega-overlay",
         "unstable-home-manager": "unstable-home-manager",
         "unstable-nixos-hardware": "unstable-nixos-hardware",
         "unstable-nixpkgs": "unstable-nixpkgs",
@@ -143,6 +144,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "telega-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "unstable-nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1722803392,
+        "narHash": "sha256-UUm9R69AHeS5tVF9oIqsMo1MDHSbB5gZhPIb45pZWas=",
+        "owner": "ipvych",
+        "repo": "telega-overlay",
+        "rev": "6944e71e25e602a7fd389234dba1fd19e3dd0d50",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipvych",
+        "repo": "telega-overlay",
         "type": "github"
       }
     },
