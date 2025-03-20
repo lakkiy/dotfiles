@@ -39,7 +39,4 @@
   system.defaults.finder.FXDefaultSearchScope = "SCcf";
   system.defaults.finder.FXPreferredViewStyle = "Nlsv";
   system.defaults.finder.QuitMenuItem = true;
-
-  system.keyboard.enableKeyMapping = true;
-  system.keyboard.remapCapsLockToControl = true;
 }
