@@ -27,6 +27,7 @@
   system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
   system.defaults.NSGlobalDomain.KeyRepeat = 1;
   system.defaults.NSGlobalDomain."com.apple.sound.beep.volume" = 0.4723665;
+  system.defaults.NSGlobalDomain."com.apple.keyboard.fnState" = true;
 
   system.defaults.dock.minimize-to-application = true;
   system.defaults.dock.autohide = true;
