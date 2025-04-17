@@ -33,6 +33,8 @@
   system.defaults.dock.autohide = true;
 
   system.defaults.screencapture.location = "~/Pictures";
+  system.defaults.screencapture.show-thumbnail = true;
+  system.defaults.screencapture.target = "clipboard" ;
 
   system.defaults.finder.AppleShowAllFiles = true;
   system.defaults.finder.ShowStatusBar = true;
