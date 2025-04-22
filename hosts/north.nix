@@ -24,6 +24,7 @@
         localsend xdg-user-dirs # trans file and text between phone
         zotero                  # pdf
         filezilla               # ftp client
+        follow                  # rss reader
       ];
     };
     my = {
