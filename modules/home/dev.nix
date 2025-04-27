@@ -57,17 +57,15 @@ in {
       wire oapi-codegen
     ]
     ++ [
-      pipx       # install python cli app
       ruff       # format and check python code
-      pdm        # manage python project
       aider-chat # AI tools for editor(emacs)
+      uv         # replace pdm and pipx
       (python3.withPackages (ps:
         with ps; [
           pip
           pygments        # for gtags
           debugpy         # debug tool
-          requests pytest # general python package
-          # conda # if need different python version for virtual environment
+          # conda
           # jupytext ipython jupyterlab notebook
         ]))
     ]
@@ -104,10 +102,6 @@ in {
 
     home.file.".globalrc".source = ../../static/globalrc;
     home.file.".condarc".text = "auto_activate_base: false";
-    home.file.".config/pdm/config.toml".text = ''
-      [venv]
-      backend = "venv"
-    '';
     home.file.".cargo/config.toml".text = ''
       # On Windows
       # ```
