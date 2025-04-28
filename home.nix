@@ -109,7 +109,7 @@
       ec = ''emacsclient -nw -a ""'';
       kec = "emacsclient -e '(kill-emacs)'";
     };
-    initExtra = ''
+    initContent = ''
           for file in $HOME/.config/zsh/plugins/*.zsh; do
               source "$file"
           done
