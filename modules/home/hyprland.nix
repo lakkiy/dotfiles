@@ -144,25 +144,26 @@ in {
           # "10, monitor:desc:LZT Viewedge.CR   00000000"
         ];
 
-        windowrule = let
-          f = regex: "float, ${regex}";
-        in
-          [
-            (f "pavucontrol")
-            (f "bluetooth")
-            (f "nm-connection-editor")
-            (f "org.gnome.Settings")
-            (f "org.gnome.design.Palette")
-            (f "Color Picker")
-            (f "xdg-desktop-portal")
-            (f "xdg-desktop-portal-gnome")
-            (f "qbittorrent")
-            (f "com.github.Aylur.ags")
-            "noblur,^(?!emacs$|fuzzel|kitty$).*$"
-          ]
-          ++ [
-            "float, title:(emacs-run-launcher)"
-          ];
+        # FIXME
+        # windowrule = let
+        #   f = regex: "float, ${regex}";
+        # in
+        #   [
+        #     (f "pavucontrol")
+        #     (f "bluetooth")
+        #     (f "nm-connection-editor")
+        #     (f "org.gnome.Settings")
+        #     (f "org.gnome.design.Palette")
+        #     (f "Color Picker")
+        #     (f "xdg-desktop-portal")
+        #     (f "xdg-desktop-portal-gnome")
+        #     (f "qbittorrent")
+        #     (f "com.github.Aylur.ags")
+        #     "noblur,^(?!emacs$|fuzzel|kitty$).*$"
+        #   ]
+        #   ++ [
+        #     "float, title:(emacs-run-launcher)"
+        #   ];
 
         general = {
           layout = "dwindle";
