@@ -145,7 +145,7 @@ in {
         ];
 
         windowrule = let
-          f = regex: "float, ^(${regex})$";
+          f = regex: "float, ${regex}";
         in
           [
             (f "pavucontrol")
