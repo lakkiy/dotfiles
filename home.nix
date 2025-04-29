@@ -69,6 +69,9 @@
       "node_modules"                  # black hole
       ".venv" "pyrightconfig.json" "__pycache__" "__pypackages__"
     ];
+    attributes = [
+      "pnpm-lock.yaml text -diff"
+    ];
   };
 
   programs.zsh = {
