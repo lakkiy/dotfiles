@@ -57,9 +57,10 @@ in {
       wire oapi-codegen
     ]
     ++ [
-      ruff       # format and check python code
-      aider-chat # AI tools for editor(emacs)
-      uv         # replace pdm and pipx
+      basedpyright # lsp server
+      ruff         # format and check python code
+      aider-chat   # AI tools for editor(emacs)
+      uv           # replace pdm and pipx
       (python3.withPackages (ps:
         with ps; [
           pip
