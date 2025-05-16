@@ -71,7 +71,7 @@ in {
         ]))
     ]
     ++ [
-      nodejs typescript deno                    # runtime
+      nodejs typescript                         # runtime
       nodePackages.npm nodePackages.pnpm        # package management
       nodePackages.typescript-language-server   # lsp server
       nodePackages.vscode-langservers-extracted # lsp server
