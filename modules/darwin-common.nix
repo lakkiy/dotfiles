@@ -4,9 +4,6 @@
   config,
   ...
 }:{
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   homebrew.enable = true;
   homebrew.global.autoUpdate = true;
 

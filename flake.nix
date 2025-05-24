@@ -4,32 +4,32 @@
   inputs = {
     flake-utils.url = github:numtide/flake-utils;
 
-    unstable-nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
-    unstable-home-manager = {
-      url = github:nix-community/home-manager;
-      inputs.nixpkgs.follows = "unstable-nixpkgs";
+    nixpkgs.url = github:NixOS/nixpkgs/nixos-25.05;
+    home-manager = {
+      url = github:nix-community/home-manager/release-25.05;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    unstable-nixos-hardware.url = github:NixOS/nixos-hardware;
+    nixos-hardware.url = github:NixOS/nixos-hardware;
     ags = {
       url = github:Aylur/ags;
-      inputs.nixpkgs.follows = "unstable-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "unstable-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     telega-overlay = {
       url = "github:ipvych/telega-overlay";
-      inputs.nixpkgs.follows = "unstable-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darwin-nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-24.11-darwin;
+    darwin-nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-25.05-darwin;
     darwin-nix-darwin = {
-      url = github:LnL7/nix-darwin/nix-darwin-24.11;
+      url = github:LnL7/nix-darwin/nix-darwin-25.05;
       inputs.nixpkgs.follows = "darwin-nixpkgs";
     };
     darwin-home-manager = {
-      url = github:nix-community/home-manager/release-24.11;
+      url = github:nix-community/home-manager/release-25.05;
       inputs.nixpkgs.follows = "darwin-nixpkgs";
     };
   };
@@ -37,9 +37,9 @@
   outputs = inputs @ {
     self,
     flake-utils,
-    unstable-nixpkgs,
-    unstable-home-manager,
-    unstable-nixos-hardware,
+    nixpkgs,
+    home-manager,
+    nixos-hardware,
     ags,
     zen-browser,
     telega-overlay,
@@ -49,14 +49,14 @@
     ...
   }: let
     mkHost = user: hostName: system: specifiedModules: let
-      isDarwin = builtins.elem system unstable-nixpkgs.lib.platforms.darwin;
+      isDarwin = builtins.elem system nixpkgs.lib.platforms.darwin;
       specifics =
         {
           nixos = {
-            nixpkgs = unstable-nixpkgs;
-            nixSystem = unstable-nixpkgs.lib.nixosSystem;
+            nixpkgs = nixpkgs;
+            nixSystem = nixpkgs.lib.nixosSystem;
             modules = [
-              unstable-home-manager.nixosModules.home-manager
+              home-manager.nixosModules.home-manager
               ./modules/nixos-common.nix
               ./modules/nixos
               {nixpkgs.overlays = [ telega-overlay.overlay ];}
@@ -90,9 +90,6 @@
       lib = specifics.nixpkgs.lib.extend (final: prev: {
         # …
       });
-      freezeRegistry = {
-        nix.registry = lib.mapAttrs (_: flake: {inherit flake;}) inputs;
-      };
       hostRootModule =
         {
           system.configurationRevision =
@@ -126,7 +123,6 @@
         modules =
           [
             ./common.nix
-            freezeRegistry
           ]
           ++ specifics.modules
           ++ [
@@ -138,7 +134,7 @@
       };
   in
     flake-utils.lib.eachDefaultSystem (system: {
-      formatter = unstable-nixpkgs.legacyPackages.${system}.alejandra;
+      formatter = nixpkgs.legacyPackages.${system}.alejandra;
     })
     // {
       nixosConfigurations = {

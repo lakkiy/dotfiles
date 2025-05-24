@@ -5,7 +5,7 @@
   user,
 }: {
   root = {
-    system.stateVersion = 4;
+    system.stateVersion = 6;
   };
 
   module = {

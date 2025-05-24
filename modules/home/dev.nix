@@ -21,9 +21,6 @@ in {
       GTAGSOBJDIRPREFIX = "$HOME/.cache/gtags/";
       GTAGSCONF = "$HOME/.globalrc";
       GTAGSLABEL = "native-pygments";
-
-      # python pdm
-      PDM_CONFIG_FILE = "$HOME/.config/pdm/config.toml";
     };
 
     home.sessionPath = [
@@ -71,11 +68,10 @@ in {
         ]))
     ]
     ++ [
-      nodejs typescript                         # runtime
-      nodePackages.npm nodePackages.pnpm        # package management
-      nodePackages.typescript-language-server   # lsp server
-      nodePackages.vscode-langservers-extracted # lsp server
-      sassc                                     # compile scss/sass to css
+      nodejs pnpm
+      typescript typescript-language-server
+      vscode-langservers-extracted # HTML/CSS/JSON/ESLint language server
+      sassc                        # compile scss/sass to css
     ]
     ++ [
       rustc                 # runtime
@@ -93,7 +89,8 @@ in {
       # $raco pkg install sicp
       # #lang sicp
       # (require sicp) in REPL
-      racket # lisp for run sicp
+      # NOTE don't support arm mac
+      # racket # lisp for run sipc
     ]);
 
     programs.go.enable = true;

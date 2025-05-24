@@ -5,7 +5,7 @@
   user,
 }: {
   root = {
-    system.stateVersion = 4;
+    system.stateVersion = 6;
   };
 
   module = {
@@ -15,6 +15,8 @@
     ...
   }: {
     imports = [];
+
+    system.primaryUser = "${user}";
 
     nix.extraOptions = ''
       extra-platforms = x86_64-darwin aarch64-darwin
@@ -34,7 +36,7 @@
       cardo
       lxgw-wenkai
       sarasa-gothic
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      nerd-fonts.symbols-only
     ];
 
     # error: access to absolute path '/opt' is forbidden in pure evaluation mode (use '--impure' to override)
@@ -56,7 +58,7 @@
       ];
       casks = [
         "iterm2"
-        "zen-browser"
+        "zen"
         "karabiner-elements"
         "squirrel"
         "syncthing"

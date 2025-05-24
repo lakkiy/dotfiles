@@ -193,6 +193,6 @@
     # NOTE https://github.com/localsend/localsend/issues/461#issuecomment-1715170140
     XDG_DOWNLOAD_DIR = "$HOME/Downloads";
   };
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
   # -------------------------------------------------------
 }
