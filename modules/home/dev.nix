@@ -69,7 +69,7 @@ in {
     ]
     ++ [
       nodejs pnpm
-      typescript typescript-language-server
+      typescript typescript-language-server svelte-language-server
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language server
       sassc                        # compile scss/sass to css
     ]
