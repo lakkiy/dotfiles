@@ -65,6 +65,9 @@ in {
           debugpy         # debug tool
           # conda
           # jupytext ipython jupyterlab notebook
+
+          # lsp-bridge
+          epc orjson sexpdata six setuptools paramiko rapidfuzz watchdog packaging
         ]))
     ]
     ++ [
