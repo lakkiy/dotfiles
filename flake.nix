@@ -149,7 +149,7 @@
       };
       darwinConfigurations = {
         m3air = mkHost "liubo" "m3air" "aarch64-darwin" [];
-        macmini = mkHost "liubo" "macmini" "aarch64-darwin" [];
+        macmini = mkHost "lakki" "macmini" "aarch64-darwin" [];
       };
     };
 

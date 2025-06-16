@@ -16,45 +16,21 @@
   }: {
     imports = [];
 
-    nix.extraOptions = ''
-      extra-platforms = x86_64-darwin aarch64-darwin
-    '';
-
-    users.users.${user} = {
-      home = "/Users/${user}";
-      shell = pkgs.zsh;
-    };
+    system.primaryUser = "${user}";
 
     home-manager.users.${user} = {
+      home.homeDirectory = "/Users/${user}/"; # required
       home.file.".config/karabiner/karabiner.json".source = ../static/karabiner.json;
     };
 
-    fonts.packages = with pkgs; [
-      cardo
-      lxgw-wenkai
-      sarasa-gothic
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-    ];
-
-    environment.systemPath = [
-      /opt/homebrew/bin
-    ];
     homebrew = {
       enable = true;
-      # masApps = [];
-      taps = [
-        "homebrew/services"
-      ];
-      brews = [
-        "coreutils" # gls
-      ];
       casks = [
-        "zen-browser"
         "karabiner-elements"
         "squirrel"
-        "syncthing"
+
+	# server specific
         "plex-media-server"
-        "orbstack"
       ];
     };
   };
