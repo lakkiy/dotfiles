@@ -2,21 +2,6 @@ WIP
 
 NOTE: All keybinding of this config is set for Dvorak keyboard layout.
 
-* Require
-Install nix:
-#+begin_src sh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-#+end_src
-
-Clone this repo:
-#+begin_src
-git clone https://github.com/lakkiy/dotfiles.git ~/.setup
-#+end_src
-Or:
-#+begin_src sh
-nix run nixpkgs#git clone https://github.com/lakkiy/dotfiles.git ~/.setup
-#+end_src
-
 * NixOS
 
 Install:
@@ -35,17 +20,12 @@ Type ~git~ to ensure you have xcode developer tools installed.
 
 Install nix:
 #+begin_src sh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate
 #+end_src
 
 Install =homebrew=:
 #+begin_src sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-#+end_src
-
-For Apple Sillison Macs, install ~Rosetta~:
-#+begin_src sh
-softwareupdate --install-rosetta --agree-to-license
 #+end_src
 
 For the first time:
@@ -56,7 +36,7 @@ nix build .#darwinConfigurations.<host>.system
 
 Then use ~darwin-rebuild~ to rebuild and activate:
 #+begin_src sh
-darwin-rebuild switch --flake .#<host>
+sudo darwin-rebuild switch --flake .#<host>
 #+end_src
 
 * Non-NixOS Linux
@@ -73,7 +53,6 @@ home-manager switch --flake .#<host>
 #+end_src
 
 * Tips
-
 ** Enable color for pacman
 
 Uncomment =Color= in =/etc/pacman.conf=.

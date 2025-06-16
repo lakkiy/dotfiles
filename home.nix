@@ -21,6 +21,9 @@
 
     # https://wiki.archlinux.org/title/Archiving_and_compression
     p7zip
+
+    claude-code
+    copilot-language-server
   ] ++[
     # Nix Tools
     # generate nix fetcher from url
@@ -68,6 +71,7 @@
       "tags" "GPATH" "GRTAGS" "GTAGS" # tag
       "node_modules"                  # black hole
       ".venv" "pyrightconfig.json" "__pycache__" "__pypackages__"
+      ".claude"
     ];
     attributes = [
       "pnpm-lock.yaml text -diff"
@@ -158,7 +162,7 @@
         name = "git.plugin.zsh";
         src = fetchurl {
           url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh";
-          sha256 = "sha256-V8U3xrRTvh/4xrCtUvsatDrQdJeFil46wuo+Jd3XAwo=";
+          sha256 = "sha256-mV1ZxJr95T0gHAkpjujdQ7zuXCyz2cU08oVp47otFA0=";
         };
       }
       {

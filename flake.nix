@@ -23,13 +23,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darwin-nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-25.05-darwin;
+    darwin-nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
     darwin-nix-darwin = {
-      url = github:LnL7/nix-darwin/nix-darwin-25.05;
+      url = github:LnL7/nix-darwin;
       inputs.nixpkgs.follows = "darwin-nixpkgs";
     };
     darwin-home-manager = {
-      url = github:nix-community/home-manager/release-25.05;
+      url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "darwin-nixpkgs";
     };
   };
@@ -49,39 +49,19 @@
     ...
   }: let
     mkHost = user: hostName: system: specifiedModules: let
-      isDarwin = builtins.elem system nixpkgs.lib.platforms.darwin;
-      specifics =
-        {
-          nixos = {
-            nixpkgs = nixpkgs;
-            nixSystem = nixpkgs.lib.nixosSystem;
-            modules = [
-              home-manager.nixosModules.home-manager
-              ./modules/nixos-common.nix
-              ./modules/nixos
-              {nixpkgs.overlays = [ telega-overlay.overlay ];}
-            ];
-            hm-modules = [
-              ags.homeManagerModules.default
-            ];
-          };
-          darwin = {
-            nixpkgs = darwin-nixpkgs;
-            nixSystem = darwin-nix-darwin.lib.darwinSystem;
-            modules = [
-              darwin-home-manager.darwinModules.home-manager
-              ./modules/darwin-common.nix
-            ];
-            hm-modules = [
-              ags.homeManagerModules.default
-            ];
-          };
-        }
-        .${
-          if isDarwin
-          then "darwin"
-          else "nixos"
-        };
+      specifics = {
+        nixpkgs = nixpkgs;
+        nixSystem = nixpkgs.lib.nixosSystem;
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./modules/nixos-common.nix
+          ./modules/nixos
+          {nixpkgs.overlays = [ telega-overlay.overlay ];}
+        ];
+        hm-modules = [
+          ags.homeManagerModules.default
+        ];
+      };
     in let
       hostConfig = import ./hosts/${hostName}.nix {
         inherit (specifics) nixpkgs;
@@ -106,7 +86,7 @@
             users.${user} = import ./home.nix;
             sharedModules = specifics.hm-modules;
             extraSpecialArgs = {
-              inherit isDarwin;
+              isDarwin = false;
             };
           };
         })
@@ -117,7 +97,8 @@
 
         specialArgs = {
           inherit (specifics) nixpkgs;
-          inherit isDarwin hostName lib user;
+          isDarwin = false;
+          inherit hostName lib user;
         };
 
         modules =
@@ -130,6 +111,32 @@
             hostConfig.module
           ]
           ++ homeManagerModules
+          ++ specifiedModules;
+      };
+
+    mkDarwin = user: hostName: specifiedModules:
+      darwin-nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+
+        specialArgs = {
+          inherit user hostName;
+        };
+
+        modules =
+          [
+            darwin-home-manager.darwinModules.home-manager
+            ./modules/darwin-common.nix
+            ./hosts/${hostName}.nix
+            ({config, ...}: {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${user} = import ./home.nix;
+                # TODO remove this from darwin
+                sharedModules = [ ags.homeManagerModules.default ];
+              };
+            })
+          ]
           ++ specifiedModules;
       };
   in
@@ -148,8 +155,8 @@
         homelab = mkHost "root" "homelab" "x86_64-linux" [];
       };
       darwinConfigurations = {
-        m3air = mkHost "liubo" "m3air" "aarch64-darwin" [];
-        macmini = mkHost "liubo" "macmini" "aarch64-darwin" [];
+        m3air = mkDarwin "liubo" "m3air" [];
+        macmini = mkDarwin "lakki" "macmini" [];
       };
     };
 

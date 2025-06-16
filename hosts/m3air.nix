@@ -1,78 +1,51 @@
-{
-  nixpkgs,
-  system,
-  hostName,
-  user,
-}: {
-  root = {
-    system.stateVersion = 6;
+{ config, pkgs, lib, user, ... }: {
+  # Host-specific user configuration
+  users.users.${user} = {
+    shell = pkgs.zsh;  # m3air specific: set zsh as default shell
   };
 
-  module = {
-    config,
-    pkgs,
-    lib,
-    ...
-  }: {
-    imports = [];
+  # Host-specific home-manager configuration
+  home-manager.users.${user} = {
+    home.file.".config/karabiner/karabiner.json".source = ../static/karabiner.json;
+    my.dev.enable = true;
+  };
 
-    system.primaryUser = "${user}";
+  fonts.packages = with pkgs; [
+    cardo
+    lxgw-wenkai
+    sarasa-gothic
+    nerd-fonts.symbols-only
+  ];
 
-    nix.extraOptions = ''
-      extra-platforms = x86_64-darwin aarch64-darwin
-    '';
+  homebrew = {
+    enable = true;
+    taps = [];
+    brews = [
+      "coreutils"
+      "pngpaste" # paste image in emacs telega
 
-    users.users.${user} = {
-      home = "/Users/${user}";
-      shell = pkgs.zsh;
-    };
-
-    home-manager.users.${user} = {
-      home.file.".config/karabiner/karabiner.json".source = ../static/karabiner.json;
-      my.dev.enable = true;
-    };
-
-    fonts.packages = with pkgs; [
-      cardo
-      lxgw-wenkai
-      sarasa-gothic
-      nerd-fonts.symbols-only
+      # this will be auto installed if build emacs from source with emacs-plus
+      # "tree-sitter"
+      # nix 安装的 aspell 在 mac 上 command not found
+      # don't need spell check for now
+      # "aspell"
     ];
+    casks = [
+      "iterm2"
+      "zen"
+      "karabiner-elements"
+      "squirrel"
+      "syncthing"
+      "chatgpt"
+      "raycast"
 
-    # error: access to absolute path '/opt' is forbidden in pure evaluation mode (use '--impure' to override)
-    # environment.systemPath = [
-    #   /opt/homebrew/bin
-    # ];
-
-    homebrew = {
-      enable = true;
-      # masApps = [];
-      taps = [
-        "homebrew/services"
-      ];
-      brews = [
-        "coreutils"
-        "aspell" # nix 安装的 aspell 在 mac 上 command not found
-        "pngpaste" # paste image in emacs telega
-        "tree-sitter"
-      ];
-      casks = [
-        "iterm2"
-        "zen"
-        "karabiner-elements"
-        "squirrel"
-        "syncthing"
-        "chatgpt"
-        "raycast"
-
-        "folo"
-        "tencent-meeting"
-        "zotero"
-        "the-unarchiver"
-        "iina"
-        "dropbox"
-        "keepingyouawake"
-      ];
-    };
+      "folo"
+      "tencent-meeting"
+      "zotero"
+      "the-unarchiver"
+      "iina"
+      "dropbox"
+      "keepingyouawake"
+    ];
   };
 }

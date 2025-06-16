@@ -1,61 +1,43 @@
-{
-  nixpkgs,
-  system,
-  hostName,
-  user,
-}: {
-  root = {
-    system.stateVersion = 6;
+{ config, pkgs, lib, user, ... }: {
+  # Host-specific home-manager configuration
+  home-manager.users.${user} = {
+    my.dev.enable = true;
+    home.file.".config/karabiner/karabiner.json".source = ../static/karabiner.json;
   };
 
-  module = {
-    config,
-    pkgs,
-    lib,
-    ...
-  }: {
-    imports = [];
+  fonts.packages = with pkgs; [
+    cardo
+    lxgw-wenkai
+    sarasa-gothic
+    nerd-fonts.symbols-only
+  ];
 
-    nix.extraOptions = ''
-      extra-platforms = x86_64-darwin aarch64-darwin
-    '';
-
-    users.users.${user} = {
-      home = "/Users/${user}";
-      shell = pkgs.zsh;
-    };
-
-    home-manager.users.${user} = {
-      home.file.".config/karabiner/karabiner.json".source = ../static/karabiner.json;
-    };
-
-    fonts.packages = with pkgs; [
-      cardo
-      lxgw-wenkai
-      sarasa-gothic
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+  homebrew = {
+    enable = true;
+    taps = [];
+    brews = [
+      "coreutils" # gls
+      "pngpaste" # paste image in emacs telega
     ];
+    casks = [
+      # required
+      "zen"
+      "bitwarden"
+      "karabiner-elements"
+      "squirrel"
+      "the-unarchiver"
+      "syncthing"
 
-    environment.systemPath = [
-      /opt/homebrew/bin
+      # apps
+      "claude"
+      "folo"
+      "iina"
+      "dropbox"
+      "keepingyouawake"
+      "zotero"
+
+      # server specific
+      "plex-media-server"
     ];
-    homebrew = {
-      enable = true;
-      # masApps = [];
-      taps = [
-        "homebrew/services"
-      ];
-      brews = [
-        "coreutils" # gls
-      ];
-      casks = [
-        "zen-browser"
-        "karabiner-elements"
-        "squirrel"
-        "syncthing"
-        "plex-media-server"
-        "orbstack"
-      ];
-    };
   };
 }

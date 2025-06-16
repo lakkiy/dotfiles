@@ -2,16 +2,31 @@
   pkgs,
   lib,
   config,
+  user,
+  hostName,
   ...
 }:{
-  homebrew.enable = true;
-  homebrew.global.autoUpdate = true;
+  # Common Darwin configuration for all hosts
+  nix.enable = false;  # Required for DeterminateSystems/nix-installer
+  nixpkgs.config.allowUnfree = true;
+  system.stateVersion = 6;
 
-  environment.shells = [pkgs.zsh];
-  programs.zsh.enable = true;
-  # Since it's not possible to declare default shell, run this command after build
-  system.activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh'';
+  system.primaryUser = "${user}";
 
+  # Set hostname
+  networking.computerName = "${hostName}";
+  networking.hostName = "${hostName}";
+  networking.localHostName = "${hostName}";
+
+  users.users.${user} = {
+    home = "/Users/${user}";
+  };
+
+  home-manager.users.${user} = {
+    home.homeDirectory = "/Users/${user}";
+  };
+
+  # macOS system defaults
   system.defaults.trackpad.Clicking = true;
   system.defaults.trackpad.TrackpadRightClick = true;
   system.defaults.trackpad.Dragging = true;
