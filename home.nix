@@ -62,7 +62,7 @@
     };
     ignores = [
       ".direnv"
-      "bin" "main"
+      "bin"
       "*.bak" "*.log" "*.swp"
       ".DS_Store"                     # darwin system
       "tags" "GPATH" "GRTAGS" "GTAGS" # tag
