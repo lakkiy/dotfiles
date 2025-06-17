@@ -23,6 +23,7 @@
     p7zip
 
     claude-code
+    copilot-language-server
   ] ++[
     # Nix Tools
     # generate nix fetcher from url
