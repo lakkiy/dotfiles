@@ -4,14 +4,6 @@
   config,
   ...
 }:{
-  homebrew.enable = true;
-  homebrew.global.autoUpdate = true;
-
-  environment.shells = [pkgs.zsh];
-  programs.zsh.enable = true;
-  # Since it's not possible to declare default shell, run this command after build
-  system.activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh'';
-
   system.defaults.trackpad.Clicking = true;
   system.defaults.trackpad.TrackpadRightClick = true;
   system.defaults.trackpad.Dragging = true;
