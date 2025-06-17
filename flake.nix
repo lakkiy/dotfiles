@@ -23,13 +23,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darwin-nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-25.05-darwin;
+    darwin-nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
     darwin-nix-darwin = {
-      url = github:LnL7/nix-darwin/nix-darwin-25.05;
+      url = github:LnL7/nix-darwin;
       inputs.nixpkgs.follows = "darwin-nixpkgs";
     };
     darwin-home-manager = {
-      url = github:nix-community/home-manager/release-25.05;
+      url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "darwin-nixpkgs";
     };
   };

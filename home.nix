@@ -21,6 +21,8 @@
 
     # https://wiki.archlinux.org/title/Archiving_and_compression
     p7zip
+
+    claude-code
   ] ++[
     # Nix Tools
     # generate nix fetcher from url

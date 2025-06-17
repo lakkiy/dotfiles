@@ -16,11 +16,13 @@
   }: {
     imports = [];
 
+    # Nix installation itself, you will need to set nix.enable = false; in your
+    # configuration to disable nix-darwin’s own Nix management. Some nix-darwin
+    # functionality that relies on managing the Nix installation, like the nix.*
+    # options to adjust Nix settings or configure a Linux builder, will be
+    # unavailable.
+    nix.enable = false;
     system.primaryUser = "${user}";
-
-    nix.extraOptions = ''
-      extra-platforms = x86_64-darwin aarch64-darwin
-    '';
 
     users.users.${user} = {
       home = "/Users/${user}";
@@ -39,22 +41,18 @@
       nerd-fonts.symbols-only
     ];
 
-    # error: access to absolute path '/opt' is forbidden in pure evaluation mode (use '--impure' to override)
-    # environment.systemPath = [
-    #   /opt/homebrew/bin
-    # ];
-
     homebrew = {
       enable = true;
-      # masApps = [];
-      taps = [
-        "homebrew/services"
-      ];
+      taps = [];
       brews = [
         "coreutils"
-        "aspell" # nix 安装的 aspell 在 mac 上 command not found
         "pngpaste" # paste image in emacs telega
-        "tree-sitter"
+
+        # this will be auto installed if build emacs from source with emacs-plus
+        # "tree-sitter"
+        # nix 安装的 aspell 在 mac 上 command not found
+        # don't need spell check for now
+        # "aspell"
       ];
       casks = [
         "iterm2"
