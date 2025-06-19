@@ -71,6 +71,7 @@
       "tags" "GPATH" "GRTAGS" "GTAGS" # tag
       "node_modules"                  # black hole
       ".venv" "pyrightconfig.json" "__pycache__" "__pypackages__"
+      ".claude"
     ];
     attributes = [
       "pnpm-lock.yaml text -diff"
