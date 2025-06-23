@@ -6,6 +6,9 @@
 
   # Host-specific home-manager configuration
   home-manager.users.${user} = {
+    imports = [
+      ../modules/home/dev.nix
+    ];
     home.file.".config/karabiner/karabiner.json".source = ../static/karabiner.json;
     my.dev.enable = true;
   };

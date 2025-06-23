@@ -1,6 +1,9 @@
 { config, pkgs, lib, user, ... }: {
   # Host-specific home-manager configuration
   home-manager.users.${user} = {
+    imports = [
+      ../modules/home/dev.nix
+    ];
     my.dev.enable = true;
     home.file.".config/karabiner/karabiner.json".source = ../static/karabiner.json;
   };

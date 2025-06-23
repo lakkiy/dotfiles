@@ -4,10 +4,6 @@
   lib,
   ...
 }: {
-  imports = [
-    ./modules/home
-  ];
-
   home.packages = with pkgs; ([
     wget rsync tree
     git-filter-repo # remove big file from git history

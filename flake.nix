@@ -132,8 +132,6 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.${user} = import ./home.nix;
-                # TODO remove this from darwin
-                sharedModules = [ ags.homeManagerModules.default ];
               };
             })
           ]
