@@ -1,12 +1,14 @@
 {
-  nixpkgs,
-  system,
-  hostName,
+  pkgs,
+  config,
+  lib,
   user,
+  hostName,
+  ...
 }: {
-  root = {
     imports = [];
 
+    # Hardware configuration
     boot.initrd.availableKernelModules = ["ata_piix" "mptspi" "uhci_hcd" "ehci_pci" "sd_mod" "sr_mod"];
     boot.initrd.kernelModules = [];
     boot.kernelModules = [];
@@ -37,14 +39,6 @@
         password = "share";
       in ["${automount_opts},username=${username},password=${password}"];
     };
-  };
-
-  module = {
-    pkgs,
-    config,
-    lib,
-    ...
-  }: {
     system.stateVersion = "25.05";
     networking.useDHCP = lib.mkDefault true;
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -200,5 +194,4 @@
     #     }
     #   ];
     # };
-  };
 }

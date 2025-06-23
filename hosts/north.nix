@@ -1,16 +1,14 @@
 {
-  nixpkgs,
-  system,
-  hostName,
+  pkgs,
+  config,
+  lib,
   user,
+  hostName,
+  ...
 }: {
-  module = {
-    pkgs,
-    config,
-    lib,
-    ...
-  }: {
-    imports = [];
+  imports = [
+    "${pkgs.path}/nixos/modules/installer/scan/not-detected.nix"
+  ];
 
     users.users.${user} = {
       isNormalUser = true;
@@ -113,14 +111,8 @@
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     system.stateVersion = "25.05";
-    #-------------------------------------------------------------
-  };
 
-  root = {
-    imports = [
-      "${nixpkgs}/nixos/modules/installer/scan/not-detected.nix"
-    ];
-
+    # Hardware configuration
     boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "uas" "sd_mod"];
     boot.initrd.kernelModules = [];
     boot.kernelModules = ["kvm-amd"];
@@ -151,5 +143,4 @@
     swapDevices = [
       {device = "/dev/disk/by-label/swap";}
     ];
-  };
 }

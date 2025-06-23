@@ -48,70 +48,29 @@
     darwin-home-manager,
     ...
   }: let
-    mkHost = user: hostName: system: specifiedModules: let
-      specifics = {
-        nixpkgs = nixpkgs;
-        nixSystem = nixpkgs.lib.nixosSystem;
+    mkNixOS = user: hostName: specifiedModules:
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        specialArgs = {
+          inherit user hostName;
+        };
+
         modules = [
           home-manager.nixosModules.home-manager
           ./modules/nixos-common.nix
           ./modules/nixos
-          {nixpkgs.overlays = [ telega-overlay.overlay ];}
-        ];
-        hm-modules = [
-          ags.homeManagerModules.default
-        ];
-      };
-    in let
-      hostConfig = import ./hosts/${hostName}.nix {
-        inherit (specifics) nixpkgs;
-        inherit system hostName user;
-      };
-      lib = specifics.nixpkgs.lib.extend (final: prev: {
-        # …
-      });
-      hostRootModule =
-        {
-          system.configurationRevision =
-            if (self ? rev)
-            then self.rev
-            else throw "refuse to build: git tree is dirty";
-        }
-        // hostConfig.root;
-      homeManagerModules = [
-        ({config, ...}: {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.${user} = import ./home.nix;
-            sharedModules = specifics.hm-modules;
-            extraSpecialArgs = {
-              isDarwin = false;
+          ./hosts/${hostName}.nix
+          { nixpkgs.overlays = [ telega-overlay.overlay ]; }
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${user} = import ./home.nix;
+              sharedModules = [ ags.homeManagerModules.default ];
             };
-          };
-        })
-      ];
-    in
-      specifics.nixSystem {
-        inherit system;
-
-        specialArgs = {
-          inherit (specifics) nixpkgs;
-          isDarwin = false;
-          inherit hostName lib user;
-        };
-
-        modules =
-          [
-            ./common.nix
-          ]
-          ++ specifics.modules
-          ++ [
-            hostRootModule
-            hostConfig.module
-          ]
-          ++ homeManagerModules
-          ++ specifiedModules;
+          }
+        ] ++ specifiedModules;
       };
 
     mkDarwin = user: hostName: specifiedModules:
@@ -122,20 +81,18 @@
           inherit user hostName;
         };
 
-        modules =
-          [
-            darwin-home-manager.darwinModules.home-manager
-            ./modules/darwin-common.nix
-            ./hosts/${hostName}.nix
-            ({config, ...}: {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.${user} = import ./home.nix;
-              };
-            })
-          ]
-          ++ specifiedModules;
+        modules = [
+          darwin-home-manager.darwinModules.home-manager
+          ./modules/darwin-common.nix
+          ./hosts/${hostName}.nix
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${user} = import ./home.nix;
+            };
+          }
+        ] ++ specifiedModules;
       };
   in
     flake-utils.lib.eachDefaultSystem (system: {
@@ -143,14 +100,14 @@
     })
     // {
       nixosConfigurations = {
-        north = mkHost "lakkiy" "north" "x86_64-linux" [
+        north = mkNixOS "lakkiy" "north" [
           {
             environment.systemPackages = [
               zen-browser.packages."x86_64-linux".default
             ];
           }
         ];
-        homelab = mkHost "root" "homelab" "x86_64-linux" [];
+        homelab = mkNixOS "root" "homelab" [];
       };
       darwinConfigurations = {
         m3air = mkDarwin "liubo" "m3air" [];
