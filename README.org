@@ -2,6 +2,16 @@ WIP
 
 NOTE: All keybinding of this config is set for Dvorak keyboard layout.
 
+* Components
+
+|                      | NixOS                            | MacOS         |
+| Browser              | [[https://zen-browser.app/][Zen Browser]]                      | [[https://zen-browser.app/][Zen Browser]]   |
+| Terminal Emulator    | [[https://ghostty.org/][Ghostty]] (TODO)                   | [[https://iterm2.com/][iTerm2]]        |
+| Input Method         | [[https://github.com/fcitx/fcitx5-rime][fcitx/fcitx5-rime]] | [[https://github.com/rime/squirrel][rime/squirrel]] |
+| Window Manager       | [[https://github.com/hyprwm/Hyprland][hyprwm/Hyprland]]                  |               |
+| Application Launcher | [[https://github.com/Cloudef/bemenu][Cloudef/bemenu]]                                 | [[https://www.raycast.com/][Raycast]]       |
+| Text Editor          | [[https://www.gnu.org/s/emacs/][Emacs]]                                 | [[https://www.gnu.org/s/emacs/][Emacs]]               |
+
 * NixOS
 
 Install:
