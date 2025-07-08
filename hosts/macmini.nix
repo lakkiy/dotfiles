@@ -30,6 +30,7 @@
       "squirrel"
       "the-unarchiver"
       "syncthing"
+      "raycast"
 
       # apps
       "claude"
