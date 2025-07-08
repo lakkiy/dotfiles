@@ -31,6 +31,7 @@
       "the-unarchiver"
       "syncthing"
       "raycast"
+      "iterm2"
 
       # apps
       "claude"
