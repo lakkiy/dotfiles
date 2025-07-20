@@ -40,6 +40,8 @@
       "dropbox"
       "keepingyouawake"
       "zotero"
+      "claude-code"
+      "chatgpt"
 
       # server specific
       "plex-media-server"
