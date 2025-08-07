@@ -42,6 +42,7 @@
       "zotero"
       "claude-code"
       "chatgpt"
+      "send-to-kindle"
 
       # server specific
       "plex-media-server"
