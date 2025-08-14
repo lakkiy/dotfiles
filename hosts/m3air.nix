@@ -14,11 +14,19 @@
   };
 
   fonts.packages = with pkgs; [
+    cascadia-code
+    ibm-plex
+
+    # variable
     cardo
+
+    # CJK
     lxgw-wenkai
     sarasa-gothic
     source-han-sans
     source-han-serif
+
+    # icons & backup font
     nerd-fonts.symbols-only
   ];
 
@@ -36,21 +44,18 @@
       # "aspell"
     ];
     casks = [
+      "keepingyouawake"
+      "the-unarchiver"
       "iterm2"
       "zen"
       "karabiner-elements"
       "squirrel"
-      "syncthing"
-      "chatgpt"
       "raycast"
 
-      "folo"
-      "tencent-meeting"
-      "zotero"
-      "the-unarchiver"
-      "iina"
       "dropbox"
-      "keepingyouawake"
+      "chatgpt"
+      "folo"
+      "iina"
     ];
   };
 }

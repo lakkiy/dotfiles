@@ -29,7 +29,6 @@
       "karabiner-elements"
       "squirrel"
       "the-unarchiver"
-      "syncthing"
       "raycast"
       "iterm2"
 
