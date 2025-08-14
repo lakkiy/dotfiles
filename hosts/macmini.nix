@@ -9,9 +9,19 @@
   };
 
   fonts.packages = with pkgs; [
+    cascadia-code
+    ibm-plex
+
+    # variable
     cardo
+
+    # CJK
     lxgw-wenkai
     sarasa-gothic
+    source-han-sans
+    source-han-serif
+
+    # icons & backup font
     nerd-fonts.symbols-only
   ];
 
@@ -20,28 +30,24 @@
     taps = [];
     brews = [
       "coreutils" # gls
-      "pngpaste" # paste image in emacs telega
+      "pngpaste"  # paste image in emacs telega
+      "librime"   # emacs-rime
     ];
     casks = [
-      # required
       "zen"
       "bitwarden"
       "karabiner-elements"
-      "squirrel"
+      "squirrel-app"
       "the-unarchiver"
       "raycast"
       "iterm2"
-
-      # apps
-      "claude"
-      "folo"
-      "iina"
       "dropbox"
+      "iina"
       "keepingyouawake"
-      "zotero"
-      "claude-code"
-      "chatgpt"
       "send-to-kindle"
+      "folo"
+      "zotero"
+      "chatgpt" "claude" "claude-code"
 
       # server specific
       "plex-media-server"
