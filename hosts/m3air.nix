@@ -17,6 +17,8 @@
     cardo
     lxgw-wenkai
     sarasa-gothic
+    source-han-sans
+    source-han-serif
     nerd-fonts.symbols-only
   ];
 
