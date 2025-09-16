@@ -40,13 +40,13 @@
       "squirrel-app"
       "the-unarchiver"
       "raycast"
-      "iterm2"
       "dropbox"
       "iina"
       "keepingyouawake"
       "folo"
       "zotero"
       "chatgpt" "claude" "claude-code"
+      "sfm"
     ];
   };
 }
