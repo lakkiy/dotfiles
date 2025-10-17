@@ -35,6 +35,7 @@
     ];
     casks = [
       "zen"
+      "iterm2" # 系统终端在 screen 中不能用滚轮上下滑动
       "bitwarden"
       "karabiner-elements"
       "squirrel-app"
