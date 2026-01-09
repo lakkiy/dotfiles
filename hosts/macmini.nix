@@ -44,11 +44,8 @@
       "dropbox"
       "iina"
       "keepingyouawake"
-      "send-to-kindle"
       "folo"
-      "zotero"
       "chatgpt" "claude" "claude-code"
-      "telegram"
 
       # server specific
       "plex-media-server"

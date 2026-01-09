@@ -35,10 +35,9 @@ in {
       just gnumake           # command runner
       cloc                   # counts lines of source code
       tailspin               # highlight logs
-      litecli mycli pgcli    # rds cli
-      kubectl                # k8s
-      mongosh                # mongodb
-      mosh                   # ssh on udp
+      # litecli mycli pgcli    # rds cli
+      # kubectl                # k8s
+      # mongosh                # mongodb
     ]
     ++ [
       ccls # lsp server for C
@@ -52,23 +51,6 @@ in {
       reftools                         # fillstruct
       protoc-gen-go protoc-gen-go-grpc # rpc
       wire oapi-codegen
-    ]
-    ++ [
-      basedpyright # lsp server
-      ruff         # format and check python code
-      aider-chat   # AI tools for editor(emacs)
-      uv           # replace pdm and pipx
-      (python3.withPackages (ps:
-        with ps; [
-          pip
-          pygments        # for gtags
-          debugpy         # debug tool
-          # conda
-          # jupytext ipython jupyterlab notebook
-
-          # lsp-bridge
-          epc orjson sexpdata six setuptools paramiko rapidfuzz watchdog packaging
-        ]))
     ]
     ++ [
       nodejs pnpm
@@ -97,7 +79,7 @@ in {
     ]);
 
     programs.go.enable = true;
-    programs.go.goPath = ".go";
+    programs.go.env.GOPATH = ".go";
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
 

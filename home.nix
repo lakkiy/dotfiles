@@ -5,27 +5,23 @@
   ...
 }: {
   home.packages = with pkgs; ([
-    wget rsync tree
+    wget
+    tree
     git-filter-repo # remove big file from git history
     progress        # coreutils viewer(dd)
-    inetutils       # ftp client
     iperf           # test preformance of network
-    websocat        # curl for websocket
-    gdu             # disk analyzer
-    bandwidth       # network monitor
-    dufs            # simple file server
+    copilot-language-server
 
     # https://wiki.archlinux.org/title/Archiving_and_compression
     p7zip
 
-    copilot-language-server
-  ] ++[
-    # Nix Tools
-    # generate nix fetcher from url
-    # $ nurl https://github.com/nix-community/patsh v0.2.0 2>/dev/null
-    nurl
-    # generate nix package from url, build on top of nurl
-    nix-init
+    # never used
+    # gdu             # disk analyzer
+    # bandwidth       # network monitor
+    # dufs            # simple file server
+    # websocat        # curl for websocket
+    # inetutils       # ftp client
+    # rsync
   ]);
 
   programs.fastfetch.enable = true;
@@ -38,14 +34,19 @@
   programs.zoxide.enable = true;
   programs.tealdeer.enable = true;
   programs.pandoc.enable = true;
+  programs.delta.enable = true;
+  programs.delta.enableGitIntegration = true;
+  # python env
+  programs.uv.enable = true;
+  programs.ty.enable = true;
+  programs.ruff.enable = true;
+  programs.ruff.settings = {};
 
   programs.git = {
     enable = true;
-    userName = "lakkiy";
-    userEmail = "liubolovelife@gmail.com";
-    delta.enable = true;
-    lfs.enable = true;
-    extraConfig = {
+    settings = {
+      user.name = "lakkiy";
+      user.email = "liubolovelife@gmail.com";
       init.defaultBranch = "master";
       pull.rebase = true;
       push.default = "current";
@@ -57,7 +58,9 @@
         then "store"
         else "osxkeychain";
       github.user = "lakkiy";
+
     };
+    lfs.enable = true;
     ignores = [
       ".direnv"
       "bin"
@@ -77,7 +80,7 @@
     enable = true;
     defaultKeymap = "emacs";
     autocd = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
@@ -192,6 +195,6 @@
     # NOTE https://github.com/localsend/localsend/issues/461#issuecomment-1715170140
     XDG_DOWNLOAD_DIR = "$HOME/Downloads";
   };
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
   # -------------------------------------------------------
 }
