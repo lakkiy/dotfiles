@@ -47,7 +47,6 @@
       "folo"
       "zotero"
       "chatgpt" "claude" "claude-code"
-      "sfm"
     ];
   };
 }
