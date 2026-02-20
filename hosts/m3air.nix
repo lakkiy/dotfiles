@@ -32,6 +32,13 @@
       "coreutils" # gls
       "pngpaste"  # paste image in emacs telega
       "librime"   # emacs-rime
+      # 测试配置文件和使用自用的节点裸核跑的时候使用
+      # You need to customize /opt/homebrew/etc/mihomo/config.yaml.
+      # To start mihomo now and restart at login:
+      # brew services start mihomo
+      # Or, if you don't want/need a background service you can just run:
+      # /opt/homebrew/opt/mihomo/bin/mihomo -d /opt/homebrew/etc/mihomo
+      "mihomo"
     ];
     casks = [
       "zen"
@@ -45,8 +52,8 @@
       "iina"
       "keepingyouawake"
       "folo"
-      "zotero"
       "chatgpt" "claude" "claude-code"
+      "sfm" # sing-box
     ];
   };
 }

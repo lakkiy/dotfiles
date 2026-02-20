@@ -49,6 +49,12 @@ Then use ~darwin-rebuild~ to rebuild and activate:
 sudo darwin-rebuild switch --flake .#<host>
 #+end_src
 
+Config trusted users:
+#+begin_src sh
+sudo sh -c 'echo "trusted-users = lakki" >> /etc/nix/nix.custom.conf'
+sudo launchctl kickstart -k system/org.nixos.nix-daemon
+#+end_src
+
 * Non-NixOS Linux
 
 For first time:
