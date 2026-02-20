@@ -38,7 +38,7 @@
       # brew services start mihomo
       # Or, if you don't want/need a background service you can just run:
       # /opt/homebrew/opt/mihomo/bin/mihomo -d /opt/homebrew/etc/mihomo
-      "mihomo"
+      "mihomo" # sing-box
     ];
     casks = [
       "zen"
@@ -53,7 +53,6 @@
       "keepingyouawake"
       "folo"
       "chatgpt" "claude" "claude-code"
-      "sfm" # sing-box
     ];
   };
 }
