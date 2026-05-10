@@ -1,0 +1,15 @@
+.direnv
+bin
+*.bak
+*.log
+*.swp
+.DS_Store
+tags
+GPATH
+GRTAGS
+GTAGS
+node_modules
+.venv
+pyrightconfig.json
+__pycache__
+__pypackages__

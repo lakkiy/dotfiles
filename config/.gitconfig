@@ -1,0 +1,33 @@
+[user]
+    name = lakkiy
+    email = liubolovelife@gmail.com
+
+[init]
+    defaultBranch = master
+
+[pull]
+    rebase = true
+
+[push]
+    default = current
+
+[diff]
+    colorMoved = default
+
+[merge]
+    conflictStyle = diff3
+
+[github]
+    user = lakkiy
+
+[core]
+    attributesFile = ~/.gitattributes
+    excludesFile = ~/.gitignore_global
+
+[credential]
+    # macOS: osxkeychain  |  Linux: store
+    helper = osxkeychain
+
+[include]
+    # Machine-local overrides (not tracked)
+    path = ~/.gitconfig.local
