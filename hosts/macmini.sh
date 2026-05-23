@@ -23,22 +23,15 @@ BREWS=(
     iperf
     ffmpeg
 
-    # build from source
-    pkgconf
-    autoconf
-    awk
-    gnu-sed
-    gnu-tar
-    grep
-    make
-    texinfo
+    cliproxyapi
 )
 
 CASKS=(
     d12frosted/emacs-plus/emacs-plus-app@master
     google-chrome
+    raycast
+    proton-pass
     iterm2
-    bitwarden
     karabiner-elements
     squirrel-app
     the-unarchiver
@@ -46,10 +39,11 @@ CASKS=(
     iina
     keepingyouawake
     chatgpt codex
-    claude
+    claude claude-code@latest
     folo
     temurin # jdk
     ngrok
+    qq wechat
 
     # server
     plex-media-server
@@ -92,7 +86,7 @@ UV_TOOLS=(
 
 # Node tools installed via `pnpm add -g`.
 PNPM_GLOBAL_PACKAGES=(
-    @google/gemini-cli
+    @openai/codex
     @github/copilot-language-server
     @typescript/native-preview
     typescript-language-server
