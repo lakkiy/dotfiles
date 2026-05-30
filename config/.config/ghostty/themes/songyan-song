@@ -1,0 +1,38 @@
+# 松烟 · 水墨 · 暗 · 松烟墨 · 松烟
+# 「黑云翻墨未遮山，白雨跳珠乱入船」—— 苏轼《六月二十七日望湖楼醉书》
+# 放到 ~/.config/ghostty/themes/songyan-song
+
+# 底 · 松烟
+background = #1a1917
+# 字 · 月白
+foreground = #d8d4ca
+cursor-color = #cf7a5c
+cursor-text  = #1a1917
+selection-background = #2d2b27
+selection-foreground = #efece3
+
+# 基础 0–7（1–6 标注所用传统色名）
+palette = 0=#2c2a26
+# 红 · 朱砂
+palette = 1=#cc7059
+# 绿 · 竹青
+palette = 2=#8a9e78
+# 黄 · 缃色
+palette = 3=#cba968
+# 蓝 · 黛蓝
+palette = 4=#7e93b0
+# 紫 · 青莲
+palette = 5=#a892b0
+# 青 · 石青
+palette = 6=#7aa59e
+palette = 7=#c2bdb1
+
+# 加亮 8–15
+palette = 8=#595650
+palette = 9=#d98468
+palette = 10=#9cb08a
+palette = 11=#d8ba7c
+palette = 12=#93a6c2
+palette = 13=#bca6c4
+palette = 14=#8db8b1
+palette = 15=#efece3

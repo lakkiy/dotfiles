@@ -6,11 +6,15 @@ BREWS=(
     go
     uv
     node pnpm oven-sh/bun/bun
+    typescript
+    typescript-language-server
+    tailwindcss-language-server
 
     universal-ctags global pygments
     direnv
     ccls
 
+    aria2
     coreutils # gls
     pngpaste  # paste image in emacs telega
     librime   # emacs-rime
@@ -31,23 +35,22 @@ CASKS=(
     google-chrome
     raycast
     proton-pass
-    iterm2
+    ghostty
     karabiner-elements
     squirrel-app
-    the-unarchiver
     dropbox
     iina
     keepingyouawake
-    chatgpt codex
+    chatgpt codex codex-app
     claude claude-code@latest
     folo
     temurin # jdk
     ngrok
     qq wechat
+    copilot-language-server
 
     # server
     plex-media-server
-    orbstack
 )
 
 FONT_CASKS=(
@@ -82,16 +85,18 @@ GO_INSTALL_TOOLS=(
 UV_TOOLS=(
     ty@latest
     ruff@latest
+    mlx-lm
 )
 
 # Node tools installed via `pnpm add -g`.
 PNPM_GLOBAL_PACKAGES=(
-    @openai/codex
-    @github/copilot-language-server
-    @typescript/native-preview
-    typescript-language-server
     svelte-language-server
-    @tailwindcss/language-server
+)
+
+# Personal script directories (repo-relative) to prepend to PATH.
+# Scripts keep their filename, e.g. bin/hfd.sh -> run as `hfd.sh`.
+BIN_DIRS=(
+    bin
 )
 
 DOTFILES=(
@@ -104,4 +109,5 @@ DOTFILES=(
     .gitignore_global
     .cargo/config.toml
     .config/karabiner/karabiner.json
+    .config/ghostty
 )

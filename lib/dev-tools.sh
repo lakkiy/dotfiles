@@ -61,6 +61,23 @@ setup_dev_tool_env() {
     _persist_profile_line_if_missing "$profile" "export PATH=\"\$GOPATH/bin:\$PATH\""
     _persist_profile_line_if_missing "$profile" "export PATH=\"\$UV_TOOL_BIN_DIR:\$PATH\""
     _persist_profile_line_if_missing "$profile" "export PATH=\"\$PNPM_HOME:\$PATH\""
+
+    # Personal script directories in this repo to expose on PATH.
+    # Host config sets BIN_DIRS as repo-relative paths, e.g. BIN_DIRS=(bin).
+    if typeset -p BIN_DIRS &>/dev/null && (( ${#BIN_DIRS[@]} )); then
+        local bin_rel bin_abs bin_persist
+        for bin_rel in "${BIN_DIRS[@]}"; do
+            bin_abs="${SETUP_DIR}/${bin_rel}"
+            _prepend_path "${bin_abs}"
+            # Persist relative to $HOME when the repo lives under it, for portability.
+            if [[ "${bin_abs}" == "${HOME}/"* ]]; then
+                bin_persist="\$HOME/${bin_abs#${HOME}/}"
+            else
+                bin_persist="${bin_abs}"
+            fi
+            _persist_profile_line_if_missing "$profile" "export PATH=\"${bin_persist}:\$PATH\""
+        done
+    fi
 }
 
 _go_tool_module_from_spec() {
@@ -192,6 +209,27 @@ _uv_uninstall_name_from_spec() {
     echo "${pkg%%[*<>=!@ ]*}"
 }
 
+# Package names currently installed as uv tools (first column of `uv tool list`).
+# Authoritative — avoids guessing a binary name from the package, which breaks
+# for packages whose entry points differ (e.g. mlx-lm -> mlx_lm, mlx_lm.server).
+_uv_installed_packages() {
+    uv tool list 2>/dev/null | awk 'NF && $1 != "-" {print $1}'
+}
+
+# Is a spec already installed? Prefer the uv tool list; fall back to binary
+# presence only for git/url specs whose canonical name we cannot infer.
+_uv_spec_installed() {
+    local spec="$1"; shift
+    local uninstall_name
+    uninstall_name="$(_uv_uninstall_name_from_spec "$spec")"
+    if [[ -n "$uninstall_name" ]]; then
+        _array_contains "$uninstall_name" "$@"
+        return
+    fi
+    local uv_bin="${UV_TOOL_BIN_DIR:-${HOME}/.local/bin}"
+    [[ -x "${uv_bin}/$(_uv_binary_from_spec "$spec")" ]]
+}
+
 sync_uv_tools() {
     if ! typeset -p UV_TOOLS &>/dev/null; then
         return
@@ -223,17 +261,36 @@ sync_uv_tools() {
         done < "$state_file"
     fi
 
-    local spec pkg bin
+    local -a installed_uv
+    installed_uv=()
+    local _pkg_line
+    while IFS= read -r _pkg_line || [[ -n "$_pkg_line" ]]; do
+        [[ -n "$_pkg_line" ]] && installed_uv+=("$_pkg_line")
+    done < <(_uv_installed_packages)
+
+    # Install only when a package is recorded in NEITHER the state file NOR the
+    # system. The state file is authoritative: once recorded we never reinstall,
+    # even if the system check can't find it (state file wins). A package present
+    # on the system but missing from the state file is simply recorded — the state
+    # file is rewritten to the full wanted list below — and not reinstalled.
+    local spec pkg in_state on_system
     for spec in "${wanted[@]}"; do
         pkg="$(_uv_package_from_spec "$spec")"
-        bin="$(_uv_binary_from_spec "$spec")"
 
-        if _array_contains "$spec" "${prev_tools[@]}" && [[ -x "${uv_bin}/${bin}" ]]; then
+        in_state=0; on_system=0
+        _array_contains "$spec" "${prev_tools[@]}" && in_state=1
+        _uv_spec_installed "$spec" "${installed_uv[@]}" && on_system=1
+
+        if (( in_state )); then
             log_info "uv tool already installed: ${pkg}"
             continue
         fi
+        if (( on_system )); then
+            log_info "uv tool present on system, recording in state: ${pkg}"
+            continue
+        fi
 
-        log_info "Installing/updating uv tool: ${pkg}"
+        log_info "Installing uv tool: ${pkg}"
         run uv tool install "$pkg"
     done
 
@@ -271,6 +328,16 @@ sync_uv_tools() {
     if [[ "${DRY_RUN:-}" != "1" ]]; then
         printf '%s\n' "${wanted[@]}" > "$state_file"
     fi
+}
+
+# Is a pnpm global package installed? `pnpm root -g` returns the global prefix,
+# but packages live one level deeper under <prefix>/<hash>/node_modules/<pkg>
+# (and the entry is a symlink into the store), so a plain "<root>/<pkg>" dir
+# check never matches. Search the node_modules trees instead.
+_pnpm_pkg_installed() {
+    local global_root="$1" pkg="$2"
+    [[ -n "$global_root" ]] || return 1
+    find "$global_root" -maxdepth 4 -path "*/node_modules/${pkg}" 2>/dev/null | grep -q .
 }
 
 sync_pnpm_global_packages() {
@@ -322,15 +389,25 @@ sync_pnpm_global_packages() {
         done < "$state_file"
     fi
 
-    local pkg
+    # Install only when a package is recorded in NEITHER the state file NOR the
+    # system. The state file is authoritative (see sync_uv_tools for rationale):
+    # recorded packages are never reinstalled; system-only packages are recorded.
+    local pkg in_state on_system
     for pkg in "${wanted[@]}"; do
-        if _array_contains "$pkg" "${prev_packages[@]}" && \
-           [[ -n "$global_root" && -d "${global_root}/${pkg}" ]]; then
+        in_state=0; on_system=0
+        _array_contains "$pkg" "${prev_packages[@]}" && in_state=1
+        _pnpm_pkg_installed "$global_root" "$pkg" && on_system=1
+
+        if (( in_state )); then
             log_info "pnpm package already installed: ${pkg}"
             continue
         fi
+        if (( on_system )); then
+            log_info "pnpm package present on system, recording in state: ${pkg}"
+            continue
+        fi
 
-        log_info "Installing/updating pnpm package: ${pkg}"
+        log_info "Installing pnpm package: ${pkg}"
         run pnpm add -g "$pkg"
     done
 
@@ -460,9 +537,15 @@ _preview_uv_tools_changes() {
         return 0
     fi
 
-    local uv_bin="${UV_TOOL_BIN_DIR:-${HOME}/.local/bin}"
     local spec pkg bin prev found keep wbin uninstall_name
     local changed=0
+
+    local -a installed_uv
+    installed_uv=()
+    local _pkg_line
+    while IFS= read -r _pkg_line || [[ -n "$_pkg_line" ]]; do
+        [[ -n "$_pkg_line" ]] && installed_uv+=("$_pkg_line")
+    done < <(_uv_installed_packages)
 
     wanted_bins=()
     for spec in "${wanted[@]}"; do
@@ -471,8 +554,9 @@ _preview_uv_tools_changes() {
 
     for spec in "${wanted[@]}"; do
         pkg="$(_uv_package_from_spec "$spec")"
-        bin="$(_uv_binary_from_spec "$spec")"
-        if _array_contains "$spec" "${prev_tools[@]}" && [[ -x "${uv_bin}/${bin}" ]]; then
+        # No install when recorded in the state file OR present on the system.
+        if _array_contains "$spec" "${prev_tools[@]}" || \
+           _uv_spec_installed "$spec" "${installed_uv[@]}"; then
             continue
         fi
         (( changed == 0 )) && echo "  - uv tools:"
@@ -538,13 +622,10 @@ _preview_pnpm_global_changes() {
     local pkg prev found changed
     changed=0
     for pkg in "${wanted[@]}"; do
-        if _array_contains "$pkg" "${prev_packages[@]}"; then
-            if [[ -n "$global_root" && -d "${global_root}/${pkg}" ]]; then
-                continue
-            fi
-            if [[ -z "$global_root" ]]; then
-                continue
-            fi
+        # No install when recorded in the state file OR present on the system.
+        if _array_contains "$pkg" "${prev_packages[@]}" || \
+           _pnpm_pkg_installed "$global_root" "$pkg"; then
+            continue
         fi
         (( changed == 0 )) && echo "  - pnpm globals:"
         echo "      + add ${pkg}"

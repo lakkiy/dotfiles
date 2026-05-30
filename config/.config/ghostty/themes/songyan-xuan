@@ -1,0 +1,38 @@
+# 松烟 · 水墨 · 亮 · 宣纸 · 宣
+# 「矮纸斜行闲作草，晴窗细乳戏分茶」—— 陆游《临安春雨初霁》
+# 放到 ~/.config/ghostty/themes/songyan-xuan
+
+# 底 · 宣纸
+background = #f1e8d3
+# 字 · 墨
+foreground = #33302a
+cursor-color = #b0532c
+cursor-text  = #f1e8d3
+selection-background = #e7dcc2
+selection-foreground = #33302a
+
+# 基础 0–7（1–6 标注所用传统色名）
+palette = 0=#33302a
+# 红 · 朱砂
+palette = 1=#ad5439
+# 绿 · 竹青
+palette = 2=#5e7748
+# 黄 · 缃色
+palette = 3=#8a6624
+# 蓝 · 黛蓝
+palette = 4=#46618a
+# 紫 · 青莲
+palette = 5=#735681
+# 青 · 石青
+palette = 6=#3d7a72
+palette = 7=#847d6c
+
+# 加亮 8–15
+palette = 8=#6a6354
+palette = 9=#b85f43
+palette = 10=#688150
+palette = 11=#97742c
+palette = 12=#4e6a93
+palette = 13=#7b6086
+palette = 14=#478379
+palette = 15=#524c40

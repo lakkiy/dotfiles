@@ -1,0 +1,39 @@
+# 太极 · 黑白 · 暗 · 玄 · 玄
+# 「玄之又玄，众妙之门」—— 老子《道德经·第一章》
+# 黑白灰阶为主；diff 仍保留主题化的低饱和红(朱砂)/绿(松绿)以便分辨。
+# 放到 ~/.config/ghostty/themes/taiji-xuan
+
+# 底 · 玄
+background = #16161a
+# 字 · 皓
+foreground = #dcdcd9
+cursor-color = #c45a3f
+cursor-text  = #16161a
+selection-background = #2a2a2f
+selection-foreground = #f0f0ee
+
+# 基础 0–7（1–6 标注所用传统色名）
+palette = 0=#2a2a2e
+# 红 · 朱砂
+palette = 1=#cb6049
+# 绿 · 松绿
+palette = 2=#7fa080
+# 黄 · 素灰
+palette = 3=#b3ab9b
+# 蓝 · 苍灰
+palette = 4=#9296a0
+# 紫 · 黛灰
+palette = 5=#9a949c
+# 青 · 青灰
+palette = 6=#8f9794
+palette = 7=#c2c2bf
+
+# 加亮 8–15
+palette = 8=#56565b
+palette = 9=#dc745a
+palette = 10=#93b393
+palette = 11=#c9c0aa
+palette = 12=#9ea5b2
+palette = 13=#afa8b2
+palette = 14=#9eaca8
+palette = 15=#f0f0ee

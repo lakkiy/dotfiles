@@ -1,0 +1,38 @@
+# 松烟 · 水墨 · 亮 · 暖白 · 素
+# 「澄江静如练，余霞散成绮」—— 谢朓《晚登三山还望京邑》
+# 放到 ~/.config/ghostty/themes/songyan-su
+
+# 底 · 素
+background = #faf7f0
+# 字 · 墨
+foreground = #2b2924
+cursor-color = #b5552f
+cursor-text  = #faf7f0
+selection-background = #ece7da
+selection-foreground = #2b2924
+
+# 基础 0–7（1–6 标注所用传统色名）
+palette = 0=#2b2924
+# 红 · 朱砂
+palette = 1=#b1563f
+# 绿 · 竹青
+palette = 2=#5f7a4e
+# 黄 · 缃色
+palette = 3=#8c6a2a
+# 蓝 · 黛蓝
+palette = 4=#486487
+# 紫 · 青莲
+palette = 5=#75597f
+# 青 · 石青
+palette = 6=#3f7d77
+palette = 7=#87837a
+
+# 加亮 8–15
+palette = 8=#6a665d
+palette = 9=#bd6249
+palette = 10=#6a8557
+palette = 11=#997733
+palette = 12=#506e91
+palette = 13=#7f6389
+palette = 14=#498780
+palette = 15=#54514a

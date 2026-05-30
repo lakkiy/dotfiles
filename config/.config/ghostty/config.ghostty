@@ -1,0 +1,66 @@
+# ============================================================
+#  Ghostty 配置 · 主配置
+#  注释规则：每条设置上方一行 = 为什么这么写 + Ghostty 默认值
+#  路径:  ~/.config/ghostty/config
+#  重载:  cmd+shift+,  (macOS)  /  ctrl+shift+,  (Linux)
+# ============================================================
+
+# 为什么：macOS 上把偏细字形描粗一点，更扎实。默认：false（仅 macOS 有效）。
+font-thicken = true
+# 为什么：每行加 12% 行高，长时间阅读更透气。默认：0（不调整）。
+adjust-cell-height = 12%
+
+# ── 主题：松烟 · 水墨（暗·松烟 / 亮·素 / 亮·宣，低饱和耐看）──
+# 为什么：自定义水墨主题，跟随系统自动切换浅 / 深色。
+#   暗·松烟「黑云翻墨未遮山」；亮侧当前用「素 · 暖白」。
+#   想换亮色：把下面 light: 后改成 songyan-su（暖白）或 songyan-xuan（宣纸）。
+#   另有「太极 · 黑白」一套（近纯黑白、只留一点朱砂）：themes/ 下 taiji-xuan、taiji-hao，
+#   想用就改成 theme = light:taiji-hao,dark:taiji-xuan。
+#   需把 themes/ 下 songyan-song 及所选亮色文件放进 ~/.config/ghostty/themes/。
+# 默认：theme 不设（使用 Ghostty 内置默认配色）。
+theme = light:songyan-xuan,dark:songyan-song
+# 为什么：macOS 用更广的 P3 色域，颜色更通透。默认：srgb（仅 macOS 有效）。
+window-colorspace = display-p3
+# 为什么：设最低前/背景对比，远程“白底白字”等隐形文字会被自动拉开。默认：1（不强制）。
+minimum-contrast = 1.2
+
+# ── 毛玻璃 / 透明 ──
+# 为什么：0.80 透出一点壁纸又不影响读字。默认：1（完全不透明）。
+background-opacity = 0.80
+# 为什么：配合透明做背景模糊（macOS / KDE 生效）。默认：false（不模糊）。
+background-blur = 20
+# 为什么：开=连“有显式背景色的格子”(如 git diff 的 +/- 行、tmux 状态栏)也套用透明度；
+#   关=这些格子保持不透明，diff / 选区在透明窗口下更锐利清晰。默认：false。
+background-opacity-cells = true
+# 为什么：未聚焦分屏只轻微变暗，便于辨认焦点又不刺眼。默认：0.7。
+unfocused-split-opacity = 0.9
+
+# ── 留白 / 内边距（单位：点，按 DPI 自动缩放）──
+# 为什么：左右各 18 点留白，文字不贴边。默认：2。
+window-padding-x = 18
+# 为什么：上下各 14 点留白。默认：2。
+window-padding-y = 14
+# 为什么：把取整产生的多余像素均分到四边，避免单边贴死。默认：false。
+window-padding-balance = true
+# 为什么：内边距延用最近格子的背景色，边缘更干净。默认：background。
+window-padding-color = extend
+
+# ── 光标 ──
+cursor-style-blink = false
+# 为什么：竖线光标加粗 1px 更易看见。默认：0。
+adjust-cursor-thickness = 1
+
+# ── 鼠标 / 复制粘贴 ──
+# 为什么：选中即复制，并同时写入“系统剪贴板 + 选择剪贴板”。默认：true（仅写选择剪贴板）。
+copy-on-select = clipboard
+# 为什么：复制时去掉行尾多余空格。默认：false。
+clipboard-trim-trailing-spaces = true
+# 为什么：滚轮步进调到 1.5，滚动更跟手细腻。默认：3（精密触控板为 1）。
+mouse-scroll-multiplier = 1.5
+
+# ── 滚动 ──
+# 为什么：约 100MB 回滚缓冲，够翻很久历史。默认：10000000（≈10MB）。
+scrollback-limit = 100000000
+
+macos-option-as-alt = true
+shell-integration-features = ssh-env

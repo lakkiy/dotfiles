@@ -1,0 +1,39 @@
+# 太极 · 黑白 · 亮 · 皓白 · 皓
+# 「虚室生白，吉祥止止」—— 庄子《人间世》
+# 黑白灰阶为主；diff 仍保留主题化的低饱和红(朱砂)/绿(松绿)以便分辨。
+# 放到 ~/.config/ghostty/themes/taiji-hao
+
+# 底 · 皓
+background = #f7f6f3
+# 字 · 玄
+foreground = #232322
+cursor-color = #b1492f
+cursor-text  = #f7f6f3
+selection-background = #e8e7e2
+selection-foreground = #232322
+
+# 基础 0–7（1–6 标注所用传统色名）
+palette = 0=#232322
+# 红 · 朱砂
+palette = 1=#ad4327
+# 绿 · 松绿
+palette = 2=#3f6f44
+# 黄 · 素灰
+palette = 3=#7d7560
+# 蓝 · 苍灰
+palette = 4=#565b66
+# 紫 · 黛灰
+palette = 5=#645e66
+# 青 · 青灰
+palette = 6=#586460
+palette = 7=#7c7b76
+
+# 加亮 8–15
+palette = 8=#62615c
+palette = 9=#b85033
+palette = 10=#477a4c
+palette = 11=#8a8169
+palette = 12=#5f6470
+palette = 13=#6e6770
+palette = 14=#61706b
+palette = 15=#4a4a47
