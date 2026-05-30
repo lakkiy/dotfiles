@@ -89,6 +89,7 @@ UV_TOOLS=(
     ty@latest
     ruff@latest
     mlx-lm
+    mlx-vlm
 )
 
 # Node tools installed via `pnpm add -g`.
