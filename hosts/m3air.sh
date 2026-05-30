@@ -9,11 +9,15 @@ BREWS=(
     go
     uv
     node pnpm
+    typescript
+    typescript-language-server
+    tailwindcss-language-server
 
     universal-ctags global pygments
     direnv
     ccls
 
+    aria2
     coreutils # gls
     pngpaste  # paste image in emacs telega
     librime   # emacs-rime
@@ -26,16 +30,6 @@ BREWS=(
     iperf
     ffmpeg
 
-    # build from source
-    pkgconf
-    autoconf
-    awk
-    gnu-sed
-    gnu-tar
-    grep
-    make
-    texinfo
-    d12frosted/emacs-plus/emacs-plus@31
     # build tdlib
     gperf cmake openssl
 
@@ -44,18 +38,22 @@ BREWS=(
 )
 
 CASKS=(
-    zen
-    iterm2
-    bitwarden
+    d12frosted/emacs-plus/emacs-plus-app@master
+    google-chrome
+    raycast
+    proton-pass
+    ghostty
     karabiner-elements
     squirrel-app
-    the-unarchiver
     dropbox
     iina
     keepingyouawake
+    chatgpt codex codex-app
+    claude claude-code@latest
     folo
-    chatgpt codex
-    claude claude-code
+    ngrok
+    qq wechat
+    copilot-language-server
 
     # work
     temurin ngrok
@@ -93,24 +91,21 @@ GO_INSTALL_TOOLS=(
 UV_TOOLS=(
     ty@latest
     ruff@latest
+    mlx-lm
 )
 
 # Node tools installed via `pnpm add -g`.
 PNPM_GLOBAL_PACKAGES=(
-    @google/gemini-cli
-    @github/copilot-language-server
-    @mariozechner/pi-coding-agent
-    @typescript/native-preview
-    typescript-language-server
     svelte-language-server
-    @tailwindcss/language-server
+)
 
-    # work
-    dynamodb-admin
+BIN_DIRS=(
+    bin
 )
 
 DOTFILES=(
     .zshrc
+    .zshenv
     .gitconfig
     .globalrc
     .condarc
@@ -118,4 +113,5 @@ DOTFILES=(
     .gitignore_global
     .cargo/config.toml
     .config/karabiner/karabiner.json
+    .config/ghostty
 )

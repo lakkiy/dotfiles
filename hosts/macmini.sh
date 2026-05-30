@@ -27,6 +27,9 @@ BREWS=(
     iperf
     ffmpeg
 
+    # build tdlib
+    gperf cmake openssl
+
     cliproxyapi
 )
 
