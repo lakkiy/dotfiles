@@ -8,7 +8,7 @@ BREWS=(
     # deps
     go
     uv
-    node pnpm
+    node pnpm oven-sh/bun/bun
     typescript
     typescript-language-server
     tailwindcss-language-server
@@ -22,6 +22,7 @@ BREWS=(
     pngpaste  # paste image in emacs telega
     librime   # emacs-rime
     mihomo    # /opt/homebrew/etc/mihomo/config.yaml.
+    whisper-cpp
 
     fd ripgrep fzf jq zoxide tealdeer
     rsync
@@ -35,6 +36,7 @@ BREWS=(
 
     # work
     awscli
+    cloudflare-wrangler
 )
 
 CASKS=(
@@ -57,6 +59,8 @@ CASKS=(
 
     # work
     temurin ngrok
+    lark
+    nosql-workbench
 )
 
 FONT_CASKS=(
